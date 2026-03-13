@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+"use client";
+import { useEffect } from "react";
 
 export default function RootPage() {
-  redirect("/en");
+  useEffect(() => {
+    window.location.replace("/en/dashboard/");
+  }, []);
+  return null;
 }

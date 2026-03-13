@@ -1,0 +1,37 @@
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[[plugins]]
+origin = "config"
+package = "@netlify/plugin-nextjs"
+
+[plugins.inputs]
+
+[build]
+publish = "/root/projects/uniflo-platform/apps/web/apps/web/.next"
+publishOrigin = "config"
+commandOrigin = "config"
+base = "/root/projects/uniflo-platform/apps/web"
+command = "pnpm install && pnpm --filter=@uniflo/web... build"
+
+[build.environment]
+NODE_VERSION = "22"
+PNPM_VERSION = "9"
+NEXT_TELEMETRY_DISABLED = "1"
+NODE_OPTIONS = "--max-old-space-size=1536"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
