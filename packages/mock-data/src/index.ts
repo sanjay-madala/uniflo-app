@@ -8,3 +8,4 @@ import tasks from './tasks.json';
 
 export { users, organizations, tickets, audits, sops, capas, tasks };
 export type { default as UsersData } from './users.json';
+export * from './types';
