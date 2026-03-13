@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "platformFoundation": "Platform Foundation",
+    "sopManagement": "SOP Management",
+    "auditCompliance": "Audit & Compliance",
+    "capa": "CAPA",
+    "ticketManagement": "Ticket Management",
+    "workflowAutomation": "Workflow Automation",
+    "knowledgeBase": "Knowledge Base",
+    "analytics": "Analytics & Reporting",
+    "taskManagement": "Task Management",
+    "slaManagement": "SLA Management",
+    "mobilePlatform": "Mobile Platform",
+    "goalsOKRs": "Goals & OKRs",
+    "customerPortal": "Customer Portal",
+    "communication": "Communication",
+    "training": "Training & LMS"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search"
+  }
+}

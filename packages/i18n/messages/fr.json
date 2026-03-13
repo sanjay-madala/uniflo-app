@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "platformFoundation": "Fondation de la plateforme",
+    "sopManagement": "Gestion des procédures",
+    "auditCompliance": "Audit et conformité",
+    "capa": "Actions correctives",
+    "ticketManagement": "Gestion des tickets",
+    "workflowAutomation": "Automatisation des flux",
+    "knowledgeBase": "Base de connaissances",
+    "analytics": "Analyses et rapports",
+    "taskManagement": "Gestion des tâches",
+    "slaManagement": "Gestion des SLA",
+    "mobilePlatform": "Plateforme mobile",
+    "goalsOKRs": "Objectifs et OKR",
+    "customerPortal": "Portail client",
+    "communication": "Communication",
+    "training": "Formation et LMS"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "search": "Rechercher"
+  }
+}

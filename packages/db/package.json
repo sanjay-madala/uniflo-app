@@ -1,0 +1,6 @@
+{
+  "name": "@uniflo/db",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Drizzle ORM database schema (placeholder — wired in backend phase)"
+}

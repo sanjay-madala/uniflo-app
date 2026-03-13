@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "platformFoundation": "أساس المنصة",
+    "sopManagement": "إدارة الإجراءات",
+    "auditCompliance": "التدقيق والامتثال",
+    "capa": "الإجراءات التصحيحية",
+    "ticketManagement": "إدارة التذاكر",
+    "workflowAutomation": "أتمتة سير العمل",
+    "knowledgeBase": "قاعدة المعرفة",
+    "analytics": "التحليلات والتقارير",
+    "taskManagement": "إدارة المهام",
+    "slaManagement": "إدارة اتفاقية الخدمة",
+    "mobilePlatform": "المنصة المحمولة",
+    "goalsOKRs": "الأهداف والنتائج الرئيسية",
+    "customerPortal": "بوابة العملاء",
+    "communication": "التواصل",
+    "training": "التدريب والتعلم"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "search": "بحث"
+  }
+}

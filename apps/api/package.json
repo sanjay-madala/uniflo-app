@@ -1,0 +1,6 @@
+{
+  "name": "@uniflo/api",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Fastify 5 API server (placeholder — wired in backend phase)"
+}
