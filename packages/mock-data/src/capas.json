@@ -1,0 +1,5 @@
+[
+  {"id":"capa_001","title":"Health & Safety compliance remediation","status":"in_progress","source":"audit","source_id":"aud_002","root_cause":"Insufficient staff training on fire safety protocols","corrective_action":"Conduct fire safety training for all staff","preventive_action":"Add fire safety to quarterly audit checklist","owner_id":"usr_002","due_date":"2026-03-31T00:00:00Z","created_at":"2026-03-05T15:00:00Z"},
+  {"id":"capa_002","title":"Refrigeration maintenance protocol","status":"open","source":"ticket","source_id":"tkt_001","root_cause":"Maintenance schedule not adhered to","corrective_action":"Immediate servicing of refrigeration units","preventive_action":"Implement bi-weekly maintenance SOP","owner_id":"usr_003","due_date":"2026-03-20T00:00:00Z","created_at":"2026-03-10T10:00:00Z"},
+  {"id":"capa_003","title":"POS system backup procedure","status":"open","source":"audit","source_id":"aud_003","root_cause":"No documented failover procedure","corrective_action":"Install backup POS terminal","preventive_action":"Create POS failure SOP and train staff","owner_id":"usr_002","due_date":"2026-03-25T00:00:00Z","created_at":"2026-03-12T08:00:00Z"}
+]

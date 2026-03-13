@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "platformFoundation": "प्लेटफ़ॉर्म फाउंडेशन",
+    "sopManagement": "SOP प्रबंधन",
+    "auditCompliance": "ऑडिट और अनुपालन",
+    "capa": "CAPA",
+    "ticketManagement": "टिकट प्रबंधन",
+    "workflowAutomation": "वर्कफ़्लो स्वचालन",
+    "knowledgeBase": "ज्ञान आधार",
+    "analytics": "विश्लेषण और रिपोर्टिंग",
+    "taskManagement": "कार्य प्रबंधन",
+    "slaManagement": "SLA प्रबंधन",
+    "mobilePlatform": "मोबाइल प्लेटफ़ॉर्म",
+    "goalsOKRs": "लक्ष्य और OKR",
+    "customerPortal": "ग्राहक पोर्टल",
+    "communication": "संचार",
+    "training": "प्रशिक्षण और LMS"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "search": "खोजें"
+  }
+}

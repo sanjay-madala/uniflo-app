@@ -1,0 +1,12 @@
+[
+  {"id":"tkt_001","title":"Refrigeration unit temp out of range","status":"open","priority":"high","assignee_id":"usr_004","location_id":"loc_003","created_at":"2026-03-10T08:30:00Z","sla_breach_at":"2026-03-11T08:30:00Z"},
+  {"id":"tkt_002","title":"Customer complaint - order incorrect","status":"in_progress","priority":"medium","assignee_id":"usr_004","location_id":"loc_002","created_at":"2026-03-11T10:00:00Z","sla_breach_at":"2026-03-12T10:00:00Z"},
+  {"id":"tkt_003","title":"Staff training reminder - food safety","status":"resolved","priority":"low","assignee_id":"usr_002","location_id":"loc_001","created_at":"2026-03-08T09:00:00Z","resolved_at":"2026-03-09T14:00:00Z"},
+  {"id":"tkt_004","title":"POS system offline","status":"open","priority":"critical","assignee_id":null,"location_id":"loc_003","created_at":"2026-03-12T07:15:00Z","sla_breach_at":"2026-03-12T11:15:00Z","linked_audit_id":"aud_003"},
+  {"id":"tkt_005","title":"Cleaning schedule not followed","status":"in_progress","priority":"medium","assignee_id":"usr_005","location_id":"loc_002","created_at":"2026-03-09T13:00:00Z"},
+  {"id":"tkt_006","title":"Menu board display error","status":"closed","priority":"low","assignee_id":"usr_004","location_id":"loc_003","created_at":"2026-03-05T11:00:00Z","resolved_at":"2026-03-06T15:00:00Z"},
+  {"id":"tkt_007","title":"Staff shortage during peak hours","status":"open","priority":"high","assignee_id":"usr_002","location_id":"loc_001","created_at":"2026-03-12T16:00:00Z"},
+  {"id":"tkt_008","title":"Health & safety compliance gap","status":"open","priority":"high","assignee_id":"usr_003","location_id":"loc_002","created_at":"2026-03-11T09:30:00Z","linked_capa_id":"capa_001"},
+  {"id":"tkt_009","title":"WiFi connectivity issues","status":"resolved","priority":"low","assignee_id":"usr_004","location_id":"loc_003","created_at":"2026-03-07T14:00:00Z","resolved_at":"2026-03-08T10:00:00Z"},
+  {"id":"tkt_010","title":"Supply delivery delay - bread stock","status":"in_progress","priority":"medium","assignee_id":"usr_002","location_id":"loc_001","created_at":"2026-03-12T08:00:00Z"}
+]

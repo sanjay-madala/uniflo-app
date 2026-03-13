@@ -1,0 +1,5 @@
+[
+  {"id":"sop_001","title":"Food Safety & Handling Procedure","version":"2.1","status":"published","category":"Safety","steps":5,"location_ids":["loc_001","loc_002","loc_003"],"created_by":"usr_002","last_updated":"2026-02-15T10:00:00Z"},
+  {"id":"sop_002","title":"Customer Complaint Resolution","version":"1.3","status":"published","category":"Customer Service","steps":4,"location_ids":["loc_001","loc_002","loc_003"],"created_by":"usr_002","last_updated":"2026-01-20T09:00:00Z"},
+  {"id":"sop_003","title":"Daily Opening & Closing Checklist","version":"3.0","status":"draft","category":"Operations","steps":8,"location_ids":["loc_003"],"created_by":"usr_005","last_updated":"2026-03-10T14:00:00Z"}
+]

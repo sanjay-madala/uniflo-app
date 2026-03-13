@@ -1,0 +1,7 @@
+[
+  {"id":"aud_001","title":"Q1 Food Safety Audit - LA Hub","status":"completed","score":92,"pass":true,"location_id":"loc_002","auditor_id":"usr_003","conducted_at":"2026-03-08T10:00:00Z","findings":[]},
+  {"id":"aud_002","title":"Monthly Compliance Check - HQ","status":"completed","score":78,"pass":true,"location_id":"loc_001","auditor_id":"usr_003","conducted_at":"2026-03-05T09:00:00Z","findings":["Fire exit partially blocked"]},
+  {"id":"aud_003","title":"Equipment Safety Audit - Chicago","status":"completed","score":54,"pass":false,"location_id":"loc_003","auditor_id":"usr_003","conducted_at":"2026-03-12T07:00:00Z","findings":["POS system failure detected","Refrigeration unit non-compliant"],"auto_created_ticket_id":"tkt_004"},
+  {"id":"aud_004","title":"Staff Hygiene Compliance - LA Hub","status":"in_progress","score":null,"pass":null,"location_id":"loc_002","auditor_id":"usr_003","started_at":"2026-03-13T09:00:00Z"},
+  {"id":"aud_005","title":"Opening Checklist - Chicago","status":"scheduled","score":null,"pass":null,"location_id":"loc_003","auditor_id":"usr_005","scheduled_at":"2026-03-14T08:00:00Z"}
+]

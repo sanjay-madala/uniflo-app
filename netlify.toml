@@ -1,6 +1,6 @@
 [build]
   base = "apps/web"
-  command = "pnpm build"
+  command = "NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS='--max-old-space-size=1024' pnpm exec next build"
   publish = ".next"
 
 [[plugins]]
@@ -9,3 +9,4 @@
 [build.environment]
   NODE_VERSION = "22"
   PNPM_VERSION = "9"
+  NEXT_TELEMETRY_DISABLED = "1"

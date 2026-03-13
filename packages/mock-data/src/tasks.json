@@ -1,0 +1,7 @@
+[
+  {"id":"task_001","title":"Update food safety training materials","status":"todo","priority":"high","assignee_id":"usr_002","due_date":"2026-03-20T00:00:00Z","linked_capa_id":"capa_001","created_at":"2026-03-06T09:00:00Z"},
+  {"id":"task_002","title":"Schedule refrigeration unit service call","status":"in_progress","priority":"high","assignee_id":"usr_005","due_date":"2026-03-15T00:00:00Z","linked_ticket_id":"tkt_001","created_at":"2026-03-10T11:00:00Z"},
+  {"id":"task_003","title":"Review and approve updated SOP v3.0","status":"todo","priority":"medium","assignee_id":"usr_002","due_date":"2026-03-18T00:00:00Z","linked_sop_id":"sop_003","created_at":"2026-03-11T10:00:00Z"},
+  {"id":"task_004","title":"Hire additional part-time staff","status":"todo","priority":"high","assignee_id":"usr_002","due_date":"2026-03-25T00:00:00Z","linked_ticket_id":"tkt_007","created_at":"2026-03-12T17:00:00Z"},
+  {"id":"task_005","title":"Install backup internet connection","status":"done","priority":"medium","assignee_id":"usr_004","due_date":"2026-03-10T00:00:00Z","linked_ticket_id":"tkt_009","created_at":"2026-03-07T15:00:00Z","completed_at":"2026-03-09T16:00:00Z"}
+]

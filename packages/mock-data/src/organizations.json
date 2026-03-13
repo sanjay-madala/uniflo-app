@@ -1,0 +1,8 @@
+{
+  "id":"org_001","name":"Demo Corp","plan":"enterprise","domain":"democorp.com",
+  "locations": [
+    {"id":"loc_001","name":"HQ - New York","type":"headquarters","parent_id":null},
+    {"id":"loc_002","name":"West Coast Hub - LA","type":"regional","parent_id":"loc_001"},
+    {"id":"loc_003","name":"Chicago Store","type":"store","parent_id":"loc_001"}
+  ]
+}
