@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "../../components/providers/ThemeProvider";
+import { AuthProvider } from "../../lib/auth";
+import { ToastProvider } from "@uniflo/ui";
 import "../globals.css";
 import { isRTL } from "@uniflo/i18n";
 
@@ -26,7 +28,11 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
+          <AuthProvider>
+            <ToastProvider>
+              {children}
+            </ToastProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

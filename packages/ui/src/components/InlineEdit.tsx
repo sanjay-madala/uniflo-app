@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { CheckIcon, XIcon } from "lucide-react";
 import clsx from "clsx";

@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
     workerThreads: false,
     cpus: 1,
   },
+  webpack: (config) => {
+    config.optimization.splitChunks.chunks = "all";
+    return config;
+  },
 };
 
 export default nextConfig;
