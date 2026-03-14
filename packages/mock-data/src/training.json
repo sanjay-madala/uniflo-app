@@ -1,0 +1,1027 @@
+{
+  "modules": [
+    {
+      "id": "trn_001",
+      "title": "Freezer Maintenance & Safety",
+      "description": "Comprehensive training on walk-in freezer maintenance procedures, temperature monitoring, and emergency protocols. Based on the latest Freezer Maintenance SOP.",
+      "status": "published",
+      "category": "safety",
+      "difficulty": "intermediate",
+      "tags": ["safety", "maintenance", "freezer", "temperature"],
+      "content_blocks": [
+        {
+          "id": "cb_001_01",
+          "order": 1,
+          "type": "text",
+          "title": "Introduction to Freezer Safety",
+          "body_html": "<h2>Why Freezer Safety Matters</h2><p>Proper freezer maintenance ensures food safety, prevents costly equipment failures, and protects staff from cold-related injuries. This module covers the essential procedures every team member must know.</p><p>According to FDA regulations, walk-in freezers must maintain temperatures between -23°C and -18°C (-10°F to 0°F) at all times. Any deviation can compromise food safety and lead to significant financial losses.</p>"
+        },
+        {
+          "id": "cb_001_02",
+          "order": 2,
+          "type": "video",
+          "title": "Daily Temperature Check Procedure",
+          "media_url": "/videos/freezer-temp-check.mp4",
+          "media_thumbnail": "/images/training/freezer-thumb.jpg",
+          "duration_seconds": 420,
+          "caption": "Watch this 7-minute walkthrough of the daily temperature verification process"
+        },
+        {
+          "id": "cb_001_03",
+          "order": 3,
+          "type": "text",
+          "title": "Temperature Monitoring Best Practices",
+          "body_html": "<h2>Monitoring Schedule</h2><p>Temperature checks must be performed at least every 4 hours during operating hours. Use the calibrated digital thermometer provided at each freezer unit.</p><h3>Recording Temperatures</h3><p>All readings must be logged in the temperature monitoring system. Flag any readings outside the acceptable range immediately.</p><h3>Corrective Actions</h3><p>If temperature exceeds -15°C: 1) Check door seals, 2) Verify compressor operation, 3) Notify maintenance team, 4) Begin food safety assessment if temp exceeded for >2 hours.</p>"
+        },
+        {
+          "id": "cb_001_04",
+          "order": 4,
+          "type": "image",
+          "title": "Freezer Zones Diagram",
+          "media_url": "/images/training/freezer-zones.png",
+          "alt_text": "Diagram showing the different temperature zones in a walk-in freezer",
+          "caption": "Figure 1: Temperature zones and sensor placement in a standard walk-in freezer unit"
+        },
+        {
+          "id": "cb_001_05",
+          "order": 5,
+          "type": "text",
+          "title": "Emergency Procedures",
+          "body_html": "<h2>Emergency Response Protocol</h2><p>In the event of a complete freezer failure:</p><ol><li>Immediately notify the shift supervisor</li><li>Do NOT open the freezer door unless necessary</li><li>Contact the maintenance team via radio</li><li>Begin transferring perishables to backup unit if downtime exceeds 30 minutes</li><li>Document all affected inventory</li></ol><h3>Personal Safety</h3><p>Never enter a malfunctioning freezer alone. Always use the buddy system and ensure someone knows you are inside.</p>"
+        }
+      ],
+      "quiz_id": "quiz_001",
+      "estimated_duration_minutes": 45,
+      "created_by": "user_001",
+      "created_at": "2026-02-15T10:00:00Z",
+      "updated_at": "2026-03-10T08:00:00Z",
+      "published_at": "2026-02-20T14:00:00Z",
+      "version": "2.1",
+      "assigned_role_ids": ["kitchen_staff", "maintenance", "supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": "sop_001",
+      "linked_sop_title": "Freezer Maintenance SOP",
+      "linked_sop_version": "3.0",
+      "linked_goal_ids": ["goal_001"],
+      "linked_audit_template_ids": ["at_001"],
+      "auto_assign_on_sop_change": true,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 30,
+      "total_completed": 24,
+      "avg_score": 87,
+      "completion_rate": 80
+    },
+    {
+      "id": "trn_002",
+      "title": "Food Safety Fundamentals",
+      "description": "Core food safety training covering HACCP principles, cross-contamination prevention, and proper food handling techniques required for all food service staff.",
+      "status": "published",
+      "category": "compliance",
+      "difficulty": "beginner",
+      "tags": ["food-safety", "haccp", "compliance", "hygiene"],
+      "content_blocks": [
+        {
+          "id": "cb_002_01",
+          "order": 1,
+          "type": "text",
+          "title": "Introduction to HACCP",
+          "body_html": "<h2>What is HACCP?</h2><p>Hazard Analysis and Critical Control Points (HACCP) is a systematic preventive approach to food safety. Understanding these principles is essential for maintaining compliance and protecting guests.</p>"
+        },
+        {
+          "id": "cb_002_02",
+          "order": 2,
+          "type": "video",
+          "title": "Proper Handwashing Technique",
+          "media_url": "/videos/handwashing.mp4",
+          "media_thumbnail": "/images/training/handwashing-thumb.jpg",
+          "duration_seconds": 180,
+          "caption": "The correct 20-second handwashing procedure"
+        },
+        {
+          "id": "cb_002_03",
+          "order": 3,
+          "type": "text",
+          "title": "Cross-Contamination Prevention",
+          "body_html": "<h2>Preventing Cross-Contamination</h2><p>Cross-contamination occurs when harmful bacteria transfer from one food item to another. This can happen through direct contact, shared equipment, or improper storage.</p><h3>Key Prevention Steps</h3><ul><li>Use color-coded cutting boards</li><li>Store raw meats below ready-to-eat items</li><li>Sanitize surfaces between tasks</li><li>Change gloves between handling different food types</li></ul>"
+        },
+        {
+          "id": "cb_002_04",
+          "order": 4,
+          "type": "text",
+          "title": "Temperature Danger Zone",
+          "body_html": "<h2>The Temperature Danger Zone</h2><p>The danger zone for food is between 4°C (40°F) and 60°C (140°F). Food must not remain in this zone for more than 2 hours total (1 hour if ambient temperature exceeds 32°C/90°F).</p>"
+        }
+      ],
+      "quiz_id": "quiz_002",
+      "estimated_duration_minutes": 30,
+      "created_by": "user_001",
+      "created_at": "2026-01-10T09:00:00Z",
+      "updated_at": "2026-03-05T11:00:00Z",
+      "published_at": "2026-01-15T10:00:00Z",
+      "version": "1.3",
+      "assigned_role_ids": ["kitchen_staff", "server", "supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": "sop_002",
+      "linked_sop_title": "Food Handling SOP",
+      "linked_sop_version": "2.0",
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": ["at_002"],
+      "auto_assign_on_sop_change": true,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 45,
+      "total_completed": 38,
+      "avg_score": 82,
+      "completion_rate": 84
+    },
+    {
+      "id": "trn_003",
+      "title": "Guest Relations Excellence",
+      "description": "Master the art of exceptional guest service. Learn communication techniques, complaint resolution strategies, and how to create memorable experiences.",
+      "status": "published",
+      "category": "customer_service",
+      "difficulty": "intermediate",
+      "tags": ["guest-relations", "service", "communication"],
+      "content_blocks": [
+        {
+          "id": "cb_003_01",
+          "order": 1,
+          "type": "text",
+          "title": "The Guest Experience Framework",
+          "body_html": "<h2>Creating Exceptional Experiences</h2><p>Every interaction with a guest is an opportunity to exceed expectations. Our service framework focuses on three pillars: Anticipation, Personalization, and Recovery.</p>"
+        },
+        {
+          "id": "cb_003_02",
+          "order": 2,
+          "type": "video",
+          "title": "Handling Difficult Situations",
+          "media_url": "/videos/guest-relations.mp4",
+          "media_thumbnail": "/images/training/guest-rel-thumb.jpg",
+          "duration_seconds": 600,
+          "caption": "Role-play scenarios demonstrating effective complaint resolution"
+        },
+        {
+          "id": "cb_003_03",
+          "order": 3,
+          "type": "text",
+          "title": "Recovery Strategies",
+          "body_html": "<h2>Service Recovery</h2><p>When things go wrong, how you respond matters more than the original issue. The HEART framework: Hear, Empathize, Apologize, Resolve, Thank.</p>"
+        }
+      ],
+      "quiz_id": "quiz_003",
+      "estimated_duration_minutes": 40,
+      "created_by": "user_002",
+      "created_at": "2026-02-01T14:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-02-10T10:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["front_desk", "server", "supervisor", "concierge"],
+      "assigned_location_ids": ["loc_001", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": ["goal_002"],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 20,
+      "total_completed": 12,
+      "avg_score": 75,
+      "completion_rate": 60
+    },
+    {
+      "id": "trn_004",
+      "title": "New Employee Onboarding",
+      "description": "Welcome to the team! This comprehensive onboarding module covers company values, workplace policies, safety protocols, and your first-week checklist.",
+      "status": "published",
+      "category": "onboarding",
+      "difficulty": "beginner",
+      "tags": ["onboarding", "new-hire", "orientation"],
+      "content_blocks": [
+        {
+          "id": "cb_004_01",
+          "order": 1,
+          "type": "text",
+          "title": "Welcome & Company Values",
+          "body_html": "<h2>Welcome to the Team</h2><p>We are thrilled to have you join our organization. This module will guide you through everything you need to know to get started.</p>"
+        },
+        {
+          "id": "cb_004_02",
+          "order": 2,
+          "type": "video",
+          "title": "Company Culture Overview",
+          "media_url": "/videos/company-culture.mp4",
+          "media_thumbnail": "/images/training/culture-thumb.jpg",
+          "duration_seconds": 480,
+          "caption": "A message from our leadership team"
+        },
+        {
+          "id": "cb_004_03",
+          "order": 3,
+          "type": "text",
+          "title": "Workplace Policies",
+          "body_html": "<h2>Key Policies</h2><p>Please review the following workplace policies carefully. You will be asked to acknowledge your understanding in the quiz.</p>"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 60,
+      "created_by": "user_001",
+      "created_at": "2026-01-05T08:00:00Z",
+      "updated_at": "2026-02-28T15:00:00Z",
+      "published_at": "2026-01-08T09:00:00Z",
+      "version": "2.0",
+      "assigned_role_ids": ["kitchen_staff", "front_desk", "server", "maintenance", "supervisor", "concierge"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 35,
+      "total_completed": 32,
+      "avg_score": null,
+      "completion_rate": 91
+    },
+    {
+      "id": "trn_005",
+      "title": "Fire Safety & Emergency Evacuation",
+      "description": "Critical fire safety training covering emergency evacuation procedures, fire extinguisher use, alarm systems, and assembly point protocols.",
+      "status": "published",
+      "category": "safety",
+      "difficulty": "beginner",
+      "tags": ["fire-safety", "emergency", "evacuation"],
+      "content_blocks": [
+        {
+          "id": "cb_005_01",
+          "order": 1,
+          "type": "text",
+          "title": "Fire Prevention Basics",
+          "body_html": "<h2>Preventing Fires</h2><p>Most workplace fires are preventable. Learn to identify and eliminate common fire hazards in your work area.</p>"
+        },
+        {
+          "id": "cb_005_02",
+          "order": 2,
+          "type": "video",
+          "title": "Fire Extinguisher Training",
+          "media_url": "/videos/fire-extinguisher.mp4",
+          "media_thumbnail": "/images/training/fire-thumb.jpg",
+          "duration_seconds": 300,
+          "caption": "The PASS technique: Pull, Aim, Squeeze, Sweep"
+        },
+        {
+          "id": "cb_005_03",
+          "order": 3,
+          "type": "image",
+          "title": "Evacuation Routes Map",
+          "media_url": "/images/training/evacuation-map.png",
+          "alt_text": "Building evacuation route map showing all exits and assembly points",
+          "caption": "Figure 2: Evacuation routes and assembly points for the main building"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 25,
+      "created_by": "user_001",
+      "created_at": "2026-02-20T11:00:00Z",
+      "updated_at": "2026-03-01T09:00:00Z",
+      "published_at": "2026-02-25T10:00:00Z",
+      "version": "1.1",
+      "assigned_role_ids": ["kitchen_staff", "front_desk", "server", "maintenance", "supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": "sop_003",
+      "linked_sop_title": "Emergency Evacuation SOP",
+      "linked_sop_version": "1.2",
+      "linked_goal_ids": ["goal_001"],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": true,
+      "auto_assign_on_role_join": false,
+      "total_enrolled": 40,
+      "total_completed": 36,
+      "avg_score": null,
+      "completion_rate": 90
+    },
+    {
+      "id": "trn_006",
+      "title": "Leadership Skills for Supervisors",
+      "description": "Develop essential leadership competencies including team management, performance coaching, conflict resolution, and effective delegation techniques.",
+      "status": "published",
+      "category": "leadership",
+      "difficulty": "advanced",
+      "tags": ["leadership", "management", "coaching"],
+      "content_blocks": [
+        {
+          "id": "cb_006_01",
+          "order": 1,
+          "type": "text",
+          "title": "What Makes a Great Leader",
+          "body_html": "<h2>Leadership Foundations</h2><p>Great leaders inspire their teams through clear vision, consistent communication, and leading by example.</p>"
+        },
+        {
+          "id": "cb_006_02",
+          "order": 2,
+          "type": "video",
+          "title": "Coaching Conversations",
+          "media_url": "/videos/coaching.mp4",
+          "media_thumbnail": "/images/training/leadership-thumb.jpg",
+          "duration_seconds": 720,
+          "caption": "How to conduct effective one-on-one coaching sessions"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 55,
+      "created_by": "user_002",
+      "created_at": "2026-02-10T13:00:00Z",
+      "updated_at": "2026-03-06T10:00:00Z",
+      "published_at": "2026-02-15T11:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 8,
+      "total_completed": 5,
+      "avg_score": null,
+      "completion_rate": 63
+    },
+    {
+      "id": "trn_007",
+      "title": "Allergen Awareness & Management",
+      "description": "Essential training on identifying, communicating, and managing food allergens. Covers the 14 major allergens, labeling requirements, and emergency response.",
+      "status": "published",
+      "category": "compliance",
+      "difficulty": "intermediate",
+      "tags": ["allergens", "food-safety", "compliance"],
+      "content_blocks": [
+        {
+          "id": "cb_007_01",
+          "order": 1,
+          "type": "text",
+          "title": "The 14 Major Allergens",
+          "body_html": "<h2>Understanding Allergens</h2><p>Food allergies can cause severe, life-threatening reactions. Every staff member must be able to identify and communicate allergen information accurately.</p>"
+        },
+        {
+          "id": "cb_007_02",
+          "order": 2,
+          "type": "image",
+          "title": "Allergen Identification Chart",
+          "media_url": "/images/training/allergen-chart.png",
+          "alt_text": "Chart showing the 14 major food allergens with icons",
+          "caption": "The 14 major food allergens as defined by food safety regulations"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 35,
+      "created_by": "user_001",
+      "created_at": "2026-02-25T09:00:00Z",
+      "updated_at": "2026-03-09T14:00:00Z",
+      "published_at": "2026-03-01T10:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["kitchen_staff", "server"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": "sop_004",
+      "linked_sop_title": "Allergen Management SOP",
+      "linked_sop_version": "1.0",
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": ["at_002"],
+      "auto_assign_on_sop_change": true,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 28,
+      "total_completed": 20,
+      "avg_score": null,
+      "completion_rate": 71
+    },
+    {
+      "id": "trn_008",
+      "title": "Housekeeping Standards & Procedures",
+      "description": "Complete guide to housekeeping excellence covering room preparation, cleaning protocols, linen management, and quality inspection checklists.",
+      "status": "published",
+      "category": "operations",
+      "difficulty": "beginner",
+      "tags": ["housekeeping", "cleaning", "standards"],
+      "content_blocks": [
+        {
+          "id": "cb_008_01",
+          "order": 1,
+          "type": "text",
+          "title": "Room Preparation Standards",
+          "body_html": "<h2>Setting the Standard</h2><p>Every room must meet our quality standards before guest arrival. Follow the systematic approach outlined in this module.</p>"
+        },
+        {
+          "id": "cb_008_02",
+          "order": 2,
+          "type": "video",
+          "title": "Room Setup Demonstration",
+          "media_url": "/videos/room-setup.mp4",
+          "media_thumbnail": "/images/training/housekeeping-thumb.jpg",
+          "duration_seconds": 540,
+          "caption": "Step-by-step room preparation walkthrough"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 40,
+      "created_by": "user_002",
+      "created_at": "2026-01-20T10:00:00Z",
+      "updated_at": "2026-03-07T16:00:00Z",
+      "published_at": "2026-01-25T09:00:00Z",
+      "version": "1.2",
+      "assigned_role_ids": ["housekeeping", "supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 15,
+      "total_completed": 13,
+      "avg_score": null,
+      "completion_rate": 87
+    },
+    {
+      "id": "trn_009",
+      "title": "Data Privacy & GDPR Compliance",
+      "description": "Understand your responsibilities under data protection regulations. Covers personal data handling, consent management, and breach notification procedures.",
+      "status": "published",
+      "category": "compliance",
+      "difficulty": "advanced",
+      "tags": ["gdpr", "data-privacy", "compliance", "regulations"],
+      "content_blocks": [
+        {
+          "id": "cb_009_01",
+          "order": 1,
+          "type": "text",
+          "title": "Data Protection Principles",
+          "body_html": "<h2>Core Principles</h2><p>GDPR establishes seven key principles for processing personal data: lawfulness, fairness, transparency, purpose limitation, data minimization, accuracy, storage limitation, integrity and confidentiality, and accountability.</p>"
+        },
+        {
+          "id": "cb_009_02",
+          "order": 2,
+          "type": "text",
+          "title": "Handling Guest Data",
+          "body_html": "<h2>Guest Data Management</h2><p>Guest personal information must be handled with the utmost care. Only collect data that is necessary, store it securely, and delete it when no longer needed.</p>"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 50,
+      "created_by": "user_001",
+      "created_at": "2026-03-01T08:00:00Z",
+      "updated_at": "2026-03-12T11:00:00Z",
+      "published_at": "2026-03-05T09:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["front_desk", "supervisor", "concierge"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": false,
+      "total_enrolled": 18,
+      "total_completed": 10,
+      "avg_score": null,
+      "completion_rate": 56
+    },
+    {
+      "id": "trn_010",
+      "title": "Pool & Spa Safety Operations",
+      "description": "Safety training for pool and spa operations including chemical handling, water quality monitoring, lifeguard protocols, and guest safety rules.",
+      "status": "published",
+      "category": "safety",
+      "difficulty": "intermediate",
+      "tags": ["pool", "spa", "safety", "chemicals"],
+      "content_blocks": [
+        {
+          "id": "cb_010_01",
+          "order": 1,
+          "type": "text",
+          "title": "Water Quality Standards",
+          "body_html": "<h2>Maintaining Water Quality</h2><p>Pool and spa water must meet strict chemical and clarity standards. Regular testing and treatment is essential.</p>"
+        },
+        {
+          "id": "cb_010_02",
+          "order": 2,
+          "type": "video",
+          "title": "Chemical Handling Safety",
+          "media_url": "/videos/pool-chemicals.mp4",
+          "media_thumbnail": "/images/training/pool-thumb.jpg",
+          "duration_seconds": 360,
+          "caption": "Safe handling and storage of pool chemicals"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 35,
+      "created_by": "user_002",
+      "created_at": "2026-02-18T10:00:00Z",
+      "updated_at": "2026-03-04T14:00:00Z",
+      "published_at": "2026-02-22T11:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["maintenance", "supervisor"],
+      "assigned_location_ids": ["loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": true,
+      "total_enrolled": 8,
+      "total_completed": 7,
+      "avg_score": null,
+      "completion_rate": 88
+    },
+    {
+      "id": "trn_011",
+      "title": "Revenue Management Basics",
+      "description": "Introduction to revenue management concepts for front-desk and reservations staff. Covers pricing strategies, demand forecasting, and upselling techniques.",
+      "status": "draft",
+      "category": "operations",
+      "difficulty": "advanced",
+      "tags": ["revenue", "pricing", "upselling"],
+      "content_blocks": [
+        {
+          "id": "cb_011_01",
+          "order": 1,
+          "type": "text",
+          "title": "Revenue Management Fundamentals",
+          "body_html": "<h2>Understanding Revenue Management</h2><p>Revenue management is the strategic distribution and pricing of your inventory to maximize revenue. This module introduces core concepts.</p>"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 45,
+      "created_by": "user_001",
+      "created_at": "2026-03-10T09:00:00Z",
+      "updated_at": "2026-03-13T15:00:00Z",
+      "published_at": null,
+      "version": "0.1",
+      "assigned_role_ids": ["front_desk", "supervisor"],
+      "assigned_location_ids": ["loc_001", "loc_002"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": false,
+      "total_enrolled": 0,
+      "total_completed": 0,
+      "avg_score": null,
+      "completion_rate": 0
+    },
+    {
+      "id": "trn_012",
+      "title": "Workplace Ergonomics",
+      "description": "Learn proper body mechanics, workstation setup, and injury prevention techniques for common hospitality tasks including lifting, standing, and repetitive motions.",
+      "status": "archived",
+      "category": "safety",
+      "difficulty": "beginner",
+      "tags": ["ergonomics", "safety", "wellness"],
+      "content_blocks": [
+        {
+          "id": "cb_012_01",
+          "order": 1,
+          "type": "text",
+          "title": "Ergonomic Principles",
+          "body_html": "<h2>Body Mechanics</h2><p>Proper body mechanics reduce strain and prevent workplace injuries. This module covers the essentials for common hospitality tasks.</p>"
+        }
+      ],
+      "quiz_id": null,
+      "estimated_duration_minutes": 20,
+      "created_by": "user_002",
+      "created_at": "2025-11-01T10:00:00Z",
+      "updated_at": "2026-01-15T09:00:00Z",
+      "published_at": "2025-11-05T09:00:00Z",
+      "version": "1.0",
+      "assigned_role_ids": ["kitchen_staff", "housekeeping", "maintenance"],
+      "assigned_location_ids": ["loc_001", "loc_002", "loc_003"],
+      "linked_sop_id": null,
+      "linked_sop_title": null,
+      "linked_sop_version": null,
+      "linked_goal_ids": [],
+      "linked_audit_template_ids": [],
+      "auto_assign_on_sop_change": false,
+      "auto_assign_on_role_join": false,
+      "total_enrolled": 22,
+      "total_completed": 22,
+      "avg_score": null,
+      "completion_rate": 100
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz_001",
+      "module_id": "trn_001",
+      "title": "Freezer Safety Assessment",
+      "description": "Test your knowledge of freezer maintenance and safety procedures",
+      "questions": [
+        {
+          "id": "q_001_01",
+          "order": 1,
+          "question_text": "What is the correct temperature range for a walk-in freezer?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_001_01a", "label": "-10°C to -5°C", "is_correct": false },
+            { "id": "opt_001_01b", "label": "-23°C to -18°C", "is_correct": true },
+            { "id": "opt_001_01c", "label": "-5°C to 0°C", "is_correct": false },
+            { "id": "opt_001_01d", "label": "0°C to 5°C", "is_correct": false }
+          ],
+          "explanation": "Walk-in freezers must maintain temperatures between -23°C and -18°C (-10°F to 0°F) per FDA regulations.",
+          "points": 10
+        },
+        {
+          "id": "q_001_02",
+          "order": 2,
+          "question_text": "How often should temperature checks be performed during operating hours?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_001_02a", "label": "Every 4 hours", "is_correct": true },
+            { "id": "opt_001_02b", "label": "Once per shift", "is_correct": false },
+            { "id": "opt_001_02c", "label": "Every 8 hours", "is_correct": false },
+            { "id": "opt_001_02d", "label": "Once per day", "is_correct": false }
+          ],
+          "explanation": "Temperature checks must be performed at least every 4 hours during operating hours.",
+          "points": 10
+        },
+        {
+          "id": "q_001_03",
+          "order": 3,
+          "question_text": "It is safe to enter a malfunctioning freezer alone.",
+          "type": "true_false",
+          "options": [
+            { "id": "opt_001_03a", "label": "True", "is_correct": false },
+            { "id": "opt_001_03b", "label": "False", "is_correct": true }
+          ],
+          "explanation": "Never enter a malfunctioning freezer alone. Always use the buddy system.",
+          "points": 10
+        },
+        {
+          "id": "q_001_04",
+          "order": 4,
+          "question_text": "What is the first action when a complete freezer failure occurs?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_001_04a", "label": "Open the freezer door to check contents", "is_correct": false },
+            { "id": "opt_001_04b", "label": "Immediately notify the shift supervisor", "is_correct": true },
+            { "id": "opt_001_04c", "label": "Begin transferring food to another unit", "is_correct": false },
+            { "id": "opt_001_04d", "label": "Turn the freezer off and on again", "is_correct": false }
+          ],
+          "explanation": "The first step is to immediately notify the shift supervisor, who will coordinate the response.",
+          "points": 10
+        },
+        {
+          "id": "q_001_05",
+          "order": 5,
+          "question_text": "Which of the following are corrective actions when the temperature exceeds -15°C? (Select all that apply)",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "opt_001_05a", "label": "Check door seals", "is_correct": true },
+            { "id": "opt_001_05b", "label": "Verify compressor operation", "is_correct": true },
+            { "id": "opt_001_05c", "label": "Add ice to the freezer", "is_correct": false },
+            { "id": "opt_001_05d", "label": "Notify maintenance team", "is_correct": true }
+          ],
+          "explanation": "Check door seals, verify compressor operation, and notify maintenance team are the correct corrective actions.",
+          "points": 10
+        },
+        {
+          "id": "q_001_06",
+          "order": 6,
+          "question_text": "After how many minutes of downtime should you begin transferring perishables to a backup unit?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_001_06a", "label": "15 minutes", "is_correct": false },
+            { "id": "opt_001_06b", "label": "30 minutes", "is_correct": true },
+            { "id": "opt_001_06c", "label": "60 minutes", "is_correct": false },
+            { "id": "opt_001_06d", "label": "120 minutes", "is_correct": false }
+          ],
+          "explanation": "Begin transferring perishables to backup unit if downtime exceeds 30 minutes.",
+          "points": 10
+        },
+        {
+          "id": "q_001_07",
+          "order": 7,
+          "question_text": "Temperature readings outside the acceptable range should be flagged immediately.",
+          "type": "true_false",
+          "options": [
+            { "id": "opt_001_07a", "label": "True", "is_correct": true },
+            { "id": "opt_001_07b", "label": "False", "is_correct": false }
+          ],
+          "explanation": "Any readings outside the acceptable range must be flagged immediately in the temperature monitoring system.",
+          "points": 10
+        },
+        {
+          "id": "q_001_08",
+          "order": 8,
+          "question_text": "A food safety assessment should begin if the temperature has been exceeded for more than how many hours?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_001_08a", "label": "1 hour", "is_correct": false },
+            { "id": "opt_001_08b", "label": "2 hours", "is_correct": true },
+            { "id": "opt_001_08c", "label": "4 hours", "is_correct": false },
+            { "id": "opt_001_08d", "label": "6 hours", "is_correct": false }
+          ],
+          "explanation": "Begin food safety assessment if temperature exceeded the acceptable range for more than 2 hours.",
+          "points": 10
+        }
+      ],
+      "pass_threshold": 80,
+      "time_limit_minutes": 15,
+      "max_attempts": 3,
+      "shuffle_questions": false,
+      "shuffle_options": false,
+      "show_correct_answers": true
+    },
+    {
+      "id": "quiz_002",
+      "module_id": "trn_002",
+      "title": "Food Safety Fundamentals Quiz",
+      "description": "Assess your understanding of HACCP principles and food handling procedures",
+      "questions": [
+        {
+          "id": "q_002_01",
+          "order": 1,
+          "question_text": "What does HACCP stand for?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_002_01a", "label": "Hazard Analysis and Critical Control Points", "is_correct": true },
+            { "id": "opt_002_01b", "label": "Health And Cleanliness Control Program", "is_correct": false },
+            { "id": "opt_002_01c", "label": "Hygienic Analysis and Contamination Control Plan", "is_correct": false },
+            { "id": "opt_002_01d", "label": "Hazard Avoidance and Chemical Control Protocol", "is_correct": false }
+          ],
+          "explanation": "HACCP stands for Hazard Analysis and Critical Control Points.",
+          "points": 10
+        },
+        {
+          "id": "q_002_02",
+          "order": 2,
+          "question_text": "What is the temperature danger zone for food?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_002_02a", "label": "0°C to 40°C", "is_correct": false },
+            { "id": "opt_002_02b", "label": "4°C to 60°C", "is_correct": true },
+            { "id": "opt_002_02c", "label": "10°C to 70°C", "is_correct": false },
+            { "id": "opt_002_02d", "label": "-5°C to 50°C", "is_correct": false }
+          ],
+          "explanation": "The temperature danger zone is between 4°C (40°F) and 60°C (140°F).",
+          "points": 10
+        },
+        {
+          "id": "q_002_03",
+          "order": 3,
+          "question_text": "Color-coded cutting boards help prevent cross-contamination.",
+          "type": "true_false",
+          "options": [
+            { "id": "opt_002_03a", "label": "True", "is_correct": true },
+            { "id": "opt_002_03b", "label": "False", "is_correct": false }
+          ],
+          "explanation": "Color-coded cutting boards are a key tool for preventing cross-contamination between different food types.",
+          "points": 10
+        },
+        {
+          "id": "q_002_04",
+          "order": 4,
+          "question_text": "How long should you wash your hands for?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_002_04a", "label": "5 seconds", "is_correct": false },
+            { "id": "opt_002_04b", "label": "10 seconds", "is_correct": false },
+            { "id": "opt_002_04c", "label": "20 seconds", "is_correct": true },
+            { "id": "opt_002_04d", "label": "60 seconds", "is_correct": false }
+          ],
+          "explanation": "Proper handwashing requires at least 20 seconds of vigorous scrubbing with soap and water.",
+          "points": 10
+        },
+        {
+          "id": "q_002_05",
+          "order": 5,
+          "question_text": "Where should raw meats be stored in a refrigerator?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_002_05a", "label": "On the top shelf", "is_correct": false },
+            { "id": "opt_002_05b", "label": "Below ready-to-eat items", "is_correct": true },
+            { "id": "opt_002_05c", "label": "Next to fruits and vegetables", "is_correct": false },
+            { "id": "opt_002_05d", "label": "It doesn't matter where", "is_correct": false }
+          ],
+          "explanation": "Raw meats must always be stored below ready-to-eat items to prevent drip contamination.",
+          "points": 10
+        },
+        {
+          "id": "q_002_06",
+          "order": 6,
+          "question_text": "How long can food remain in the temperature danger zone?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_002_06a", "label": "30 minutes", "is_correct": false },
+            { "id": "opt_002_06b", "label": "1 hour", "is_correct": false },
+            { "id": "opt_002_06c", "label": "2 hours maximum", "is_correct": true },
+            { "id": "opt_002_06d", "label": "4 hours", "is_correct": false }
+          ],
+          "explanation": "Food must not remain in the danger zone for more than 2 hours total.",
+          "points": 10
+        }
+      ],
+      "pass_threshold": 70,
+      "time_limit_minutes": null,
+      "max_attempts": 0,
+      "shuffle_questions": true,
+      "shuffle_options": false,
+      "show_correct_answers": true
+    },
+    {
+      "id": "quiz_003",
+      "module_id": "trn_003",
+      "title": "Guest Relations Assessment",
+      "description": "Evaluate your guest service and complaint handling skills",
+      "questions": [
+        {
+          "id": "q_003_01",
+          "order": 1,
+          "question_text": "What are the three pillars of our guest experience framework?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_003_01a", "label": "Speed, Accuracy, Friendliness", "is_correct": false },
+            { "id": "opt_003_01b", "label": "Anticipation, Personalization, Recovery", "is_correct": true },
+            { "id": "opt_003_01c", "label": "Listen, Respond, Follow-up", "is_correct": false },
+            { "id": "opt_003_01d", "label": "Greet, Serve, Thank", "is_correct": false }
+          ],
+          "explanation": "Our framework focuses on Anticipation, Personalization, and Recovery.",
+          "points": 10
+        },
+        {
+          "id": "q_003_02",
+          "order": 2,
+          "question_text": "What does HEART stand for in service recovery?",
+          "type": "single_choice",
+          "options": [
+            { "id": "opt_003_02a", "label": "Hear, Empathize, Apologize, Resolve, Thank", "is_correct": true },
+            { "id": "opt_003_02b", "label": "Help, Explain, Act, Review, Track", "is_correct": false },
+            { "id": "opt_003_02c", "label": "Handle, Evaluate, Address, Respond, Transform", "is_correct": false },
+            { "id": "opt_003_02d", "label": "Heal, Engage, Assist, Relate, Trust", "is_correct": false }
+          ],
+          "explanation": "HEART stands for Hear, Empathize, Apologize, Resolve, Thank.",
+          "points": 10
+        },
+        {
+          "id": "q_003_03",
+          "order": 3,
+          "question_text": "When a guest complains, the most important first step is to listen actively.",
+          "type": "true_false",
+          "options": [
+            { "id": "opt_003_03a", "label": "True", "is_correct": true },
+            { "id": "opt_003_03b", "label": "False", "is_correct": false }
+          ],
+          "explanation": "Active listening is the foundation of effective complaint resolution.",
+          "points": 10
+        },
+        {
+          "id": "q_003_04",
+          "order": 4,
+          "question_text": "How you respond to a service failure matters more than the original issue.",
+          "type": "true_false",
+          "options": [
+            { "id": "opt_003_04a", "label": "True", "is_correct": true },
+            { "id": "opt_003_04b", "label": "False", "is_correct": false }
+          ],
+          "explanation": "Research shows that effective recovery can actually increase guest loyalty beyond what existed before the failure.",
+          "points": 10
+        },
+        {
+          "id": "q_003_05",
+          "order": 5,
+          "question_text": "Which of the following are examples of personalization? (Select all that apply)",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "opt_003_05a", "label": "Remembering a returning guest's preferences", "is_correct": true },
+            { "id": "opt_003_05b", "label": "Using the guest's name during interactions", "is_correct": true },
+            { "id": "opt_003_05c", "label": "Offering the same service to every guest", "is_correct": false },
+            { "id": "opt_003_05d", "label": "Noting special occasions in the guest profile", "is_correct": true }
+          ],
+          "explanation": "Personalization involves tailoring service to individual guest needs and preferences.",
+          "points": 10
+        }
+      ],
+      "pass_threshold": 80,
+      "time_limit_minutes": 10,
+      "max_attempts": 2,
+      "shuffle_questions": false,
+      "shuffle_options": false,
+      "show_correct_answers": true
+    }
+  ],
+  "enrollments": [
+    { "id": "enr_001", "module_id": "trn_001", "user_id": "user_001", "status": "completed", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-21T09:00:00Z", "completed_at": "2026-03-01T11:00:00Z", "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_001_05", "quiz_attempts": [{ "id": "qa_001", "quiz_id": "quiz_001", "user_id": "user_001", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b", "opt_001_05d"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08b"], "correct": true, "points_earned": 10 }], "score": 100, "passed": true, "started_at": "2026-03-01T10:00:00Z", "completed_at": "2026-03-01T10:12:00Z", "attempt_number": 1 }], "best_score": 100, "certificate_issued": true, "certificate_id": "cert_001" },
+    { "id": "enr_002", "module_id": "trn_002", "user_id": "user_001", "status": "completed", "assigned_at": "2026-01-15T10:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-01-16T08:00:00Z", "completed_at": "2026-01-25T14:00:00Z", "due_date": "2026-02-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_002_04", "quiz_attempts": [{ "id": "qa_002", "quiz_id": "quiz_002", "user_id": "user_001", "answers": [{ "question_id": "q_002_01", "selected_option_ids": ["opt_002_01a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_02", "selected_option_ids": ["opt_002_02b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_03", "selected_option_ids": ["opt_002_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_04", "selected_option_ids": ["opt_002_04c"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_05", "selected_option_ids": ["opt_002_05b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_06", "selected_option_ids": ["opt_002_06c"], "correct": true, "points_earned": 10 }], "score": 100, "passed": true, "started_at": "2026-01-25T13:00:00Z", "completed_at": "2026-01-25T13:15:00Z", "attempt_number": 1 }], "best_score": 100, "certificate_issued": true, "certificate_id": "cert_002" },
+    { "id": "enr_003", "module_id": "trn_003", "user_id": "user_001", "status": "in_progress", "assigned_at": "2026-02-10T10:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-03-05T09:00:00Z", "completed_at": null, "due_date": "2026-03-20T00:00:00Z", "progress_percent": 45, "last_content_block_id": "cb_003_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_004", "module_id": "trn_004", "user_id": "user_001", "status": "completed", "assigned_at": "2026-01-08T09:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-01-08T10:00:00Z", "completed_at": "2026-01-10T16:00:00Z", "due_date": "2026-01-22T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_004_03", "quiz_attempts": [], "best_score": null, "certificate_issued": true, "certificate_id": "cert_003" },
+    { "id": "enr_005", "module_id": "trn_005", "user_id": "user_001", "status": "completed", "assigned_at": "2026-02-25T10:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-26T08:00:00Z", "completed_at": "2026-02-28T11:00:00Z", "due_date": "2026-03-10T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_005_03", "quiz_attempts": [], "best_score": null, "certificate_issued": true, "certificate_id": "cert_004" },
+    { "id": "enr_006", "module_id": "trn_009", "user_id": "user_001", "status": "assigned", "assigned_at": "2026-03-05T09:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": null, "completed_at": null, "due_date": "2026-03-25T00:00:00Z", "progress_percent": 0, "last_content_block_id": null, "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+
+    { "id": "enr_007", "module_id": "trn_001", "user_id": "user_003", "status": "in_progress", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-03-01T10:00:00Z", "completed_at": null, "due_date": "2026-03-15T00:00:00Z", "progress_percent": 60, "last_content_block_id": "cb_001_03", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_008", "module_id": "trn_002", "user_id": "user_003", "status": "completed", "assigned_at": "2026-01-15T10:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-01-20T09:00:00Z", "completed_at": "2026-02-01T15:00:00Z", "due_date": "2026-02-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_002_04", "quiz_attempts": [{ "id": "qa_003", "quiz_id": "quiz_002", "user_id": "user_003", "answers": [{ "question_id": "q_002_01", "selected_option_ids": ["opt_002_01a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_02", "selected_option_ids": ["opt_002_02a"], "correct": false, "points_earned": 0 }, { "question_id": "q_002_03", "selected_option_ids": ["opt_002_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_04", "selected_option_ids": ["opt_002_04c"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_05", "selected_option_ids": ["opt_002_05b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_06", "selected_option_ids": ["opt_002_06b"], "correct": false, "points_earned": 0 }], "score": 67, "passed": false, "started_at": "2026-01-30T10:00:00Z", "completed_at": "2026-01-30T10:20:00Z", "attempt_number": 1 }, { "id": "qa_004", "quiz_id": "quiz_002", "user_id": "user_003", "answers": [{ "question_id": "q_002_01", "selected_option_ids": ["opt_002_01a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_02", "selected_option_ids": ["opt_002_02b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_03", "selected_option_ids": ["opt_002_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_04", "selected_option_ids": ["opt_002_04c"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_05", "selected_option_ids": ["opt_002_05b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_06", "selected_option_ids": ["opt_002_06c"], "correct": true, "points_earned": 10 }], "score": 100, "passed": true, "started_at": "2026-02-01T14:00:00Z", "completed_at": "2026-02-01T14:12:00Z", "attempt_number": 2 }], "best_score": 100, "certificate_issued": true, "certificate_id": "cert_005" },
+    { "id": "enr_009", "module_id": "trn_003", "user_id": "user_003", "status": "overdue", "assigned_at": "2026-02-10T10:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-02-15T11:00:00Z", "completed_at": null, "due_date": "2026-03-01T00:00:00Z", "progress_percent": 30, "last_content_block_id": "cb_003_01", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_010", "module_id": "trn_005", "user_id": "user_003", "status": "completed", "assigned_at": "2026-02-25T10:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-26T14:00:00Z", "completed_at": "2026-02-27T09:00:00Z", "due_date": "2026-03-10T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_005_03", "quiz_attempts": [], "best_score": null, "certificate_issued": true, "certificate_id": "cert_006" },
+
+    { "id": "enr_011", "module_id": "trn_001", "user_id": "user_004", "status": "completed", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-22T10:00:00Z", "completed_at": "2026-03-05T16:00:00Z", "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_001_05", "quiz_attempts": [{ "id": "qa_005", "quiz_id": "quiz_001", "user_id": "user_004", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04a"], "correct": false, "points_earned": 0 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b"], "correct": false, "points_earned": 0 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08b"], "correct": true, "points_earned": 10 }], "score": 75, "passed": false, "started_at": "2026-03-04T10:00:00Z", "completed_at": "2026-03-04T10:14:00Z", "attempt_number": 1 }, { "id": "qa_006", "quiz_id": "quiz_001", "user_id": "user_004", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b", "opt_001_05d"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08b"], "correct": true, "points_earned": 10 }], "score": 100, "passed": true, "started_at": "2026-03-05T14:00:00Z", "completed_at": "2026-03-05T14:10:00Z", "attempt_number": 2 }], "best_score": 100, "certificate_issued": true, "certificate_id": "cert_007" },
+    { "id": "enr_012", "module_id": "trn_002", "user_id": "user_004", "status": "completed", "assigned_at": "2026-01-15T10:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-01-18T09:00:00Z", "completed_at": "2026-01-28T12:00:00Z", "due_date": "2026-02-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_002_04", "quiz_attempts": [{ "id": "qa_007", "quiz_id": "quiz_002", "user_id": "user_004", "answers": [{ "question_id": "q_002_01", "selected_option_ids": ["opt_002_01a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_02", "selected_option_ids": ["opt_002_02b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_03", "selected_option_ids": ["opt_002_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_04", "selected_option_ids": ["opt_002_04b"], "correct": false, "points_earned": 0 }, { "question_id": "q_002_05", "selected_option_ids": ["opt_002_05b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_06", "selected_option_ids": ["opt_002_06c"], "correct": true, "points_earned": 10 }], "score": 83, "passed": true, "started_at": "2026-01-28T11:00:00Z", "completed_at": "2026-01-28T11:18:00Z", "attempt_number": 1 }], "best_score": 83, "certificate_issued": true, "certificate_id": "cert_008" },
+    { "id": "enr_013", "module_id": "trn_003", "user_id": "user_004", "status": "failed", "assigned_at": "2026-02-10T10:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-02-20T10:00:00Z", "completed_at": null, "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_003_03", "quiz_attempts": [{ "id": "qa_008", "quiz_id": "quiz_003", "user_id": "user_004", "answers": [{ "question_id": "q_003_01", "selected_option_ids": ["opt_003_01a"], "correct": false, "points_earned": 0 }, { "question_id": "q_003_02", "selected_option_ids": ["opt_003_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_003_03", "selected_option_ids": ["opt_003_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_003_04", "selected_option_ids": ["opt_003_04b"], "correct": false, "points_earned": 0 }, { "question_id": "q_003_05", "selected_option_ids": ["opt_003_05a"], "correct": false, "points_earned": 0 }], "score": 40, "passed": false, "started_at": "2026-03-01T11:00:00Z", "completed_at": "2026-03-01T11:08:00Z", "attempt_number": 1 }, { "id": "qa_009", "quiz_id": "quiz_003", "user_id": "user_004", "answers": [{ "question_id": "q_003_01", "selected_option_ids": ["opt_003_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_003_02", "selected_option_ids": ["opt_003_02b"], "correct": false, "points_earned": 0 }, { "question_id": "q_003_03", "selected_option_ids": ["opt_003_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_003_04", "selected_option_ids": ["opt_003_04a"], "correct": true, "points_earned": 10 }, { "question_id": "q_003_05", "selected_option_ids": ["opt_003_05a", "opt_003_05b"], "correct": false, "points_earned": 0 }], "score": 60, "passed": false, "started_at": "2026-03-08T14:00:00Z", "completed_at": "2026-03-08T14:09:00Z", "attempt_number": 2 }], "best_score": 60, "certificate_issued": false, "certificate_id": null },
+
+    { "id": "enr_014", "module_id": "trn_001", "user_id": "user_005", "status": "overdue", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-28T11:00:00Z", "completed_at": null, "due_date": "2026-03-05T00:00:00Z", "progress_percent": 20, "last_content_block_id": "cb_001_01", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_015", "module_id": "trn_002", "user_id": "user_005", "status": "completed", "assigned_at": "2026-01-15T10:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-01-22T10:00:00Z", "completed_at": "2026-02-05T14:00:00Z", "due_date": "2026-02-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_002_04", "quiz_attempts": [{ "id": "qa_010", "quiz_id": "quiz_002", "user_id": "user_005", "answers": [{ "question_id": "q_002_01", "selected_option_ids": ["opt_002_01a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_02", "selected_option_ids": ["opt_002_02b"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_03", "selected_option_ids": ["opt_002_03a"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_04", "selected_option_ids": ["opt_002_04c"], "correct": true, "points_earned": 10 }, { "question_id": "q_002_05", "selected_option_ids": ["opt_002_05a"], "correct": false, "points_earned": 0 }, { "question_id": "q_002_06", "selected_option_ids": ["opt_002_06c"], "correct": true, "points_earned": 10 }], "score": 83, "passed": true, "started_at": "2026-02-05T13:00:00Z", "completed_at": "2026-02-05T13:15:00Z", "attempt_number": 1 }], "best_score": 83, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_016", "module_id": "trn_005", "user_id": "user_005", "status": "assigned", "assigned_at": "2026-03-10T09:00:00Z", "assigned_by": "user_001", "assignment_trigger": "manual", "started_at": null, "completed_at": null, "due_date": "2026-03-30T00:00:00Z", "progress_percent": 0, "last_content_block_id": null, "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+
+    { "id": "enr_017", "module_id": "trn_001", "user_id": "user_006", "status": "completed", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-21T14:00:00Z", "completed_at": "2026-02-28T10:00:00Z", "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_001_05", "quiz_attempts": [{ "id": "qa_011", "quiz_id": "quiz_001", "user_id": "user_006", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b", "opt_001_05d"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06c"], "correct": false, "points_earned": 0 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08a"], "correct": false, "points_earned": 0 }], "score": 75, "passed": false, "started_at": "2026-02-27T14:00:00Z", "completed_at": "2026-02-27T14:13:00Z", "attempt_number": 1 }, { "id": "qa_012", "quiz_id": "quiz_001", "user_id": "user_006", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b", "opt_001_05d"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08b"], "correct": true, "points_earned": 10 }], "score": 100, "passed": true, "started_at": "2026-02-28T09:00:00Z", "completed_at": "2026-02-28T09:11:00Z", "attempt_number": 2 }], "best_score": 100, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_018", "module_id": "trn_002", "user_id": "user_006", "status": "in_progress", "assigned_at": "2026-01-15T10:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-03-01T09:00:00Z", "completed_at": null, "due_date": "2026-03-20T00:00:00Z", "progress_percent": 50, "last_content_block_id": "cb_002_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+
+    { "id": "enr_019", "module_id": "trn_004", "user_id": "user_007", "status": "completed", "assigned_at": "2026-02-01T09:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-02-01T10:00:00Z", "completed_at": "2026-02-03T16:00:00Z", "due_date": "2026-02-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_004_03", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_020", "module_id": "trn_005", "user_id": "user_007", "status": "completed", "assigned_at": "2026-02-25T10:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-25T14:00:00Z", "completed_at": "2026-02-26T10:00:00Z", "due_date": "2026-03-10T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_005_03", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_021", "module_id": "trn_006", "user_id": "user_002", "status": "in_progress", "assigned_at": "2026-02-15T11:00:00Z", "assigned_by": "user_001", "assignment_trigger": "manual", "started_at": "2026-02-20T09:00:00Z", "completed_at": null, "due_date": "2026-03-20T00:00:00Z", "progress_percent": 70, "last_content_block_id": "cb_006_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_022", "module_id": "trn_007", "user_id": "user_003", "status": "assigned", "assigned_at": "2026-03-01T10:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": null, "completed_at": null, "due_date": "2026-03-25T00:00:00Z", "progress_percent": 0, "last_content_block_id": null, "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_023", "module_id": "trn_007", "user_id": "user_004", "status": "completed", "assigned_at": "2026-03-01T10:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-03-02T08:00:00Z", "completed_at": "2026-03-06T11:00:00Z", "due_date": "2026-03-25T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_007_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_024", "module_id": "trn_008", "user_id": "user_005", "status": "completed", "assigned_at": "2026-01-25T09:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-01-26T10:00:00Z", "completed_at": "2026-02-02T15:00:00Z", "due_date": "2026-02-20T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_008_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_025", "module_id": "trn_009", "user_id": "user_003", "status": "in_progress", "assigned_at": "2026-03-05T09:00:00Z", "assigned_by": "user_002", "assignment_trigger": "manual", "started_at": "2026-03-10T10:00:00Z", "completed_at": null, "due_date": "2026-03-25T00:00:00Z", "progress_percent": 25, "last_content_block_id": "cb_009_01", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+
+    { "id": "enr_026", "module_id": "trn_001", "user_id": "user_002", "status": "completed", "assigned_at": "2026-02-20T14:00:00Z", "assigned_by": null, "assignment_trigger": "sop_version_change", "started_at": "2026-02-21T08:00:00Z", "completed_at": "2026-03-02T09:00:00Z", "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_001_05", "quiz_attempts": [{ "id": "qa_013", "quiz_id": "quiz_001", "user_id": "user_002", "answers": [{ "question_id": "q_001_01", "selected_option_ids": ["opt_001_01b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_02", "selected_option_ids": ["opt_001_02a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_03", "selected_option_ids": ["opt_001_03b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_04", "selected_option_ids": ["opt_001_04b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_05", "selected_option_ids": ["opt_001_05a", "opt_001_05b", "opt_001_05d"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_06", "selected_option_ids": ["opt_001_06b"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_07", "selected_option_ids": ["opt_001_07a"], "correct": true, "points_earned": 10 }, { "question_id": "q_001_08", "selected_option_ids": ["opt_001_08c"], "correct": false, "points_earned": 0 }], "score": 88, "passed": true, "started_at": "2026-03-02T08:00:00Z", "completed_at": "2026-03-02T08:12:00Z", "attempt_number": 1 }], "best_score": 88, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_027", "module_id": "trn_010", "user_id": "user_005", "status": "assigned", "assigned_at": "2026-03-08T10:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": null, "completed_at": null, "due_date": "2026-03-28T00:00:00Z", "progress_percent": 0, "last_content_block_id": null, "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_028", "module_id": "trn_003", "user_id": "user_006", "status": "assigned", "assigned_at": "2026-03-10T10:00:00Z", "assigned_by": "user_001", "assignment_trigger": "manual", "started_at": null, "completed_at": null, "due_date": "2026-03-30T00:00:00Z", "progress_percent": 0, "last_content_block_id": null, "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_029", "module_id": "trn_004", "user_id": "user_008", "status": "completed", "assigned_at": "2026-03-01T09:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-03-01T10:00:00Z", "completed_at": "2026-03-03T16:00:00Z", "due_date": "2026-03-15T00:00:00Z", "progress_percent": 100, "last_content_block_id": "cb_004_03", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null },
+    { "id": "enr_030", "module_id": "trn_002", "user_id": "user_008", "status": "in_progress", "assigned_at": "2026-03-01T09:00:00Z", "assigned_by": null, "assignment_trigger": "role_assignment", "started_at": "2026-03-04T09:00:00Z", "completed_at": null, "due_date": "2026-03-25T00:00:00Z", "progress_percent": 35, "last_content_block_id": "cb_002_02", "quiz_attempts": [], "best_score": null, "certificate_issued": false, "certificate_id": null }
+  ],
+  "certificates": [
+    { "id": "cert_001", "enrollment_id": "enr_001", "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "user_id": "user_001", "user_name": "Alex Rivera", "issued_at": "2026-03-01T11:00:00Z", "expires_at": "2027-03-01T11:00:00Z", "score": 100, "certificate_number": "CERT-2026-00142" },
+    { "id": "cert_002", "enrollment_id": "enr_002", "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "user_id": "user_001", "user_name": "Alex Rivera", "issued_at": "2026-01-25T14:00:00Z", "expires_at": null, "score": 100, "certificate_number": "CERT-2026-00098" },
+    { "id": "cert_003", "enrollment_id": "enr_004", "module_id": "trn_004", "module_title": "New Employee Onboarding", "user_id": "user_001", "user_name": "Alex Rivera", "issued_at": "2026-01-10T16:00:00Z", "expires_at": null, "score": 0, "certificate_number": "CERT-2026-00045" },
+    { "id": "cert_004", "enrollment_id": "enr_005", "module_id": "trn_005", "module_title": "Fire Safety & Emergency Evacuation", "user_id": "user_001", "user_name": "Alex Rivera", "issued_at": "2026-02-28T11:00:00Z", "expires_at": "2027-02-28T11:00:00Z", "score": 0, "certificate_number": "CERT-2026-00130" },
+    { "id": "cert_005", "enrollment_id": "enr_008", "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "user_id": "user_003", "user_name": "Jordan Kim", "issued_at": "2026-02-01T15:00:00Z", "expires_at": null, "score": 100, "certificate_number": "CERT-2026-00105" },
+    { "id": "cert_006", "enrollment_id": "enr_010", "module_id": "trn_005", "module_title": "Fire Safety & Emergency Evacuation", "user_id": "user_003", "user_name": "Jordan Kim", "issued_at": "2026-02-27T09:00:00Z", "expires_at": "2027-02-27T09:00:00Z", "score": 0, "certificate_number": "CERT-2026-00125" },
+    { "id": "cert_007", "enrollment_id": "enr_011", "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "user_id": "user_004", "user_name": "Sam Patel", "issued_at": "2026-03-05T16:00:00Z", "expires_at": "2027-03-05T16:00:00Z", "score": 100, "certificate_number": "CERT-2026-00155" },
+    { "id": "cert_008", "enrollment_id": "enr_012", "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "user_id": "user_004", "user_name": "Sam Patel", "issued_at": "2026-01-28T12:00:00Z", "expires_at": null, "score": 83, "certificate_number": "CERT-2026-00101" }
+  ],
+  "notifications": [
+    { "id": "notif_001", "type": "auto_assigned", "user_id": "user_001", "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "trigger_reason": "Freezer Maintenance SOP updated to v3.0", "created_at": "2026-03-10T08:00:00Z", "read": false, "action_url": "/en/training/trn_001" },
+    { "id": "notif_002", "type": "deadline_reminder", "user_id": "user_003", "module_id": "trn_003", "module_title": "Guest Relations Excellence", "trigger_reason": "Training deadline in 2 days", "created_at": "2026-03-12T09:00:00Z", "read": false, "action_url": "/en/training/trn_003" },
+    { "id": "notif_003", "type": "completed", "user_id": "user_004", "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "trigger_reason": "Training completed with score 100%", "created_at": "2026-03-05T16:00:00Z", "read": true, "action_url": "/en/training/trn_001/certificate" },
+    { "id": "notif_004", "type": "failed", "user_id": "user_004", "module_id": "trn_003", "module_title": "Guest Relations Excellence", "trigger_reason": "Quiz failed (60%). 0 attempts remaining.", "created_at": "2026-03-08T14:09:00Z", "read": true, "action_url": "/en/training/trn_003/quiz" },
+    { "id": "notif_005", "type": "auto_assigned", "user_id": "user_003", "module_id": "trn_007", "module_title": "Allergen Awareness & Management", "trigger_reason": "Allergen Management SOP published (v1.0)", "created_at": "2026-03-01T10:00:00Z", "read": true, "action_url": "/en/training/trn_007" },
+    { "id": "notif_006", "type": "deadline_reminder", "user_id": "user_005", "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "trigger_reason": "Training is overdue by 9 days", "created_at": "2026-03-14T08:00:00Z", "read": false, "action_url": "/en/training/trn_001" }
+  ],
+  "locationStats": [
+    {
+      "location_id": "loc_001",
+      "location_name": "Downtown",
+      "total_assigned": 45,
+      "total_completed": 36,
+      "total_overdue": 2,
+      "completion_rate": 80,
+      "avg_score": 88,
+      "modules": [
+        { "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "assigned": 10, "completed": 9, "overdue": 0, "completion_rate": 90, "avg_score": 92 },
+        { "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "assigned": 15, "completed": 13, "overdue": 0, "completion_rate": 87, "avg_score": 85 },
+        { "module_id": "trn_003", "module_title": "Guest Relations Excellence", "assigned": 8, "completed": 5, "overdue": 1, "completion_rate": 63, "avg_score": 78 },
+        { "module_id": "trn_005", "module_title": "Fire Safety & Emergency Evacuation", "assigned": 12, "completed": 9, "overdue": 1, "completion_rate": 75, "avg_score": 0 }
+      ]
+    },
+    {
+      "location_id": "loc_002",
+      "location_name": "Airport",
+      "total_assigned": 38,
+      "total_completed": 25,
+      "total_overdue": 4,
+      "completion_rate": 66,
+      "avg_score": 79,
+      "modules": [
+        { "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "assigned": 8, "completed": 5, "overdue": 2, "completion_rate": 63, "avg_score": 80 },
+        { "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "assigned": 12, "completed": 10, "overdue": 1, "completion_rate": 83, "avg_score": 78 },
+        { "module_id": "trn_003", "module_title": "Guest Relations Excellence", "assigned": 6, "completed": 2, "overdue": 1, "completion_rate": 33, "avg_score": 65 },
+        { "module_id": "trn_005", "module_title": "Fire Safety & Emergency Evacuation", "assigned": 12, "completed": 8, "overdue": 0, "completion_rate": 67, "avg_score": 0 }
+      ]
+    },
+    {
+      "location_id": "loc_003",
+      "location_name": "Resort",
+      "total_assigned": 42,
+      "total_completed": 38,
+      "total_overdue": 1,
+      "completion_rate": 90,
+      "avg_score": 91,
+      "modules": [
+        { "module_id": "trn_001", "module_title": "Freezer Maintenance & Safety", "assigned": 10, "completed": 10, "overdue": 0, "completion_rate": 100, "avg_score": 95 },
+        { "module_id": "trn_002", "module_title": "Food Safety Fundamentals", "assigned": 12, "completed": 11, "overdue": 0, "completion_rate": 92, "avg_score": 88 },
+        { "module_id": "trn_003", "module_title": "Guest Relations Excellence", "assigned": 8, "completed": 7, "overdue": 0, "completion_rate": 88, "avg_score": 82 },
+        { "module_id": "trn_005", "module_title": "Fire Safety & Emergency Evacuation", "assigned": 12, "completed": 10, "overdue": 1, "completion_rate": 83, "avg_score": 0 }
+      ]
+    }
+  ],
+  "completionTrend": [
+    { "month": "Oct 2025", "Downtown": 65, "Airport": 55, "Resort": 72 },
+    { "month": "Nov 2025", "Downtown": 68, "Airport": 58, "Resort": 78 },
+    { "month": "Dec 2025", "Downtown": 70, "Airport": 60, "Resort": 82 },
+    { "month": "Jan 2026", "Downtown": 74, "Airport": 62, "Resort": 85 },
+    { "month": "Feb 2026", "Downtown": 78, "Airport": 64, "Resort": 88 },
+    { "month": "Mar 2026", "Downtown": 80, "Airport": 66, "Resort": 90 }
+  ]
+}

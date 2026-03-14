@@ -18,10 +18,19 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import trainingData from './training.json';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
 const ruleExecutions = automationRulesData.executions;
+
+const trainingModules = trainingData.modules;
+const trainingQuizzes = trainingData.quizzes;
+const trainingEnrollments = trainingData.enrollments;
+const trainingCertificates = trainingData.certificates;
+const trainingNotifications = trainingData.notifications;
+const trainingLocationStats = trainingData.locationStats;
+const trainingCompletionTrend = trainingData.completionTrend;
 
 export {
   users,
@@ -44,6 +53,13 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  trainingModules,
+  trainingQuizzes,
+  trainingEnrollments,
+  trainingCertificates,
+  trainingNotifications,
+  trainingLocationStats,
+  trainingCompletionTrend,
 };
 
 export * from './types';
