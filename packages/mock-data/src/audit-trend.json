@@ -1,0 +1,8 @@
+[
+  { "month": "Oct 2025", "score": 62, "audit_count": 2, "pass_rate": 50 },
+  { "month": "Nov 2025", "score": 78, "audit_count": 3, "pass_rate": 67 },
+  { "month": "Dec 2025", "score": 85, "audit_count": 2, "pass_rate": 100 },
+  { "month": "Jan 2026", "score": 69, "audit_count": 3, "pass_rate": 33 },
+  { "month": "Feb 2026", "score": 82, "audit_count": 2, "pass_rate": 100 },
+  { "month": "Mar 2026", "score": 75, "audit_count": 3, "pass_rate": 67 }
+]
