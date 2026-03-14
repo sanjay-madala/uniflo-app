@@ -1003,7 +1003,15 @@ export interface SLABreach {
 }
 
 export interface SLAComplianceReport {
-
+  overall_compliance: number;
+  by_module: Record<string, number>;
+  by_priority: Record<string, number>;
+  total_policies: number;
+  active_policies: number;
+  total_breaches: number;
+  period_start: string;
+  period_end: string;
+}
 export type GoalStatus = "draft" | "active" | "achieved" | "missed" | "archived";
 
 export type GoalHealthStatus = "on_track" | "at_risk" | "behind" | "achieved";
