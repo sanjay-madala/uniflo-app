@@ -1,5 +1,700 @@
 [
-  {"id":"capa_001","title":"Health & Safety compliance remediation","status":"in_progress","source":"audit","source_id":"aud_002","root_cause":"Insufficient staff training on fire safety protocols","corrective_action":"Conduct fire safety training for all staff","preventive_action":"Add fire safety to quarterly audit checklist","owner_id":"usr_002","due_date":"2026-03-31T00:00:00Z","created_at":"2026-03-05T15:00:00Z"},
-  {"id":"capa_002","title":"Refrigeration maintenance protocol","status":"open","source":"ticket","source_id":"tkt_001","root_cause":"Maintenance schedule not adhered to","corrective_action":"Immediate servicing of refrigeration units","preventive_action":"Implement bi-weekly maintenance SOP","owner_id":"usr_003","due_date":"2026-03-20T00:00:00Z","created_at":"2026-03-10T10:00:00Z"},
-  {"id":"capa_003","title":"POS system backup procedure","status":"open","source":"audit","source_id":"aud_003","root_cause":"No documented failover procedure","corrective_action":"Install backup POS terminal","preventive_action":"Create POS failure SOP and train staff","owner_id":"usr_002","due_date":"2026-03-25T00:00:00Z","created_at":"2026-03-12T08:00:00Z"}
+  {
+    "id": "capa_001",
+    "title": "Health & Safety compliance remediation",
+    "description": "Address fire safety protocol gaps identified during monthly compliance audit. Staff training records show 40% of team has not completed mandatory fire safety certification.",
+    "status": "in_progress",
+    "severity": "high",
+    "source": "audit",
+    "source_id": "aud_002",
+    "source_title": "Monthly Compliance Check - HQ",
+    "root_cause": "Insufficient staff training on fire safety protocols",
+    "root_cause_analysis": {
+      "method": "five_why",
+      "whys": [
+        "Fire exit was partially blocked during audit",
+        "Staff did not follow fire safety SOP",
+        "Training records show 40% of staff have not completed fire safety certification",
+        "No automated tracking system for certification expiry",
+        "HR onboarding process does not enforce mandatory safety training completion"
+      ],
+      "conclusion": "Root cause is a gap in the HR onboarding process that does not enforce completion of mandatory fire safety training before staff begin active duty."
+    },
+    "corrective_action": "Conduct fire safety training for all staff within 14 days",
+    "preventive_action": "Add fire safety certification to quarterly audit checklist and implement automated training expiry alerts",
+    "actions": [
+      {
+        "id": "act_001",
+        "type": "corrective",
+        "description": "Schedule and conduct fire safety training sessions for all untrained staff",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-20T00:00:00Z",
+        "status": "in_progress",
+        "completed_at": null,
+        "notes": "Training sessions scheduled for March 18-19"
+      },
+      {
+        "id": "act_002",
+        "type": "corrective",
+        "description": "Clear and mark all fire exits with proper signage",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-15T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-13T10:00:00Z",
+        "evidence": [
+          {
+            "name": "fire_exit_photos.zip",
+            "type": "photo",
+            "url": "/uploads/fire_exit_photos.zip",
+            "uploaded_at": "2026-03-13T10:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_003",
+        "type": "preventive",
+        "description": "Implement automated certification expiry tracking in HR system",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-31T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_002",
+    "location_id": "loc_001",
+    "due_date": "2026-03-31T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": ["aud_002"],
+    "linked_sop_ids": [],
+    "created_at": "2026-03-05T15:00:00Z",
+    "updated_at": "2026-03-13T10:00:00Z",
+    "tags": ["fire-safety", "compliance", "training"],
+    "category": "compliance"
+  },
+  {
+    "id": "capa_002",
+    "title": "Refrigeration maintenance protocol",
+    "description": "Walk-in freezer temperature exceeded safe thresholds multiple times in the past week. Maintenance logs show scheduled servicing was missed for 3 consecutive cycles.",
+    "status": "open",
+    "severity": "critical",
+    "source": "ticket",
+    "source_id": "tkt_001",
+    "source_title": "Walk-in freezer temperature above threshold",
+    "root_cause": "Maintenance schedule not adhered to",
+    "root_cause_analysis": {
+      "method": "fishbone",
+      "fishbone": {
+        "people": ["Maintenance technician was reassigned without coverage", "No backup technician designated"],
+        "process": ["Maintenance SOP does not have escalation for missed visits", "No automated alerts for missed schedules"],
+        "equipment": ["Compressor unit is 8 years old — exceeding recommended service life", "Temperature sensor calibration overdue"],
+        "materials": ["Replacement compressor parts on 6-week backorder"],
+        "environment": ["Summer heat increases compressor workload by 30%"]
+      },
+      "conclusion": "Primary root cause is the lack of an escalation mechanism when scheduled maintenance is missed, compounded by an aging compressor unit."
+    },
+    "corrective_action": "Immediate servicing of refrigeration units and temperature sensor recalibration",
+    "preventive_action": "Implement bi-weekly maintenance SOP with automated escalation alerts",
+    "actions": [
+      {
+        "id": "act_004",
+        "type": "corrective",
+        "description": "Emergency service call for walk-in freezer compressor",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-14T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      },
+      {
+        "id": "act_005",
+        "type": "preventive",
+        "description": "Create and publish bi-weekly refrigeration maintenance SOP",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-25T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_003",
+    "location_id": "loc_001",
+    "due_date": "2026-03-20T00:00:00Z",
+    "linked_ticket_ids": ["tkt_001"],
+    "linked_audit_ids": [],
+    "linked_sop_ids": ["sop_001"],
+    "created_at": "2026-03-10T10:00:00Z",
+    "updated_at": "2026-03-12T08:00:00Z",
+    "tags": ["refrigeration", "maintenance", "food-safety"],
+    "category": "maintenance"
+  },
+  {
+    "id": "capa_003",
+    "title": "POS system backup procedure",
+    "description": "Equipment safety audit revealed no documented failover procedure for POS system outages. During the audit, a simulated failure resulted in 15 minutes of downtime with no staff awareness of manual workaround.",
+    "status": "in_progress",
+    "severity": "high",
+    "source": "audit",
+    "source_id": "aud_003",
+    "source_title": "Equipment Safety Audit - Chicago",
+    "root_cause": "No documented failover procedure for POS system",
+    "root_cause_analysis": {
+      "method": "freeform",
+      "narrative": "Investigation revealed that while the IT team had a verbal understanding of POS failover, no formal documentation existed. Staff at the Chicago location had never been trained on manual transaction processing. The POS vendor SLA guarantees 99.9% uptime but the on-site backup terminal was never configured. This represents a single point of failure that could result in significant revenue loss during peak hours.",
+      "conclusion": "No formal POS failover documentation or staff training exists, creating a single point of failure."
+    },
+    "corrective_action": "Install and configure backup POS terminal at Chicago location",
+    "preventive_action": "Create POS failure SOP, train all front-line staff, and schedule quarterly failover drills",
+    "actions": [
+      {
+        "id": "act_006",
+        "type": "corrective",
+        "description": "Procure and install backup POS terminal",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-20T00:00:00Z",
+        "status": "in_progress",
+        "completed_at": null,
+        "notes": "Terminal ordered, expected delivery March 17"
+      },
+      {
+        "id": "act_007",
+        "type": "corrective",
+        "description": "Document manual transaction processing procedure",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-18T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-14T09:00:00Z",
+        "evidence": [
+          {
+            "name": "manual_transaction_sop.pdf",
+            "type": "document",
+            "url": "/uploads/manual_transaction_sop.pdf",
+            "uploaded_at": "2026-03-14T09:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_008",
+        "type": "preventive",
+        "description": "Schedule quarterly POS failover drills",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-25T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_002",
+    "location_id": "loc_003",
+    "due_date": "2026-03-25T00:00:00Z",
+    "linked_ticket_ids": ["tkt_004"],
+    "linked_audit_ids": ["aud_003"],
+    "linked_sop_ids": [],
+    "created_at": "2026-03-12T08:00:00Z",
+    "updated_at": "2026-03-14T09:00:00Z",
+    "tags": ["pos-system", "backup", "equipment"],
+    "category": "operations"
+  },
+  {
+    "id": "capa_004",
+    "title": "Guest complaint handling process overhaul",
+    "description": "Recurring pattern of guest complaints escalating to social media reviews before internal resolution. Analysis shows average first response time exceeds 4 hours.",
+    "status": "open",
+    "severity": "high",
+    "source": "ticket",
+    "source_id": "tkt_003",
+    "source_title": "Guest complaint response time SLA breach",
+    "root_cause": "No defined first-response SLA for guest complaints and lack of escalation triggers",
+    "corrective_action": "Implement 30-minute first-response SLA for all guest-facing complaints",
+    "preventive_action": "Deploy automated complaint routing with priority-based escalation rules",
+    "actions": [
+      {
+        "id": "act_009",
+        "type": "corrective",
+        "description": "Define and publish guest complaint response SLA policy",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-18T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      },
+      {
+        "id": "act_010",
+        "type": "preventive",
+        "description": "Configure automated complaint routing and escalation in ticketing system",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-28T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_001",
+    "location_id": "loc_001",
+    "due_date": "2026-03-10T00:00:00Z",
+    "linked_ticket_ids": ["tkt_003"],
+    "linked_audit_ids": [],
+    "linked_sop_ids": ["sop_002"],
+    "created_at": "2026-03-02T14:00:00Z",
+    "updated_at": "2026-03-08T11:00:00Z",
+    "tags": ["guest-relations", "sla", "escalation"],
+    "category": "customer_service"
+  },
+  {
+    "id": "capa_005",
+    "title": "Chemical storage labeling non-compliance",
+    "description": "Housekeeping chemical storage area found with unlabeled containers during spot check. OSHA compliance requirement for hazardous material labeling not met.",
+    "status": "verified",
+    "severity": "critical",
+    "source": "manual",
+    "source_id": null,
+    "source_title": null,
+    "root_cause": "Housekeeping staff replacing chemical containers without transferring MSDS labels",
+    "corrective_action": "Relabel all chemical containers and conduct hazmat awareness refresher",
+    "preventive_action": "Add chemical labeling check to daily opening checklist SOP",
+    "actions": [
+      {
+        "id": "act_011",
+        "type": "corrective",
+        "description": "Audit and relabel all chemical storage containers",
+        "assignee_id": "usr_005",
+        "due_date": "2026-03-08T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-07T16:00:00Z",
+        "evidence": [
+          {
+            "name": "labeled_containers.jpg",
+            "type": "photo",
+            "url": "/uploads/labeled_containers.jpg",
+            "uploaded_at": "2026-03-07T16:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_012",
+        "type": "corrective",
+        "description": "Conduct hazmat awareness refresher training for housekeeping team",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-10T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-09T15:00:00Z",
+        "evidence": [
+          {
+            "name": "training_attendance.pdf",
+            "type": "document",
+            "url": "/uploads/training_attendance.pdf",
+            "uploaded_at": "2026-03-09T15:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_013",
+        "type": "preventive",
+        "description": "Update daily opening checklist to include chemical labeling verification",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-12T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-11T14:00:00Z"
+      }
+    ],
+    "owner_id": "usr_002",
+    "location_id": "loc_002",
+    "due_date": "2026-03-12T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": [],
+    "linked_sop_ids": ["sop_003"],
+    "created_at": "2026-03-03T09:00:00Z",
+    "updated_at": "2026-03-11T14:00:00Z",
+    "tags": ["chemical-safety", "osha", "labeling"],
+    "category": "compliance"
+  },
+  {
+    "id": "capa_006",
+    "title": "Food allergen cross-contamination prevention",
+    "description": "Guest reported allergic reaction. Investigation found allergen cross-contamination in kitchen prep area due to shared cutting boards.",
+    "status": "verified",
+    "severity": "critical",
+    "source": "ticket",
+    "source_id": "tkt_002",
+    "source_title": "Guest allergic reaction incident report",
+    "root_cause": "Kitchen staff using shared cutting boards for allergen and non-allergen food preparation",
+    "corrective_action": "Implement color-coded cutting board system and separate prep zones for allergen-free meals",
+    "preventive_action": "Mandatory allergen awareness certification for all kitchen staff and weekly cross-contamination audits",
+    "actions": [
+      {
+        "id": "act_014",
+        "type": "corrective",
+        "description": "Purchase and deploy color-coded cutting board system",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-06T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-05T14:00:00Z",
+        "evidence": [
+          {
+            "name": "cutting_boards_installed.jpg",
+            "type": "photo",
+            "url": "/uploads/cutting_boards.jpg",
+            "uploaded_at": "2026-03-05T14:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_015",
+        "type": "preventive",
+        "description": "Schedule allergen awareness certification for all kitchen staff",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-10T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-09T17:00:00Z",
+        "evidence": [
+          {
+            "name": "allergen_cert_records.pdf",
+            "type": "document",
+            "url": "/uploads/allergen_cert.pdf",
+            "uploaded_at": "2026-03-09T17:00:00Z"
+          }
+        ]
+      }
+    ],
+    "owner_id": "usr_002",
+    "location_id": "loc_001",
+    "due_date": "2026-03-10T00:00:00Z",
+    "linked_ticket_ids": ["tkt_002"],
+    "linked_audit_ids": [],
+    "linked_sop_ids": ["sop_001"],
+    "created_at": "2026-03-01T11:00:00Z",
+    "updated_at": "2026-03-09T17:00:00Z",
+    "tags": ["allergen", "food-safety", "kitchen"],
+    "category": "safety"
+  },
+  {
+    "id": "capa_007",
+    "title": "Emergency exit signage standardization",
+    "description": "Q1 audit found inconsistent emergency exit signage across all three locations. Some signs are faded, missing, or do not meet current code requirements.",
+    "status": "closed",
+    "severity": "medium",
+    "source": "audit",
+    "source_id": "aud_001",
+    "source_title": "Q1 Food Safety Audit - LA Hub",
+    "root_cause": "No standardized signage replacement schedule; signage procurement handled ad-hoc by individual locations",
+    "corrective_action": "Replace all non-compliant emergency exit signs across all locations",
+    "preventive_action": "Establish annual signage audit and centralized procurement process",
+    "actions": [
+      {
+        "id": "act_016",
+        "type": "corrective",
+        "description": "Survey and catalog all emergency exit signs at all locations",
+        "assignee_id": "usr_005",
+        "due_date": "2026-02-20T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-02-19T16:00:00Z"
+      },
+      {
+        "id": "act_017",
+        "type": "corrective",
+        "description": "Replace non-compliant signs at all three locations",
+        "assignee_id": "usr_004",
+        "due_date": "2026-02-28T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-02-27T12:00:00Z",
+        "evidence": [
+          {
+            "name": "signage_replacement_report.pdf",
+            "type": "document",
+            "url": "/uploads/signage_report.pdf",
+            "uploaded_at": "2026-02-27T12:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_018",
+        "type": "preventive",
+        "description": "Create annual signage audit checklist and centralized procurement SOP",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-05T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-04T11:00:00Z"
+      }
+    ],
+    "owner_id": "usr_003",
+    "location_id": "loc_002",
+    "due_date": "2026-03-05T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": ["aud_001"],
+    "linked_sop_ids": [],
+    "effectiveness_review": {
+      "id": "rev_001",
+      "reviewer_id": "usr_001",
+      "reviewed_at": "2026-03-06T14:00:00Z",
+      "effective": true,
+      "criteria": [
+        { "label": "Root cause was correctly identified and documented", "met": true, "comment": "Clear identification of ad-hoc procurement as root cause" },
+        { "label": "Corrective action was fully implemented as planned", "met": true, "comment": "All signs replaced and verified on-site" },
+        { "label": "Preventive action prevents recurrence of the issue", "met": true, "comment": "Annual audit checklist and centralized procurement are now in place" },
+        { "label": "No similar issues have been reported since implementation", "met": true },
+        { "label": "Related SOPs have been updated to reflect changes", "met": true, "comment": "Facility maintenance SOP updated" }
+      ],
+      "follow_up_required": false,
+      "follow_up_capa_id": null,
+      "sign_off_comment": "All corrective and preventive actions verified. Signage now meets code requirements at all locations."
+    },
+    "created_at": "2026-02-10T09:00:00Z",
+    "updated_at": "2026-03-06T14:00:00Z",
+    "closed_at": "2026-03-06T14:00:00Z",
+    "tags": ["signage", "emergency-exit", "compliance"],
+    "category": "compliance"
+  },
+  {
+    "id": "capa_008",
+    "title": "Staff scheduling gap — overnight coverage",
+    "description": "Multiple incidents of unmanned front desk during overnight hours (11pm-6am). Security camera review confirms at least 4 occurrences in the past month.",
+    "status": "closed",
+    "severity": "high",
+    "source": "manual",
+    "source_id": null,
+    "source_title": null,
+    "root_cause": "Scheduling system does not enforce minimum staffing levels for overnight shifts",
+    "corrective_action": "Assign dedicated overnight front desk staff and implement buddy-system coverage",
+    "preventive_action": "Configure scheduling system with minimum staffing rules and automated gap alerts",
+    "actions": [
+      {
+        "id": "act_019",
+        "type": "corrective",
+        "description": "Assign dedicated overnight staff and publish updated schedule",
+        "assignee_id": "usr_001",
+        "due_date": "2026-02-25T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-02-24T10:00:00Z"
+      },
+      {
+        "id": "act_020",
+        "type": "preventive",
+        "description": "Configure scheduling system minimum staffing rules",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-01T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-02-28T16:00:00Z"
+      }
+    ],
+    "owner_id": "usr_001",
+    "location_id": "loc_003",
+    "due_date": "2026-03-01T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": [],
+    "linked_sop_ids": [],
+    "effectiveness_review": {
+      "id": "rev_002",
+      "reviewer_id": "usr_003",
+      "reviewed_at": "2026-03-08T10:00:00Z",
+      "effective": true,
+      "criteria": [
+        { "label": "Root cause was correctly identified and documented", "met": true },
+        { "label": "Corrective action was fully implemented as planned", "met": true },
+        { "label": "Preventive action prevents recurrence of the issue", "met": true, "comment": "Scheduling system now flags gaps automatically" },
+        { "label": "No similar issues have been reported since implementation", "met": true, "comment": "Zero overnight coverage gaps since Feb 25" },
+        { "label": "Related SOPs have been updated to reflect changes", "met": true }
+      ],
+      "follow_up_required": false,
+      "follow_up_capa_id": null,
+      "sign_off_comment": "Overnight coverage issue fully resolved. Automated alerts are working correctly."
+    },
+    "created_at": "2026-02-15T08:00:00Z",
+    "updated_at": "2026-03-08T10:00:00Z",
+    "closed_at": "2026-03-08T10:00:00Z",
+    "tags": ["staffing", "scheduling", "overnight"],
+    "category": "operations"
+  },
+  {
+    "id": "capa_009",
+    "title": "Water quality testing frequency increase",
+    "description": "Routine water quality test showed borderline chlorine levels in pool area. Current testing is monthly, but health regulations recommend weekly testing for public pools.",
+    "status": "open",
+    "severity": "medium",
+    "source": "manual",
+    "source_id": null,
+    "source_title": null,
+    "root_cause": "Testing frequency does not align with updated health regulations for public pool facilities",
+    "corrective_action": "Conduct immediate water quality test and adjust chlorine levels",
+    "preventive_action": "Increase testing frequency to weekly and add results to digital compliance dashboard",
+    "actions": [
+      {
+        "id": "act_021",
+        "type": "corrective",
+        "description": "Emergency water quality test and chlorine adjustment",
+        "assignee_id": "usr_005",
+        "due_date": "2026-03-15T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      },
+      {
+        "id": "act_022",
+        "type": "preventive",
+        "description": "Update testing schedule from monthly to weekly",
+        "assignee_id": "usr_003",
+        "due_date": "2026-03-20T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_003",
+    "location_id": "loc_003",
+    "due_date": "2026-03-20T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": [],
+    "linked_sop_ids": [],
+    "created_at": "2026-03-11T13:00:00Z",
+    "updated_at": "2026-03-11T13:00:00Z",
+    "tags": ["water-quality", "pool", "health-regulation"],
+    "category": "compliance"
+  },
+  {
+    "id": "capa_010",
+    "title": "Kitchen equipment sanitization protocol update",
+    "description": "Food safety audit identified inconsistent sanitization practices across shifts. Evening shift sanitization logs are frequently incomplete or missing.",
+    "status": "in_progress",
+    "severity": "medium",
+    "source": "audit",
+    "source_id": "aud_001",
+    "source_title": "Q1 Food Safety Audit - LA Hub",
+    "root_cause": "Sanitization checklist is paper-based and not enforced digitally; evening shift supervisor position is vacant",
+    "corrective_action": "Digitize sanitization checklist and assign interim evening shift supervisor",
+    "preventive_action": "Integrate sanitization tracking into daily operations dashboard with photo evidence requirement",
+    "actions": [
+      {
+        "id": "act_023",
+        "type": "corrective",
+        "description": "Deploy digital sanitization checklist on kitchen tablets",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-18T00:00:00Z",
+        "status": "in_progress",
+        "completed_at": null,
+        "notes": "Tablet app configured, testing on March 16"
+      },
+      {
+        "id": "act_024",
+        "type": "corrective",
+        "description": "Appoint interim evening shift supervisor",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-14T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-13T16:00:00Z"
+      },
+      {
+        "id": "act_025",
+        "type": "preventive",
+        "description": "Add photo evidence requirement to sanitization sign-off",
+        "assignee_id": "usr_002",
+        "due_date": "2026-03-25T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_002",
+    "location_id": "loc_002",
+    "due_date": "2026-03-25T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": ["aud_001"],
+    "linked_sop_ids": ["sop_001"],
+    "created_at": "2026-03-09T10:00:00Z",
+    "updated_at": "2026-03-13T16:00:00Z",
+    "tags": ["sanitization", "kitchen", "food-safety"],
+    "category": "safety"
+  },
+  {
+    "id": "capa_011",
+    "title": "Guest room key card access audit remediation",
+    "description": "Security audit found that 12 expired employee key cards still had active access to guest room floors. Access control system override logs show no regular review process.",
+    "status": "verified",
+    "severity": "high",
+    "source": "audit",
+    "source_id": "aud_002",
+    "source_title": "Monthly Compliance Check - HQ",
+    "root_cause": "Employee key card deactivation not linked to HR termination workflow",
+    "corrective_action": "Immediately deactivate all expired employee key cards and audit access logs",
+    "preventive_action": "Integrate key card system with HR database for automatic deactivation on employee separation",
+    "actions": [
+      {
+        "id": "act_026",
+        "type": "corrective",
+        "description": "Deactivate all expired employee key cards",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-06T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-05T15:00:00Z"
+      },
+      {
+        "id": "act_027",
+        "type": "corrective",
+        "description": "Review access logs for unauthorized entries",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-08T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-07T14:00:00Z",
+        "evidence": [
+          {
+            "name": "access_log_review.pdf",
+            "type": "document",
+            "url": "/uploads/access_log_review.pdf",
+            "uploaded_at": "2026-03-07T14:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "act_028",
+        "type": "preventive",
+        "description": "Implement HR-keycard system integration API",
+        "assignee_id": "usr_001",
+        "due_date": "2026-03-15T00:00:00Z",
+        "status": "completed",
+        "completed_at": "2026-03-14T11:00:00Z"
+      }
+    ],
+    "owner_id": "usr_001",
+    "location_id": "loc_001",
+    "due_date": "2026-03-15T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": ["aud_002"],
+    "linked_sop_ids": [],
+    "created_at": "2026-03-05T10:00:00Z",
+    "updated_at": "2026-03-14T11:00:00Z",
+    "tags": ["security", "access-control", "key-card"],
+    "category": "security"
+  },
+  {
+    "id": "capa_012",
+    "title": "Delivery receiving temperature log gaps",
+    "description": "Three weeks of delivery receiving temperature logs are missing for the Airport location. Health inspector noted this during a routine visit as a regulatory requirement.",
+    "status": "open",
+    "severity": "low",
+    "source": "manual",
+    "source_id": null,
+    "source_title": null,
+    "root_cause": "Receiving staff not trained on digital temperature logging tool; paper logs were discarded during office cleanup",
+    "corrective_action": "Reconstruct missing temperature logs from supplier delivery records and train staff on digital tool",
+    "preventive_action": "Migrate to tamper-proof digital temperature logging with automated compliance alerts",
+    "actions": [
+      {
+        "id": "act_029",
+        "type": "corrective",
+        "description": "Contact suppliers to reconstruct missing temperature records",
+        "assignee_id": "usr_005",
+        "due_date": "2026-03-22T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      },
+      {
+        "id": "act_030",
+        "type": "preventive",
+        "description": "Deploy digital temperature logging tablets at receiving dock",
+        "assignee_id": "usr_004",
+        "due_date": "2026-03-30T00:00:00Z",
+        "status": "pending",
+        "completed_at": null
+      }
+    ],
+    "owner_id": "usr_005",
+    "location_id": "loc_002",
+    "due_date": "2026-03-30T00:00:00Z",
+    "linked_ticket_ids": [],
+    "linked_audit_ids": [],
+    "linked_sop_ids": [],
+    "created_at": "2026-03-13T14:00:00Z",
+    "updated_at": "2026-03-13T14:00:00Z",
+    "tags": ["temperature-log", "receiving", "regulatory"],
+    "category": "compliance"
+  }
 ]
