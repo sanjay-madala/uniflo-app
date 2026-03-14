@@ -86,10 +86,10 @@ test.describe('Drill-down navigation', () => {
     await page.goto('/en/training/', { waitUntil: 'load' });
     // Wait for page content to hydrate (grid or table view)
     await expect(page.locator('text=/\\d+ modules? found/')).toBeVisible({ timeout: 15000 });
-    const moduleLink = page.locator('a[href*="/training/tm_"]').first();
+    const moduleLink = page.locator('a[href*="/training/trn_"]').first();
     await expect(moduleLink).toBeVisible({ timeout: 15000 });
     await moduleLink.click();
-    await page.waitForURL(/\/en\/training\/tm_\d+\//, { timeout: 15000 });
+    await page.waitForURL(/\/en\/training\/trn_\d+\//, { timeout: 15000 });
     await expect(page).toHaveTitle(/Uniflo/, { timeout: 15000 });
   });
 
