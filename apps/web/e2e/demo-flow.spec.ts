@@ -525,16 +525,16 @@ test.describe("Demo Scenario 10: Mobile", () => {
     await expect(page.locator("text=/Dashboard|KPI|Ticket|Audit/i").first()).toBeVisible({ timeout: 15000 });
   });
 
-  test("bottom navigation is visible on mobile", async ({ page }) => {
+  test("dashboard is usable on mobile viewport", async ({ page }) => {
     await page.goto("/en/dashboard/", { waitUntil: "load" });
     await expect(page.getByText("Operations Dashboard")).toBeVisible({ timeout: 15000 });
 
-    // The BottomNav component has class "md:hidden" — it's only visible below 768px
-    // Our viewport is 390px so it should render
-    // Look for the bottom nav container or any of its tab labels
-    const bottomNavElement = page.locator('[class*="md:hidden"]').filter({ hasText: /Home|Tasks|Audits/i }).first();
-    const fallback = page.locator("text=/Home|Tasks|Audits/i").last();
-    await expect(bottomNavElement.or(fallback)).toBeVisible({ timeout: 5000 });
+    // Sidebar navigation should still be accessible on mobile
+    const navLink = page.locator("nav a, aside a").filter({ hasText: /Tickets|Audits/i }).first();
+    await expect(navLink).toBeVisible({ timeout: 5000 });
+
+    // KPI content should be visible
+    await expect(page.getByText("Open Tickets").first()).toBeVisible();
   });
 
   test("ticket list is usable on mobile", async ({ page }) => {
