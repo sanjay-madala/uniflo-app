@@ -909,3 +909,18 @@ export const kbSearchGaps: KBSearchGap[] = [
   { id: "kbsg_011", query: "payroll schedule", search_count: 4, last_searched_at: "2026-03-09T14:00:00Z", has_results: false, result_count: 0 },
   { id: "kbsg_012", query: "equipment warranty", search_count: 3, last_searched_at: "2026-03-08T11:00:00Z", has_results: true, result_count: 1 },
 ];
+
+export const kbSimilarArticles = [
+  { id: "kb_002", title: "Equipment Maintenance Checklist", relevance: 0.92 },
+  { id: "kb_005", title: "Daily Opening Procedures", relevance: 0.85 },
+  { id: "kb_008", title: "Health & Safety Guidelines", relevance: 0.78 },
+];
+
+export const kbSuggestedTags = ["maintenance", "equipment", "daily-cleaning", "barista", "operations"];
+
+export const kbReadability = {
+  score: 72,
+  level: "Good",
+  avgSentenceLength: 14,
+  complexWordPct: 8,
+};

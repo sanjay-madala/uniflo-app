@@ -7,20 +7,43 @@ import auditTrend from './audit-trend.json';
 import sops from './sops.json';
 import capas from './capas.json';
 import tasks from './tasks.json';
-
-export { users, organizations, tickets, audits, auditTemplates, auditTrend, sops, capas, tasks };
-export type { default as UsersData } from './users.json';
-export * from './types';
-
+import projects from './projects.json';
+import taskComments from './task-comments.json';
 import automationRulesData from './automationRules.json';
-const automationRules = automationRulesData.rules;
-const ruleTemplates = automationRulesData.templates;
-const ruleExecutions = automationRulesData.executions;
-export { users, organizations, tickets, audits, sops, capas, tasks, automationRules, ruleTemplates, ruleExecutions };
-
+import {
   kbArticles,
   kbCategories,
   kbCollections,
+  kbSimilarArticles,
+  kbSuggestedTags,
+  kbReadability,
 } from './knowledge';
-export { default as projects } from "./projects.json";
-export { default as taskComments } from "./task-comments.json";
+
+const automationRules = automationRulesData.rules;
+const ruleTemplates = automationRulesData.templates;
+const ruleExecutions = automationRulesData.executions;
+
+export {
+  users,
+  organizations,
+  tickets,
+  audits,
+  auditTemplates,
+  auditTrend,
+  sops,
+  capas,
+  tasks,
+  projects,
+  taskComments,
+  automationRules,
+  ruleTemplates,
+  ruleExecutions,
+  kbArticles,
+  kbCategories,
+  kbCollections,
+  kbSimilarArticles,
+  kbSuggestedTags,
+  kbReadability,
+};
+
+export * from './types';
