@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
+import { BottomNav } from "../mobile/BottomNav";
+import { OfflineBanner } from "../mobile/OfflineBanner";
 import {
   CommandPalette,
   useCommandPalette,
@@ -46,12 +48,24 @@ export function AppShell({
 
   return (
     <div style={{ display: "flex", height: "100vh", backgroundColor: "var(--bg-primary)" }}>
-      <Sidebar locale={locale} />
+      {/* Sidebar: hidden on mobile (<768px), visible on md+ */}
+      <div className="hidden md:block">
+        <Sidebar locale={locale} />
+      </div>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <TopBar locale={locale} />
-        <main style={{ flex: 1, overflowY: "auto", padding: "24px" }}>
+        <main
+          style={{ flex: 1, overflowY: "auto" }}
+          className="p-3 md:p-6 pb-24 md:pb-6"
+        >
           {children}
         </main>
+      </div>
+      {/* Mobile bottom nav: visible on <768px */}
+      <BottomNav locale={locale} />
+      {/* Offline banner: visible on mobile */}
+      <div className="md:hidden">
+        <OfflineBanner />
       </div>
       <CommandPalette
         open={open}
