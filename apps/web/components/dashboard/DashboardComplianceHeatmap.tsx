@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -24,10 +25,10 @@ interface DashboardComplianceHeatmapProps {
 
 const MONTHS = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
 
-function getScorePillClass(score: number): string {
-  if (score >= 90) return "bg-green-900/30 text-green-400 border border-green-800";
-  if (score >= 75) return "bg-amber-900/30 text-amber-400 border border-amber-800";
-  return "bg-red-900/30 text-red-400 border border-red-800";
+function getScorePillStyle(score: number): React.CSSProperties {
+  if (score >= 90) return { backgroundColor: "var(--accent-green)", color: "var(--text-on-accent)", fontWeight: 700 };
+  if (score >= 75) return { backgroundColor: "var(--accent-yellow)", color: "var(--text-on-accent)", fontWeight: 700 };
+  return { backgroundColor: "var(--accent-red)", color: "var(--text-on-accent)", fontWeight: 700 };
 }
 
 export function DashboardComplianceHeatmap({ data }: DashboardComplianceHeatmapProps) {
@@ -65,7 +66,8 @@ export function DashboardComplianceHeatmap({ data }: DashboardComplianceHeatmapP
                     return (
                       <TableCell key={m} className="text-center">
                         <span
-                          className={`inline-flex items-center justify-center w-10 h-6 rounded text-xs font-medium ${getScorePillClass(score)}`}
+                          className="inline-flex items-center justify-center w-10 h-6 rounded text-xs"
+                          style={getScorePillStyle(score)}
                         >
                           {score}
                         </span>
