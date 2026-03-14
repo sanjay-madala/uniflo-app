@@ -1,0 +1,203 @@
+[
+  {
+    "id": "tmpl_001",
+    "title": "Food Safety & Hygiene Audit",
+    "description": "Comprehensive food safety and hygiene inspection covering temperature controls, personal hygiene, food storage, and sanitation practices.",
+    "category": "Safety",
+    "total_items": 15,
+    "pass_threshold": 80,
+    "created_by": "usr_003",
+    "created_at": "2025-10-01T09:00:00Z",
+    "updated_at": "2026-01-15T10:00:00Z",
+    "version": "1.0",
+    "linked_sop_ids": ["sop_001", "sop_002"],
+    "sections": [
+      {
+        "id": "sec_001",
+        "title": "Temperature Controls",
+        "description": "Verify all temperature-sensitive equipment is operating within safe ranges.",
+        "weight": 30,
+        "items": [
+          { "id": "item_001", "question": "Is the walk-in freezer at -18\u00b0C or below?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true, "help_text": "Check the digital thermometer on the freezer door. Record the exact reading in notes." },
+          { "id": "item_002", "question": "Is the refrigerator at 4\u00b0C or below?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "linked_sop_id": "sop_001", "photo_required_on_fail": true, "help_text": "Check all refrigeration units. Each must be at 4\u00b0C or below." },
+          { "id": "item_003", "question": "Are hot-hold items maintained above 63\u00b0C?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false, "help_text": "Use a probe thermometer to check at least 3 items on the hot-hold line." },
+          { "id": "item_004", "question": "Is the cold-display case operating within range?", "type": "yes_no", "required": false, "severity_if_fail": "minor", "photo_required_on_fail": false, "help_text": "Cold display should be between 1\u00b0C and 5\u00b0C." }
+        ]
+      },
+      {
+        "id": "sec_002",
+        "title": "Personal Hygiene",
+        "description": "Ensure all staff comply with personal hygiene standards.",
+        "weight": 25,
+        "items": [
+          { "id": "item_005", "question": "Are handwashing stations stocked and accessible?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false, "help_text": "Check for soap, paper towels, and running hot water." },
+          { "id": "item_006", "question": "Are staff wearing disposable gloves when handling food?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_007", "question": "Are all staff wearing appropriate hair nets?", "type": "yes_no", "required": true, "severity_if_fail": "major", "linked_sop_id": "sop_002", "photo_required_on_fail": false },
+          { "id": "item_008", "question": "Are uniforms clean and in good condition?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false }
+        ]
+      },
+      {
+        "id": "sec_003",
+        "title": "Food Storage",
+        "description": "Verify proper food storage and labeling practices.",
+        "weight": 25,
+        "items": [
+          { "id": "item_009", "question": "Are all items properly labeled with date and contents?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": true, "help_text": "Check labels on all containers in the walk-in and prep area." },
+          { "id": "item_010", "question": "Is FIFO (First In, First Out) being followed?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_011", "question": "Is there adequate separation to prevent cross-contamination?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true, "help_text": "Raw meats must be stored below cooked items. Separate cutting boards for different food types." },
+          { "id": "item_012", "question": "Are allergens stored and labeled separately?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true }
+        ]
+      },
+      {
+        "id": "sec_004",
+        "title": "Cleaning & Sanitation",
+        "description": "Evaluate cleaning and sanitation procedures.",
+        "weight": 20,
+        "items": [
+          { "id": "item_013", "question": "Are food contact surfaces properly sanitized?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false, "help_text": "Check sanitizer concentration levels and cleaning schedules." },
+          { "id": "item_014", "question": "Is all equipment clean and free of residue?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_015", "question": "Is waste disposed of properly and bins not overflowing?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tmpl_002",
+    "title": "Equipment Safety Inspection",
+    "description": "Safety inspection of all operational equipment including POS systems, kitchen equipment, and HVAC.",
+    "category": "Safety",
+    "total_items": 12,
+    "pass_threshold": 85,
+    "created_by": "usr_003",
+    "created_at": "2025-10-15T09:00:00Z",
+    "updated_at": "2026-02-01T10:00:00Z",
+    "version": "1.0",
+    "linked_sop_ids": ["sop_003"],
+    "sections": [
+      {
+        "id": "sec_005",
+        "title": "Kitchen Equipment",
+        "description": "Inspect all kitchen equipment for safety compliance.",
+        "weight": 40,
+        "items": [
+          { "id": "item_016", "question": "Are all gas connections secure with no leaks?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true },
+          { "id": "item_017", "question": "Are fire suppression systems operational?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true },
+          { "id": "item_018", "question": "Are electrical cords in good condition (no fraying)?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": true },
+          { "id": "item_019", "question": "Are refrigeration units maintaining correct temperatures?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "linked_sop_id": "sop_003", "photo_required_on_fail": true }
+        ]
+      },
+      {
+        "id": "sec_006",
+        "title": "POS & Technology",
+        "description": "Verify POS systems and technology infrastructure.",
+        "weight": 30,
+        "items": [
+          { "id": "item_020", "question": "Are all POS terminals operational?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_021", "question": "Is the network connectivity stable?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_022", "question": "Are payment terminals PCI compliant?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": false },
+          { "id": "item_023", "question": "Are backup systems functional?", "type": "yes_no", "required": false, "severity_if_fail": "minor", "photo_required_on_fail": false }
+        ]
+      },
+      {
+        "id": "sec_007",
+        "title": "HVAC & Facilities",
+        "description": "Inspect HVAC systems and general facility condition.",
+        "weight": 30,
+        "items": [
+          { "id": "item_024", "question": "Is HVAC system maintaining comfortable temperatures?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_025", "question": "Are emergency exits clear and properly marked?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true },
+          { "id": "item_026", "question": "Are fire extinguishers in date and accessible?", "type": "yes_no", "required": true, "severity_if_fail": "critical", "photo_required_on_fail": true },
+          { "id": "item_027", "question": "Are walkways clear of obstacles?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tmpl_003",
+    "title": "Daily Opening Checklist",
+    "description": "Pre-opening checklist to ensure the location is ready for service.",
+    "category": "Operations",
+    "total_items": 10,
+    "pass_threshold": 90,
+    "created_by": "usr_003",
+    "created_at": "2025-11-01T09:00:00Z",
+    "updated_at": "2026-01-20T10:00:00Z",
+    "version": "2.0",
+    "linked_sop_ids": [],
+    "sections": [
+      {
+        "id": "sec_008",
+        "title": "Front of House",
+        "description": "Verify front of house readiness.",
+        "weight": 50,
+        "items": [
+          { "id": "item_028", "question": "Are all tables clean and properly set?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_029", "question": "Is the floor clean and free of hazards?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_030", "question": "Are menu boards updated with correct pricing?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_031", "question": "Is lighting working in all areas?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_032", "question": "Are restrooms clean and stocked?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false }
+        ]
+      },
+      {
+        "id": "sec_009",
+        "title": "Back of House",
+        "description": "Verify back of house readiness.",
+        "weight": 50,
+        "items": [
+          { "id": "item_033", "question": "Is the prep area clean and ready?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_034", "question": "Are all required ingredients available?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_035", "question": "Is the dishwashing station functional?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_036", "question": "Are staff schedules posted and confirmed?", "type": "yes_no", "required": false, "severity_if_fail": "observation", "photo_required_on_fail": false },
+          { "id": "item_037", "question": "Is the receiving area clear for deliveries?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tmpl_004",
+    "title": "Guest Experience Quality Audit",
+    "description": "Quality audit focused on guest-facing service and experience standards.",
+    "category": "Quality",
+    "total_items": 8,
+    "pass_threshold": 75,
+    "created_by": "usr_001",
+    "created_at": "2025-12-01T09:00:00Z",
+    "updated_at": "2026-02-15T10:00:00Z",
+    "version": "1.0",
+    "linked_sop_ids": [],
+    "sections": [
+      {
+        "id": "sec_010",
+        "title": "Service Standards",
+        "description": "Evaluate adherence to guest service standards.",
+        "weight": 40,
+        "items": [
+          { "id": "item_038", "question": "Were guests greeted within 30 seconds of arrival?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_039", "question": "Did staff demonstrate menu knowledge?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_040", "question": "Were orders delivered within expected timeframe?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false }
+        ]
+      },
+      {
+        "id": "sec_011",
+        "title": "Presentation",
+        "description": "Evaluate visual presentation and ambiance.",
+        "weight": 30,
+        "items": [
+          { "id": "item_041", "question": "Is table presentation up to brand standards?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": true },
+          { "id": "item_042", "question": "Is food plating consistent with standards?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": true }
+        ]
+      },
+      {
+        "id": "sec_012",
+        "title": "Resolution",
+        "description": "Evaluate complaint handling and resolution.",
+        "weight": 30,
+        "items": [
+          { "id": "item_043", "question": "Are complaints handled within 5 minutes?", "type": "yes_no", "required": true, "severity_if_fail": "major", "photo_required_on_fail": false },
+          { "id": "item_044", "question": "Is a follow-up offered to dissatisfied guests?", "type": "yes_no", "required": true, "severity_if_fail": "minor", "photo_required_on_fail": false },
+          { "id": "item_045", "question": "Are guest feedback cards available?", "type": "yes_no", "required": false, "severity_if_fail": "observation", "photo_required_on_fail": false }
+        ]
+      }
+    ]
+  }
+]
