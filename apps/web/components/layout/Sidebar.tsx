@@ -13,7 +13,7 @@ import {
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/tickets", icon: Ticket, label: "Tickets" },
-  { href: "/sop", icon: FileText, label: "SOPs" },
+  { href: "/sops", icon: FileText, label: "SOPs" },
   { href: "/audit", icon: ClipboardCheck, label: "Audits" },
   { href: "/capa", icon: AlertTriangle, label: "CAPA" },
   { href: "/tasks", icon: CheckSquare, label: "Tasks" },
