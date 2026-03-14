@@ -80,3 +80,4 @@ const slaComplianceTrend = slaData.complianceTrend;
 const slaComplianceReport = slaData.complianceReport;
 const slaItemStatuses = slaData.itemStatuses;
 export { slaPolicies, slaBreaches, slaComplianceTrend, slaComplianceReport, slaItemStatuses };
+export { mobileKpiCards, mobileTodaysSchedule, mobileActivityFeed } from "./mobile-dashboard";
