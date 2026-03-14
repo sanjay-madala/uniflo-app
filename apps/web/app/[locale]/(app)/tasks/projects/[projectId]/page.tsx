@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { tasks as allTasks, users, projects } from "@uniflo/mock-data";
-import type { Task, TaskStatus, TaskPriority, User, Project } from "@uniflo/mock-data";
+import type { Task, TaskStatus, User, Project } from "@uniflo/mock-data";
 import {
   PageHeader,
   Table,
@@ -14,15 +14,16 @@ import {
   TableHead,
   TableCell,
   Button,
+  Badge,
   Checkbox,
   Pagination,
+  EmptyState,
 } from "@uniflo/ui";
-import { Plus, ArrowUpDown, ClipboardCheck, Shield, Ticket } from "lucide-react";
+import { Plus, ArrowUpDown, ArrowLeft, ClipboardCheck, Shield, Ticket } from "lucide-react";
 import { TaskStatusChip } from "@/components/tasks/TaskStatusChip";
 import { TaskPriorityBadge } from "@/components/tasks/TaskPriorityBadge";
 import { SubtaskProgressBar } from "@/components/tasks/SubtaskProgressBar";
 import { TaskProgressSummary } from "@/components/tasks/TaskProgressSummary";
-import { TaskViewSwitcher } from "@/components/tasks/TaskViewSwitcher";
 import { TaskFilterBar } from "@/components/tasks/TaskFilterBar";
 import { TaskBulkActionsBar } from "@/components/tasks/TaskBulkActionsBar";
 import { CreateTaskModal } from "@/components/tasks/CreateTaskModal";
@@ -37,8 +38,7 @@ type SortDir = "asc" | "desc";
 
 function getUserName(id: string | null): string {
   if (!id) return "";
-  const u = (users as User[]).find(u => u.id === id);
-  return u?.name ?? "";
+  return (users as User[]).find(u => u.id === id)?.name ?? "";
 }
 
 function formatShortDate(dateStr: string): string {
@@ -55,21 +55,23 @@ const sourceIcons: Record<string, React.ReactNode> = {
   ticket: <Ticket className="h-3.5 w-3.5 text-purple-400" />,
 };
 
-const sourceLabels: Record<string, string> = {
-  audit: "Created from Audit",
-  capa: "Created from CAPA",
-  ticket: "Created from Ticket",
-  manual: "Manually created",
-  automation: "Created by automation",
+const statusConfig: Record<Project["status"], { label: string; variant: "blue" | "success" | "warning" | "default" }> = {
+  active: { label: "Active", variant: "blue" },
+  completed: { label: "Completed", variant: "success" },
+  on_hold: { label: "On Hold", variant: "warning" },
+  archived: { label: "Archived", variant: "default" },
 };
 
-export default function TasksPage() {
-  const { locale } = useParams<{ locale: string }>();
+export default function ProjectScopedTasksPage() {
+  const { locale, projectId } = useParams<{ locale: string; projectId: string }>();
+
+  const project = (projects as Project[]).find(p => p.id === projectId);
+  const tasks = (allTasks as Task[]).filter(t => t.project_id === projectId);
+
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [assigneeFilter, setAssigneeFilter] = useState("all");
-  const [projectFilter, setProjectFilter] = useState("all");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [dateFilter, setDateFilter] = useState("all");
   const [sortKey, setSortKey] = useState<SortKey>("due_date");
@@ -78,7 +80,18 @@ export default function TasksPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [createOpen, setCreateOpen] = useState(false);
 
-  const tasks = allTasks as Task[];
+  if (!project) {
+    return (
+      <div className="p-6">
+        <EmptyState
+          icon={<ArrowLeft className="h-6 w-6" />}
+          title="Project not found"
+          description={`No project with ID "${projectId}" exists.`}
+          action={{ label: "Back to Projects", onClick: () => window.history.back() }}
+        />
+      </div>
+    );
+  }
 
   const filtered = useMemo(() => {
     let result = [...tasks];
@@ -94,11 +107,6 @@ export default function TasksPage() {
         ? result.filter(t => !t.assignee_id)
         : result.filter(t => t.assignee_id === assigneeFilter);
     }
-    if (projectFilter !== "all") {
-      result = projectFilter === "none"
-        ? result.filter(t => !t.project_id)
-        : result.filter(t => t.project_id === projectFilter);
-    }
     if (sourceFilter !== "all") result = result.filter(t => t.source === sourceFilter);
     if (dateFilter !== "all") {
       if (dateFilter === "overdue") {
@@ -113,86 +121,87 @@ export default function TasksPage() {
     result.sort((a, b) => {
       let cmp = 0;
       switch (sortKey) {
-        case "title":
-          cmp = a.title.localeCompare(b.title);
-          break;
-        case "priority":
-          cmp = (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9);
-          break;
-        case "status":
-          cmp = a.status.localeCompare(b.status);
-          break;
-        case "assignee":
-          cmp = getUserName(a.assignee_id).localeCompare(getUserName(b.assignee_id));
-          break;
-        case "due_date":
-          cmp = new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
-          break;
+        case "title": cmp = a.title.localeCompare(b.title); break;
+        case "priority": cmp = (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9); break;
+        case "status": cmp = a.status.localeCompare(b.status); break;
+        case "assignee": cmp = getUserName(a.assignee_id).localeCompare(getUserName(b.assignee_id)); break;
+        case "due_date": cmp = new Date(a.due_date).getTime() - new Date(b.due_date).getTime(); break;
       }
       return sortDir === "asc" ? cmp : -cmp;
     });
 
     return result;
-  }, [tasks, search, statusFilter, priorityFilter, assigneeFilter, projectFilter, sourceFilter, dateFilter, sortKey, sortDir]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tasks, search, statusFilter, priorityFilter, assigneeFilter, sourceFilter, dateFilter, sortKey, sortDir]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const pageData = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
   function toggleSort(key: SortKey) {
-    if (sortKey === key) {
-      setSortDir(d => (d === "asc" ? "desc" : "asc"));
-    } else {
-      setSortKey(key);
-      setSortDir("asc");
-    }
+    if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
+    else { setSortKey(key); setSortDir("asc"); }
     setPage(1);
   }
 
   function toggleSelect(id: string) {
-    setSelected(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+    setSelected(prev => { const next = new Set(prev); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   }
 
   function toggleAll() {
-    if (selected.size === pageData.length) {
-      setSelected(new Set());
-    } else {
-      setSelected(new Set(pageData.map(t => t.id)));
-    }
+    if (selected.size === pageData.length) setSelected(new Set());
+    else setSelected(new Set(pageData.map(t => t.id)));
   }
 
   const SortButton = ({ label, field }: { label: string; field: SortKey }) => (
-    <button
-      className="inline-flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors"
-      onClick={() => toggleSort(field)}
-    >
+    <button className="inline-flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors" onClick={() => toggleSort(field)}>
       {label}
       <ArrowUpDown className="h-3 w-3" />
     </button>
   );
 
+  const percent = project.task_count > 0 ? Math.round((project.completed_task_count / project.task_count) * 100) : 0;
+  const barColor = percent === 100 ? "bg-[var(--accent-green,#3FB950)]" : percent > 0 ? "bg-[var(--accent-blue,#58A6FF)]" : "bg-[var(--text-muted)]";
+  const projectStatus = statusConfig[project.status];
+  const ownerName = getUserName(project.owner_id);
+
   return (
     <div className="flex flex-col gap-4 p-6">
-      <PageHeader
-        title="Tasks"
-        subtitle="Assign and track tasks across your team"
-        actions={
-          <div className="flex items-center gap-2">
-            <TaskViewSwitcher />
-            <Button size="sm" onClick={() => setCreateOpen(true)}>
-              <Plus className="h-4 w-4" /> New Task
-            </Button>
-          </div>
-        }
-        className="px-0 py-0 border-0"
-      />
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-sm">
+        <Link href={`/${locale}/tasks/`} className="text-[var(--text-secondary)] hover:text-[var(--accent-blue)] transition-colors">
+          Tasks
+        </Link>
+        <span className="text-[var(--text-muted)]">/</span>
+        <Link href={`/${locale}/tasks/projects/`} className="text-[var(--text-secondary)] hover:text-[var(--accent-blue)] transition-colors">
+          Projects
+        </Link>
+        <span className="text-[var(--text-muted)]">/</span>
+        <span className="text-[var(--text-primary)] font-medium">{project.name}</span>
+      </div>
+
+      {/* Project header */}
+      <div className="rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="h-3 w-3 rounded-full shrink-0" style={{ backgroundColor: project.color }} />
+          <h2 className="text-lg font-semibold text-[var(--text-primary)]">{project.name}</h2>
+          <Badge variant={projectStatus.variant}>{projectStatus.label}</Badge>
+        </div>
+        {project.description && (
+          <p className="text-sm text-[var(--text-secondary)] mb-3">{project.description}</p>
+        )}
+        <div className="flex items-center gap-6 text-sm text-[var(--text-muted)] mb-2">
+          <span>Owner: {ownerName}</span>
+          {project.due_date && <span>Due: {formatShortDate(project.due_date)}</span>}
+          <span>{project.completed_task_count}/{project.task_count} tasks done</span>
+        </div>
+        <div className="h-2 w-full rounded-full bg-[var(--bg-tertiary)]">
+          <div className={`h-2 rounded-full ${barColor} transition-all duration-300`} style={{ width: `${percent}%` }} />
+        </div>
+      </div>
 
       <TaskProgressSummary tasks={tasks} />
 
+      {/* Filters */}
       <TaskFilterBar
         search={search}
         onSearchChange={v => { setSearch(v); setPage(1); }}
@@ -202,25 +211,28 @@ export default function TasksPage() {
         onPriorityChange={v => { setPriorityFilter(v); setPage(1); }}
         assigneeFilter={assigneeFilter}
         onAssigneeChange={v => { setAssigneeFilter(v); setPage(1); }}
-        projectFilter={projectFilter}
-        onProjectChange={v => { setProjectFilter(v); setPage(1); }}
+        projectFilter={projectId}
+        onProjectChange={() => {}}
         sourceFilter={sourceFilter}
         onSourceChange={v => { setSourceFilter(v); setPage(1); }}
         dateFilter={dateFilter}
         onDateChange={v => { setDateFilter(v); setPage(1); }}
+        lockedProject={projectId}
       />
 
-      <div className="text-xs text-[var(--text-muted)]">{filtered.length} task{filtered.length !== 1 ? "s" : ""} found</div>
+      <div className="flex items-center justify-between">
+        <span className="text-xs text-[var(--text-muted)]">{filtered.length} task{filtered.length !== 1 ? "s" : ""} found</span>
+        <Button size="sm" onClick={() => setCreateOpen(true)}>
+          <Plus className="h-4 w-4" /> Add Task
+        </Button>
+      </div>
 
       {/* Table */}
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead className="w-10">
-              <Checkbox
-                checked={pageData.length > 0 && selected.size === pageData.length}
-                onCheckedChange={toggleAll}
-              />
+              <Checkbox checked={pageData.length > 0 && selected.size === pageData.length} onCheckedChange={toggleAll} />
             </TableHead>
             <TableHead className="w-16">#</TableHead>
             <TableHead><SortButton label="Title" field="title" /></TableHead>
@@ -237,10 +249,7 @@ export default function TasksPage() {
             return (
               <TableRow key={task.id} className="cursor-pointer">
                 <TableCell onClick={e => e.stopPropagation()}>
-                  <Checkbox
-                    checked={selected.has(task.id)}
-                    onCheckedChange={() => toggleSelect(task.id)}
-                  />
+                  <Checkbox checked={selected.has(task.id)} onCheckedChange={() => toggleSelect(task.id)} />
                 </TableCell>
                 <TableCell className="text-xs text-[var(--text-muted)] font-mono">
                   {task.id.replace("task_", "")}
@@ -272,16 +281,7 @@ export default function TasksPage() {
                   </span>
                 </TableCell>
                 <TableCell>
-                  {task.source !== "manual" && (
-                    <div className="relative group">
-                      {sourceIcons[task.source] ?? null}
-                      <div className="pointer-events-none absolute bottom-full start-1/2 -translate-x-1/2 mb-1.5 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                        <div className="rounded-md bg-[var(--bg-elevated,#21262D)] px-2 py-1 text-xs text-[var(--text-primary)] shadow-lg whitespace-nowrap">
-                          {sourceLabels[task.source]}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  {task.source !== "manual" && sourceIcons[task.source]}
                 </TableCell>
               </TableRow>
             );
@@ -289,13 +289,12 @@ export default function TasksPage() {
         </TableBody>
       </Table>
 
-      {/* Pagination */}
-      <div className="flex items-center justify-between">
-        <span className="text-xs text-[var(--text-muted)]">
-          Page {page} of {totalPages}
-        </span>
-        <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
-      </div>
+      {totalPages > 1 && (
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-[var(--text-muted)]">Page {page} of {totalPages}</span>
+          <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+        </div>
+      )}
 
       <TaskBulkActionsBar
         selectedCount={selected.size}
@@ -306,7 +305,7 @@ export default function TasksPage() {
         onClear={() => setSelected(new Set())}
       />
 
-      <CreateTaskModal open={createOpen} onOpenChange={setCreateOpen} />
+      <CreateTaskModal open={createOpen} onOpenChange={setCreateOpen} defaultProjectId={projectId} />
     </div>
   );
 }

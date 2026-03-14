@@ -511,3 +511,71 @@ export interface KBSearchGap {
   has_results: boolean;
   result_count: number;
 }
+
+export type TaskStatus = "todo" | "in_progress" | "in_review" | "done" | "cancelled";
+export type TaskPriority = "critical" | "high" | "medium" | "low";
+export type TaskSource = "manual" | "audit" | "capa" | "ticket" | "automation";
+
+export interface Subtask {
+  id: string;
+  title: string;
+  status: "todo" | "done";
+  assignee_id?: string | null;
+  due_date?: string;
+  completed_at?: string | null;
+  order: number;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  description?: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  assignee_id: string | null;
+  reporter_id?: string;
+  project_id?: string | null;
+  location_id: string;
+  due_date: string;
+  created_at: string;
+  updated_at?: string;
+  completed_at?: string | null;
+  tags?: string[];
+  subtasks?: Subtask[];
+  source: TaskSource;
+  linked_audit_id?: string | null;
+  linked_audit_item?: string | null;
+  linked_capa_id?: string | null;
+  linked_ticket_id?: string | null;
+  linked_sop_id?: string | null;
+  attachments?: Array<{ name: string; type: string; size: string }>;
+  comments_count?: number;
+  watchers?: string[];
+  estimated_hours?: number;
+  custom_fields?: Record<string, string>;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  description?: string;
+  status: "active" | "completed" | "on_hold" | "archived";
+  owner_id: string;
+  location_id?: string;
+  created_at: string;
+  updated_at?: string;
+  due_date?: string;
+  task_count: number;
+  completed_task_count: number;
+  color: string;
+  tags?: string[];
+}
+
+export interface TaskComment {
+  id: string;
+  task_id: string;
+  author_id: string;
+  text: string;
+  created_at: string;
+  is_system?: boolean;
+}

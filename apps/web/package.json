@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uniflo/mock-data": "workspace:*",
     "@uniflo/ui": "workspace:*",
     "@uniflo/i18n": "workspace:*",
     "lucide-react": "^0.460.0",
