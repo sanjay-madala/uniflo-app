@@ -83,3 +83,4 @@ export { slaPolicies, slaBreaches, slaComplianceTrend, slaComplianceReport, slaI
 export { mobileKpiCards, mobileTodaysSchedule, mobileActivityFeed } from "./mobile-dashboard";
 export { goals, goalDashboardKPIs, teamGoalSummaries } from "./goals";
 export { default as csatData } from "./csat.json";
+export { broadcasts, broadcastTemplates, readReceipts, locationReceiptSummaries, regions } from "./broadcasts";

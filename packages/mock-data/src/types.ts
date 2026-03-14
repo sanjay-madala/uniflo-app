@@ -1231,3 +1231,306 @@ export interface CSATAlert {
   triggered_capa_id?: string | null;
   contributing_ticket_ids: string[];
 }
+
+export type BroadcastStatus = "draft" | "scheduled" | "sent" | "failed";
+export type BroadcastPriority = "normal" | "urgent" | "critical";
+
+export interface BroadcastAudience {
+  region_ids: string[];
+  zone_ids: string[];
+  store_ids: string[];
+  role_ids: string[];
+  total_recipients: number;
+}
+
+export interface BroadcastAttachment {
+  id: string;
+  name: string;
+  type: "pdf" | "image" | "document" | "spreadsheet";
+  size: string;
+  url: string;
+}
+
+export interface BroadcastStats {
+  total_recipients: number;
+  delivered: number;
+  read: number;
+  acknowledged: number;
+  failed: number;
+  open_rate: number;
+  ack_rate: number;
+}
+
+export interface Broadcast {
+  id: string;
+  title: string;
+  body_html: string;
+  body_plain: string;
+  status: BroadcastStatus;
+  priority: BroadcastPriority;
+  audience: BroadcastAudience;
+  acknowledgment_required: boolean;
+  template_id: string | null;
+  attachments: BroadcastAttachment[];
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  scheduled_at: string | null;
+  sent_at: string | null;
+  stats: BroadcastStats | null;
+  tags: string[];
+  category?: string;
+}
+
+// ─── Read Receipt Types ──────────────────────────────────────
+
+export type ReadReceiptStatus = "undelivered" | "delivered" | "read" | "acknowledged";
+
+export interface ReadReceipt {
+  id: string;
+  broadcast_id: string;
+  user_id: string;
+  user_name: string;
+  user_role: string;
+  location_id: string;
+  location_name: string;
+  region_id: string;
+  region_name: string;
+  status: ReadReceiptStatus;
+  delivered_at: string | null;
+  read_at: string | null;
+  acknowledged_at: string | null;
+}
+
+export interface LocationReceiptSummary {
+  location_id: string;
+  location_name: string;
+  region_id: string;
+  region_name: string;
+  zone_id: string;
+  zone_name: string;
+  total_staff: number;
+  delivered: number;
+  read: number;
+  acknowledged: number;
+  compliance_pct: number;
+}
+
+// ─── Template Types ──────────────────────────────────────────
+
+export type TemplateCategory =
+  | "policy_update"
+  | "safety_alert"
+  | "operational_change"
+  | "event_announcement"
+  | "training_reminder"
+  | "compliance_notice"
+  | "general";
+
+export interface BroadcastTemplate {
+  id: string;
+  name: string;
+  description: string;
+  category: TemplateCategory;
+  body_html: string;
+  body_preview: string;
+  thumbnail_color: string;
+  tags: string[];
+  usage_count: number;
+  created_at: string;
+  updated_at: string;
+  is_system: boolean;
+  acknowledgment_default: boolean;
+  priority_default: BroadcastPriority;
+}
+
+// ─── Location Hierarchy (for audience selector) ──────────────
+
+export interface Region {
+  id: string;
+  name: string;
+  zones: Zone[];
+}
+
+export interface Zone {
+  id: string;
+  name: string;
+  region_id: string;
+  stores: Store[];
+}
+
+export interface Store {
+  id: string;
+  name: string;
+  zone_id: string;
+  region_id: string;
+  staff_count: number;
+}
+
+// ====================================================================
+// GOALS & OKR TYPES (EPIC-012)
+// ====================================================================
+
+// -- Goal Status --
+export type GoalStatus = "draft" | "active" | "achieved" | "missed" | "archived";
+export type GoalHealthStatus = "on_track" | "at_risk" | "behind" | "achieved";
+export type GoalTimeframe = "Q1" | "Q2" | "Q3" | "Q4" | "annual" | "custom";
+export type GoalLevel = "organization" | "team" | "individual";
+
+// -- Key Result Tracking --
+export type KRTrackingType = "manual" | "auto";
+export type KRUnit = "percent" | "number" | "currency" | "boolean" | "score";
+export type KRDirection = "increase" | "decrease" | "maintain";
+
+// -- Data Source for Auto-Update --
+export type KRDataSource =
+  | "audit_compliance_score"
+  | "audit_pass_rate"
+  | "csat_score"
+  | "csat_response_rate"
+  | "ticket_resolution_time"
+  | "ticket_sla_compliance"
+  | "ticket_volume"
+  | "capa_closure_rate"
+  | "capa_overdue_count"
+  | "task_completion_rate"
+  | "task_overdue_count"
+  | "training_completion_rate"
+  | "training_pass_rate"
+  | "sop_acknowledgment_rate"
+  | "custom_metric";
+
+// -- Key Result Progress Entry --
+export interface KRProgressEntry {
+  id: string;
+  key_result_id: string;
+  value: number;
+  previous_value: number;
+  source: "manual" | "auto";
+  source_label?: string;
+  source_entity_id?: string;
+  note?: string;
+  recorded_at: string;
+  recorded_by?: string;
+}
+
+// -- Key Result --
+export interface KeyResult {
+  id: string;
+  goal_id: string;
+  title: string;
+  description?: string;
+  order: number;
+
+  // Measurement
+  unit: KRUnit;
+  direction: KRDirection;
+  start_value: number;
+  current_value: number;
+  target_value: number;
+  progress_pct: number;
+
+  // Tracking source
+  tracking_type: KRTrackingType;
+  data_source?: KRDataSource;
+  data_source_label?: string;
+  data_source_module?: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
+  last_auto_update?: string;
+
+  // Status
+  health: GoalHealthStatus;
+  owner_id: string;
+
+  // History
+  progress_history: KRProgressEntry[];
+
+  // Links
+  linked_audit_ids?: string[];
+  linked_ticket_ids?: string[];
+  linked_capa_ids?: string[];
+  linked_training_ids?: string[];
+  linked_sop_ids?: string[];
+
+  created_at: string;
+  updated_at: string;
+}
+
+// -- Goal (Objective) --
+export interface Goal {
+  id: string;
+  title: string;
+  description?: string;
+  level: GoalLevel;
+  status: GoalStatus;
+  health: GoalHealthStatus;
+
+  // Ownership
+  owner_id: string;
+  owner_name: string;
+  team_id?: string;
+  team_name?: string;
+
+  // Timeframe
+  timeframe: GoalTimeframe;
+  timeframe_label: string;
+  start_date: string;
+  end_date: string;
+
+  // Progress
+  progress_pct: number;
+  key_results: KeyResult[];
+
+  // Hierarchy
+  parent_goal_id?: string | null;
+  child_goal_ids?: string[];
+
+  // Tags & Categorization
+  tags?: string[];
+  category?: string;
+
+  // Cross-module summary
+  linked_modules: GoalModuleLink[];
+
+  created_at: string;
+  updated_at: string;
+}
+
+// -- Module Link Summary --
+export interface GoalModuleLink {
+  module: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
+  label: string;
+  current_value: number | string;
+  trend: number;
+  entity_count: number;
+  last_updated: string;
+  link_to: string;
+}
+
+// -- Goal Dashboard KPIs --
+export interface GoalDashboardKPIs {
+  total_goals: number;
+  active_goals: number;
+  achieved_goals: number;
+  on_track_pct: number;
+  at_risk_count: number;
+  behind_count: number;
+  avg_progress: number;
+  total_key_results: number;
+  auto_updated_krs: number;
+}
+
+// -- Team Goal Summary --
+export interface TeamGoalSummary {
+  team_id: string;
+  team_name: string;
+  owner_id: string;
+  owner_name: string;
+  owner_avatar: string | null;
+  goal_count: number;
+  avg_progress: number;
+  on_track: number;
+  at_risk: number;
+  behind: number;
+  achieved: number;
+  goals: Goal[];
+}
