@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import { PageHeader, Button, Tabs, TabsList, TabsTrigger, TabsContent } from "@uniflo/ui";
-import { Download, ChevronRight } from "lucide-react";
+import { Download, ChevronRight, Home } from "lucide-react";
 import { DashboardDateRangePicker } from "@/components/dashboard/DashboardDateRangePicker";
 import { DashboardLocationFilter } from "@/components/dashboard/DashboardLocationFilter";
 import { ExportModal } from "@/components/analytics/ExportModal";
@@ -23,6 +25,8 @@ interface AnalyticsPageShellProps {
 }
 
 export function AnalyticsPageShell({ title, breadcrumb, tabs, children }: AnalyticsPageShellProps) {
+  const params = useParams();
+  const locale = (params.locale as string) || "en";
   const [datePreset, setDatePreset] = useState<DateRangePreset>("last_30_days");
   const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null);
   const [isExportOpen, setIsExportOpen] = useState(false);
@@ -33,7 +37,13 @@ export function AnalyticsPageShell({ title, breadcrumb, tabs, children }: Analyt
         title={title}
         breadcrumb={
           <div className="flex items-center gap-1 text-xs text-[var(--text-muted)]">
-            <span>Analytics</span>
+            <Link href={`/${locale}/dashboard/`} className="hover:text-[var(--accent-blue)] transition-colors">
+              <Home size={12} />
+            </Link>
+            <ChevronRight size={12} />
+            <Link href={`/${locale}/analytics/`} className="hover:text-[var(--accent-blue)] transition-colors">
+              Analytics
+            </Link>
             <ChevronRight size={12} />
             <span className="text-[var(--text-secondary)]">{breadcrumb}</span>
           </div>

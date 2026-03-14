@@ -23,10 +23,10 @@ interface AuditComplianceHeatmapTableProps {
   months?: string[];
 }
 
-function getScorePillStyle(score: number): { backgroundColor: string; color: string; border: string } {
-  if (score >= 90) return { backgroundColor: "color-mix(in srgb, var(--accent-green) 15%, transparent)", color: "var(--accent-green)", border: "1px solid color-mix(in srgb, var(--accent-green) 30%, transparent)" };
-  if (score >= 75) return { backgroundColor: "color-mix(in srgb, var(--accent-yellow) 15%, transparent)", color: "var(--accent-yellow)", border: "1px solid color-mix(in srgb, var(--accent-yellow) 30%, transparent)" };
-  return { backgroundColor: "color-mix(in srgb, var(--accent-red) 15%, transparent)", color: "var(--accent-red)", border: "1px solid color-mix(in srgb, var(--accent-red) 30%, transparent)" };
+function getScorePillStyle(score: number): { backgroundColor: string; color: string; border: string; fontWeight: number } {
+  if (score >= 90) return { backgroundColor: "color-mix(in srgb, var(--accent-green) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-green) 30%, transparent)", fontWeight: 600 };
+  if (score >= 75) return { backgroundColor: "color-mix(in srgb, var(--accent-yellow) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-yellow) 30%, transparent)", fontWeight: 600 };
+  return { backgroundColor: "color-mix(in srgb, var(--accent-red) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-red) 30%, transparent)", fontWeight: 600 };
 }
 
 export function AuditComplianceHeatmapTable({
