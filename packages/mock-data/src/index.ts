@@ -18,10 +18,18 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import { goals, goalDashboardKPIs, teamGoalSummaries } from './goals';
+import slaData from './slaPolicies.json';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
 const ruleExecutions = automationRulesData.executions;
+
+const slaPolicies = slaData.policies;
+const slaBreaches = slaData.breaches;
+const slaComplianceTrend = slaData.complianceTrend;
+const slaComplianceReport = slaData.complianceReport;
+const slaItemStatuses = slaData.itemStatuses;
 
 export {
   users,
@@ -44,6 +52,14 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  goals,
+  goalDashboardKPIs,
+  teamGoalSummaries,
+  slaPolicies,
+  slaBreaches,
+  slaComplianceTrend,
+  slaComplianceReport,
+  slaItemStatuses,
 };
 
 export * from './types';
