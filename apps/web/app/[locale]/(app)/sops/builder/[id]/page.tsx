@@ -14,7 +14,6 @@ import {
   Switch,
   Checkbox,
   FormSection,
-  ConfirmDialog,
 } from "@uniflo/ui";
 import { Save, Eye, Upload, Check, History } from "lucide-react";
 import { SOPStepList } from "@/components/sops/SOPStepList";
@@ -55,7 +54,6 @@ export default function SOPBuilderEditPage() {
   const [showSaveFlash, setShowSaveFlash] = useState(false);
   const [versionDrawerOpen, setVersionDrawerOpen] = useState(false);
   const [publishModalOpen, setPublishModalOpen] = useState(false);
-  const [deleteStepDialogOpen, setDeleteStepDialogOpen] = useState(false);
 
   // Track dirty state
   useEffect(() => {
@@ -299,14 +297,6 @@ export default function SOPBuilderEditPage() {
         sop={sop}
       />
 
-      <ConfirmDialog
-        open={deleteStepDialogOpen}
-        onOpenChange={setDeleteStepDialogOpen}
-        title="Delete step?"
-        description="This action cannot be undone."
-        confirmLabel="Delete"
-        onConfirm={() => setDeleteStepDialogOpen(false)}
-      />
     </div>
   );
 }

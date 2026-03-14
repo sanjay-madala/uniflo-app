@@ -107,12 +107,12 @@ export function SOPAcknowledgmentPanel({ acknowledgments }: SOPAcknowledgmentPan
       {/* Summary KPIs */}
       <div className="grid grid-cols-3 gap-3">
         <KPICard title="Total Assigned" value={enriched.length} />
-        <div className="rounded-lg border border-gray-700 bg-gray-900 p-6">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-secondary)] p-6">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-400">Acknowledged</p>
+              <p className="text-sm font-medium text-[var(--text-secondary)]">Acknowledged</p>
               <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-gray-100">{acknowledgedCount}</span>
+                <span className="text-3xl font-bold text-[var(--text-primary)]">{acknowledgedCount}</span>
                 <span className="text-lg text-[var(--accent-green)]">({percentage}%)</span>
               </div>
             </div>
