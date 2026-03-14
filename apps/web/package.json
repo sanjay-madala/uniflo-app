@@ -14,9 +14,9 @@
     "test:e2e:headed": "playwright test --config=playwright.config.ts --headed"
   },
   "dependencies": {
+    "@uniflo/i18n": "workspace:*",
     "@uniflo/mock-data": "workspace:*",
     "@uniflo/ui": "workspace:*",
-    "@uniflo/i18n": "workspace:*",
     "lucide-react": "^0.460.0",
     "next": "15.1.7",
     "next-intl": "^3.26.0",
@@ -29,6 +29,8 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "eslint": "^10.0.3",
+    "eslint-config-next": "^16.1.6",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0"
   }
