@@ -47,6 +47,8 @@ const severityBadgeVariant: Record<AuditSeverity, "destructive" | "warning" | "b
   observation: "default",
 };
 
+export function generateStaticParams() { return [{id:"audit_001"},{id:"audit_002"},{id:"audit_003"},{id:"audit_004"},{id:"audit_005"}] }
+
 export default function AuditResultsPage() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
   const [expandedFindings, setExpandedFindings] = useState<Set<string>>(new Set());

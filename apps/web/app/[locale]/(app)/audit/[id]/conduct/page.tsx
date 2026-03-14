@@ -75,6 +75,8 @@ function computeScore(
   return totalWeight > 0 ? Math.round((weightedScore / totalWeight) * 100) : 0;
 }
 
+export function generateStaticParams() { return [{id:"audit_001"},{id:"audit_002"},{id:"audit_003"},{id:"audit_004"},{id:"audit_005"}] }
+
 export default function AuditConductPage() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
   const router = useRouter();

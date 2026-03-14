@@ -22,6 +22,8 @@ function getUserName(id: string): string {
   return u?.name ?? "Unknown";
 }
 
+export function generateStaticParams() { return [{id:"audit_001"},{id:"audit_002"},{id:"audit_003"},{id:"audit_004"},{id:"audit_005"}] }
+
 export default function AuditDetailPage() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());

@@ -19,6 +19,8 @@ import { VisibilityToggle } from "@/components/knowledge/VisibilityToggle";
 import { MediaUploadBlock } from "@/components/knowledge/MediaUploadBlock";
 import { KBAICopilotPanel } from "@/components/knowledge/KBAICopilotPanel";
 
+export function generateStaticParams() { return [{articleId:"kb_001"},{articleId:"kb_002"},{articleId:"kb_003"},{articleId:"kb_004"},{articleId:"kb_005"}] }
+
 export default function ArticleEditPage() {
   const { locale, articleId } = useParams<{ locale: string; articleId: string }>();
 

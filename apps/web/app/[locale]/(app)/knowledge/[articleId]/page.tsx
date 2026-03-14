@@ -26,6 +26,8 @@ function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+export function generateStaticParams() { return [{articleId:"kb_001"},{articleId:"kb_002"},{articleId:"kb_003"},{articleId:"kb_004"},{articleId:"kb_005"}] }
+
 export default function ArticleReadPage() {
   const { locale, articleId } = useParams<{ locale: string; articleId: string }>();
   const [activeHeadingId, setActiveHeadingId] = useState<string>("");

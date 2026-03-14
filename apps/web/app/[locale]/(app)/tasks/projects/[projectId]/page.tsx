@@ -62,6 +62,8 @@ const statusConfig: Record<Project["status"], { label: string; variant: "blue" |
   archived: { label: "Archived", variant: "default" },
 };
 
+export function generateStaticParams() { return [{projectId:"proj_001"},{projectId:"proj_002"},{projectId:"proj_003"}] }
+
 export default function ProjectScopedTasksPage() {
   const { locale, projectId } = useParams<{ locale: string; projectId: string }>();
 

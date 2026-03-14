@@ -10,6 +10,8 @@ import { ArrowLeft, ChevronRight, CheckCircle, XCircle, Clock } from "lucide-rea
 import { CAPAStatusTimeline } from "@/components/capa/CAPAStatusTimeline";
 import { EffectivenessForm } from "@/components/capa/EffectivenessForm";
 
+export function generateStaticParams() { return [{id:"capa_001"},{id:"capa_002"},{id:"capa_003"},{id:"capa_004"},{id:"capa_005"}] }
+
 export default function EffectivenessReviewPage() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
 

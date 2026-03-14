@@ -9,6 +9,8 @@ import { PageHeader } from "@uniflo/ui";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export function generateStaticParams() { return [{ruleId:"rule_001"},{ruleId:"rule_002"},{ruleId:"rule_003"}] }
+
 export default function EditRulePage() {
   const { locale, ruleId } = useParams<{ locale: string; ruleId: string }>();
   const router = useRouter();

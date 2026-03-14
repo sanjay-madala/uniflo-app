@@ -62,6 +62,8 @@ function timeAgo(dateStr: string | null): string {
   return `${diffDays}d ago`;
 }
 
+export function generateStaticParams() { return [{ruleId:"rule_001"},{ruleId:"rule_002"},{ruleId:"rule_003"}] }
+
 export default function RuleDetailPage() {
   const { locale, ruleId } = useParams<{ locale: string; ruleId: string }>();
   const allRules = mockRules as AutomationRule[];
