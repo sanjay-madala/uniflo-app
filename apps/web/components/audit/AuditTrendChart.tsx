@@ -24,7 +24,7 @@ export function AuditTrendChart({ data, height = 300, className }: AuditTrendCha
         dataKey="score"
         xAxisKey="name"
         height={height}
-        color="#58A6FF"
+        color="var(--accent-blue)"
         fill
         showLegend={false}
         showGrid

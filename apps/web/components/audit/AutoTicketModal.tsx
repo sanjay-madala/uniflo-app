@@ -495,8 +495,8 @@ export function AutoTicketModal({
 
         {/* Skip confirmation inline warning */}
         {showSkipConfirm && (
-          <div className="rounded-lg border border-[var(--accent-yellow, #EAB308)]/30 bg-[var(--accent-yellow, #EAB308)]/5 p-3 flex items-start gap-2">
-            <AlertTriangle className="h-4 w-4 text-[var(--accent-yellow, #EAB308)] shrink-0 mt-0.5" />
+          <div className="rounded-lg border border-[var(--accent-yellow)]/30 bg-[var(--accent-yellow)]/5 p-3 flex items-start gap-2">
+            <AlertTriangle className="h-4 w-4 text-[var(--accent-yellow)] shrink-0 mt-0.5" />
             <p className="text-xs text-[var(--text-secondary)]">
               Skipping will record the audit but no follow-up tickets or CAPA actions will be created.
               You can always create them manually later.
