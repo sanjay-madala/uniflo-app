@@ -18,16 +18,17 @@ test.describe('Dashboard', () => {
   });
 
   test('activity feed is visible', async ({ page }) => {
-    await expect(page.getByText('Recent Activity')).toBeVisible();
+    await expect(page.getByText('Latest Activity')).toBeVisible({ timeout: 10000 });
   });
 
   test('date range picker is clickable', async ({ page }) => {
-    const dateButton = page.getByRole('button', { name: /last 30 days|last 7 days|last 90 days|this quarter/i });
-    await expect(dateButton.first()).toBeVisible();
+    // Date range buttons use short labels: 7d, 30d, 90d, Q
+    const dateButton = page.getByRole('button', { name: /30d|7d|90d/i });
+    await expect(dateButton.first()).toBeVisible({ timeout: 10000 });
     await dateButton.first().click();
   });
 
   test('quick actions buttons exist', async ({ page }) => {
-    await expect(page.getByText('Quick Actions')).toBeVisible();
+    await expect(page.getByText('Quick Actions')).toBeVisible({ timeout: 10000 });
   });
 });

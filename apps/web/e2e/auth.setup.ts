@@ -2,7 +2,14 @@
  * Shared auth helper for Playwright tests.
  * Creates a browser context with localStorage pre-populated
  * so the AuthGuard allows access to protected pages.
+ *
+ * Dynamically reads baseURL from PLAYWRIGHT_BASE_URL env var
+ * to support both local (localhost:4173) and live (netlify) testing.
  */
+
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4173';
+const origin = new URL(baseURL).origin;
+
 export const AUTH_STORAGE_STATE = {
   cookies: [] as Array<{
     name: string;
@@ -16,7 +23,7 @@ export const AUTH_STORAGE_STATE = {
   }>,
   origins: [
     {
-      origin: 'http://localhost:4173',
+      origin,
       localStorage: [
         { name: 'uniflo-auth', value: 'true' },
         { name: 'uniflo-role', value: 'admin' },
