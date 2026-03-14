@@ -22,3 +22,5 @@ export { users, organizations, tickets, audits, sops, capas, tasks, automationRu
   kbCategories,
   kbCollections,
 } from './knowledge';
+export { default as projects } from "./projects.json";
+export { default as taskComments } from "./task-comments.json";
