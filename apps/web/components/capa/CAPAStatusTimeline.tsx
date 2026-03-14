@@ -25,15 +25,15 @@ const STAGES: { key: CAPAStatus; label: string; index: number }[] = [
 ];
 
 const CURRENT_COLORS: Record<CAPAStatus, string> = {
-  open: "#58A6FF",
-  in_progress: "#BC8CFF",
-  verified: "#D29922",
-  closed: "#3FB950",
+  open: "var(--accent-blue)",
+  in_progress: "var(--accent-purple)",
+  verified: "var(--accent-amber)",
+  closed: "var(--accent-green)",
 };
 
-const SUCCESS_COLOR = "#3FB950";
-const BORDER_COLOR = "#30363D";
-const MUTED_COLOR = "#484F58";
+const SUCCESS_COLOR = "var(--accent-green)";
+const BORDER_COLOR = "var(--border-default)";
+const MUTED_COLOR = "var(--text-muted)";
 
 function formatDate(dateStr?: string): string {
   if (!dateStr) return "---";
