@@ -38,6 +38,37 @@ html:not(.dark) body {
   --foreground: #111827;
 }
 
+/* Portal Theme (customer-facing pages) */
+.portal-theme {
+  --portal-bg: #FFFFFF;
+  --portal-surface: #F9FAFB;
+  --portal-surface-elevated: #FFFFFF;
+  --portal-border: #E5E7EB;
+  --portal-text-primary: #111827;
+  --portal-text-secondary: #6B7280;
+  --portal-text-muted: #9CA3AF;
+  --portal-accent: #2563EB;
+  --portal-accent-hover: #1D4ED8;
+  --portal-success: #059669;
+  --portal-warning: #D97706;
+  --portal-danger: #DC2626;
+}
+
+.dark .portal-theme {
+  --portal-bg: #0D1117;
+  --portal-surface: #161B22;
+  --portal-surface-elevated: #1C2128;
+  --portal-border: #30363D;
+  --portal-text-primary: #E6EDF3;
+  --portal-text-secondary: #8B949E;
+  --portal-text-muted: #484F58;
+  --portal-accent: #58A6FF;
+  --portal-accent-hover: #79B8FF;
+  --portal-success: #3FB950;
+  --portal-warning: #D29922;
+  --portal-danger: #F85149;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
