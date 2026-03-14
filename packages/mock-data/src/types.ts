@@ -455,3 +455,59 @@ export interface RuleTemplate {
   tags: string[];
   icon: string;
 }
+
+export interface KBArticle {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  body_html: string;
+  status: KBArticleStatus;
+  visibility: KBVisibility;
+  category_id: string;
+  collection_ids: string[];
+  tags: string[];
+  author_id: string;
+  last_edited_by: string;
+  sop_source_id: string | null;
+  sop_source_name: string | null;
+  featured_image: string | null;
+  table_of_contents: TOCHeading[];
+  created_at: string;
+  updated_at: string;
+  published_at: string | null;
+  views_count: number;
+  helpful_count: number;
+  not_helpful_count: number;
+}
+
+export interface TOCHeading {
+  id: string;
+  text: string;
+  level: 1 | 2 | 3;
+}
+
+export interface ArticleAnalytics {
+  article_id: string;
+  period: string;
+  views: number;
+  unique_views: number;
+  helpful_votes: number;
+  not_helpful_votes: number;
+  avg_read_time_seconds: number;
+  referral_source: ArticleReferralSource[];
+}
+
+export interface ArticleReferralSource {
+  source: "search" | "direct" | "ticket_sidebar" | "sop_link" | "external";
+  count: number;
+}
+
+export interface KBSearchGap {
+  id: string;
+  query: string;
+  search_count: number;
+  last_searched_at: string;
+  has_results: boolean;
+  result_count: number;
+}
