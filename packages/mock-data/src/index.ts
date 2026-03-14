@@ -17,3 +17,8 @@ const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
 const ruleExecutions = automationRulesData.executions;
 export { users, organizations, tickets, audits, sops, capas, tasks, automationRules, ruleTemplates, ruleExecutions };
+
+  kbArticles,
+  kbCategories,
+  kbCollections,
+} from './knowledge';
