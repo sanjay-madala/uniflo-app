@@ -18,6 +18,7 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import { goals, goalDashboardKPIs, teamGoalSummaries } from './goals';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
@@ -44,6 +45,9 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  goals,
+  goalDashboardKPIs,
+  teamGoalSummaries,
 };
 
 export * from './types';
