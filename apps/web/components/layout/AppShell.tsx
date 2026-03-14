@@ -17,7 +17,7 @@ import {
 const commandItems = (locale: string, navigate: (path: string) => void): CommandItem[] => [
   { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/dashboard/`) },
   { id: "tickets", label: "Tickets", icon: <Ticket size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/tickets/`) },
-  { id: "sops", label: "SOPs", icon: <FileText size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/sop/`) },
+  { id: "sops", label: "SOPs", icon: <FileText size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/sops/`) },
   { id: "audits", label: "Audits", icon: <ClipboardCheck size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/audit/`) },
   { id: "capa", label: "CAPA", icon: <AlertTriangle size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/capa/`) },
   { id: "tasks", label: "Tasks", icon: <CheckSquare size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/tasks/`) },

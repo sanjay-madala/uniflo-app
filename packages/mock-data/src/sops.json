@@ -1,5 +1,2250 @@
 [
-  {"id":"sop_001","title":"Food Safety & Handling Procedure","version":"2.1","status":"published","category":"Safety","steps":5,"location_ids":["loc_001","loc_002","loc_003"],"created_by":"usr_002","last_updated":"2026-02-15T10:00:00Z"},
-  {"id":"sop_002","title":"Customer Complaint Resolution","version":"1.3","status":"published","category":"Customer Service","steps":4,"location_ids":["loc_001","loc_002","loc_003"],"created_by":"usr_002","last_updated":"2026-01-20T09:00:00Z"},
-  {"id":"sop_003","title":"Daily Opening & Closing Checklist","version":"3.0","status":"draft","category":"Operations","steps":8,"location_ids":["loc_003"],"created_by":"usr_005","last_updated":"2026-03-10T14:00:00Z"}
+  {
+    "id": "sop_001",
+    "title": "Food Safety & Handling Procedure",
+    "description": "<p>Comprehensive procedure for ensuring food safety across all hotel F&B operations. Covers hand hygiene, temperature monitoring, cross-contamination prevention, and corrective actions for temperature deviations.</p><p>All staff involved in food preparation, storage, or service must follow this SOP without exception.</p>",
+    "version": "2.1",
+    "status": "published",
+    "category": "safety",
+    "tags": [
+      "food-safety",
+      "temperature",
+      "hygiene",
+      "f&b"
+    ],
+    "steps": [
+      {
+        "id": "step_001_1",
+        "order": 1,
+        "title": "Hand Washing Protocol",
+        "description": "<p>All staff must wash hands thoroughly before handling food:</p><ul><li>Wet hands with warm running water</li><li>Apply antibacterial soap</li><li>Scrub all surfaces for at least 20 seconds</li><li>Rinse under clean running water</li><li>Dry with single-use paper towel</li></ul>",
+        "type": "instruction",
+        "required": true,
+        "attachments": [
+          {
+            "id": "att_001",
+            "name": "hand-wash-poster.pdf",
+            "type": "pdf",
+            "url": "/attachments/hand-wash-poster.pdf",
+            "size": "1.2 MB"
+          },
+          {
+            "id": "att_002",
+            "name": "hand-washing-demo.mp4",
+            "type": "video",
+            "url": "/attachments/hand-washing-demo.mp4",
+            "size": "15.4 MB"
+          }
+        ]
+      },
+      {
+        "id": "step_001_2",
+        "order": 2,
+        "title": "Temperature Check",
+        "description": "<p>Verify storage temperatures are within safe ranges using calibrated thermometers.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Check fridge temperature is below 4°C",
+          "Check freezer temperature is below -18°C",
+          "Record readings in temperature log",
+          "Verify thermometer calibration date is current"
+        ],
+        "attachments": [
+          {
+            "id": "att_003",
+            "name": "temperature-log-template.pdf",
+            "type": "pdf",
+            "url": "/attachments/temperature-log-template.pdf",
+            "size": "245 KB"
+          }
+        ]
+      },
+      {
+        "id": "step_001_3",
+        "order": 3,
+        "title": "Temperature Out of Range?",
+        "description": "<p>If any temperature reading is outside the acceptable range, immediate action is required. Evaluate the situation and follow the appropriate branch.</p>",
+        "type": "decision",
+        "required": true,
+        "decision_branches": [
+          {
+            "label": "Yes — Temperature out of range",
+            "goto_step_id": "step_001_4"
+          },
+          {
+            "label": "No — All readings normal",
+            "goto_step_id": "step_001_5"
+          }
+        ]
+      },
+      {
+        "id": "step_001_4",
+        "order": 4,
+        "title": "Corrective Action for Temperature Deviation",
+        "description": "<p><strong>Immediate actions required:</strong></p><ol><li>Move affected food items to a compliant storage unit</li><li>Check equipment for malfunction</li><li>Contact maintenance if equipment is faulty</li><li>Document the deviation in the incident log</li><li>Discard any food that has been in the danger zone (4°C–60°C) for more than 2 hours</li></ol>",
+        "type": "warning",
+        "required": true,
+        "attachments": [
+          {
+            "id": "att_004",
+            "name": "incident-report-form.pdf",
+            "type": "pdf",
+            "url": "/attachments/incident-report-form.pdf",
+            "size": "180 KB"
+          }
+        ]
+      },
+      {
+        "id": "step_001_5",
+        "order": 5,
+        "title": "Cross-Contamination Prevention",
+        "description": "<p>Prevent cross-contamination by following these guidelines:</p><ul><li>Use separate cutting boards for raw meat, vegetables, and ready-to-eat foods</li><li>Store raw meats on the lowest shelf</li><li>Use colour-coded utensils as per the kitchen chart</li><li>Clean and sanitise surfaces between tasks</li></ul>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_001_6",
+        "order": 6,
+        "title": "End-of-Shift Verification",
+        "description": "<p>Before ending your shift, confirm all food safety protocols have been followed. Sign off on the daily food safety checklist and hand over to the next shift lead.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "All temperature logs completed",
+          "Work surfaces cleaned and sanitised",
+          "Food items properly stored and labelled",
+          "Equipment turned off or set to overnight mode",
+          "Daily checklist signed and filed"
+        ]
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "manager",
+      "field_staff"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2025-11-20T09:00:00Z",
+    "updated_at": "2026-02-15T10:00:00Z",
+    "published_at": "2026-02-15T10:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_001",
+    "linked_audit_template_ids": [
+      "audit_tpl_001"
+    ],
+    "linked_capa_ids": [
+      "capa_003"
+    ],
+    "versions": [
+      {
+        "id": "ver_001_1",
+        "version": "1.0",
+        "created_at": "2025-11-20T09:00:00Z",
+        "created_by": "usr_003",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_001_2",
+        "version": "2.0",
+        "created_at": "2026-01-05T14:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Major revision: added decision branching for temperature alerts",
+        "status": "archived"
+      },
+      {
+        "id": "ver_001_3",
+        "version": "2.1",
+        "created_at": "2026-02-15T10:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Updated temperature thresholds and added photo requirements",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_001",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-02-16T08:30:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_002",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-02-15T11:00:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_003",
+        "user_id": "usr_003",
+        "acknowledged_at": "2026-02-17T09:15:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_004",
+        "user_id": "usr_004",
+        "acknowledged_at": "2026-02-18T14:00:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_005",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-02-16T16:45:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_006",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-02-19T10:00:00Z",
+        "version": "2.1"
+      },
+      {
+        "id": "ack_007",
+        "user_id": "usr_003",
+        "acknowledged_at": null,
+        "version": "2.1"
+      },
+      {
+        "id": "ack_008",
+        "user_id": "usr_004",
+        "acknowledged_at": null,
+        "version": "2.1"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 8
+  },
+  {
+    "id": "sop_002",
+    "title": "Customer Complaint Resolution",
+    "description": "<p>Step-by-step guide for handling customer complaints from initial receipt through resolution and follow-up. Ensures consistent service recovery across all properties.</p>",
+    "version": "1.3",
+    "status": "published",
+    "category": "customer_service",
+    "tags": [
+      "complaints",
+      "service-recovery",
+      "guest-experience"
+    ],
+    "steps": [
+      {
+        "id": "step_002_1",
+        "order": 1,
+        "title": "Acknowledge the Complaint",
+        "description": "<p>Listen actively to the guest. Make eye contact, nod, and avoid interrupting. Use empathetic language such as \"I understand how frustrating this must be.\"</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_002_2",
+        "order": 2,
+        "title": "Document the Issue",
+        "description": "<p>Record all relevant details in the complaint management system.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Guest name and room number",
+          "Date and time of incident",
+          "Nature of complaint",
+          "Staff member receiving complaint",
+          "Initial action taken"
+        ]
+      },
+      {
+        "id": "step_002_3",
+        "order": 3,
+        "title": "Determine Severity",
+        "description": "<p>Assess the severity of the complaint to determine the appropriate response level and escalation path.</p>",
+        "type": "decision",
+        "required": true,
+        "decision_branches": [
+          {
+            "label": "Minor — Can be resolved on the spot",
+            "goto_step_id": "step_002_4"
+          },
+          {
+            "label": "Major — Requires manager escalation",
+            "goto_step_id": "step_002_5"
+          }
+        ]
+      },
+      {
+        "id": "step_002_4",
+        "order": 4,
+        "title": "On-the-Spot Resolution",
+        "description": "<p>Resolve minor complaints immediately:</p><ul><li>Offer a sincere apology</li><li>Provide an appropriate remedy (room change, complimentary item, etc.)</li><li>Confirm the guest is satisfied with the resolution</li><li>Document the resolution in the system</li></ul>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_002_5",
+        "order": 5,
+        "title": "Follow-Up Within 24 Hours",
+        "description": "<p>Contact the guest within 24 hours to ensure satisfaction. Send a follow-up email or make a courtesy call. Update the complaint record with the outcome.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "manager",
+      "support_agent",
+      "field_staff"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2025-12-01T09:00:00Z",
+    "updated_at": "2026-01-20T09:00:00Z",
+    "published_at": "2026-01-20T09:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_002",
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_002_1",
+        "version": "1.0",
+        "created_at": "2025-12-01T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_002_2",
+        "version": "1.3",
+        "created_at": "2026-01-20T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Added follow-up timeline and documentation requirements",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_009",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-01-21T08:00:00Z",
+        "version": "1.3"
+      },
+      {
+        "id": "ack_010",
+        "user_id": "usr_004",
+        "acknowledged_at": "2026-01-22T10:00:00Z",
+        "version": "1.3"
+      },
+      {
+        "id": "ack_011",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-01-21T15:30:00Z",
+        "version": "1.3"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 5
+  },
+  {
+    "id": "sop_003",
+    "title": "Daily Opening & Closing Checklist",
+    "description": "<p>Comprehensive checklist for property opening and closing procedures. Covers security, equipment checks, facility readiness, and end-of-day reconciliation.</p>",
+    "version": "3.0",
+    "status": "draft",
+    "category": "operations",
+    "tags": [
+      "opening",
+      "closing",
+      "daily-operations",
+      "checklist"
+    ],
+    "steps": [
+      {
+        "id": "step_003_1",
+        "order": 1,
+        "title": "Morning Security Check",
+        "description": "<p>Walk the perimeter and verify all entry points are secure. Check CCTV systems are operational.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "All exterior doors locked/unlocked as scheduled",
+          "CCTV cameras operational",
+          "Security alarm system status verified",
+          "Parking area inspected"
+        ]
+      },
+      {
+        "id": "step_003_2",
+        "order": 2,
+        "title": "Facility Systems Startup",
+        "description": "<p>Activate all facility systems in the correct sequence to avoid electrical surges.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_003_3",
+        "order": 3,
+        "title": "Staff Briefing",
+        "description": "<p>Conduct a 10-minute morning briefing covering:</p><ul><li>Occupancy status and VIP arrivals</li><li>Special events or group bookings</li><li>Maintenance issues from overnight</li><li>Staff assignments for the day</li></ul>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_003_4",
+        "order": 4,
+        "title": "Public Area Readiness",
+        "description": "<p>Inspect all public areas before guest access.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Lobby clean and presentable",
+          "Lighting functional in all areas",
+          "Elevator operational",
+          "Restrooms stocked and clean",
+          "Signage in place"
+        ]
+      },
+      {
+        "id": "step_003_5",
+        "order": 5,
+        "title": "Evening Cash Reconciliation",
+        "description": "<p>Complete all financial reconciliation before locking up.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "POS terminals balanced",
+          "Cash drops completed",
+          "Credit card batch closed",
+          "Revenue report generated"
+        ]
+      },
+      {
+        "id": "step_003_6",
+        "order": 6,
+        "title": "Closing Security Sweep",
+        "description": "<p>Perform a full security sweep before locking the property.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "All guest areas cleared",
+          "Back-of-house areas secured",
+          "Equipment powered down",
+          "Alarm system armed",
+          "Final perimeter check complete"
+        ]
+      },
+      {
+        "id": "step_003_7",
+        "order": 7,
+        "title": "Overnight Notes",
+        "description": "<p>Document any issues or notes for the morning shift in the handover log.</p>",
+        "type": "instruction",
+        "required": false
+      },
+      {
+        "id": "step_003_8",
+        "order": 8,
+        "title": "Key Management",
+        "description": "<p><strong>Warning:</strong> All master keys must be returned to the secure key cabinet. Never leave keys unattended. Report any missing keys immediately to security.</p>",
+        "type": "warning",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_003"
+    ],
+    "role_ids": [
+      "manager",
+      "field_staff"
+    ],
+    "created_by": "usr_005",
+    "created_at": "2025-10-15T08:00:00Z",
+    "updated_at": "2026-03-10T14:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_003_1",
+        "version": "1.0",
+        "created_at": "2025-10-15T08:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_003_2",
+        "version": "2.0",
+        "created_at": "2025-12-20T11:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Added evening procedures and key management",
+        "status": "archived"
+      },
+      {
+        "id": "ver_003_3",
+        "version": "3.0",
+        "created_at": "2026-03-10T14:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Draft: restructuring for multi-property use",
+        "status": "draft"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 12
+  },
+  {
+    "id": "sop_004",
+    "title": "Fire Evacuation Procedure",
+    "description": "<p>Emergency fire evacuation procedure for all properties. Defines roles, assembly points, and communication protocols during fire emergencies.</p>",
+    "version": "1.2",
+    "status": "published",
+    "category": "safety",
+    "tags": [
+      "fire",
+      "evacuation",
+      "emergency",
+      "safety"
+    ],
+    "steps": [
+      {
+        "id": "step_004_1",
+        "order": 1,
+        "title": "Activate Fire Alarm",
+        "description": "<p><strong>CRITICAL:</strong> Upon discovering a fire, immediately activate the nearest fire alarm pull station. Do not attempt to fight the fire unless it is small and contained.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_004_2",
+        "order": 2,
+        "title": "Call Emergency Services",
+        "description": "<p>Call 911 (or local emergency number) immediately. Provide: location, nature of fire, number of occupants, any known injuries.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_004_3",
+        "order": 3,
+        "title": "Evacuation Procedures",
+        "description": "<p>Guide all occupants to the nearest exit. Use stairs only — never elevators. Assist guests with mobility issues. Close doors behind you to slow fire spread.</p>",
+        "type": "instruction",
+        "required": true,
+        "attachments": [
+          {
+            "id": "att_006",
+            "name": "evacuation-map.pdf",
+            "type": "pdf",
+            "url": "/attachments/evacuation-map.pdf",
+            "size": "3.5 MB"
+          }
+        ]
+      },
+      {
+        "id": "step_004_4",
+        "order": 4,
+        "title": "Assembly Point Check-In",
+        "description": "<p>Report to the designated assembly point and verify all staff and guests are accounted for.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Staff headcount completed",
+          "Guest manifest cross-referenced",
+          "Missing persons reported to fire department",
+          "First aid administered if needed"
+        ]
+      },
+      {
+        "id": "step_004_5",
+        "order": 5,
+        "title": "Post-Incident Documentation",
+        "description": "<p>Complete the fire incident report within 2 hours. Include timeline, actions taken, and any injuries or property damage.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "admin",
+      "manager",
+      "field_staff",
+      "support_agent"
+    ],
+    "created_by": "usr_001",
+    "created_at": "2025-09-01T09:00:00Z",
+    "updated_at": "2026-01-10T11:00:00Z",
+    "published_at": "2026-01-10T11:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_003",
+    "linked_audit_template_ids": [
+      "audit_tpl_002"
+    ],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_004_1",
+        "version": "1.0",
+        "created_at": "2025-09-01T09:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_004_2",
+        "version": "1.2",
+        "created_at": "2026-01-10T11:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Updated assembly points and added multi-property support",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_012",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-01-11T08:00:00Z",
+        "version": "1.2"
+      },
+      {
+        "id": "ack_013",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-01-11T09:00:00Z",
+        "version": "1.2"
+      },
+      {
+        "id": "ack_014",
+        "user_id": "usr_003",
+        "acknowledged_at": "2026-01-12T10:00:00Z",
+        "version": "1.2"
+      },
+      {
+        "id": "ack_015",
+        "user_id": "usr_004",
+        "acknowledged_at": "2026-01-12T14:00:00Z",
+        "version": "1.2"
+      },
+      {
+        "id": "ack_016",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-01-13T09:30:00Z",
+        "version": "1.2"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 6
+  },
+  {
+    "id": "sop_005",
+    "title": "Housekeeping Room Turnover",
+    "description": "<p>Standard procedure for room cleaning and turnover between guest stays. Includes cleaning protocols, inspection points, and quality standards.</p>",
+    "version": "2.1",
+    "status": "published",
+    "category": "operations",
+    "tags": [
+      "housekeeping",
+      "room-turnover",
+      "cleaning",
+      "quality"
+    ],
+    "steps": [
+      {
+        "id": "step_005_1",
+        "order": 1,
+        "title": "Room Entry Protocol",
+        "description": "<p>Knock three times, announce \"Housekeeping,\" wait 10 seconds. If no response, use key card to enter. Place door wedge for safety.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_005_2",
+        "order": 2,
+        "title": "Strip and Replace Linens",
+        "description": "<p>Remove all used linens. Inspect mattress pad for stains. Replace with fresh linens following the bed-making standard.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_005_3",
+        "order": 3,
+        "title": "Bathroom Deep Clean",
+        "description": "<p>Complete bathroom cleaning following the sanitisation checklist.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Toilet cleaned and sanitised",
+          "Shower/tub scrubbed",
+          "Mirror and glass polished",
+          "Amenities restocked",
+          "Towels replaced (bath, hand, face)",
+          "Floor mopped"
+        ]
+      },
+      {
+        "id": "step_005_4",
+        "order": 4,
+        "title": "Room Inspection",
+        "description": "<p>Final quality inspection before marking room as ready.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "All surfaces dusted",
+          "TV remote and controls clean",
+          "Minibar restocked",
+          "Air conditioning set to 22°C",
+          "Curtains/blinds properly positioned",
+          "No damage or maintenance issues"
+        ]
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2025-10-01T09:00:00Z",
+    "updated_at": "2026-02-01T14:00:00Z",
+    "published_at": "2026-02-01T14:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [
+      "audit_tpl_003"
+    ],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_005_1",
+        "version": "1.0",
+        "created_at": "2025-10-01T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_005_2",
+        "version": "2.0",
+        "created_at": "2026-02-01T14:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Updated cleaning standards and added inspection checklist",
+        "status": "published"
+      },
+      {
+        "id": "ver_005_3",
+        "version": "2.1",
+        "created_at": "2026-03-10T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Added sustainability-friendly cleaning products",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_017",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-02-02T09:00:00Z",
+        "version": "2.0"
+      },
+      {
+        "id": "ack_018",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-02-02T11:00:00Z",
+        "version": "2.0"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 7
+  },
+  {
+    "id": "sop_006",
+    "title": "Guest Check-In Process",
+    "description": "<p>Standard operating procedure for guest check-in at front desk. Covers identity verification, payment processing, room assignment, and welcome orientation.</p>",
+    "version": "1.5",
+    "status": "published",
+    "category": "customer_service",
+    "tags": [
+      "check-in",
+      "front-desk",
+      "guest-services"
+    ],
+    "steps": [
+      {
+        "id": "step_006_1",
+        "order": 1,
+        "title": "Greet the Guest",
+        "description": "<p>Welcome the guest with a warm smile. Use their name if visible on the reservation. \"Welcome to [Hotel Name], [Guest Name]. We're delighted to have you.\"</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_006_2",
+        "order": 2,
+        "title": "Verify Identity & Reservation",
+        "description": "<p>Confirm the reservation and verify guest identity.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Photo ID checked",
+          "Reservation confirmed in PMS",
+          "Payment method verified",
+          "Registration card signed"
+        ]
+      },
+      {
+        "id": "step_006_3",
+        "order": 3,
+        "title": "Room Assignment & Key Issue",
+        "description": "<p>Assign the room, program key cards, and provide the guest with essential information about their stay.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_006_4",
+        "order": 4,
+        "title": "Facility Orientation",
+        "description": "<p>Brief the guest on hotel facilities, breakfast times, WiFi access, and emergency exits. Offer to assist with luggage.</p>",
+        "type": "instruction",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "support_agent",
+      "field_staff"
+    ],
+    "created_by": "usr_004",
+    "created_at": "2025-11-01T09:00:00Z",
+    "updated_at": "2026-01-15T10:00:00Z",
+    "published_at": "2026-01-15T10:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_006_1",
+        "version": "1.5",
+        "created_at": "2026-01-15T10:00:00Z",
+        "created_by": "usr_004",
+        "change_summary": "Updated welcome script and added facility orientation",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_019",
+        "user_id": "usr_004",
+        "acknowledged_at": "2026-01-16T08:00:00Z",
+        "version": "1.5"
+      },
+      {
+        "id": "ack_020",
+        "user_id": "usr_005",
+        "acknowledged_at": null,
+        "version": "1.5"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 4
+  },
+  {
+    "id": "sop_007",
+    "title": "HVAC Maintenance Schedule",
+    "description": "<p>Preventive maintenance schedule and procedures for all HVAC systems. Covers filter replacement, coil cleaning, refrigerant checks, and seasonal adjustments.</p>",
+    "version": "1.1",
+    "status": "published",
+    "category": "maintenance",
+    "tags": [
+      "hvac",
+      "maintenance",
+      "preventive",
+      "equipment"
+    ],
+    "steps": [
+      {
+        "id": "step_007_1",
+        "order": 1,
+        "title": "Monthly Filter Inspection",
+        "description": "<p>Inspect all air filters monthly. Replace filters that show visible dirt accumulation or have been in service for 90+ days.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Check filter condition",
+          "Record filter age",
+          "Replace if dirty or expired",
+          "Log replacement date"
+        ]
+      },
+      {
+        "id": "step_007_2",
+        "order": 2,
+        "title": "Quarterly Coil Cleaning",
+        "description": "<p>Clean evaporator and condenser coils quarterly. Use approved coil cleaning solution. Rinse thoroughly and allow to dry before restarting unit.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_007_3",
+        "order": 3,
+        "title": "Refrigerant Level Check",
+        "description": "<p><strong>Caution:</strong> Refrigerant handling must be performed by certified technicians only. Check pressure readings against manufacturer specifications.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_007_4",
+        "order": 4,
+        "title": "Documentation",
+        "description": "<p>Record all maintenance activities in the HVAC maintenance log. Include date, technician, work performed, and any parts replaced.</p>",
+        "type": "reference",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_005",
+    "created_at": "2025-12-15T09:00:00Z",
+    "updated_at": "2026-02-20T11:00:00Z",
+    "published_at": "2026-02-20T11:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_007_1",
+        "version": "1.0",
+        "created_at": "2025-12-15T09:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_007_2",
+        "version": "1.1",
+        "created_at": "2026-02-20T11:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Added refrigerant handling warning",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_021",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-02-21T08:00:00Z",
+        "version": "1.1"
+      }
+    ],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 5
+  },
+  {
+    "id": "sop_008",
+    "title": "Data Privacy & GDPR Compliance",
+    "description": "<p>Procedure for handling personal data in compliance with GDPR and local data protection regulations. Covers data collection, storage, access rights, and breach notification.</p>",
+    "version": "2.0",
+    "status": "published",
+    "category": "compliance",
+    "tags": [
+      "gdpr",
+      "data-privacy",
+      "compliance",
+      "legal"
+    ],
+    "steps": [
+      {
+        "id": "step_008_1",
+        "order": 1,
+        "title": "Data Collection Consent",
+        "description": "<p>Obtain explicit consent before collecting personal data. Present the privacy notice and obtain signature or digital consent.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_008_2",
+        "order": 2,
+        "title": "Data Storage Requirements",
+        "description": "<p>Ensure all personal data is stored in approved systems with appropriate encryption.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Data stored in approved system only",
+          "Encryption at rest enabled",
+          "Access controls configured",
+          "Retention period set",
+          "Backup procedures verified"
+        ]
+      },
+      {
+        "id": "step_008_3",
+        "order": 3,
+        "title": "Data Subject Access Request",
+        "description": "<p>When a guest requests access to their data, respond within 30 days. Verify identity before releasing any information.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_008_4",
+        "order": 4,
+        "title": "Data Breach Protocol",
+        "description": "<p><strong>CRITICAL:</strong> In the event of a data breach, notify the Data Protection Officer within 4 hours. The DPO must notify the supervisory authority within 72 hours of becoming aware of the breach.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_008_5",
+        "order": 5,
+        "title": "Reference: Data Classification Guide",
+        "description": "<p>Refer to the Data Classification Guide (Document DC-001) for categories of personal data and corresponding handling requirements.</p>",
+        "type": "reference",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "admin",
+      "manager"
+    ],
+    "created_by": "usr_001",
+    "created_at": "2025-08-15T09:00:00Z",
+    "updated_at": "2026-02-28T16:00:00Z",
+    "published_at": "2026-02-28T16:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_004",
+    "linked_audit_template_ids": [
+      "audit_tpl_004"
+    ],
+    "linked_capa_ids": [
+      "capa_001"
+    ],
+    "versions": [
+      {
+        "id": "ver_008_1",
+        "version": "1.0",
+        "created_at": "2025-08-15T09:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_008_2",
+        "version": "1.5",
+        "created_at": "2025-11-01T14:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Added breach notification timeline",
+        "status": "archived"
+      },
+      {
+        "id": "ver_008_3",
+        "version": "2.0",
+        "created_at": "2026-02-28T16:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Major update for 2026 regulatory changes",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_022",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-03-01T08:00:00Z",
+        "version": "2.0"
+      },
+      {
+        "id": "ack_023",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-03-01T09:30:00Z",
+        "version": "2.0"
+      },
+      {
+        "id": "ack_024",
+        "user_id": "usr_003",
+        "acknowledged_at": null,
+        "version": "2.0"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 10
+  },
+  {
+    "id": "sop_011",
+    "title": "Employee Onboarding Procedure",
+    "description": "<p>Comprehensive onboarding process for new employees from offer acceptance through the first 90 days. Covers documentation, training, system access, and performance checkpoints.</p>",
+    "version": "1.0",
+    "status": "published",
+    "category": "hr",
+    "tags": [
+      "onboarding",
+      "hr",
+      "new-hire",
+      "training"
+    ],
+    "steps": [
+      {
+        "id": "step_011_1",
+        "order": 1,
+        "title": "Pre-Arrival Documentation",
+        "description": "<p>Ensure all required documents are collected before the start date.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Signed offer letter received",
+          "Tax forms completed",
+          "ID documents verified",
+          "Background check cleared",
+          "Uniform measurements taken"
+        ]
+      },
+      {
+        "id": "step_011_2",
+        "order": 2,
+        "title": "Day 1 Orientation",
+        "description": "<p>Welcome the new employee, provide facility tour, introduce to team members, and review company policies and values.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_011_3",
+        "order": 3,
+        "title": "System Access Setup",
+        "description": "<p>Configure all necessary system accounts and access permissions.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Email account created",
+          "PMS access configured",
+          "Time tracking system enrolled",
+          "Security badge issued",
+          "Locker assigned"
+        ]
+      },
+      {
+        "id": "step_011_4",
+        "order": 4,
+        "title": "30-Day Check-In",
+        "description": "<p>Schedule and conduct a 30-day performance check-in. Review progress, address concerns, and adjust training plan if needed.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_011_5",
+        "order": 5,
+        "title": "90-Day Review",
+        "description": "<p>Formal 90-day performance review. Confirm probation completion or extend if necessary. Set goals for the next quarter.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "admin",
+      "manager"
+    ],
+    "created_by": "usr_001",
+    "created_at": "2026-01-15T09:00:00Z",
+    "updated_at": "2026-01-15T09:00:00Z",
+    "published_at": "2026-01-15T09:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_005",
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_011_1",
+        "version": "1.0",
+        "created_at": "2026-01-15T09:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Initial version",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_026",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-01-16T08:00:00Z",
+        "version": "1.0"
+      },
+      {
+        "id": "ack_027",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-01-16T10:00:00Z",
+        "version": "1.0"
+      }
+    ],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 8
+  },
+  {
+    "id": "sop_012",
+    "title": "Workplace Harassment Prevention",
+    "description": "<p>Policy and procedures for preventing, identifying, and reporting workplace harassment. Defines unacceptable behavior, reporting channels, and investigation process.</p>",
+    "version": "1.2",
+    "status": "published",
+    "category": "hr",
+    "tags": [
+      "harassment",
+      "hr",
+      "policy",
+      "workplace-safety"
+    ],
+    "steps": [
+      {
+        "id": "step_012_1",
+        "order": 1,
+        "title": "Understanding Harassment",
+        "description": "<p>Harassment includes any unwelcome conduct based on race, gender, religion, age, disability, or sexual orientation that creates a hostile work environment. This includes verbal, physical, and visual harassment.</p>",
+        "type": "reference",
+        "required": true
+      },
+      {
+        "id": "step_012_2",
+        "order": 2,
+        "title": "Reporting an Incident",
+        "description": "<p>If you experience or witness harassment, report it immediately through any of the following channels:</p><ul><li>Direct supervisor (if not the harasser)</li><li>HR department</li><li>Anonymous hotline: 1-800-REPORT</li><li>Online reporting portal</li></ul>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_012_3",
+        "order": 3,
+        "title": "Investigation Process",
+        "description": "<p>All reports are investigated within 5 business days. The investigation includes interviews with all parties, review of evidence, and a written determination.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "admin",
+      "manager",
+      "field_staff",
+      "support_agent",
+      "auditor"
+    ],
+    "created_by": "usr_001",
+    "created_at": "2025-09-15T09:00:00Z",
+    "updated_at": "2026-01-25T14:00:00Z",
+    "published_at": "2026-01-25T14:30:00Z",
+    "auto_publish_kb": true,
+    "linked_kb_article_id": "kb_006",
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_012_1",
+        "version": "1.0",
+        "created_at": "2025-09-15T09:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_012_2",
+        "version": "1.1",
+        "created_at": "2026-01-25T14:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Added anonymous reporting options",
+        "status": "published"
+      },
+      {
+        "id": "ver_012_3",
+        "version": "1.2",
+        "created_at": "2026-03-05T10:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Added online reporting portal details",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_028",
+        "user_id": "usr_001",
+        "acknowledged_at": "2026-01-26T08:00:00Z",
+        "version": "1.1"
+      },
+      {
+        "id": "ack_029",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-01-26T09:00:00Z",
+        "version": "1.1"
+      },
+      {
+        "id": "ack_030",
+        "user_id": "usr_003",
+        "acknowledged_at": "2026-01-27T10:00:00Z",
+        "version": "1.1"
+      },
+      {
+        "id": "ack_031",
+        "user_id": "usr_004",
+        "acknowledged_at": "2026-01-27T14:00:00Z",
+        "version": "1.1"
+      },
+      {
+        "id": "ack_032",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-01-28T09:00:00Z",
+        "version": "1.1"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 6
+  },
+  {
+    "id": "sop_013",
+    "title": "Allergen Management Protocol",
+    "description": "<p>Procedures for managing food allergens in F&B operations. Covers allergen identification, menu labelling, cross-contact prevention, and emergency response for allergic reactions.</p>",
+    "version": "1.4",
+    "status": "published",
+    "category": "safety",
+    "tags": [
+      "allergens",
+      "food-safety",
+      "f&b",
+      "health"
+    ],
+    "steps": [
+      {
+        "id": "step_013_1",
+        "order": 1,
+        "title": "Allergen Identification",
+        "description": "<p>Know the 14 major allergens: cereals containing gluten, crustaceans, eggs, fish, peanuts, soybeans, milk, nuts, celery, mustard, sesame, sulphites, lupin, and molluscs.</p>",
+        "type": "reference",
+        "required": true
+      },
+      {
+        "id": "step_013_2",
+        "order": 2,
+        "title": "Guest Allergen Inquiry",
+        "description": "<p>Always ask guests about allergies before taking food orders. Document allergies on the order ticket with a red allergen flag.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_013_3",
+        "order": 3,
+        "title": "Kitchen Allergen Protocols",
+        "description": "<p>Follow strict allergen-safe preparation procedures.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Separate preparation area designated",
+          "Clean utensils used exclusively",
+          "Allergen-free ingredients verified",
+          "Chef confirms dish is allergen-safe",
+          "Dish marked with allergen flag before service"
+        ]
+      },
+      {
+        "id": "step_013_4",
+        "order": 4,
+        "title": "Allergic Reaction Response",
+        "description": "<p><strong>EMERGENCY:</strong> If a guest shows signs of an allergic reaction (difficulty breathing, swelling, hives), call emergency services immediately. Locate the nearest EpiPen in the first aid station.</p>",
+        "type": "warning",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2025-10-20T09:00:00Z",
+    "updated_at": "2026-03-01T11:00:00Z",
+    "published_at": "2026-03-01T11:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [
+      "audit_tpl_001"
+    ],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_013_1",
+        "version": "1.0",
+        "created_at": "2025-10-20T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_013_1b",
+        "version": "1.2",
+        "created_at": "2025-12-15T10:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Added kitchen protocol section",
+        "status": "archived"
+      },
+      {
+        "id": "ver_013_2",
+        "version": "1.4",
+        "created_at": "2026-03-01T11:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Updated allergen list and emergency response protocol",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_033",
+        "user_id": "usr_002",
+        "acknowledged_at": "2026-03-02T08:00:00Z",
+        "version": "1.4"
+      },
+      {
+        "id": "ack_034",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-03-02T11:00:00Z",
+        "version": "1.4"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 7
+  },
+  {
+    "id": "sop_014",
+    "title": "Revenue Management Pricing Strategy",
+    "description": "<p>Guidelines for dynamic pricing, rate adjustments, and revenue optimization across all booking channels.</p>",
+    "version": "1.0",
+    "status": "in_review",
+    "category": "operations",
+    "tags": [
+      "revenue",
+      "pricing",
+      "yield-management"
+    ],
+    "steps": [
+      {
+        "id": "step_014_1",
+        "order": 1,
+        "title": "Daily Rate Review",
+        "description": "<p>Review competitor rates and occupancy forecasts every morning. Adjust pricing within the approved range for the current demand level.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_014_2",
+        "order": 2,
+        "title": "Demand Assessment",
+        "description": "<p>Evaluate current and forecasted demand to determine pricing tier.</p>",
+        "type": "decision",
+        "required": true,
+        "decision_branches": [
+          {
+            "label": "High demand (>85% occupancy forecast)",
+            "goto_step_id": "step_014_3"
+          },
+          {
+            "label": "Low demand (<60% occupancy forecast)",
+            "goto_step_id": "step_014_4"
+          }
+        ]
+      },
+      {
+        "id": "step_014_3",
+        "order": 3,
+        "title": "High Demand Pricing",
+        "description": "<p>Apply premium rates. Close discount channels. Implement minimum stay requirements for peak dates.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_014_4",
+        "order": 4,
+        "title": "Low Demand Strategy",
+        "description": "<p>Activate promotional rates on OTAs. Enable corporate and group discounts. Consider package deals with F&B and spa services.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_014_5",
+        "order": 5,
+        "title": "Weekly Revenue Report",
+        "description": "<p>Generate and review the weekly revenue report. Compare RevPAR, ADR, and occupancy against budget and same period last year.</p>",
+        "type": "instruction",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002"
+    ],
+    "role_ids": [
+      "manager",
+      "admin"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2026-02-20T09:00:00Z",
+    "updated_at": "2026-03-05T14:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_014_1",
+        "version": "1.0",
+        "created_at": "2026-02-20T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Initial draft for review",
+        "status": "in_review"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 6
+  },
+  {
+    "id": "sop_015",
+    "title": "Anti-Money Laundering (AML) Compliance",
+    "description": "<p>Procedures for identifying and reporting suspicious transactions in compliance with anti-money laundering regulations. Covers customer due diligence, transaction monitoring, and SAR filing.</p>",
+    "version": "1.0",
+    "status": "in_review",
+    "category": "compliance",
+    "tags": [
+      "aml",
+      "compliance",
+      "financial",
+      "regulatory"
+    ],
+    "steps": [
+      {
+        "id": "step_015_1",
+        "order": 1,
+        "title": "Customer Due Diligence",
+        "description": "<p>Verify the identity of guests making cash transactions exceeding $3,000. Collect and record identification documents.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_015_2",
+        "order": 2,
+        "title": "Transaction Monitoring",
+        "description": "<p>Monitor for suspicious transaction patterns including:</p><ul><li>Multiple cash payments just below reporting threshold</li><li>Unusual third-party payments</li><li>Requests to break large bills without a purchase</li></ul>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_015_3",
+        "order": 3,
+        "title": "Suspicious Activity Report",
+        "description": "<p>If suspicious activity is identified, file a SAR within 24 hours. Do not inform the subject of the report. Contact the compliance officer for guidance.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_015_4",
+        "order": 4,
+        "title": "Record Retention",
+        "description": "<p>Maintain all transaction records and customer identification documents for a minimum of 5 years. Store securely with restricted access.</p>",
+        "type": "reference",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "admin",
+      "manager"
+    ],
+    "created_by": "usr_001",
+    "created_at": "2026-03-01T09:00:00Z",
+    "updated_at": "2026-03-08T11:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_015_1",
+        "version": "1.0",
+        "created_at": "2026-03-01T09:00:00Z",
+        "created_by": "usr_001",
+        "change_summary": "Initial draft for compliance review",
+        "status": "in_review"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 8
+  },
+  {
+    "id": "sop_016",
+    "title": "Sustainability & Waste Management",
+    "description": "<p>Environmental sustainability procedures including waste sorting, recycling protocols, energy conservation, and water management practices.</p>",
+    "version": "1.0",
+    "status": "in_review",
+    "category": "compliance",
+    "tags": [
+      "sustainability",
+      "waste-management",
+      "green",
+      "environment"
+    ],
+    "steps": [
+      {
+        "id": "step_016_1",
+        "order": 1,
+        "title": "Waste Sorting Guidelines",
+        "description": "<p>Sort all waste into four categories: general waste (black bin), recyclables (blue bin), organic/food waste (green bin), and hazardous waste (red bin).</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_016_2",
+        "order": 2,
+        "title": "Energy Conservation Practices",
+        "description": "<p>Follow these daily energy conservation practices.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Turn off lights in unoccupied areas",
+          "Set HVAC to energy-saving mode after hours",
+          "Ensure windows/doors are closed when HVAC is running",
+          "Report any energy waste to maintenance"
+        ]
+      },
+      {
+        "id": "step_016_3",
+        "order": 3,
+        "title": "Water Conservation",
+        "description": "<p>Report any dripping taps or running toilets immediately. Use water-efficient cleaning methods. Pool backwash water must be properly drained to approved outlets.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_003",
+    "created_at": "2026-02-25T09:00:00Z",
+    "updated_at": "2026-03-07T10:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_016_1",
+        "version": "1.0",
+        "created_at": "2026-02-25T09:00:00Z",
+        "created_by": "usr_003",
+        "change_summary": "Initial draft",
+        "status": "in_review"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 5
+  },
+  {
+    "id": "sop_017",
+    "title": "Elevator Inspection & Emergency Procedure",
+    "description": "<p>Procedures for routine elevator inspections and emergency protocols when guests or staff are trapped in an elevator.</p>",
+    "version": "1.0",
+    "status": "published",
+    "category": "maintenance",
+    "tags": [
+      "elevator",
+      "maintenance",
+      "emergency",
+      "inspection"
+    ],
+    "steps": [
+      {
+        "id": "step_017_1",
+        "order": 1,
+        "title": "Weekly Inspection Checklist",
+        "description": "<p>Perform a visual and functional inspection of all elevators weekly.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Door operation smooth and aligned",
+          "Emergency phone functional",
+          "Lighting in cabin and shaft adequate",
+          "Floor levelling within tolerance",
+          "Inspection certificate current"
+        ]
+      },
+      {
+        "id": "step_017_2",
+        "order": 2,
+        "title": "Entrapment Emergency",
+        "description": "<p><strong>If someone is trapped:</strong> Reassure them via the emergency intercom. Contact the elevator service company immediately. Do not attempt to manually open doors unless trained and authorised.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_017_3",
+        "order": 3,
+        "title": "Post-Incident Report",
+        "description": "<p>Document every elevator incident. Include timeline, cause (if known), resolution, and any guest impact. Submit report to management within 24 hours.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_005",
+    "created_at": "2026-02-10T09:00:00Z",
+    "updated_at": "2026-02-10T09:00:00Z",
+    "published_at": "2026-02-10T09:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_017_1",
+        "version": "1.0",
+        "created_at": "2026-02-10T09:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Initial version",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_035",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-02-11T08:00:00Z",
+        "version": "1.0"
+      }
+    ],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 4
+  },
+  {
+    "id": "sop_018",
+    "title": "Night Audit Procedure",
+    "description": "<p>Step-by-step night audit process for end-of-day financial reconciliation, system rollover, and preparation of daily reports.</p>",
+    "version": "2.0",
+    "status": "draft",
+    "category": "operations",
+    "tags": [
+      "night-audit",
+      "finance",
+      "reconciliation",
+      "reporting"
+    ],
+    "steps": [
+      {
+        "id": "step_018_1",
+        "order": 1,
+        "title": "Pre-Audit Preparation",
+        "description": "<p>Before starting the night audit, ensure all outlets have closed their shifts and submitted their reports.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "All restaurant POS closed",
+          "Bar POS closed",
+          "Spa POS closed",
+          "Room service charges posted",
+          "Late check-ins processed"
+        ]
+      },
+      {
+        "id": "step_018_2",
+        "order": 2,
+        "title": "Revenue Posting Verification",
+        "description": "<p>Verify all revenue postings are accurate. Check room rates against reservations. Investigate any rate discrepancies.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_018_3",
+        "order": 3,
+        "title": "System Date Rollover",
+        "description": "<p><strong>Critical step:</strong> Only perform the system date rollover after all verifications are complete. This action cannot be reversed.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_018_4",
+        "order": 4,
+        "title": "Generate Reports",
+        "description": "<p>Generate and distribute the following reports.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Daily revenue report",
+          "Occupancy report",
+          "Arrivals/departures for tomorrow",
+          "Outstanding balance report",
+          "Credit card settlement summary"
+        ]
+      },
+      {
+        "id": "step_018_5",
+        "order": 5,
+        "title": "Night Audit Handover",
+        "description": "<p>Complete the night audit log with notes for the morning shift. Flag any issues requiring immediate attention.</p>",
+        "type": "instruction",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002"
+    ],
+    "role_ids": [
+      "manager",
+      "support_agent"
+    ],
+    "created_by": "usr_004",
+    "created_at": "2025-12-01T09:00:00Z",
+    "updated_at": "2026-03-12T16:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_018_1",
+        "version": "1.0",
+        "created_at": "2025-12-01T09:00:00Z",
+        "created_by": "usr_004",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_018_2",
+        "version": "2.0",
+        "created_at": "2026-03-12T16:00:00Z",
+        "created_by": "usr_004",
+        "change_summary": "Draft: restructured for new PMS system",
+        "status": "draft"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 7
+  },
+  {
+    "id": "sop_019",
+    "title": "Chemical Safety & COSHH Handling",
+    "description": "<p>Procedures for the safe handling, storage, and disposal of chemicals and hazardous substances under COSHH regulations. Includes PPE requirements and spill response.</p>",
+    "version": "1.2",
+    "status": "published",
+    "category": "safety",
+    "tags": [
+      "chemical-safety",
+      "coshh",
+      "hazardous-materials",
+      "ppe"
+    ],
+    "steps": [
+      {
+        "id": "step_019_1",
+        "order": 1,
+        "title": "PPE Requirements",
+        "description": "<p>Always wear the required Personal Protective Equipment before handling any chemicals. Check the COSHH data sheet for specific PPE requirements.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Chemical-resistant gloves",
+          "Safety goggles",
+          "Apron or protective clothing",
+          "Respiratory protection (if required by data sheet)"
+        ],
+        "attachments": [
+          {
+            "id": "att_005",
+            "name": "ppe-guide.pdf",
+            "type": "pdf",
+            "url": "/attachments/ppe-guide.pdf",
+            "size": "2.1 MB"
+          }
+        ]
+      },
+      {
+        "id": "step_019_2",
+        "order": 2,
+        "title": "Chemical Storage",
+        "description": "<p>Store chemicals in designated locked cabinets. Never mix different chemicals. Ensure all containers are properly labelled with contents and hazard symbols.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_019_3",
+        "order": 3,
+        "title": "Spill Response",
+        "description": "<p><strong>In case of chemical spill:</strong> Evacuate the immediate area. Don appropriate PPE. Contain the spill using the spill kit. Do not wash chemicals into drains. Report to management immediately.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_019_4",
+        "order": 4,
+        "title": "Disposal Procedures",
+        "description": "<p>Dispose of chemicals according to local environmental regulations. Never pour chemicals down drains. Use approved waste disposal contractors for hazardous materials.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_002",
+      "loc_003"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_003",
+    "created_at": "2025-11-05T09:00:00Z",
+    "updated_at": "2026-02-25T14:00:00Z",
+    "published_at": "2026-02-25T14:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [
+      "capa_002"
+    ],
+    "versions": [
+      {
+        "id": "ver_019_1",
+        "version": "1.0",
+        "created_at": "2025-11-05T09:00:00Z",
+        "created_by": "usr_003",
+        "change_summary": "Initial version",
+        "status": "archived"
+      },
+      {
+        "id": "ver_019_2",
+        "version": "1.2",
+        "created_at": "2026-02-25T14:00:00Z",
+        "created_by": "usr_003",
+        "change_summary": "Updated PPE requirements and added spill kit locations",
+        "status": "published"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "id": "ack_036",
+        "user_id": "usr_003",
+        "acknowledged_at": "2026-02-26T08:00:00Z",
+        "version": "1.2"
+      },
+      {
+        "id": "ack_037",
+        "user_id": "usr_005",
+        "acknowledged_at": "2026-02-26T11:00:00Z",
+        "version": "1.2"
+      }
+    ],
+    "acknowledgment_required": true,
+    "estimated_read_time_minutes": 6
+  },
+  {
+    "id": "sop_020",
+    "title": "VIP Guest Services Protocol",
+    "description": "<p>Premium service procedures for VIP guests including pre-arrival preparation, personalized amenities, priority handling, and post-departure follow-up.</p>",
+    "version": "1.0",
+    "status": "draft",
+    "category": "customer_service",
+    "tags": [
+      "vip",
+      "guest-services",
+      "premium",
+      "loyalty"
+    ],
+    "steps": [
+      {
+        "id": "step_020_1",
+        "order": 1,
+        "title": "Pre-Arrival Preparation",
+        "description": "<p>Review VIP guest preferences 48 hours before arrival. Prepare personalized welcome amenities based on guest history and preferences.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Guest preference card reviewed",
+          "Room pre-inspected and upgraded if available",
+          "Welcome amenity prepared",
+          "Special requests noted and actioned",
+          "Airport transfer confirmed (if applicable)"
+        ]
+      },
+      {
+        "id": "step_020_2",
+        "order": 2,
+        "title": "Express Check-In",
+        "description": "<p>VIP guests receive express check-in at the dedicated VIP desk or in-room. Pre-program key cards and have registration forms ready for signature.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_020_3",
+        "order": 3,
+        "title": "During-Stay Touch Points",
+        "description": "<p>Make at least two proactive service contacts during the stay: one within 2 hours of check-in and one midway through the stay.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_020_4",
+        "order": 4,
+        "title": "Post-Departure Follow-Up",
+        "description": "<p>Send a personalized thank-you email within 24 hours of departure. Update the guest preference database with any new insights from the stay.</p>",
+        "type": "instruction",
+        "required": false
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_003"
+    ],
+    "role_ids": [
+      "manager",
+      "support_agent"
+    ],
+    "created_by": "usr_004",
+    "created_at": "2026-03-10T09:00:00Z",
+    "updated_at": "2026-03-13T11:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_020_1",
+        "version": "1.0",
+        "created_at": "2026-03-10T09:00:00Z",
+        "created_by": "usr_004",
+        "change_summary": "Initial draft",
+        "status": "draft"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 5
+  },
+  {
+    "id": "sop_021",
+    "title": "Electrical Safety & Lockout/Tagout",
+    "description": "<p>Archived procedure for electrical safety. Replaced by updated version in compliance with new national electrical standards.</p>",
+    "version": "1.0",
+    "status": "archived",
+    "category": "safety",
+    "tags": [
+      "electrical",
+      "safety",
+      "lockout-tagout",
+      "archived"
+    ],
+    "steps": [
+      {
+        "id": "step_021_1",
+        "order": 1,
+        "title": "Pre-Work Electrical Assessment",
+        "description": "<p>Before any electrical work, verify circuits are de-energized. Use a voltage tester to confirm zero energy state.</p>",
+        "type": "warning",
+        "required": true
+      },
+      {
+        "id": "step_021_2",
+        "order": 2,
+        "title": "Lockout/Tagout Application",
+        "description": "<p>Apply lockout devices and tags to all energy isolation points. Each worker applies their own lock. Never remove another person's lock.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_021_3",
+        "order": 3,
+        "title": "Work Completion & Restoration",
+        "description": "<p>After work is complete, remove all tools, verify the area is clear, then remove lockout devices in reverse order. Re-energize and test.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001"
+    ],
+    "role_ids": [
+      "field_staff"
+    ],
+    "created_by": "usr_005",
+    "created_at": "2025-07-01T09:00:00Z",
+    "updated_at": "2026-01-30T16:00:00Z",
+    "published_at": "2025-07-01T09:30:00Z",
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_021_1",
+        "version": "1.0",
+        "created_at": "2025-07-01T09:00:00Z",
+        "created_by": "usr_005",
+        "change_summary": "Initial version - now archived",
+        "status": "archived"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 4
+  },
+  {
+    "id": "sop_022",
+    "title": "Event Setup & Coordination",
+    "description": "<p>Standard procedures for setting up and coordinating events in hotel conference rooms and banquet facilities. Covers room configuration, AV setup, catering coordination, and post-event teardown.</p>",
+    "version": "1.1",
+    "status": "draft",
+    "category": "operations",
+    "tags": [
+      "events",
+      "conference",
+      "banquet",
+      "setup"
+    ],
+    "steps": [
+      {
+        "id": "step_022_1",
+        "order": 1,
+        "title": "Pre-Event Planning Review",
+        "description": "<p>Review the event BEO (Banquet Event Order) 48 hours in advance. Confirm room layout, AV requirements, catering menu, and special requests with the event coordinator.</p>",
+        "type": "instruction",
+        "required": true
+      },
+      {
+        "id": "step_022_2",
+        "order": 2,
+        "title": "Room Configuration",
+        "description": "<p>Set up the room according to the specified layout diagram.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Tables arranged per floor plan",
+          "Chairs set with correct count",
+          "Linens and place settings laid",
+          "Signage and branding placed",
+          "Temperature set to 21°C"
+        ]
+      },
+      {
+        "id": "step_022_3",
+        "order": 3,
+        "title": "AV & Technology Setup",
+        "description": "<p>Install and test all audio-visual equipment. Run a complete system check at least 1 hour before the event.</p>",
+        "type": "checklist",
+        "required": true,
+        "checklist_items": [
+          "Projector/screen aligned and focused",
+          "Microphones tested",
+          "WiFi access confirmed",
+          "Recording equipment set (if requested)",
+          "Backup equipment available"
+        ]
+      },
+      {
+        "id": "step_022_4",
+        "order": 4,
+        "title": "Post-Event Teardown",
+        "description": "<p>Complete teardown within 2 hours of event end. Return all equipment, clear catering items, and restore room to default configuration.</p>",
+        "type": "instruction",
+        "required": true
+      }
+    ],
+    "location_ids": [
+      "loc_001",
+      "loc_003"
+    ],
+    "role_ids": [
+      "field_staff",
+      "manager"
+    ],
+    "created_by": "usr_002",
+    "created_at": "2026-03-05T09:00:00Z",
+    "updated_at": "2026-03-13T10:00:00Z",
+    "published_at": null,
+    "auto_publish_kb": false,
+    "linked_kb_article_id": null,
+    "linked_audit_template_ids": [],
+    "linked_capa_ids": [],
+    "versions": [
+      {
+        "id": "ver_022_1",
+        "version": "1.0",
+        "created_at": "2026-03-05T09:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Initial draft",
+        "status": "draft"
+      },
+      {
+        "id": "ver_022_2",
+        "version": "1.1",
+        "created_at": "2026-03-13T10:00:00Z",
+        "created_by": "usr_002",
+        "change_summary": "Added AV checklist and teardown timeline",
+        "status": "draft"
+      }
+    ],
+    "acknowledgments": [],
+    "acknowledgment_required": false,
+    "estimated_read_time_minutes": 6
+  }
 ]
