@@ -1,6 +1,6 @@
 import AuditDetailClient from "./AuditDetailClient";
 
-export function generateStaticParams() { return [{id:"audit_001"},{id:"audit_002"},{id:"audit_003"},{id:"audit_004"},{id:"audit_005"}] }
+export function generateStaticParams() { return [{id:"aud_001"},{id:"aud_002"},{id:"aud_003"},{id:"aud_004"},{id:"aud_005"},{id:"aud_006"},{id:"aud_007"},{id:"aud_008"},{id:"aud_009"},{id:"aud_010"},{id:"aud_011"},{id:"aud_012"}] }
 
 export default function AuditDetailPage() {
   return <AuditDetailClient />;

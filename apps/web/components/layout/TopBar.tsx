@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Search, Bell, ChevronRight, ChevronDown, User, Settings, LogOut, Shield } from "lucide-react";
 import { useAuth } from "../../lib/auth";
+import { ThemeToggle } from "./ThemeToggle";
 
 const roles = ["Admin", "Manager", "Field Staff"];
 
@@ -166,6 +167,9 @@ export function TopBar({ locale }: { locale: string }) {
             </div>
           )}
         </div>
+
+        {/* Theme toggle */}
+        <ThemeToggle />
 
         {/* Notification bell */}
         <div style={{ position: "relative" }}>
