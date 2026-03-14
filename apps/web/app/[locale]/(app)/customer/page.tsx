@@ -103,25 +103,7 @@ export default function CustomerPortalPage() {
   ];
 
   return (
-    <div
-      className="flex min-h-screen flex-col"
-      style={
-        {
-          "--portal-bg": "#FFFFFF",
-          "--portal-surface": "#F9FAFB",
-          "--portal-surface-elevated": "#FFFFFF",
-          "--portal-border": "#E5E7EB",
-          "--portal-text-primary": "#111827",
-          "--portal-text-secondary": "#6B7280",
-          "--portal-text-muted": "#9CA3AF",
-          "--portal-accent": "#2563EB",
-          "--portal-accent-hover": "#1D4ED8",
-          "--portal-success": "#059669",
-          "--portal-warning": "#D97706",
-          "--portal-danger": "#DC2626",
-        } as React.CSSProperties
-      }
-    >
+    <div className="portal-theme flex min-h-screen flex-col">
       <PortalHeader title="My Support Portal" />
 
       <main
