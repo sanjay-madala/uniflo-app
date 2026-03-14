@@ -18,6 +18,20 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import {
+  dashboardKPIs,
+  trendData,
+  activityEvents,
+  locationTree,
+  ticketAnalytics,
+  auditAnalytics,
+  capaAnalytics,
+  taskAnalytics,
+  customDashboards,
+  exportConfigs,
+  crossModuleSummary,
+  auditHeatmapData,
+} from './analytics';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
@@ -44,6 +58,18 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  dashboardKPIs,
+  trendData,
+  activityEvents,
+  locationTree,
+  ticketAnalytics,
+  auditAnalytics,
+  capaAnalytics,
+  taskAnalytics,
+  customDashboards,
+  exportConfigs,
+  crossModuleSummary,
+  auditHeatmapData,
 };
 
 export * from './types';
