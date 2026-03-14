@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Drawer, Button, Input } from "@uniflo/ui";
+import { Drawer, Button, Input, useToast, Toaster } from "@uniflo/ui";
 import type { RuleTemplate } from "@uniflo/mock-data";
 import { RuleTriggerChip } from "./RuleTriggerChip";
 
@@ -41,6 +41,7 @@ interface TemplatePreviewDrawerProps {
 }
 
 export function TemplatePreviewDrawer({ template, onClose, onActivate, onCustomize }: TemplatePreviewDrawerProps) {
+  const { toasts, toast, dismiss } = useToast();
   const [name, setName] = useState(template?.name ?? "");
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
 
@@ -54,6 +55,7 @@ export function TemplatePreviewDrawer({ template, onClose, onActivate, onCustomi
 
   function handleActivate() {
     if (!template || !name.trim()) return;
+    toast({ title: "Rule activated successfully", variant: "success" });
     onActivate(name.trim(), selectedLocations, template);
     setName("");
     setSelectedLocations([]);
@@ -72,6 +74,7 @@ export function TemplatePreviewDrawer({ template, onClose, onActivate, onCustomi
   }
 
   return (
+    <>
     <Drawer
       open={!!template}
       onOpenChange={open => { if (!open) handleClose(); }}
@@ -172,5 +175,7 @@ export function TemplatePreviewDrawer({ template, onClose, onActivate, onCustomi
         </div>
       )}
     </Drawer>
+    <Toaster toasts={toasts} dismiss={dismiss} />
+    </>
   );
 }

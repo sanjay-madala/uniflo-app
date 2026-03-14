@@ -34,21 +34,21 @@ const moduleLabels: Record<string, string> = {
 };
 
 const moduleBadgeColors: Record<string, string> = {
-  tickets: "text-[#58A6FF] border-[#58A6FF]/30 bg-[#58A6FF]/10",
-  audits: "text-[#3FB950] border-[#3FB950]/30 bg-[#3FB950]/10",
-  capa: "text-[#D29922] border-[#D29922]/30 bg-[#D29922]/10",
-  tasks: "text-[#BC8CFF] border-[#BC8CFF]/30 bg-[#BC8CFF]/10",
+  tickets: "text-[var(--accent-blue)] border-[var(--accent-blue)]/30 bg-[var(--accent-blue)]/10",
+  audits: "text-[var(--accent-green)] border-[var(--accent-green)]/30 bg-[var(--accent-green)]/10",
+  capa: "text-[var(--accent-amber)] border-[var(--accent-amber)]/30 bg-[var(--accent-amber)]/10",
+  tasks: "text-[var(--accent-purple)] border-[var(--accent-purple)]/30 bg-[var(--accent-purple)]/10",
   sops: "text-[var(--text-secondary)] border-[var(--text-secondary)]/30 bg-[var(--text-secondary)]/10",
-  sla: "text-[#F85149] border-[#F85149]/30 bg-[#F85149]/10",
+  sla: "text-[var(--accent-red)] border-[var(--accent-red)]/30 bg-[var(--accent-red)]/10",
 };
 
 const moduleDotColors: Record<string, string> = {
-  tickets: "bg-[#58A6FF]",
-  audits: "bg-[#3FB950]",
-  capa: "bg-[#D29922]",
-  tasks: "bg-[#BC8CFF]",
+  tickets: "bg-[var(--accent-blue)]",
+  audits: "bg-[var(--accent-green)]",
+  capa: "bg-[var(--accent-amber)]",
+  tasks: "bg-[var(--accent-purple)]",
   sops: "bg-[var(--text-secondary)]",
-  sla: "bg-[#F85149]",
+  sla: "bg-[var(--accent-red)]",
 };
 
 interface TriggerOption {

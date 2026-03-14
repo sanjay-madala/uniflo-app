@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Badge } from "@uniflo/ui";
+import { Badge, Button } from "@uniflo/ui";
 import type { AutomationRule } from "@uniflo/mock-data";
+import { Edit } from "lucide-react";
 import { RuleStatusBadge } from "./RuleStatusBadge";
 import { RuleTriggerChip } from "./RuleTriggerChip";
 import { EnableToggle } from "./EnableToggle";
@@ -19,12 +20,12 @@ const moduleLabels: Record<string, string> = {
 };
 
 const moduleBadgeColors: Record<string, string> = {
-  tickets: "text-[#58A6FF] border-[#58A6FF]/30 bg-[#58A6FF]/10",
-  audits: "text-[#3FB950] border-[#3FB950]/30 bg-[#3FB950]/10",
-  capa: "text-[#D29922] border-[#D29922]/30 bg-[#D29922]/10",
-  tasks: "text-[#BC8CFF] border-[#BC8CFF]/30 bg-[#BC8CFF]/10",
+  tickets: "text-[var(--accent-blue)] border-[var(--accent-blue)]/30 bg-[var(--accent-blue)]/10",
+  audits: "text-[var(--accent-green)] border-[var(--accent-green)]/30 bg-[var(--accent-green)]/10",
+  capa: "text-[var(--accent-amber)] border-[var(--accent-amber)]/30 bg-[var(--accent-amber)]/10",
+  tasks: "text-[var(--accent-purple)] border-[var(--accent-purple)]/30 bg-[var(--accent-purple)]/10",
   sops: "text-[var(--text-secondary)] border-[var(--text-secondary)]/30 bg-[var(--text-secondary)]/10",
-  sla: "text-[#F85149] border-[#F85149]/30 bg-[#F85149]/10",
+  sla: "text-[var(--accent-red)] border-[var(--accent-red)]/30 bg-[var(--accent-red)]/10",
 };
 
 function timeAgo(dateStr: string | null): string {
@@ -102,6 +103,15 @@ export function RuleCard({ rule, locale, onToggle }: RuleCardProps) {
             )}
           </div>
         </Link>
+
+        {/* Edit button */}
+        <div className="pt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" onClick={e => e.stopPropagation()}>
+          <Link href={`/${locale}/workflow/${rule.id}/edit/`}>
+            <Button variant="secondary" size="sm">
+              <Edit className="h-3.5 w-3.5" />
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
