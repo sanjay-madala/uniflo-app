@@ -73,3 +73,10 @@ export {
 };
 
 export * from './types';
+import slaData from './slaPolicies.json';
+const slaPolicies = slaData.policies;
+const slaBreaches = slaData.breaches;
+const slaComplianceTrend = slaData.complianceTrend;
+const slaComplianceReport = slaData.complianceReport;
+const slaItemStatuses = slaData.itemStatuses;
+export { slaPolicies, slaBreaches, slaComplianceTrend, slaComplianceReport, slaItemStatuses };

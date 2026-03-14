@@ -872,3 +872,104 @@ export interface CrossModuleSummary {
   };
   overall_health_score: number;
 }
+
+export type SLAModule = "tickets" | "audits" | "capa";
+
+export type SLAMetricType = "first_response" | "resolution" | "completion" | "update_interval";
+
+export type SLAPolicyStatus = "active" | "paused" | "draft";
+
+export type SLABreachSeverity = "critical" | "warning" | "info";
+
+export type SLATimeUnit = "minutes" | "hours" | "days";
+
+export interface SLATarget {
+  id: string;
+  metric: SLAMetricType;
+  label: string;
+  target_value: number;
+  target_unit: SLATimeUnit;
+  business_hours_only: boolean;
+  warning_threshold_percent: number;
+}
+
+export type SLAConditionField =
+  | "priority"
+  | "category"
+  | "location"
+  | "source"
+  | "severity"
+  | "assignee_role"
+  | "tags_include"
+  | "audit_template";
+
+export interface SLACondition {
+  id: string;
+  field: SLAConditionField;
+  operator: "equals" | "not_equals" | "contains" | "is_any";
+  value: string | string[];
+  logic?: "AND" | "OR";
+}
+
+export interface SLAPolicy {
+  id: string;
+  name: string;
+  description: string;
+  module: SLAModule;
+  status: SLAPolicyStatus;
+  conditions: SLACondition[];
+  targets: SLATarget[];
+  escalation_enabled: boolean;
+  escalation_config?: {
+    escalate_to: string;
+    escalate_after_breach_minutes: number;
+    notify_channels: ("email" | "in_app" | "sms")[];
+  };
+  business_hours: {
+    timezone: string;
+    start_hour: number;
+    end_hour: number;
+    working_days: number[];
+  };
+  priority_order: number;
+  location_scope: string[];
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  items_covered: number;
+  breach_count_30d: number;
+  compliance_percent_30d: number;
+}
+
+export type SLABreachStatus = "at_risk" | "breached" | "escalated" | "resolved";
+
+export interface SLABreach {
+  id: string;
+  policy_id: string;
+  policy_name: string;
+  module: SLAModule;
+  item_id: string;
+  item_title: string;
+  item_priority?: string;
+  metric: SLAMetricType;
+  metric_label: string;
+  target_value: number;
+  target_unit: SLATimeUnit;
+  elapsed_value: number;
+  elapsed_unit: SLATimeUnit;
+  remaining_ms: number;
+  breach_status: SLABreachStatus;
+  breach_severity: SLABreachSeverity;
+  assignee_id: string | null;
+  assignee_name: string;
+  location_id: string;
+  location_name: string;
+  started_at: string;
+  target_at: string;
+  breached_at: string | null;
+  escalated_at: string | null;
+  resolved_at: string | null;
+  created_at: string;
+}
+
+export interface SLAComplianceReport {
