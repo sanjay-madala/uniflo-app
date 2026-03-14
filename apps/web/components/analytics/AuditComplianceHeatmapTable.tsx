@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -23,10 +24,10 @@ interface AuditComplianceHeatmapTableProps {
   months?: string[];
 }
 
-function getScorePillStyle(score: number): { backgroundColor: string; color: string; border: string; fontWeight: number } {
-  if (score >= 90) return { backgroundColor: "color-mix(in srgb, var(--accent-green) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-green) 30%, transparent)", fontWeight: 600 };
-  if (score >= 75) return { backgroundColor: "color-mix(in srgb, var(--accent-yellow) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-yellow) 30%, transparent)", fontWeight: 600 };
-  return { backgroundColor: "color-mix(in srgb, var(--accent-red) 15%, transparent)", color: "var(--text-primary)", border: "1px solid color-mix(in srgb, var(--accent-red) 30%, transparent)", fontWeight: 600 };
+function getScorePillStyle(score: number): React.CSSProperties {
+  if (score >= 90) return { backgroundColor: "var(--accent-green)", color: "var(--text-on-accent)", fontWeight: 700, borderRadius: "4px" };
+  if (score >= 75) return { backgroundColor: "var(--accent-yellow)", color: "var(--text-on-accent)", fontWeight: 700, borderRadius: "4px" };
+  return { backgroundColor: "var(--accent-red)", color: "var(--text-on-accent)", fontWeight: 700, borderRadius: "4px" };
 }
 
 export function AuditComplianceHeatmapTable({
