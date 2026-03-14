@@ -47,3 +47,13 @@ export {
 };
 
 export * from './types';
+export {
+  mobileKpiCards,
+  mobileTodaysSchedule,
+  mobileActivityFeed,
+} from './mobile-dashboard';
+export type {
+  MobileKPICard,
+  MobileScheduleItem,
+  MobileActivityItem,
+} from './mobile-dashboard';
