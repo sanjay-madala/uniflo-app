@@ -973,3 +973,134 @@ export interface SLABreach {
 }
 
 export interface SLAComplianceReport {
+
+export type GoalStatus = "draft" | "active" | "achieved" | "missed" | "archived";
+export type GoalHealthStatus = "on_track" | "at_risk" | "behind" | "achieved";
+export type GoalTimeframe = "Q1" | "Q2" | "Q3" | "Q4" | "annual" | "custom";
+export type GoalLevel = "organization" | "team" | "individual";
+
+export type KRTrackingType = "manual" | "auto";
+export type KRUnit = "percent" | "number" | "currency" | "boolean" | "score";
+export type KRDirection = "increase" | "decrease" | "maintain";
+
+export type KRDataSource =
+  | "audit_compliance_score"
+  | "audit_pass_rate"
+  | "csat_score"
+  | "csat_response_rate"
+  | "ticket_resolution_time"
+  | "ticket_sla_compliance"
+  | "ticket_volume"
+  | "capa_closure_rate"
+  | "capa_overdue_count"
+  | "task_completion_rate"
+  | "task_overdue_count"
+  | "training_completion_rate"
+  | "training_pass_rate"
+  | "sop_acknowledgment_rate"
+  | "custom_metric";
+
+export interface KRProgressEntry {
+  id: string;
+  key_result_id: string;
+  value: number;
+  previous_value: number;
+  source: "manual" | "auto";
+  source_label?: string;
+  source_entity_id?: string;
+  note?: string;
+  recorded_at: string;
+  recorded_by?: string;
+}
+
+export interface KeyResult {
+  id: string;
+  goal_id: string;
+  title: string;
+  description?: string;
+  order: number;
+  unit: KRUnit;
+  direction: KRDirection;
+  start_value: number;
+  current_value: number;
+  target_value: number;
+  progress_pct: number;
+  tracking_type: KRTrackingType;
+  data_source?: KRDataSource;
+  data_source_label?: string;
+  data_source_module?: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
+  last_auto_update?: string;
+  health: GoalHealthStatus;
+  owner_id: string;
+  progress_history: KRProgressEntry[];
+  linked_audit_ids?: string[];
+  linked_ticket_ids?: string[];
+  linked_capa_ids?: string[];
+  linked_training_ids?: string[];
+  linked_sop_ids?: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Goal {
+  id: string;
+  title: string;
+  description?: string;
+  level: GoalLevel;
+  status: GoalStatus;
+  health: GoalHealthStatus;
+  owner_id: string;
+  owner_name: string;
+  team_id?: string;
+  team_name?: string;
+  timeframe: GoalTimeframe;
+  timeframe_label: string;
+  start_date: string;
+  end_date: string;
+  progress_pct: number;
+  key_results: KeyResult[];
+  parent_goal_id?: string | null;
+  child_goal_ids?: string[];
+  tags?: string[];
+  category?: string;
+  linked_modules: GoalModuleLink[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface GoalModuleLink {
+  module: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
+  label: string;
+  current_value: number | string;
+  trend: number;
+  entity_count: number;
+  last_updated: string;
+  link_to: string;
+}
+
+export interface GoalDashboardKPIs {
+  total_goals: number;
+  active_goals: number;
+  achieved_goals: number;
+  on_track_pct: number;
+  at_risk_count: number;
+  behind_count: number;
+  avg_progress: number;
+  total_key_results: number;
+  auto_updated_krs: number;
+}
+
+export interface TeamGoalSummary {
+  team_id: string;
+  team_name: string;
+  owner_id: string;
+  owner_name: string;
+  owner_avatar: string | null;
+  goal_count: number;
+  avg_progress: number;
+  on_track: number;
+  at_risk: number;
+  behind: number;
+  achieved: number;
+  goals: Goal[];
+}

@@ -10,8 +10,8 @@ const healthConfig: Record<GoalHealthStatus, { label: string; dotClass: string; 
   },
   at_risk: {
     label: "At Risk",
-    dotClass: "bg-yellow-400",
-    pillClass: "bg-yellow-500/10 text-yellow-400",
+    dotClass: "bg-[var(--accent-yellow)]",
+    pillClass: "bg-[var(--accent-yellow)]/10 text-[var(--accent-yellow)]",
   },
   behind: {
     label: "Behind",
