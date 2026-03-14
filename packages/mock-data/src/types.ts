@@ -1534,3 +1534,164 @@ export interface TeamGoalSummary {
   achieved: number;
   goals: Goal[];
 }
+
+export type TrainingCategory = "safety" | "operations" | "compliance" | "customer_service" | "onboarding" | "leadership";
+export type ContentBlockType = "text" | "video" | "image" | "embed";
+export type EnrollmentStatus = "assigned" | "in_progress" | "completed" | "failed" | "overdue";
+export type QuizQuestionType = "single_choice" | "multiple_choice" | "true_false";
+export type AssignmentTrigger = "manual" | "sop_version_change" | "role_assignment" | "schedule" | "audit_failure";
+
+export interface ContentBlock {
+  id: string;
+  order: number;
+  type: ContentBlockType;
+  title?: string;
+  body_html?: string;
+  media_url?: string;
+  media_thumbnail?: string;
+  duration_seconds?: number;
+  alt_text?: string;
+  caption?: string;
+}
+
+export interface QuizOption {
+  id: string;
+  label: string;
+  is_correct: boolean;
+}
+
+export interface QuizQuestion {
+  id: string;
+  order: number;
+  question_text: string;
+  type: QuizQuestionType;
+  options: QuizOption[];
+  explanation?: string;
+  points: number;
+}
+
+export interface Quiz {
+  id: string;
+  module_id: string;
+  title: string;
+  description?: string;
+  questions: QuizQuestion[];
+  pass_threshold: number;
+  time_limit_minutes: number | null;
+  max_attempts: number;
+  shuffle_questions: boolean;
+  shuffle_options: boolean;
+  show_correct_answers: boolean;
+}
+
+export interface QuizAttempt {
+  id: string;
+  quiz_id: string;
+  user_id: string;
+  answers: Array<{
+    question_id: string;
+    selected_option_ids: string[];
+    correct: boolean;
+    points_earned: number;
+  }>;
+  score: number;
+  passed: boolean;
+  started_at: string;
+  completed_at: string;
+  attempt_number: number;
+}
+
+export interface TrainingModule {
+  id: string;
+  title: string;
+  description: string;
+  status: TrainingModuleStatus;
+  category: TrainingCategory;
+  difficulty: TrainingDifficulty;
+  tags: string[];
+  cover_image?: string;
+  content_blocks: ContentBlock[];
+  quiz_id: string | null;
+  estimated_duration_minutes: number;
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  published_at: string | null;
+  version: string;
+  assigned_role_ids: string[];
+  assigned_location_ids: string[];
+  linked_sop_id: string | null;
+  linked_sop_title: string | null;
+  linked_sop_version: string | null;
+  linked_goal_ids: string[];
+  linked_audit_template_ids: string[];
+  auto_assign_on_sop_change: boolean;
+  auto_assign_on_role_join: boolean;
+  total_enrolled: number;
+  total_completed: number;
+  avg_score: number | null;
+  completion_rate: number;
+}
+
+export interface TrainingEnrollment {
+  id: string;
+  module_id: string;
+  user_id: string;
+  status: EnrollmentStatus;
+  assigned_at: string;
+  assigned_by: string | null;
+  assignment_trigger: AssignmentTrigger;
+  started_at: string | null;
+  completed_at: string | null;
+  due_date: string | null;
+  progress_percent: number;
+  last_content_block_id: string | null;
+  quiz_attempts: QuizAttempt[];
+  best_score: number | null;
+  certificate_issued: boolean;
+  certificate_id: string | null;
+}
+
+export interface TrainingCertificate {
+  id: string;
+  enrollment_id: string;
+  module_id: string;
+  module_title: string;
+  user_id: string;
+  user_name: string;
+  issued_at: string;
+  expires_at: string | null;
+  score: number;
+  certificate_number: string;
+}
+
+export interface TrainingNotification {
+  id: string;
+  type: "auto_assigned" | "deadline_reminder" | "completed" | "failed";
+  user_id: string;
+  module_id: string;
+  module_title: string;
+  trigger_reason: string;
+  created_at: string;
+  read: boolean;
+  action_url: string;
+}
+
+export interface LocationTrainingStats {
+  location_id: string;
+  location_name: string;
+  total_assigned: number;
+  total_completed: number;
+  total_overdue: number;
+  completion_rate: number;
+  avg_score: number;
+  modules: Array<{
+    module_id: string;
+    module_title: string;
+    assigned: number;
+    completed: number;
+    overdue: number;
+    completion_rate: number;
+    avg_score: number;
+  }>;
+}
