@@ -17,10 +17,10 @@ interface AutoTaskModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   auditId: string;
-  auditTitle?: string;
-  auditScore?: number;
-  auditDate?: string;
-  auditorName?: string;
+  auditTitle: string;
+  auditScore: number;
+  auditDate: string;
+  auditorName: string;
   failedItems: FailedItem[];
   suggestedAssigneeId?: string;
   suggestedProjectId?: string;
@@ -71,10 +71,10 @@ export function AutoTaskModal({
   open,
   onOpenChange,
   auditId,
-  auditTitle = "Equipment Safety Audit - Chicago",
-  auditScore = 54,
-  auditDate = "2026-03-12T07:00:00Z",
-  auditorName = "Priya Sharma",
+  auditTitle,
+  auditScore,
+  auditDate,
+  auditorName,
   failedItems,
   suggestedAssigneeId = "usr_005",
   suggestedProjectId = "proj_001",

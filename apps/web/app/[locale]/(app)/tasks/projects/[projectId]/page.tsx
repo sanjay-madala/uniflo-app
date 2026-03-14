@@ -52,7 +52,7 @@ function isOverdue(task: Task): boolean {
 const sourceIcons: Record<string, React.ReactNode> = {
   audit: <ClipboardCheck className="h-3.5 w-3.5 text-[var(--accent-blue)]" />,
   capa: <Shield className="h-3.5 w-3.5 text-[var(--accent-yellow,#EAB308)]" />,
-  ticket: <Ticket className="h-3.5 w-3.5 text-purple-400" />,
+  ticket: <Ticket className="h-3.5 w-3.5 text-[var(--accent-purple)]" />,
 };
 
 const statusConfig: Record<Project["status"], { label: string; variant: "blue" | "success" | "warning" | "default" }> = {

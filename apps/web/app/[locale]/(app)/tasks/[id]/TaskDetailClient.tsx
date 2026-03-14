@@ -214,7 +214,7 @@ export default function TaskDetailClient() {
     create: <div className="h-6 w-6 rounded-full bg-[var(--accent-blue)]/20 flex items-center justify-center"><Clock className="h-3 w-3 text-[var(--accent-blue)]" /></div>,
     audit: <div className="h-6 w-6 rounded-full bg-[var(--accent-blue)]/20 flex items-center justify-center"><Shield className="h-3 w-3 text-[var(--accent-blue)]" /></div>,
     assign: <div className="h-6 w-6 rounded-full bg-[var(--accent-green)]/20 flex items-center justify-center"><UserPlus className="h-3 w-3 text-[var(--accent-green)]" /></div>,
-    status: <div className="h-6 w-6 rounded-full bg-purple-500/20 flex items-center justify-center"><Clock className="h-3 w-3 text-purple-400" /></div>,
+    status: <div className="h-6 w-6 rounded-full bg-[var(--accent-purple)]/20 flex items-center justify-center"><Clock className="h-3 w-3 text-[var(--accent-purple)]" /></div>,
     subtask: <div className="h-6 w-6 rounded-full bg-[var(--accent-green)]/20 flex items-center justify-center"><CheckCircle className="h-3 w-3 text-[var(--accent-green)]" /></div>,
     done: <div className="h-6 w-6 rounded-full bg-[var(--accent-green)]/20 flex items-center justify-center"><CheckCircle className="h-3 w-3 text-[var(--accent-green)]" /></div>,
   };
