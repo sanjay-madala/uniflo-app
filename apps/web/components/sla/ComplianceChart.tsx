@@ -50,10 +50,10 @@ export function ComplianceChart({
   })();
 
   const moduleColors: Record<string, string> = {
-    tickets: "#58A6FF",
-    audits: "#BC8CFF",
-    capa: "#D29922",
-    all: "#58A6FF",
+    tickets: "var(--accent-blue)",
+    audits: "var(--accent-purple)",
+    capa: "var(--accent-amber)",
+    all: "var(--accent-blue)",
   };
 
   return (
@@ -64,13 +64,13 @@ export function ComplianceChart({
         </h3>
         <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
           <span className="inline-flex items-center gap-1">
-            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#58A6FF" }} /> Tickets
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--accent-blue)" }} /> Tickets
           </span>
           <span className="inline-flex items-center gap-1">
-            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#BC8CFF" }} /> Audits
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--accent-purple)" }} /> Audits
           </span>
           <span className="inline-flex items-center gap-1">
-            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D29922" }} /> CAPA
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--accent-amber)" }} /> CAPA
           </span>
           <span className="text-[var(--text-muted)]">
             Target: 90%
@@ -82,7 +82,7 @@ export function ComplianceChart({
         dataKey="compliance"
         xAxisKey="name"
         height={height}
-        color={moduleColors[moduleFilter] ?? "#58A6FF"}
+        color={moduleColors[moduleFilter] ?? "var(--accent-blue)"}
         showLegend={false}
         showGrid
         showTooltip
