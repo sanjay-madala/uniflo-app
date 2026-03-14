@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Ticket, FileText, ClipboardCheck, AlertTriangle,
   CheckSquare, BarChart2, Clock, BookOpen, Zap,
-  Target, Users, MessageSquare, GraduationCap, Settings,
+  Target, Users, Megaphone, GraduationCap, Settings,
   ChevronLeft, Menu, Shield, UserCog,
 } from "lucide-react";
 
@@ -23,7 +23,7 @@ const navItems = [
   { href: "/workflow", icon: Zap, label: "Workflow" },
   { href: "/goals", icon: Target, label: "Goals" },
   { href: "/customer", icon: Users, label: "Customer Portal" },
-  { href: "/comms", icon: MessageSquare, label: "Communications" },
+  { href: "/comms", icon: Megaphone, label: "Broadcasts" },
   { href: "/training", icon: GraduationCap, label: "Training" },
 ];
 

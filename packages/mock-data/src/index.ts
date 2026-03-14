@@ -18,10 +18,25 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import slaData from './slaPolicies.json';
+import {
+  broadcasts,
+  broadcastTemplates,
+  readReceipts,
+  locationReceiptSummaries,
+  regions,
+} from './broadcasts';
+import { goals, goalDashboardKPIs, teamGoalSummaries } from './goals';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
 const ruleExecutions = automationRulesData.executions;
+
+const slaPolicies = slaData.policies;
+const slaBreaches = slaData.breaches;
+const slaComplianceTrend = slaData.complianceTrend;
+const slaComplianceReport = slaData.complianceReport;
+const slaItemStatuses = slaData.itemStatuses;
 
 export {
   users,
@@ -44,6 +59,19 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  slaPolicies,
+  slaBreaches,
+  slaComplianceTrend,
+  slaComplianceReport,
+  slaItemStatuses,
+  broadcasts,
+  broadcastTemplates,
+  readReceipts,
+  locationReceiptSummaries,
+  regions,
+  goals,
+  goalDashboardKPIs,
+  teamGoalSummaries,
 };
 
 export * from './types';

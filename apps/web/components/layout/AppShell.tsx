@@ -11,7 +11,7 @@ import {
 import {
   LayoutDashboard, Ticket, FileText, ClipboardCheck, AlertTriangle,
   CheckSquare, BarChart2, Clock, BookOpen, Zap,
-  Target, Users, MessageSquare, GraduationCap, Settings, User,
+  Target, Users, Megaphone, GraduationCap, Settings, User,
 } from "lucide-react";
 
 const commandItems = (locale: string, navigate: (path: string) => void): CommandItem[] => [
@@ -27,7 +27,7 @@ const commandItems = (locale: string, navigate: (path: string) => void): Command
   { id: "workflow", label: "Workflow", icon: <Zap size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/workflow/`) },
   { id: "goals", label: "Goals", icon: <Target size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/goals/`) },
   { id: "customer", label: "Customer Portal", icon: <Users size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/customer/`) },
-  { id: "comms", label: "Communications", icon: <MessageSquare size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/comms/`) },
+  { id: "comms", label: "Broadcasts", icon: <Megaphone size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/comms/`) },
   { id: "training", label: "Training", icon: <GraduationCap size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/training/`) },
   { id: "settings", label: "Settings", icon: <Settings size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/settings/`) },
   { id: "profile", label: "Profile", icon: <User size={16} />, group: "Navigation", onSelect: () => navigate(`/${locale}/profile/`) },
