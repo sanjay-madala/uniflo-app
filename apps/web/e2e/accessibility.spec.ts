@@ -1,19 +1,10 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { AUTH_STORAGE_STATE } from './auth.setup';
 
-async function authenticate(page: import('@playwright/test').Page) {
-  await page.goto('/en/login/', { waitUntil: 'commit' });
-  await page.evaluate(() => {
-    localStorage.setItem('uniflo-auth', 'true');
-    localStorage.setItem('uniflo-role', 'admin');
-  });
-}
+test.use({ storageState: AUTH_STORAGE_STATE });
 
 test.describe('Accessibility (WCAG 2.1 AA)', () => {
-  test.beforeEach(async ({ page }) => {
-    await authenticate(page);
-  });
-
   test('dashboard page has no critical a11y violations', async ({ page }) => {
     await page.goto('/en/dashboard/', { waitUntil: 'load' });
     await expect(page.getByText('Operations Dashboard')).toBeVisible({ timeout: 15000 });
@@ -22,7 +13,6 @@ test.describe('Accessibility (WCAG 2.1 AA)', () => {
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();
 
-    // Filter to serious and critical only
     const serious = results.violations.filter(
       (v) => v.impact === 'critical' || v.impact === 'serious'
     );

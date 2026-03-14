@@ -10,10 +10,10 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
   webServer: {
-    command: 'pnpm dlx serve out -l 4173 -s',
+    command: 'python3 -m http.server 4173 --directory out',
     port: 4173,
     reuseExistingServer: true,
-    timeout: 15000,
+    timeout: 10000,
   },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },

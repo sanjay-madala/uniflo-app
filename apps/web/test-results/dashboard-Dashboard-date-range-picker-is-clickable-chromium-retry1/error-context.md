@@ -1,5 +1,582 @@
 # Page snapshot
 
 ```yaml
-- alert [ref=e2]
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e6]: U
+        - generic [ref=e7]: Uniflo
+      - navigation [ref=e8]:
+        - link "Dashboard" [ref=e9] [cursor=pointer]:
+          - /url: /en/dashboard/
+          - img [ref=e10]
+          - generic [ref=e15]: Dashboard
+        - link "Tickets" [ref=e16] [cursor=pointer]:
+          - /url: /en/tickets/
+          - img [ref=e17]
+          - generic [ref=e19]: Tickets
+        - link "SOPs" [ref=e20] [cursor=pointer]:
+          - /url: /en/sops/
+          - img [ref=e21]
+          - generic [ref=e24]: SOPs
+        - link "Audits" [ref=e25] [cursor=pointer]:
+          - /url: /en/audit/
+          - img [ref=e26]
+          - generic [ref=e30]: Audits
+        - link "CAPA" [ref=e31] [cursor=pointer]:
+          - /url: /en/capa/
+          - img [ref=e32]
+          - generic [ref=e34]: CAPA
+        - link "Tasks" [ref=e35] [cursor=pointer]:
+          - /url: /en/tasks/
+          - img [ref=e36]
+          - generic [ref=e39]: Tasks
+        - link "Analytics" [ref=e40] [cursor=pointer]:
+          - /url: /en/analytics/
+          - img [ref=e41]
+          - generic [ref=e42]: Analytics
+        - link "SLA" [ref=e43] [cursor=pointer]:
+          - /url: /en/sla/
+          - img [ref=e44]
+          - generic [ref=e47]: SLA
+        - link "Knowledge Base" [ref=e48] [cursor=pointer]:
+          - /url: /en/knowledge/
+          - img [ref=e49]
+          - generic [ref=e51]: Knowledge Base
+        - link "Workflow" [ref=e52] [cursor=pointer]:
+          - /url: /en/workflow/
+          - img [ref=e53]
+          - generic [ref=e55]: Workflow
+        - link "Goals" [ref=e56] [cursor=pointer]:
+          - /url: /en/goals/
+          - img [ref=e57]
+          - generic [ref=e61]: Goals
+        - link "Customer Portal" [ref=e62] [cursor=pointer]:
+          - /url: /en/customer/
+          - img [ref=e63]
+          - generic [ref=e68]: Customer Portal
+        - link "Communications" [ref=e69] [cursor=pointer]:
+          - /url: /en/comms/
+          - img [ref=e70]
+          - generic [ref=e72]: Communications
+        - link "Training" [ref=e73] [cursor=pointer]:
+          - /url: /en/training/
+          - img [ref=e74]
+          - generic [ref=e77]: Training
+        - generic [ref=e79]: Admin
+        - link "Users" [ref=e80] [cursor=pointer]:
+          - /url: /en/admin/users/
+          - img [ref=e81]
+          - generic [ref=e93]: Users
+        - link "Roles" [ref=e94] [cursor=pointer]:
+          - /url: /en/admin/roles/
+          - img [ref=e95]
+          - generic [ref=e97]: Roles
+        - link "Settings" [ref=e98] [cursor=pointer]:
+          - /url: /en/admin/settings/
+          - img [ref=e99]
+          - generic [ref=e102]: Settings
+      - button "Collapse sidebar" [ref=e104] [cursor=pointer]:
+        - img [ref=e105]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - banner [ref=e109]:
+          - button "Search... ⌘K" [ref=e110] [cursor=pointer]:
+            - img [ref=e111]
+            - generic [ref=e114]: Search...
+            - generic [ref=e115]: ⌘K
+          - generic [ref=e116]: Uniflo Demo Co
+          - button "Admin" [ref=e118] [cursor=pointer]:
+            - img [ref=e119]
+            - text: Admin
+            - img [ref=e121]
+          - button "Switch to light mode" [ref=e123] [cursor=pointer]:
+            - img [ref=e124]
+          - generic [ref=e130]:
+            - button "Notifications" [ref=e131] [cursor=pointer]:
+              - img [ref=e132]
+            - generic [ref=e135]: "3"
+          - button "AM" [ref=e137] [cursor=pointer]:
+            - generic [ref=e139]: AM
+        - generic [ref=e140]:
+          - generic [ref=e142]: Home
+          - generic [ref=e143]:
+            - img [ref=e144]
+            - generic [ref=e146]: Dashboard
+      - main [ref=e147]:
+        - generic [ref=e148]:
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - heading "Operations Dashboard" [level=1] [ref=e152]
+              - paragraph [ref=e153]: Real-time overview across all modules
+            - generic [ref=e155]:
+              - generic [ref=e156]:
+                - button "7d" [ref=e157]
+                - button "30d" [ref=e158]
+                - button "90d" [ref=e159]
+                - button "QTD" [ref=e160]
+              - button "All Locations" [ref=e162]:
+                - img [ref=e163]
+                - generic [ref=e167]: All Locations
+              - button "Export" [ref=e168]:
+                - img [ref=e169]
+                - text: Export
+          - generic [ref=e172]:
+            - 'link "Open Tickets: 23 tickets, up 8% vs last 30 days" [ref=e173] [cursor=pointer]':
+              - /url: /en/analytics/tickets/
+              - generic [ref=e175]:
+                - generic [ref=e176]:
+                  - paragraph [ref=e177]: Open Tickets
+                  - generic [ref=e178]:
+                    - generic [ref=e179]: "23"
+                    - generic [ref=e180]: tickets
+                  - generic [ref=e181]:
+                    - generic [ref=e182]:
+                      - img [ref=e183]
+                      - generic [ref=e186]: 8%
+                    - generic [ref=e187]: vs last 30 days
+                - application [ref=e191]
+            - 'link "Compliance Score: 87 %, down 2% vs last 30 days" [ref=e192] [cursor=pointer]':
+              - /url: /en/analytics/audits/
+              - generic [ref=e194]:
+                - generic [ref=e195]:
+                  - paragraph [ref=e196]: Compliance Score
+                  - generic [ref=e197]:
+                    - generic [ref=e198]: "87"
+                    - generic [ref=e199]: "%"
+                  - generic [ref=e200]:
+                    - generic [ref=e201]:
+                      - img [ref=e202]
+                      - generic [ref=e205]: 2%
+                    - generic [ref=e206]: vs last 30 days
+                - application [ref=e210]
+            - 'link "CAPA Overdue: 4 items, up 1% vs last 30 days" [ref=e211] [cursor=pointer]':
+              - /url: /en/analytics/capa/
+              - generic [ref=e213]:
+                - generic [ref=e214]:
+                  - paragraph [ref=e215]: CAPA Overdue
+                  - generic [ref=e216]:
+                    - generic [ref=e217]: "4"
+                    - generic [ref=e218]: items
+                  - generic [ref=e219]:
+                    - generic [ref=e220]:
+                      - img [ref=e221]
+                      - generic [ref=e224]: 1%
+                    - generic [ref=e225]: vs last 30 days
+                - application [ref=e229]
+            - 'link "Tasks Due: 12 tasks, down 3% vs last 30 days" [ref=e230] [cursor=pointer]':
+              - /url: /en/analytics/tasks/
+              - generic [ref=e232]:
+                - generic [ref=e233]:
+                  - paragraph [ref=e234]: Tasks Due
+                  - generic [ref=e235]:
+                    - generic [ref=e236]: "12"
+                    - generic [ref=e237]: tasks
+                  - generic [ref=e238]:
+                    - generic [ref=e239]:
+                      - img [ref=e240]
+                      - generic [ref=e243]: 3%
+                    - generic [ref=e244]: vs last 30 days
+                - application [ref=e248]
+            - 'link "SLA Compliance: 94 %, up 5% vs last 30 days" [ref=e249] [cursor=pointer]':
+              - /url: /en/analytics/tickets/
+              - generic [ref=e251]:
+                - generic [ref=e252]:
+                  - paragraph [ref=e253]: SLA Compliance
+                  - generic [ref=e254]:
+                    - generic [ref=e255]: "94"
+                    - generic [ref=e256]: "%"
+                  - generic [ref=e257]:
+                    - generic [ref=e258]:
+                      - img [ref=e259]
+                      - generic [ref=e262]: 5%
+                    - generic [ref=e263]: vs last 30 days
+                - application [ref=e267]
+            - 'link "CSAT Score: 4.2 /5, up 2% vs last 30 days" [ref=e268] [cursor=pointer]':
+              - /url: /en/analytics/tickets/
+              - generic [ref=e270]:
+                - generic [ref=e271]:
+                  - paragraph [ref=e272]: CSAT Score
+                  - generic [ref=e273]:
+                    - generic [ref=e274]: "4.2"
+                    - generic [ref=e275]: /5
+                  - generic [ref=e276]:
+                    - generic [ref=e277]:
+                      - img [ref=e278]
+                      - generic [ref=e281]: 2%
+                    - generic [ref=e282]: vs last 30 days
+                - application [ref=e286]
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - generic [ref=e289]:
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - heading "Compliance & Satisfaction Trend" [level=3] [ref=e293]
+                    - paragraph [ref=e294]: 30-day correlation
+                  - generic [ref=e295]:
+                    - button "Line" [ref=e296]
+                    - button "Area" [ref=e297]
+                - img "Dual-line chart showing compliance score and CSAT score trends over the last 30 days" [ref=e299]:
+                  - generic [ref=e301]:
+                    - list [ref=e303]:
+                      - listitem [ref=e304]:
+                        - img "CSAT Score legend icon" [ref=e305]
+                        - text: CSAT Score
+                      - listitem [ref=e307]:
+                        - img "Compliance Score legend icon" [ref=e308]
+                        - text: Compliance Score
+                    - application [ref=e310]:
+                      - generic [ref=e332]:
+                        - generic [ref=e333]:
+                          - generic [ref=e335]: 02/15
+                          - generic [ref=e337]: 02/18
+                          - generic [ref=e339]: 02/21
+                          - generic [ref=e341]: 02/24
+                          - generic [ref=e343]: 02/27
+                          - generic [ref=e345]: 03/02
+                          - generic [ref=e347]: 03/05
+                          - generic [ref=e349]: 03/08
+                          - generic [ref=e351]: 03/11
+                          - generic [ref=e353]: 03/14
+                        - generic [ref=e354]:
+                          - generic [ref=e356]: "0"
+                          - generic [ref=e358]: "25"
+                          - generic [ref=e360]: "50"
+                          - generic [ref=e362]: "75"
+                          - generic [ref=e364]: "100"
+                        - generic [ref=e365]: Compliance
+                        - generic [ref=e366]:
+                          - generic [ref=e368]: "0"
+                          - generic [ref=e370]: "25"
+                          - generic [ref=e372]: "50"
+                          - generic [ref=e374]: "75"
+                          - generic [ref=e376]: "100"
+                        - generic [ref=e377]: CSAT
+              - generic [ref=e378]:
+                - generic [ref=e379]:
+                  - heading "Module Breakdown" [level=3] [ref=e380]
+                  - paragraph [ref=e381]: Distribution across modules
+                - 'img "Donut chart showing module breakdown: Open Tickets: 23, Audits Completed: 18, CAPAs Open: 18, Tasks Open: 12, SLA Breaches: 6" [ref=e383]':
+                  - generic [ref=e386]:
+                    - list [ref=e388]:
+                      - listitem [ref=e389]:
+                        - img "Audits Completed legend icon" [ref=e390]
+                        - text: Audits Completed
+                      - listitem [ref=e392]:
+                        - img "CAPAs Open legend icon" [ref=e393]
+                        - text: CAPAs Open
+                      - listitem [ref=e395]:
+                        - img "Open Tickets legend icon" [ref=e396]
+                        - text: Open Tickets
+                      - listitem [ref=e398]:
+                        - img "SLA Breaches legend icon" [ref=e399]
+                        - text: SLA Breaches
+                      - listitem [ref=e401]:
+                        - img "Tasks Open legend icon" [ref=e402]
+                        - text: Tasks Open
+                    - application [ref=e404]:
+                      - generic [ref=e405]: "77"
+                      - generic [ref=e425]:
+                        - generic [ref=e426]: "23"
+                        - generic [ref=e427]: "18"
+                        - generic [ref=e428]: "18"
+                        - generic [ref=e429]: "12"
+                        - generic [ref=e430]: "6"
+            - generic [ref=e432]:
+              - generic [ref=e433]:
+                - heading "Latest Activity" [level=3] [ref=e435]
+                - generic [ref=e436]:
+                  - button "All" [ref=e437]
+                  - button "Tickets" [ref=e438]
+                  - button "Audits" [ref=e439]
+                  - button "CAPA" [ref=e440]
+                  - button "Tasks" [ref=e441]
+                  - button "SLA" [ref=e442]
+              - feed [ref=e444]:
+                - 'article "Audit completed -- Food Safety, Downtown. Score: 92% (Passed) -- 1 finding. 15m ago" [ref=e445] [cursor=pointer]':
+                  - generic [ref=e446]:
+                    - generic [ref=e448]: SC
+                    - img [ref=e450]
+                  - generic [ref=e454]:
+                    - paragraph [ref=e455]: Audit completed -- Food Safety, Downtown
+                    - paragraph [ref=e456]: "Score: 92% (Passed) -- 1 finding"
+                    - generic [ref=e457]:
+                      - generic [ref=e458]: 15m ago
+                      - generic [ref=e459]: info
+                - article "Ticket TKT-00045 resolved. Resolved by Maria Silva in 2h 15m. 30m ago" [ref=e460] [cursor=pointer]:
+                  - generic [ref=e461]:
+                    - generic [ref=e463]: MS
+                    - img [ref=e465]
+                  - generic [ref=e468]:
+                    - paragraph [ref=e469]: Ticket TKT-00045 resolved
+                    - paragraph [ref=e470]: Resolved by Maria Silva in 2h 15m
+                    - generic [ref=e471]:
+                      - generic [ref=e472]: 30m ago
+                      - generic [ref=e473]: info
+                - article "CAPA CAP-008 is overdue. 3 days past due date -- Freezer temperature control. 45m ago" [ref=e474] [cursor=pointer]:
+                  - generic [ref=e475]:
+                    - generic [ref=e477]: AK
+                    - img [ref=e479]
+                  - generic [ref=e481]:
+                    - paragraph [ref=e482]: CAPA CAP-008 is overdue
+                    - paragraph [ref=e483]: 3 days past due date -- Freezer temperature control
+                    - generic [ref=e484]:
+                      - generic [ref=e485]: 45m ago
+                      - generic [ref=e486]: critical
+                - article "SLA breach on TKT-00032. Response time exceeded by 45 minutes. 1h ago" [ref=e488] [cursor=pointer]:
+                  - generic [ref=e489]:
+                    - generic [ref=e491]: S
+                    - img [ref=e493]
+                  - generic [ref=e496]:
+                    - paragraph [ref=e497]: SLA breach on TKT-00032
+                    - paragraph [ref=e498]: Response time exceeded by 45 minutes
+                    - generic [ref=e499]:
+                      - generic [ref=e500]: 1h ago
+                      - generic [ref=e501]: critical
+                - 'article "Task completed: HVAC filter replacement. Completed by Ahmed Khan -- 2 days ahead of schedule. 1h ago" [ref=e503] [cursor=pointer]':
+                  - generic [ref=e504]:
+                    - generic [ref=e506]: AK
+                    - img [ref=e508]
+                  - generic [ref=e511]:
+                    - paragraph [ref=e512]: "Task completed: HVAC filter replacement"
+                    - paragraph [ref=e513]: Completed by Ahmed Khan -- 2 days ahead of schedule
+                    - generic [ref=e514]:
+                      - generic [ref=e515]: 1h ago
+                      - generic [ref=e516]: info
+                - 'article "Audit failed -- Kitchen Hygiene, Airport. Score: 62% (Failed) -- 5 findings. 2h ago" [ref=e517] [cursor=pointer]':
+                  - generic [ref=e518]:
+                    - generic [ref=e520]: SC
+                    - img [ref=e522]
+                  - generic [ref=e526]:
+                    - paragraph [ref=e527]: Audit failed -- Kitchen Hygiene, Airport
+                    - paragraph [ref=e528]: "Score: 62% (Failed) -- 5 findings"
+                    - generic [ref=e529]:
+                      - generic [ref=e530]: 2h ago
+                      - generic [ref=e531]: warning
+                - 'article "New ticket: Broken AC unit in Room 304. Reported by guest -- Priority: High. 2h ago" [ref=e532] [cursor=pointer]':
+                  - generic [ref=e533]:
+                    - generic [ref=e535]: JW
+                    - img [ref=e537]
+                  - generic [ref=e540]:
+                    - paragraph [ref=e541]: "New ticket: Broken AC unit in Room 304"
+                    - paragraph [ref=e542]: "Reported by guest -- Priority: High"
+                    - generic [ref=e543]:
+                      - generic [ref=e544]: 2h ago
+                      - generic [ref=e545]: warning
+                - article "CAPA created from audit finding. Improper chemical storage -- Kitchen area. 2h ago" [ref=e546] [cursor=pointer]:
+                  - generic [ref=e547]:
+                    - generic [ref=e549]: SC
+                    - img [ref=e551]
+                  - generic [ref=e553]:
+                    - paragraph [ref=e554]: CAPA created from audit finding
+                    - paragraph [ref=e555]: Improper chemical storage -- Kitchen area
+                    - generic [ref=e556]:
+                      - generic [ref=e557]: 2h ago
+                      - generic [ref=e558]: warning
+                - 'article "SOP published: Emergency Evacuation v2.1. Updated fire safety procedures -- 12 staff require acknowledgment. 3h ago" [ref=e559] [cursor=pointer]':
+                  - generic [ref=e560]:
+                    - generic [ref=e562]: MS
+                    - img [ref=e564]
+                  - generic [ref=e566]:
+                    - paragraph [ref=e567]: "SOP published: Emergency Evacuation v2.1"
+                    - paragraph [ref=e568]: Updated fire safety procedures -- 12 staff require acknowledgment
+                    - generic [ref=e569]:
+                      - generic [ref=e570]: 3h ago
+                      - generic [ref=e571]: info
+                - 'article "Automation: Auto-escalated ticket TKT-00041. Ticket priority elevated to Critical after 4h without response. 4h ago" [ref=e572] [cursor=pointer]':
+                  - generic [ref=e573]:
+                    - generic [ref=e575]: S
+                    - img [ref=e577]
+                  - generic [ref=e579]:
+                    - paragraph [ref=e580]: "Automation: Auto-escalated ticket TKT-00041"
+                    - paragraph [ref=e581]: Ticket priority elevated to Critical after 4h without response
+                    - generic [ref=e582]:
+                      - generic [ref=e583]: 4h ago
+                      - generic [ref=e584]: warning
+          - generic [ref=e585]:
+            - generic [ref=e587]:
+              - generic [ref=e588]:
+                - heading "Compliance Heatmap" [level=3] [ref=e589]
+                - paragraph [ref=e590]: Audit scores by location over the last 6 months
+              - table [ref=e594]:
+                - rowgroup [ref=e595]:
+                  - row "Location Oct Nov Dec Jan Feb Mar" [ref=e596]:
+                    - columnheader "Location" [ref=e597]
+                    - columnheader "Oct" [ref=e598]
+                    - columnheader "Nov" [ref=e599]
+                    - columnheader "Dec" [ref=e600]
+                    - columnheader "Jan" [ref=e601]
+                    - columnheader "Feb" [ref=e602]
+                    - columnheader "Mar" [ref=e603]
+                - rowgroup [ref=e604]:
+                  - row "Downtown 92 88 91 85 90 92" [ref=e605]:
+                    - cell "Downtown" [ref=e606]
+                    - cell "92" [ref=e607]:
+                      - generic [ref=e608]: "92"
+                    - cell "88" [ref=e609]:
+                      - generic [ref=e610]: "88"
+                    - cell "91" [ref=e611]:
+                      - generic [ref=e612]: "91"
+                    - cell "85" [ref=e613]:
+                      - generic [ref=e614]: "85"
+                    - cell "90" [ref=e615]:
+                      - generic [ref=e616]: "90"
+                    - cell "92" [ref=e617]:
+                      - generic [ref=e618]: "92"
+                  - row "Airport 75 72 78 80 76 78" [ref=e619]:
+                    - cell "Airport" [ref=e620]
+                    - cell "75" [ref=e621]:
+                      - generic [ref=e622]: "75"
+                    - cell "72" [ref=e623]:
+                      - generic [ref=e624]: "72"
+                    - cell "78" [ref=e625]:
+                      - generic [ref=e626]: "78"
+                    - cell "80" [ref=e627]:
+                      - generic [ref=e628]: "80"
+                    - cell "76" [ref=e629]:
+                      - generic [ref=e630]: "76"
+                    - cell "78" [ref=e631]:
+                      - generic [ref=e632]: "78"
+                  - row "Resort 85 87 83 88 86 88" [ref=e633]:
+                    - cell "Resort" [ref=e634]
+                    - cell "85" [ref=e635]:
+                      - generic [ref=e636]: "85"
+                    - cell "87" [ref=e637]:
+                      - generic [ref=e638]: "87"
+                    - cell "83" [ref=e639]:
+                      - generic [ref=e640]: "83"
+                    - cell "88" [ref=e641]:
+                      - generic [ref=e642]: "88"
+                    - cell "86" [ref=e643]:
+                      - generic [ref=e644]: "86"
+                    - cell "88" [ref=e645]:
+                      - generic [ref=e646]: "88"
+                  - row "Marina 89 85 87 86 88 89" [ref=e647]:
+                    - cell "Marina" [ref=e648]
+                    - cell "89" [ref=e649]:
+                      - generic [ref=e650]: "89"
+                    - cell "85" [ref=e651]:
+                      - generic [ref=e652]: "85"
+                    - cell "87" [ref=e653]:
+                      - generic [ref=e654]: "87"
+                    - cell "86" [ref=e655]:
+                      - generic [ref=e656]: "86"
+                    - cell "88" [ref=e657]:
+                      - generic [ref=e658]: "88"
+                    - cell "89" [ref=e659]:
+                      - generic [ref=e660]: "89"
+                  - row "Uptown 93 91 90 92 94 93" [ref=e661]:
+                    - cell "Uptown" [ref=e662]
+                    - cell "93" [ref=e663]:
+                      - generic [ref=e664]: "93"
+                    - cell "91" [ref=e665]:
+                      - generic [ref=e666]: "91"
+                    - cell "90" [ref=e667]:
+                      - generic [ref=e668]: "90"
+                    - cell "92" [ref=e669]:
+                      - generic [ref=e670]: "92"
+                    - cell "94" [ref=e671]:
+                      - generic [ref=e672]: "94"
+                    - cell "93" [ref=e673]:
+                      - generic [ref=e674]: "93"
+                  - row "Riverside 90 88 86 89 91 90" [ref=e675]:
+                    - cell "Riverside" [ref=e676]
+                    - cell "90" [ref=e677]:
+                      - generic [ref=e678]: "90"
+                    - cell "88" [ref=e679]:
+                      - generic [ref=e680]: "88"
+                    - cell "86" [ref=e681]:
+                      - generic [ref=e682]: "86"
+                    - cell "89" [ref=e683]:
+                      - generic [ref=e684]: "89"
+                    - cell "91" [ref=e685]:
+                      - generic [ref=e686]: "91"
+                    - cell "90" [ref=e687]:
+                      - generic [ref=e688]: "90"
+                  - row "Hillside 88 86 84 87 85 88" [ref=e689]:
+                    - cell "Hillside" [ref=e690]
+                    - cell "88" [ref=e691]:
+                      - generic [ref=e692]: "88"
+                    - cell "86" [ref=e693]:
+                      - generic [ref=e694]: "86"
+                    - cell "84" [ref=e695]:
+                      - generic [ref=e696]: "84"
+                    - cell "87" [ref=e697]:
+                      - generic [ref=e698]: "87"
+                    - cell "85" [ref=e699]:
+                      - generic [ref=e700]: "85"
+                    - cell "88" [ref=e701]:
+                      - generic [ref=e702]: "88"
+                  - row "Beachside 82 79 81 83 80 82" [ref=e703]:
+                    - cell "Beachside" [ref=e704]
+                    - cell "82" [ref=e705]:
+                      - generic [ref=e706]: "82"
+                    - cell "79" [ref=e707]:
+                      - generic [ref=e708]: "79"
+                    - cell "81" [ref=e709]:
+                      - generic [ref=e710]: "81"
+                    - cell "83" [ref=e711]:
+                      - generic [ref=e712]: "83"
+                    - cell "80" [ref=e713]:
+                      - generic [ref=e714]: "80"
+                    - cell "82" [ref=e715]:
+                      - generic [ref=e716]: "82"
+                  - row "Harbor 86 84 85 87 86 86" [ref=e717]:
+                    - cell "Harbor" [ref=e718]
+                    - cell "86" [ref=e719]:
+                      - generic [ref=e720]: "86"
+                    - cell "84" [ref=e721]:
+                      - generic [ref=e722]: "84"
+                    - cell "85" [ref=e723]:
+                      - generic [ref=e724]: "85"
+                    - cell "87" [ref=e725]:
+                      - generic [ref=e726]: "87"
+                    - cell "86" [ref=e727]:
+                      - generic [ref=e728]: "86"
+                    - cell "86" [ref=e729]:
+                      - generic [ref=e730]: "86"
+            - generic [ref=e731]:
+              - generic [ref=e732]:
+                - heading "SLA Compliance Summary" [level=3] [ref=e734]
+                - generic [ref=e735]:
+                  - generic [ref=e737]:
+                    - generic [ref=e738]: SLA Compliance
+                    - generic [ref=e739]: 94%
+                  - generic [ref=e742]:
+                    - generic [ref=e743]:
+                      - paragraph [ref=e744]: Breaches
+                      - paragraph [ref=e745]: "6"
+                      - paragraph [ref=e746]: this period
+                    - generic [ref=e747]:
+                      - paragraph [ref=e748]: Avg to Breach
+                      - paragraph [ref=e749]: 45m
+                      - paragraph [ref=e750]: response time
+              - generic [ref=e751]:
+                - heading "Quick Actions" [level=3] [ref=e753]
+                - generic [ref=e755]:
+                  - link "Start Audit" [ref=e756] [cursor=pointer]:
+                    - /url: /en/audit/
+                    - button "Start Audit" [ref=e757]:
+                      - img [ref=e758]
+                      - generic [ref=e762]: Start Audit
+                  - link "Create Ticket" [ref=e763] [cursor=pointer]:
+                    - /url: /en/tickets/
+                    - button "Create Ticket" [ref=e764]:
+                      - img [ref=e765]
+                      - generic [ref=e768]: Create Ticket
+                  - link "View CAPAs" [ref=e769] [cursor=pointer]:
+                    - /url: /en/capa/
+                    - button "View CAPAs" [ref=e770]:
+                      - img [ref=e771]
+                      - generic [ref=e773]: View CAPAs
+                  - link "Open Tasks" [ref=e774] [cursor=pointer]:
+                    - /url: /en/tasks/
+                    - button "Open Tasks" [ref=e775]:
+                      - img [ref=e776]
+                      - generic [ref=e779]: Open Tasks
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=e780]
+  - generic [ref=e781]: "0"
 ```

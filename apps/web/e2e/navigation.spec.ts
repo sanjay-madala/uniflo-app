@@ -1,17 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { AUTH_STORAGE_STATE } from './auth.setup';
 
-/**
- * Auth helper: sets localStorage so AuthGuard lets us through.
- * Must be called before any page.goto().
- */
-async function authenticate(page: import('@playwright/test').Page) {
-  // Navigate to a blank page on the same origin first so localStorage is available
-  await page.goto('/en/login/', { waitUntil: 'commit' });
-  await page.evaluate(() => {
-    localStorage.setItem('uniflo-auth', 'true');
-    localStorage.setItem('uniflo-role', 'admin');
-  });
-}
+test.use({ storageState: AUTH_STORAGE_STATE });
 
 const pages = [
   { path: '/en/', label: 'Home / entry' },
@@ -36,8 +26,6 @@ const pages = [
 test.describe('Navigation smoke tests', () => {
   for (const { path, label } of pages) {
     test(`${label} (${path}) loads without errors`, async ({ page }) => {
-      await authenticate(page);
-
       const consoleErrors: string[] = [];
       page.on('console', (msg) => {
         if (msg.type() === 'error') {
@@ -47,10 +35,10 @@ test.describe('Navigation smoke tests', () => {
 
       await page.goto(path, { waitUntil: 'load' });
 
-      // Wait for React hydration — the title is set by Next.js during hydration
+      // Wait for React hydration — the title is set during hydration
       await expect(page).toHaveTitle(/Uniflo/, { timeout: 15000 });
 
-      // No JS console errors (filter out benign React hydration warnings and resource loads)
+      // No JS console errors (filter out benign warnings and resource loads)
       const realErrors = consoleErrors.filter(
         (e) =>
           !e.includes('Hydration') &&

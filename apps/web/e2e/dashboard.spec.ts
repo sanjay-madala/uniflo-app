@@ -1,26 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { AUTH_STORAGE_STATE } from './auth.setup';
 
-async function authenticate(page: import('@playwright/test').Page) {
-  await page.goto('/en/login/', { waitUntil: 'commit' });
-  await page.evaluate(() => {
-    localStorage.setItem('uniflo-auth', 'true');
-    localStorage.setItem('uniflo-role', 'admin');
-  });
-}
+test.use({ storageState: AUTH_STORAGE_STATE });
 
 test.describe('Dashboard', () => {
   test.beforeEach(async ({ page }) => {
-    await authenticate(page);
     await page.goto('/en/dashboard/', { waitUntil: 'load' });
-    // Wait for React hydration
     await expect(page.getByText('Operations Dashboard')).toBeVisible({ timeout: 15000 });
   });
 
   test('loads and shows KPI cards', async ({ page }) => {
-    // The PageHeader says "Operations Dashboard"
     await expect(page.getByText('Operations Dashboard')).toBeVisible();
 
-    // KPI cards are rendered by DashboardKPIRow
+    // KPI cards are rendered by DashboardKPIRow — numeric values visible
     const kpiCards = page.locator('text=/\\d+%?/');
     await expect(kpiCards.first()).toBeVisible();
   });

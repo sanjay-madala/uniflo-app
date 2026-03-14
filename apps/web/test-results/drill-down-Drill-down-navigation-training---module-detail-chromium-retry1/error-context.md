@@ -1,0 +1,341 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e6]: U
+        - generic [ref=e7]: Uniflo
+      - navigation [ref=e8]:
+        - link "Dashboard" [ref=e9] [cursor=pointer]:
+          - /url: /en/dashboard/
+          - img [ref=e10]
+          - generic [ref=e15]: Dashboard
+        - link "Tickets" [ref=e16] [cursor=pointer]:
+          - /url: /en/tickets/
+          - img [ref=e17]
+          - generic [ref=e19]: Tickets
+        - link "SOPs" [ref=e20] [cursor=pointer]:
+          - /url: /en/sops/
+          - img [ref=e21]
+          - generic [ref=e24]: SOPs
+        - link "Audits" [ref=e25] [cursor=pointer]:
+          - /url: /en/audit/
+          - img [ref=e26]
+          - generic [ref=e30]: Audits
+        - link "CAPA" [ref=e31] [cursor=pointer]:
+          - /url: /en/capa/
+          - img [ref=e32]
+          - generic [ref=e34]: CAPA
+        - link "Tasks" [ref=e35] [cursor=pointer]:
+          - /url: /en/tasks/
+          - img [ref=e36]
+          - generic [ref=e39]: Tasks
+        - link "Analytics" [ref=e40] [cursor=pointer]:
+          - /url: /en/analytics/
+          - img [ref=e41]
+          - generic [ref=e42]: Analytics
+        - link "SLA" [ref=e43] [cursor=pointer]:
+          - /url: /en/sla/
+          - img [ref=e44]
+          - generic [ref=e47]: SLA
+        - link "Knowledge Base" [ref=e48] [cursor=pointer]:
+          - /url: /en/knowledge/
+          - img [ref=e49]
+          - generic [ref=e51]: Knowledge Base
+        - link "Workflow" [ref=e52] [cursor=pointer]:
+          - /url: /en/workflow/
+          - img [ref=e53]
+          - generic [ref=e55]: Workflow
+        - link "Goals" [ref=e56] [cursor=pointer]:
+          - /url: /en/goals/
+          - img [ref=e57]
+          - generic [ref=e61]: Goals
+        - link "Customer Portal" [ref=e62] [cursor=pointer]:
+          - /url: /en/customer/
+          - img [ref=e63]
+          - generic [ref=e68]: Customer Portal
+        - link "Communications" [ref=e69] [cursor=pointer]:
+          - /url: /en/comms/
+          - img [ref=e70]
+          - generic [ref=e72]: Communications
+        - link "Training" [ref=e73] [cursor=pointer]:
+          - /url: /en/training/
+          - img [ref=e74]
+          - generic [ref=e77]: Training
+        - generic [ref=e79]: Admin
+        - link "Users" [ref=e80] [cursor=pointer]:
+          - /url: /en/admin/users/
+          - img [ref=e81]
+          - generic [ref=e93]: Users
+        - link "Roles" [ref=e94] [cursor=pointer]:
+          - /url: /en/admin/roles/
+          - img [ref=e95]
+          - generic [ref=e97]: Roles
+        - link "Settings" [ref=e98] [cursor=pointer]:
+          - /url: /en/admin/settings/
+          - img [ref=e99]
+          - generic [ref=e102]: Settings
+      - button "Collapse sidebar" [ref=e104] [cursor=pointer]:
+        - img [ref=e105]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - banner [ref=e109]:
+          - button "Search... ⌘K" [ref=e110] [cursor=pointer]:
+            - img [ref=e111]
+            - generic [ref=e114]: Search...
+            - generic [ref=e115]: ⌘K
+          - generic [ref=e116]: Uniflo Demo Co
+          - button "Admin" [ref=e118] [cursor=pointer]:
+            - img [ref=e119]
+            - text: Admin
+            - img [ref=e121]
+          - button "Switch to light mode" [ref=e123] [cursor=pointer]:
+            - img [ref=e124]
+          - generic [ref=e130]:
+            - button "Notifications" [ref=e131] [cursor=pointer]:
+              - img [ref=e132]
+            - generic [ref=e135]: "3"
+          - button "AM" [ref=e137] [cursor=pointer]:
+            - generic [ref=e139]: AM
+        - generic [ref=e140]:
+          - generic [ref=e142]: Home
+          - generic [ref=e143]:
+            - img [ref=e144]
+            - generic [ref=e146]: Training
+      - main [ref=e147]:
+        - generic [ref=e148]:
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - heading "Training Library" [level=1] [ref=e152]
+              - paragraph [ref=e153]: Browse and manage training modules
+            - generic [ref=e155]:
+              - button "List" [ref=e156]:
+                - img [ref=e157]
+                - text: List
+              - button "New Module" [ref=e158]:
+                - img [ref=e159]
+                - text: New Module
+          - generic [ref=e160]:
+            - generic [ref=e163]:
+              - paragraph [ref=e164]: Total Modules
+              - generic [ref=e166]: "12"
+            - generic [ref=e169]:
+              - paragraph [ref=e170]: Published
+              - generic [ref=e172]: "10"
+            - generic [ref=e175]:
+              - paragraph [ref=e176]: Avg Completion
+              - generic [ref=e178]: 73%
+            - generic [ref=e181]:
+              - paragraph [ref=e182]: Overdue Enrollments
+              - generic [ref=e184]: "2"
+          - generic [ref=e185]:
+            - textbox "Search modules..." [ref=e186]
+            - combobox [ref=e187]:
+              - generic: All Categories
+              - img [ref=e188]
+            - combobox [ref=e190]:
+              - generic: All Levels
+              - img [ref=e191]
+            - combobox [ref=e193]:
+              - generic: All Status
+              - img [ref=e194]
+          - generic [ref=e196]: 12 modules found
+          - generic [ref=e197]:
+            - link "Compliance Intermediate Allergen Awareness & Management Essential training on identifying, communicating, and managing food allergens. Covers the 14 major allergens, labeling requirements, and emergency response. 35 min 20/28 Allergen Management SOP v1.0 Published" [ref=e198] [cursor=pointer]:
+              - /url: /en/training/trn_007/
+              - generic [ref=e199]:
+                - generic [ref=e200]:
+                  - generic [ref=e202]: Compliance
+                  - generic [ref=e204]: Intermediate
+                - generic [ref=e205]:
+                  - heading "Allergen Awareness & Management" [level=3] [ref=e206]
+                  - paragraph [ref=e207]: Essential training on identifying, communicating, and managing food allergens. Covers the 14 major allergens, labeling requirements, and emergency response.
+                  - generic [ref=e208]:
+                    - generic [ref=e209]:
+                      - img [ref=e210]
+                      - text: 35 min
+                    - generic [ref=e213]:
+                      - img [ref=e214]
+                      - text: 20/28
+                  - generic [ref=e219]:
+                    - link "Allergen Management SOP v1.0" [ref=e221]:
+                      - /url: /en/sops/sop_004/
+                      - img [ref=e222]
+                      - generic [ref=e225]: Allergen Management SOP
+                      - generic [ref=e226]: v1.0
+                    - generic [ref=e227]: Published
+            - link "Compliance Advanced Data Privacy & GDPR Compliance Understand your responsibilities under data protection regulations. Covers personal data handling, consent management, and breach notification procedures. 50 min 10/18 0% Published" [ref=e228] [cursor=pointer]:
+              - /url: /en/training/trn_009/
+              - generic [ref=e229]:
+                - generic [ref=e230]:
+                  - generic [ref=e232]: Compliance
+                  - generic [ref=e234]: Advanced
+                - generic [ref=e235]:
+                  - heading "Data Privacy & GDPR Compliance" [level=3] [ref=e236]
+                  - paragraph [ref=e237]: Understand your responsibilities under data protection regulations. Covers personal data handling, consent management, and breach notification procedures.
+                  - generic [ref=e238]:
+                    - generic [ref=e239]:
+                      - img [ref=e240]
+                      - text: 50 min
+                    - generic [ref=e243]:
+                      - img [ref=e244]
+                      - text: 10/18
+                  - generic [ref=e251]: 0%
+                  - generic [ref=e253]: Published
+            - link "Safety Beginner Fire Safety & Emergency Evacuation Critical fire safety training covering emergency evacuation procedures, fire extinguisher use, alarm systems, and assembly point protocols. 25 min 36/40 100% Emergency Evacuation SOP v1.2 Published" [ref=e254] [cursor=pointer]:
+              - /url: /en/training/trn_005/
+              - generic [ref=e255]:
+                - generic [ref=e256]:
+                  - generic [ref=e258]: Safety
+                  - generic [ref=e260]: Beginner
+                - generic [ref=e261]:
+                  - heading "Fire Safety & Emergency Evacuation" [level=3] [ref=e262]
+                  - paragraph [ref=e263]: Critical fire safety training covering emergency evacuation procedures, fire extinguisher use, alarm systems, and assembly point protocols.
+                  - generic [ref=e264]:
+                    - generic [ref=e265]:
+                      - img [ref=e266]
+                      - text: 25 min
+                    - generic [ref=e269]:
+                      - img [ref=e270]
+                      - text: 36/40
+                  - generic [ref=e278]: 100%
+                  - generic [ref=e279]:
+                    - link "Emergency Evacuation SOP v1.2" [ref=e281]:
+                      - /url: /en/sops/sop_003/
+                      - img [ref=e282]
+                      - generic [ref=e285]: Emergency Evacuation SOP
+                      - generic [ref=e286]: v1.2
+                    - generic [ref=e287]: Published
+            - link "Compliance Beginner Food Safety Fundamentals Core food safety training covering HACCP principles, cross-contamination prevention, and proper food handling techniques required for all food service staff. 30 min 38/45 100% Food Handling SOP v2.0 Published" [ref=e288] [cursor=pointer]:
+              - /url: /en/training/trn_002/
+              - generic [ref=e289]:
+                - generic [ref=e290]:
+                  - generic [ref=e292]: Compliance
+                  - generic [ref=e294]: Beginner
+                - generic [ref=e295]:
+                  - heading "Food Safety Fundamentals" [level=3] [ref=e296]
+                  - paragraph [ref=e297]: Core food safety training covering HACCP principles, cross-contamination prevention, and proper food handling techniques required for all food service staff.
+                  - generic [ref=e298]:
+                    - generic [ref=e299]:
+                      - img [ref=e300]
+                      - text: 30 min
+                    - generic [ref=e303]:
+                      - img [ref=e304]
+                      - text: 38/45
+                  - generic [ref=e312]: 100%
+                  - generic [ref=e313]:
+                    - link "Food Handling SOP v2.0" [ref=e315]:
+                      - /url: /en/sops/sop_002/
+                      - img [ref=e316]
+                      - generic [ref=e319]: Food Handling SOP
+                      - generic [ref=e320]: v2.0
+                    - generic [ref=e321]: Published
+            - link "Safety Intermediate Freezer Maintenance & Safety Comprehensive training on walk-in freezer maintenance procedures, temperature monitoring, and emergency protocols. Based on the latest Freezer Maintenance SOP. 45 min 24/30 100% Freezer Maintenance SOP v3.0 Published" [ref=e322] [cursor=pointer]:
+              - /url: /en/training/trn_001/
+              - generic [ref=e323]:
+                - generic [ref=e324]:
+                  - generic [ref=e326]: Safety
+                  - generic [ref=e328]: Intermediate
+                - generic [ref=e329]:
+                  - heading "Freezer Maintenance & Safety" [level=3] [ref=e330]
+                  - paragraph [ref=e331]: Comprehensive training on walk-in freezer maintenance procedures, temperature monitoring, and emergency protocols. Based on the latest Freezer Maintenance SOP.
+                  - generic [ref=e332]:
+                    - generic [ref=e333]:
+                      - img [ref=e334]
+                      - text: 45 min
+                    - generic [ref=e337]:
+                      - img [ref=e338]
+                      - text: 24/30
+                  - generic [ref=e346]: 100%
+                  - generic [ref=e347]:
+                    - link "Freezer Maintenance SOP v3.0" [ref=e349]:
+                      - /url: /en/sops/sop_001/
+                      - img [ref=e350]
+                      - generic [ref=e353]: Freezer Maintenance SOP
+                      - generic [ref=e354]: v3.0
+                    - generic [ref=e355]: Published
+            - link "Customer Service Intermediate Guest Relations Excellence Master the art of exceptional guest service. Learn communication techniques, complaint resolution strategies, and how to create memorable experiences. 40 min 12/20 45% Published" [ref=e356] [cursor=pointer]:
+              - /url: /en/training/trn_003/
+              - generic [ref=e357]:
+                - generic [ref=e358]:
+                  - generic [ref=e360]: Customer Service
+                  - generic [ref=e362]: Intermediate
+                - generic [ref=e363]:
+                  - heading "Guest Relations Excellence" [level=3] [ref=e364]
+                  - paragraph [ref=e365]: Master the art of exceptional guest service. Learn communication techniques, complaint resolution strategies, and how to create memorable experiences.
+                  - generic [ref=e366]:
+                    - generic [ref=e367]:
+                      - img [ref=e368]
+                      - text: 40 min
+                    - generic [ref=e371]:
+                      - img [ref=e372]
+                      - text: 12/20
+                  - generic [ref=e380]: 45%
+                  - generic [ref=e382]: Published
+            - link "Operations Beginner Housekeeping Standards & Procedures Complete guide to housekeeping excellence covering room preparation, cleaning protocols, linen management, and quality inspection checklists. 40 min 13/15 Published" [ref=e383] [cursor=pointer]:
+              - /url: /en/training/trn_008/
+              - generic [ref=e384]:
+                - generic [ref=e385]:
+                  - generic [ref=e387]: Operations
+                  - generic [ref=e389]: Beginner
+                - generic [ref=e390]:
+                  - heading "Housekeeping Standards & Procedures" [level=3] [ref=e391]
+                  - paragraph [ref=e392]: Complete guide to housekeeping excellence covering room preparation, cleaning protocols, linen management, and quality inspection checklists.
+                  - generic [ref=e393]:
+                    - generic [ref=e394]:
+                      - img [ref=e395]
+                      - text: 40 min
+                    - generic [ref=e398]:
+                      - img [ref=e399]
+                      - text: 13/15
+                  - generic [ref=e405]: Published
+            - link "Leadership Advanced Leadership Skills for Supervisors Develop essential leadership competencies including team management, performance coaching, conflict resolution, and effective delegation techniques. 55 min 5/8 Published" [ref=e406] [cursor=pointer]:
+              - /url: /en/training/trn_006/
+              - generic [ref=e407]:
+                - generic [ref=e408]:
+                  - generic [ref=e410]: Leadership
+                  - generic [ref=e412]: Advanced
+                - generic [ref=e413]:
+                  - heading "Leadership Skills for Supervisors" [level=3] [ref=e414]
+                  - paragraph [ref=e415]: Develop essential leadership competencies including team management, performance coaching, conflict resolution, and effective delegation techniques.
+                  - generic [ref=e416]:
+                    - generic [ref=e417]:
+                      - img [ref=e418]
+                      - text: 55 min
+                    - generic [ref=e421]:
+                      - img [ref=e422]
+                      - text: 5/8
+                  - generic [ref=e428]: Published
+            - link "Onboarding Beginner New Employee Onboarding Welcome to the team! This comprehensive onboarding module covers company values, workplace policies, safety protocols, and your first-week checklist. 60 min 32/35 100% Published" [ref=e429] [cursor=pointer]:
+              - /url: /en/training/trn_004/
+              - generic [ref=e430]:
+                - generic [ref=e431]:
+                  - generic [ref=e433]: Onboarding
+                  - generic [ref=e435]: Beginner
+                - generic [ref=e436]:
+                  - heading "New Employee Onboarding" [level=3] [ref=e437]
+                  - paragraph [ref=e438]: Welcome to the team! This comprehensive onboarding module covers company values, workplace policies, safety protocols, and your first-week checklist.
+                  - generic [ref=e439]:
+                    - generic [ref=e440]:
+                      - img [ref=e441]
+                      - text: 60 min
+                    - generic [ref=e444]:
+                      - img [ref=e445]
+                      - text: 32/35
+                  - generic [ref=e453]: 100%
+                  - generic [ref=e455]: Published
+          - generic [ref=e456]:
+            - generic [ref=e457]: Page 1 of 2
+            - navigation "Pagination" [ref=e458]:
+              - button "Previous page" [disabled] [ref=e459]:
+                - img [ref=e460]
+              - button "1" [ref=e462]
+              - button "2" [ref=e463]
+              - button "Next page" [ref=e464]:
+                - img [ref=e465]
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=e467]
+```

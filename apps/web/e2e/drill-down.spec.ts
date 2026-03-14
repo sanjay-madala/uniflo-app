@@ -1,18 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { AUTH_STORAGE_STATE } from './auth.setup';
 
-async function authenticate(page: import('@playwright/test').Page) {
-  await page.goto('/en/login/', { waitUntil: 'commit' });
-  await page.evaluate(() => {
-    localStorage.setItem('uniflo-auth', 'true');
-    localStorage.setItem('uniflo-role', 'admin');
-  });
-}
+test.use({ storageState: AUTH_STORAGE_STATE });
 
 test.describe('Drill-down navigation', () => {
-  test.beforeEach(async ({ page }) => {
-    await authenticate(page);
-  });
-
   test('ticket list -> ticket detail -> back', async ({ page }) => {
     await page.goto('/en/tickets/', { waitUntil: 'load' });
     const link = page.locator('table tbody tr a').first();
@@ -33,7 +24,6 @@ test.describe('Drill-down navigation', () => {
     await link.click();
     await page.waitForURL(/\/en\/audit\/aud_\d+\//, { timeout: 15000 });
 
-    // Navigate to results sub-page
     await page.goto('/en/audit/aud_001/results/', { waitUntil: 'load' });
     await expect(page).toHaveTitle(/Uniflo/, { timeout: 15000 });
   });
