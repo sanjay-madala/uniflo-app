@@ -1,5 +1,7 @@
 export type TicketStatus = "open" | "in_progress" | "resolved" | "closed";
+
 export type TicketPriority = "critical" | "high" | "medium" | "low";
+
 export type TicketCategory = "fb" | "housekeeping" | "maintenance" | "compliance" | "guest_relations";
 
 export interface Ticket {
@@ -35,8 +37,11 @@ export interface User {
 }
 
 // SOP Types
+
 export type SOPStatus = "draft" | "in_review" | "published" | "archived";
+
 export type SOPCategory = "safety" | "operations" | "customer_service" | "compliance" | "maintenance" | "hr";
+
 export type SOPStepType = "instruction" | "checklist" | "decision" | "warning" | "reference";
 
 export interface SOPStep {
@@ -106,8 +111,11 @@ export interface SOP {
 // --- CAPA Types ---
 
 export type CAPAStatus = "open" | "in_progress" | "verified" | "closed";
+
 export type CAPASeverity = "critical" | "high" | "medium" | "low";
+
 export type CAPASource = "audit" | "ticket" | "manual";
+
 export type RootCauseMethod = "five_why" | "fishbone" | "freeform";
 
 export interface RootCauseAnalysis {
@@ -193,12 +201,17 @@ export interface CAPA {
 }
 
 // ─── Audit Status ─────────────────────────────────────────────
+
 export type AuditStatus = "scheduled" | "in_progress" | "completed" | "failed";
+
 export type AuditItemResultValue = "pass" | "fail" | "na" | "pending";
+
 export type AuditQuestionType = "yes_no" | "rating" | "photo" | "text" | "checkbox";
+
 export type AuditSeverity = "critical" | "major" | "minor" | "observation";
 
 // ─── Audit Template ───────────────────────────────────────────
+
 export interface AuditTemplate {
   id: string;
   title: string;
@@ -234,6 +247,7 @@ export interface AuditTemplateItem {
 }
 
 // ─── Audit Instance ───────────────────────────────────────────
+
 export interface Audit {
   id: string;
   title: string;
@@ -288,6 +302,7 @@ export interface AuditAttachment {
 }
 
 // ─── Audit Trend Data ─────────────────────────────────────────
+
 export interface AuditTrendPoint {
   month: string;
   score: number;
@@ -296,6 +311,7 @@ export interface AuditTrendPoint {
 }
 
 // ─── Auto-Ticket Proposal ─────────────────────────────────────
+
 export interface ProposedTicket {
   temp_id: string;
   title: string;
@@ -513,7 +529,9 @@ export interface KBSearchGap {
 }
 
 export type TaskStatus = "todo" | "in_progress" | "in_review" | "done" | "cancelled";
+
 export type TaskPriority = "critical" | "high" | "medium" | "low";
+
 export type TaskSource = "manual" | "audit" | "capa" | "ticket" | "automation";
 
 export interface Subtask {
@@ -585,6 +603,7 @@ export interface TaskComment {
 // ====================================================================
 
 // -- Date Range --
+
 export interface DateRange {
   start: string;
   end: string;
@@ -603,6 +622,7 @@ export type DateRangePreset =
   | "custom";
 
 // -- Location Hierarchy for Drill-Down --
+
 export interface LocationNode {
   id: string;
   name: string;
@@ -624,6 +644,7 @@ export interface LocationMetrics {
 }
 
 // -- Executive Dashboard KPIs --
+
 export interface DashboardKPI {
   id: string;
   title: string;
@@ -639,6 +660,7 @@ export interface DashboardKPI {
 }
 
 // -- Trend Data Points --
+
 export interface TrendDataPoint {
   date: string;
   compliance: number;
@@ -650,6 +672,7 @@ export interface TrendDataPoint {
 }
 
 // -- Activity Feed Event --
+
 export type ActivityEventType =
   | "ticket_created"
   | "ticket_resolved"
@@ -682,6 +705,7 @@ export interface ActivityEvent {
 }
 
 // -- Ticket Analytics --
+
 export interface TicketAnalytics {
   period: string;
   created: number;
@@ -699,6 +723,7 @@ export interface TicketAnalytics {
 }
 
 // -- Audit Analytics --
+
 export interface AuditAnalytics {
   period: string;
   audits_completed: number;
@@ -720,6 +745,7 @@ export interface AuditAnalytics {
 }
 
 // -- CAPA Analytics --
+
 export interface CAPAAnalytics {
   period: string;
   total_open: number;
@@ -741,6 +767,7 @@ export interface CAPAAnalytics {
 }
 
 // -- Task Analytics --
+
 export interface TaskAnalytics {
   period: string;
   total_created: number;
@@ -762,6 +789,7 @@ export interface TaskAnalytics {
 }
 
 // -- Custom Report Builder --
+
 export type WidgetType =
   | "kpi_card"
   | "bar_chart"
@@ -813,6 +841,7 @@ export interface CustomDashboard {
 }
 
 // -- Export Configuration --
+
 export type ExportFormat = "pdf" | "csv" | "xlsx";
 
 export interface ExportConfig {
@@ -833,6 +862,7 @@ export interface ExportConfig {
 }
 
 // -- Cross-Module Summary --
+
 export interface CrossModuleSummary {
   date_range: DateRange;
   location_id: string | null;
@@ -975,12 +1005,17 @@ export interface SLABreach {
 export interface SLAComplianceReport {
 
 export type GoalStatus = "draft" | "active" | "achieved" | "missed" | "archived";
+
 export type GoalHealthStatus = "on_track" | "at_risk" | "behind" | "achieved";
+
 export type GoalTimeframe = "Q1" | "Q2" | "Q3" | "Q4" | "annual" | "custom";
+
 export type GoalLevel = "organization" | "team" | "individual";
 
 export type KRTrackingType = "manual" | "auto";
+
 export type KRUnit = "percent" | "number" | "currency" | "boolean" | "score";
+
 export type KRDirection = "increase" | "decrease" | "maintain";
 
 export type KRDataSource =
@@ -1233,6 +1268,7 @@ export interface CSATAlert {
 }
 
 export type BroadcastStatus = "draft" | "scheduled" | "sent" | "failed";
+
 export type BroadcastPriority = "normal" | "urgent" | "critical";
 
 export interface BroadcastAudience {
@@ -1372,173 +1408,15 @@ export interface Store {
 // ====================================================================
 
 // -- Goal Status --
-export type GoalStatus = "draft" | "active" | "achieved" | "missed" | "archived";
-export type GoalHealthStatus = "on_track" | "at_risk" | "behind" | "achieved";
-export type GoalTimeframe = "Q1" | "Q2" | "Q3" | "Q4" | "annual" | "custom";
-export type GoalLevel = "organization" | "team" | "individual";
-
-// -- Key Result Tracking --
-export type KRTrackingType = "manual" | "auto";
-export type KRUnit = "percent" | "number" | "currency" | "boolean" | "score";
-export type KRDirection = "increase" | "decrease" | "maintain";
-
-// -- Data Source for Auto-Update --
-export type KRDataSource =
-  | "audit_compliance_score"
-  | "audit_pass_rate"
-  | "csat_score"
-  | "csat_response_rate"
-  | "ticket_resolution_time"
-  | "ticket_sla_compliance"
-  | "ticket_volume"
-  | "capa_closure_rate"
-  | "capa_overdue_count"
-  | "task_completion_rate"
-  | "task_overdue_count"
-  | "training_completion_rate"
-  | "training_pass_rate"
-  | "sop_acknowledgment_rate"
-  | "custom_metric";
-
-// -- Key Result Progress Entry --
-export interface KRProgressEntry {
-  id: string;
-  key_result_id: string;
-  value: number;
-  previous_value: number;
-  source: "manual" | "auto";
-  source_label?: string;
-  source_entity_id?: string;
-  note?: string;
-  recorded_at: string;
-  recorded_by?: string;
-}
-
-// -- Key Result --
-export interface KeyResult {
-  id: string;
-  goal_id: string;
-  title: string;
-  description?: string;
-  order: number;
-
-  // Measurement
-  unit: KRUnit;
-  direction: KRDirection;
-  start_value: number;
-  current_value: number;
-  target_value: number;
-  progress_pct: number;
-
-  // Tracking source
-  tracking_type: KRTrackingType;
-  data_source?: KRDataSource;
-  data_source_label?: string;
-  data_source_module?: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
-  last_auto_update?: string;
-
-  // Status
-  health: GoalHealthStatus;
-  owner_id: string;
-
-  // History
-  progress_history: KRProgressEntry[];
-
-  // Links
-  linked_audit_ids?: string[];
-  linked_ticket_ids?: string[];
-  linked_capa_ids?: string[];
-  linked_training_ids?: string[];
-  linked_sop_ids?: string[];
-
-  created_at: string;
-  updated_at: string;
-}
-
-// -- Goal (Objective) --
-export interface Goal {
-  id: string;
-  title: string;
-  description?: string;
-  level: GoalLevel;
-  status: GoalStatus;
-  health: GoalHealthStatus;
-
-  // Ownership
-  owner_id: string;
-  owner_name: string;
-  team_id?: string;
-  team_name?: string;
-
-  // Timeframe
-  timeframe: GoalTimeframe;
-  timeframe_label: string;
-  start_date: string;
-  end_date: string;
-
-  // Progress
-  progress_pct: number;
-  key_results: KeyResult[];
-
-  // Hierarchy
-  parent_goal_id?: string | null;
-  child_goal_ids?: string[];
-
-  // Tags & Categorization
-  tags?: string[];
-  category?: string;
-
-  // Cross-module summary
-  linked_modules: GoalModuleLink[];
-
-  created_at: string;
-  updated_at: string;
-}
-
-// -- Module Link Summary --
-export interface GoalModuleLink {
-  module: "audits" | "tickets" | "capa" | "tasks" | "training" | "sops" | "csat";
-  label: string;
-  current_value: number | string;
-  trend: number;
-  entity_count: number;
-  last_updated: string;
-  link_to: string;
-}
-
-// -- Goal Dashboard KPIs --
-export interface GoalDashboardKPIs {
-  total_goals: number;
-  active_goals: number;
-  achieved_goals: number;
-  on_track_pct: number;
-  at_risk_count: number;
-  behind_count: number;
-  avg_progress: number;
-  total_key_results: number;
-  auto_updated_krs: number;
-}
-
-// -- Team Goal Summary --
-export interface TeamGoalSummary {
-  team_id: string;
-  team_name: string;
-  owner_id: string;
-  owner_name: string;
-  owner_avatar: string | null;
-  goal_count: number;
-  avg_progress: number;
-  on_track: number;
-  at_risk: number;
-  behind: number;
-  achieved: number;
-  goals: Goal[];
-}
 
 export type TrainingCategory = "safety" | "operations" | "compliance" | "customer_service" | "onboarding" | "leadership";
+
 export type ContentBlockType = "text" | "video" | "image" | "embed";
+
 export type EnrollmentStatus = "assigned" | "in_progress" | "completed" | "failed" | "overdue";
+
 export type QuizQuestionType = "single_choice" | "multiple_choice" | "true_false";
+
 export type AssignmentTrigger = "manual" | "sop_version_change" | "role_assignment" | "schedule" | "audit_failure";
 
 export interface ContentBlock {
