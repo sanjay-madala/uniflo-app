@@ -183,28 +183,29 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
           <div className="px-4 py-2 bg-[var(--bg-tertiary)] border-b border-[var(--border-default)]">
             <p className="text-xs font-medium text-[var(--text-secondary)]">Report Preview</p>
           </div>
-          <div className="p-4 bg-white text-gray-900 max-h-48 overflow-y-auto">
+          {/* print-only: intentionally uses light colors for print output */}
+          <div className="p-4 bg-[var(--bg-primary)] text-[var(--text-primary)] max-h-48 overflow-y-auto">
             <div className="space-y-3 text-xs">
               <div>
                 <p className="font-bold text-sm">Executive Summary</p>
-                <p className="text-gray-600">Date range: Feb 13 - Mar 14, 2026</p>
-                <p className="text-gray-600">Scope: All locations</p>
+                <p className="text-[var(--text-secondary)]">Date range: Feb 13 - Mar 14, 2026</p>
+                <p className="text-[var(--text-secondary)]">Scope: All locations</p>
               </div>
-              <div className="border-t border-gray-200 pt-2">
+              <div className="border-t border-[var(--border-default)] pt-2">
                 <p className="font-semibold">KPI Summary</p>
                 <table className="w-full mt-1">
                   <tbody>
-                    <tr><td className="text-gray-600">Open Tickets</td><td className="text-right font-medium">23</td></tr>
-                    <tr><td className="text-gray-600">Compliance Score</td><td className="text-right font-medium">87%</td></tr>
-                    <tr><td className="text-gray-600">SLA Compliance</td><td className="text-right font-medium">94%</td></tr>
-                    <tr><td className="text-gray-600">CSAT Score</td><td className="text-right font-medium">4.2/5</td></tr>
+                    <tr><td className="text-[var(--text-secondary)]">Open Tickets</td><td className="text-right font-medium">23</td></tr>
+                    <tr><td className="text-[var(--text-secondary)]">Compliance Score</td><td className="text-right font-medium">87%</td></tr>
+                    <tr><td className="text-[var(--text-secondary)]">SLA Compliance</td><td className="text-right font-medium">94%</td></tr>
+                    <tr><td className="text-[var(--text-secondary)]">CSAT Score</td><td className="text-right font-medium">4.2/5</td></tr>
                   </tbody>
                 </table>
               </div>
               {includeCharts && (
-                <div className="border-t border-gray-200 pt-2">
+                <div className="border-t border-[var(--border-default)] pt-2">
                   <p className="font-semibold">Charts</p>
-                  <div className="mt-1 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-400">
+                  <div className="mt-1 h-12 bg-[var(--bg-secondary)] rounded flex items-center justify-center text-[var(--text-muted)]">
                     [Trend chart thumbnail]
                   </div>
                 </div>
