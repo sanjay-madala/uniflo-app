@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "NEXT_PRIVATE_DISABLE_STATIC_GENERATION_PARALLELISM=1 next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test --config=playwright.config.ts",
+    "test:e2e:headed": "playwright test --config=playwright.config.ts --headed"
   },
   "dependencies": {
     "@uniflo/mock-data": "workspace:*",
