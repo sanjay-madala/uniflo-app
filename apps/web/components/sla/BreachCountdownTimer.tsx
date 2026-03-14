@@ -49,7 +49,7 @@ export function BreachCountdownTimer({
   if (isBreached) {
     barColor = "var(--accent-red)";
   } else if (percentRemaining <= 25) {
-    barColor = "var(--accent-yellow, #EAB308)";
+    barColor = "var(--accent-yellow)";
   } else {
     barColor = "var(--accent-green)";
   }
@@ -57,7 +57,7 @@ export function BreachCountdownTimer({
   const textColor = isBreached
     ? "var(--accent-red)"
     : percentRemaining <= 25
-      ? "var(--accent-yellow, #EAB308)"
+      ? "var(--accent-yellow)"
       : "var(--text-secondary)";
 
   return (

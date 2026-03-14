@@ -35,7 +35,7 @@ export function TicketResolutionChart({ data }: TicketResolutionChartProps) {
           <LineChart
             data={chartData}
             dataKey="avg_resolution_hours"
-            color="#D29922"
+            color="var(--accent-yellow)"
             height={260}
             fill
             showLegend={false}

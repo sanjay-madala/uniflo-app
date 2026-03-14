@@ -24,10 +24,10 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
   const [chartType, setChartType] = useState<"line" | "area">("line");
 
   const tooltipStyle = {
-    backgroundColor: "#1a1a1a",
-    border: "1px solid #333333",
+    backgroundColor: "var(--bg-elevated)",
+    border: "1px solid var(--border-default)",
     borderRadius: "0.5rem",
-    color: "#ffffff",
+    color: "var(--text-primary)",
   };
 
   // Show every 5th label
@@ -78,22 +78,22 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
           <ResponsiveContainer width="100%" height={300}>
             {chartType === "area" ? (
               <AreaChart data={displayData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333333" />
-                <XAxis dataKey="date" stroke="#888888" tick={{ fontSize: 11 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+                <XAxis dataKey="date" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
                 <YAxis
                   yAxisId="left"
-                  stroke="#3FB950"
+                  stroke="var(--accent-green)"
                   domain={[0, 100]}
                   tick={{ fontSize: 11 }}
-                  label={{ value: "Compliance", angle: -90, position: "insideLeft", style: { fill: "#3FB950", fontSize: 11 } }}
+                  label={{ value: "Compliance", angle: -90, position: "insideLeft", style: { fill: "var(--accent-green)", fontSize: 11 } }}
                 />
                 <YAxis
                   yAxisId="right"
                   orientation="right"
-                  stroke="#BC8CFF"
+                  stroke="var(--accent-purple)"
                   domain={[0, 100]}
                   tick={{ fontSize: 11 }}
-                  label={{ value: "CSAT", angle: 90, position: "insideRight", style: { fill: "#BC8CFF", fontSize: 11 } }}
+                  label={{ value: "CSAT", angle: 90, position: "insideRight", style: { fill: "var(--accent-purple)", fontSize: 11 } }}
                 />
                 <Tooltip contentStyle={tooltipStyle} />
                 <Legend />
@@ -101,8 +101,8 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
                   yAxisId="left"
                   type="monotone"
                   dataKey="compliance"
-                  stroke="#3FB950"
-                  fill="#3FB950"
+                  stroke="var(--accent-green)"
+                  fill="var(--accent-green)"
                   fillOpacity={0.15}
                   name="Compliance Score"
                 />
@@ -110,30 +110,30 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
                   yAxisId="right"
                   type="monotone"
                   dataKey="csat"
-                  stroke="#BC8CFF"
-                  fill="#BC8CFF"
+                  stroke="var(--accent-purple)"
+                  fill="var(--accent-purple)"
                   fillOpacity={0.15}
                   name="CSAT Score"
                 />
               </AreaChart>
             ) : (
               <RechartsLineChart data={displayData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333333" />
-                <XAxis dataKey="date" stroke="#888888" tick={{ fontSize: 11 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+                <XAxis dataKey="date" stroke="var(--text-muted)" tick={{ fontSize: 11 }} />
                 <YAxis
                   yAxisId="left"
-                  stroke="#3FB950"
+                  stroke="var(--accent-green)"
                   domain={[0, 100]}
                   tick={{ fontSize: 11 }}
-                  label={{ value: "Compliance", angle: -90, position: "insideLeft", style: { fill: "#3FB950", fontSize: 11 } }}
+                  label={{ value: "Compliance", angle: -90, position: "insideLeft", style: { fill: "var(--accent-green)", fontSize: 11 } }}
                 />
                 <YAxis
                   yAxisId="right"
                   orientation="right"
-                  stroke="#BC8CFF"
+                  stroke="var(--accent-purple)"
                   domain={[0, 100]}
                   tick={{ fontSize: 11 }}
-                  label={{ value: "CSAT", angle: 90, position: "insideRight", style: { fill: "#BC8CFF", fontSize: 11 } }}
+                  label={{ value: "CSAT", angle: 90, position: "insideRight", style: { fill: "var(--accent-purple)", fontSize: 11 } }}
                 />
                 <Tooltip contentStyle={tooltipStyle} />
                 <Legend />
@@ -141,7 +141,7 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
                   yAxisId="left"
                   type="monotone"
                   dataKey="compliance"
-                  stroke="#3FB950"
+                  stroke="var(--accent-green)"
                   strokeWidth={2}
                   dot={false}
                   name="Compliance Score"
@@ -150,7 +150,7 @@ export function DashboardTrendChart({ data }: DashboardTrendChartProps) {
                   yAxisId="right"
                   type="monotone"
                   dataKey="csat"
-                  stroke="#BC8CFF"
+                  stroke="var(--accent-purple)"
                   strokeWidth={2}
                   dot={false}
                   name="CSAT Score"

@@ -42,7 +42,7 @@ export function QuizProgressBar({ current, total, timeRemaining }: QuizProgressB
               color: timeLow
                 ? "var(--accent-red)"
                 : timeWarning
-                  ? "var(--accent-yellow, #EAB308)"
+                  ? "var(--accent-yellow)"
                   : "var(--text-secondary)",
             }}
           >

@@ -205,7 +205,7 @@ export default function CourseViewClient() {
                     </Button>
                   </Link>
                   {attemptsUsed > 0 && maxAttempts > 0 && (
-                    <span className="text-xs" style={{ color: "var(--accent-yellow, #EAB308)" }}>
+                    <span className="text-xs" style={{ color: "var(--accent-yellow)" }}>
                       <AlertTriangle className="h-3 w-3 inline mr-1" />
                       Attempts remaining: {maxAttempts - attemptsUsed}
                     </span>

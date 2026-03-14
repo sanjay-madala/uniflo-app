@@ -96,16 +96,16 @@ export default function AnalyticsPage() {
       external: "External",
     };
     const sourceColors: Record<string, string> = {
-      search: "#58A6FF",
-      direct: "#3FB950",
-      ticket_sidebar: "#FFA657",
-      sop_link: "#D2A8FF",
-      external: "#F778BA",
+      search: "var(--accent-blue)",
+      direct: "var(--accent-green)",
+      ticket_sidebar: "var(--accent-yellow)",
+      sop_link: "var(--accent-purple)",
+      external: "var(--accent-pink)",
     };
     return Object.entries(totals).map(([source, value]) => ({
       name: sourceLabels[source] ?? source,
       value,
-      color: sourceColors[source] ?? "#58A6FF",
+      color: sourceColors[source] ?? "var(--accent-blue)",
     }));
   }, [analytics, range]);
 

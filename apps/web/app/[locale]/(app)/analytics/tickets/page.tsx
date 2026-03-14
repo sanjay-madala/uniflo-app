@@ -20,10 +20,10 @@ export default function TicketAnalyticsPage() {
   const overviewContent = (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <KPICard title="Created" value={totalCreated} unit="tickets" color="#58A6FF" />
-        <KPICard title="Resolved" value={totalResolved} unit="tickets" color="#3FB950" />
-        <KPICard title="Avg Resolution" value={avgResolution} unit="hrs" color="#D29922" />
-        <KPICard title="SLA Compliance" value={slaPct} unit="%" color="#388BFD" isPositive />
+        <KPICard title="Created" value={totalCreated} unit="tickets" color="var(--accent-blue)" />
+        <KPICard title="Resolved" value={totalResolved} unit="tickets" color="var(--accent-green)" />
+        <KPICard title="Avg Resolution" value={avgResolution} unit="hrs" color="var(--accent-yellow)" />
+        <KPICard title="SLA Compliance" value={slaPct} unit="%" color="var(--accent-blue)" isPositive />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -42,10 +42,10 @@ export default function TicketAnalyticsPage() {
   const slaContent = (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <KPICard title="SLA Met" value={totalSLAMet} color="#3FB950" />
-        <KPICard title="SLA Breached" value={totalSLABreached} color="#F85149" />
-        <KPICard title="SLA Rate" value={slaPct} unit="%" color="#388BFD" isPositive />
-        <KPICard title="Avg First Response" value={latest.avg_first_response_hours} unit="hrs" color="#D29922" />
+        <KPICard title="SLA Met" value={totalSLAMet} color="var(--accent-green)" />
+        <KPICard title="SLA Breached" value={totalSLABreached} color="var(--accent-red)" />
+        <KPICard title="SLA Rate" value={slaPct} unit="%" color="var(--accent-blue)" isPositive />
+        <KPICard title="Avg First Response" value={latest.avg_first_response_hours} unit="hrs" color="var(--accent-yellow)" />
       </div>
       <TicketSLAComplianceChart data={ticketAnalytics} />
     </div>
@@ -68,8 +68,8 @@ export default function TicketAnalyticsPage() {
           label: "Satisfaction",
           content: (
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <KPICard title="CSAT Score" value={latest.csat_avg ?? "N/A"} unit="/5" color="#BC8CFF" isPositive />
-              <KPICard title="Responses" value={latest.csat_responses} color="#58A6FF" />
+              <KPICard title="CSAT Score" value={latest.csat_avg ?? "N/A"} unit="/5" color="var(--accent-purple)" isPositive />
+              <KPICard title="Responses" value={latest.csat_responses} color="var(--accent-blue)" />
             </div>
           ),
         },

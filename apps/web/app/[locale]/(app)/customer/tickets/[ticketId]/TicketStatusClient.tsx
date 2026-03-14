@@ -25,9 +25,9 @@ const statusLabels: Record<PortalTicketStatus, string> = {
 };
 
 const priorityColors: Record<string, string> = {
-  high: "#DC2626",
-  medium: "#D97706",
-  low: "#059669",
+  high: "var(--portal-danger)",
+  medium: "var(--portal-warning)",
+  low: "var(--portal-success)",
 };
 
 const categoryLabels: Record<string, string> = {

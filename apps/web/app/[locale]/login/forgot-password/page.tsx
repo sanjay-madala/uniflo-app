@@ -18,7 +18,7 @@ export default function ForgotPasswordPage() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-primary)", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ width: "100%", maxWidth: "400px", padding: "40px" }}>
-        <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
+        <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
           <span style={{ color: "white", fontSize: "20px", fontWeight: 700 }}>U</span>
         </div>
 

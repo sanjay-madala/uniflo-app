@@ -51,7 +51,7 @@ export default function OnboardingPage() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#0D1117",
+        backgroundColor: "var(--bg-primary)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -66,7 +66,7 @@ export default function OnboardingPage() {
               width: "40px",
               height: "40px",
               borderRadius: "8px",
-              background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)",
+              background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
@@ -75,10 +75,10 @@ export default function OnboardingPage() {
           >
             <span style={{ color: "white", fontSize: "16px", fontWeight: 700 }}>U</span>
           </div>
-          <h1 style={{ color: "#E6EDF3", fontSize: "22px", fontWeight: 700, margin: "0 0 4px 0" }}>
+          <h1 style={{ color: "var(--text-primary)", fontSize: "22px", fontWeight: 700, margin: "0 0 4px 0" }}>
             Set up your workspace
           </h1>
-          <p style={{ color: "#8B949E", fontSize: "13px", margin: 0 }}>Step {step} of 4</p>
+          <p style={{ color: "var(--text-muted)", fontSize: "13px", margin: 0 }}>Step {step} of 4</p>
         </div>
 
         {/* Progress */}
@@ -90,7 +90,7 @@ export default function OnboardingPage() {
                 flex: 1,
                 height: "3px",
                 borderRadius: "2px",
-                backgroundColor: s <= step ? "#58A6FF" : "#30363D",
+                backgroundColor: s <= step ? "var(--accent-blue)" : "var(--border-default)",
                 transition: "background-color 0.3s ease",
               }}
             />
@@ -100,8 +100,8 @@ export default function OnboardingPage() {
         {/* Card */}
         <div
           style={{
-            backgroundColor: "#161B22",
-            border: "1px solid #30363D",
+            backgroundColor: "var(--bg-secondary)",
+            border: "1px solid var(--border-default)",
             borderRadius: "12px",
             padding: "32px",
           }}
@@ -109,14 +109,14 @@ export default function OnboardingPage() {
           {/* Step 1: Organization */}
           {step === 1 && (
             <div>
-              <h2 style={{ color: "#E6EDF3", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
+              <h2 style={{ color: "var(--text-primary)", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
                 Organization details
               </h2>
-              <p style={{ color: "#8B949E", fontSize: "13px", margin: "0 0 24px 0" }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "13px", margin: "0 0 24px 0" }}>
                 Tell us about your organization
               </p>
               <div style={{ marginBottom: "16px" }}>
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "#E6EDF3", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", marginBottom: "6px" }}>
                   Organization name
                 </label>
                 <input
@@ -127,7 +127,7 @@ export default function OnboardingPage() {
                 />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "#E6EDF3", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", marginBottom: "6px" }}>
                   Industry
                 </label>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -138,9 +138,9 @@ export default function OnboardingPage() {
                       style={{
                         padding: "6px 16px",
                         borderRadius: "6px",
-                        border: `1px solid ${industry === ind ? "#58A6FF" : "#30363D"}`,
+                        border: `1px solid ${industry === ind ? "var(--accent-blue)" : "var(--border-default)"}`,
                         backgroundColor: industry === ind ? "rgba(88,166,255,0.1)" : "transparent",
-                        color: industry === ind ? "#58A6FF" : "#8B949E",
+                        color: industry === ind ? "var(--accent-blue)" : "var(--text-secondary)",
                         fontSize: "13px",
                         fontWeight: 500,
                         cursor: "pointer",
@@ -158,10 +158,10 @@ export default function OnboardingPage() {
           {/* Step 2: Invite members */}
           {step === 2 && (
             <div>
-              <h2 style={{ color: "#E6EDF3", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
+              <h2 style={{ color: "var(--text-primary)", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
                 Invite your team
               </h2>
-              <p style={{ color: "#8B949E", fontSize: "13px", margin: "0 0 24px 0" }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "13px", margin: "0 0 24px 0" }}>
                 Add team members to your workspace
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -180,9 +180,9 @@ export default function OnboardingPage() {
                         height: "40px",
                         padding: "0 12px",
                         borderRadius: "6px",
-                        border: "1px solid #30363D",
-                        backgroundColor: "#0D1117",
-                        color: "#E6EDF3",
+                        border: "1px solid var(--border-default)",
+                        backgroundColor: "var(--bg-primary)",
+                        color: "var(--text-primary)",
                         fontSize: "13px",
                         outline: "none",
                         minWidth: "120px",
@@ -199,9 +199,9 @@ export default function OnboardingPage() {
                           width: "32px",
                           height: "32px",
                           borderRadius: "6px",
-                          border: "1px solid #30363D",
+                          border: "1px solid var(--border-default)",
                           backgroundColor: "transparent",
-                          color: "#8B949E",
+                          color: "var(--text-muted)",
                           cursor: "pointer",
                           display: "flex",
                           alignItems: "center",
@@ -222,9 +222,9 @@ export default function OnboardingPage() {
                   marginTop: "12px",
                   padding: "6px 12px",
                   borderRadius: "6px",
-                  border: "1px dashed #30363D",
+                  border: "1px dashed var(--border-default)",
                   backgroundColor: "transparent",
-                  color: "#58A6FF",
+                  color: "var(--accent-blue)",
                   fontSize: "13px",
                   cursor: "pointer",
                   fontWeight: 500,
@@ -238,10 +238,10 @@ export default function OnboardingPage() {
           {/* Step 3: Choose modules */}
           {step === 3 && (
             <div>
-              <h2 style={{ color: "#E6EDF3", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
+              <h2 style={{ color: "var(--text-primary)", fontSize: "18px", fontWeight: 600, margin: "0 0 4px 0" }}>
                 Choose your modules
               </h2>
-              <p style={{ color: "#8B949E", fontSize: "13px", margin: "0 0 24px 0" }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "13px", margin: "0 0 24px 0" }}>
                 Select the modules you need — you can change this later
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
@@ -254,7 +254,7 @@ export default function OnboardingPage() {
                       style={{
                         padding: "16px",
                         borderRadius: "8px",
-                        border: `1px solid ${selected ? "#58A6FF" : "#30363D"}`,
+                        border: `1px solid ${selected ? "var(--accent-blue)" : "var(--border-default)"}`,
                         backgroundColor: selected ? "rgba(88,166,255,0.08)" : "transparent",
                         cursor: "pointer",
                         textAlign: "left",
@@ -262,7 +262,7 @@ export default function OnboardingPage() {
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                        <span style={{ color: selected ? "#58A6FF" : "#E6EDF3", fontSize: "14px", fontWeight: 500 }}>
+                        <span style={{ color: selected ? "var(--accent-blue)" : "var(--text-primary)", fontSize: "14px", fontWeight: 500 }}>
                           {mod.label}
                         </span>
                         <div
@@ -270,8 +270,8 @@ export default function OnboardingPage() {
                             width: "18px",
                             height: "18px",
                             borderRadius: "4px",
-                            border: `1px solid ${selected ? "#58A6FF" : "#30363D"}`,
-                            backgroundColor: selected ? "#58A6FF" : "transparent",
+                            border: `1px solid ${selected ? "var(--accent-blue)" : "var(--border-default)"}`,
+                            backgroundColor: selected ? "var(--accent-blue)" : "transparent",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -282,7 +282,7 @@ export default function OnboardingPage() {
                           {selected ? "✓" : ""}
                         </div>
                       </div>
-                      <p style={{ color: "#8B949E", fontSize: "12px", margin: 0 }}>{mod.description}</p>
+                      <p style={{ color: "var(--text-muted)", fontSize: "12px", margin: 0 }}>{mod.description}</p>
                     </button>
                   );
                 })}
@@ -309,13 +309,13 @@ export default function OnboardingPage() {
               >
                 ✓
               </div>
-              <h2 style={{ color: "#E6EDF3", fontSize: "20px", fontWeight: 600, margin: "0 0 8px 0" }}>
+              <h2 style={{ color: "var(--text-primary)", fontSize: "20px", fontWeight: 600, margin: "0 0 8px 0" }}>
                 You&apos;re all set!
               </h2>
-              <p style={{ color: "#8B949E", fontSize: "14px", margin: "0 0 8px 0" }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "14px", margin: "0 0 8px 0" }}>
                 {orgName ? `${orgName} is` : "Your workspace is"} ready to go.
               </p>
-              <p style={{ color: "#484F58", fontSize: "13px", margin: "0 0 32px 0" }}>
+              <p style={{ color: "var(--text-muted)", fontSize: "13px", margin: "0 0 32px 0" }}>
                 {selectedModules.size} modules enabled · {members.filter((m) => m.email.trim()).length} team members invited
               </p>
               <button
@@ -324,7 +324,7 @@ export default function OnboardingPage() {
                   padding: "10px 32px",
                   borderRadius: "6px",
                   border: "none",
-                  backgroundColor: "#58A6FF",
+                  backgroundColor: "var(--accent-blue)",
                   color: "white",
                   fontSize: "14px",
                   fontWeight: 600,
@@ -359,7 +359,7 @@ export default function OnboardingPage() {
                 padding: "8px 24px",
                 borderRadius: "6px",
                 border: "none",
-                backgroundColor: "#58A6FF",
+                backgroundColor: "var(--accent-blue)",
                 color: "white",
                 fontSize: "14px",
                 fontWeight: 500,
@@ -380,9 +380,9 @@ const inputStyle: React.CSSProperties = {
   height: "40px",
   padding: "0 12px",
   borderRadius: "6px",
-  border: "1px solid #30363D",
-  backgroundColor: "#0D1117",
-  color: "#E6EDF3",
+  border: "1px solid var(--border-default)",
+  backgroundColor: "var(--bg-primary)",
+  color: "var(--text-primary)",
   fontSize: "14px",
   outline: "none",
   boxSizing: "border-box",
@@ -391,9 +391,9 @@ const inputStyle: React.CSSProperties = {
 const navBtnStyle: React.CSSProperties = {
   padding: "8px 24px",
   borderRadius: "6px",
-  border: "1px solid #30363D",
+  border: "1px solid var(--border-default)",
   backgroundColor: "transparent",
-  color: "#8B949E",
+  color: "var(--text-muted)",
   fontSize: "14px",
   fontWeight: 500,
   cursor: "pointer",

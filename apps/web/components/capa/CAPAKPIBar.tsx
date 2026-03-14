@@ -8,7 +8,7 @@ interface CAPAKPIBarProps {
 }
 
 export function CAPAKPIBar({ total, open, overdue, closureRate }: CAPAKPIBarProps) {
-  const barColor = closureRate >= 80 ? "var(--accent-green)" : closureRate >= 50 ? "var(--accent-yellow, #EAB308)" : "var(--accent-red)";
+  const barColor = closureRate >= 80 ? "var(--accent-green)" : closureRate >= 50 ? "var(--accent-yellow)" : "var(--accent-red)";
 
   return (
     <div className="flex flex-wrap items-center gap-6 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3">

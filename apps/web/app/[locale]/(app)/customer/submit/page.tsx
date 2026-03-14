@@ -94,24 +94,7 @@ export default function TicketSubmitPage() {
   // Success screen
   if (submittedId) {
     return (
-      <div
-        className="flex min-h-screen flex-col"
-        style={
-          {
-            "--portal-bg": "#FFFFFF",
-            "--portal-surface": "#F9FAFB",
-            "--portal-surface-elevated": "#FFFFFF",
-            "--portal-border": "#E5E7EB",
-            "--portal-text-primary": "#111827",
-            "--portal-text-secondary": "#6B7280",
-            "--portal-text-muted": "#9CA3AF",
-            "--portal-accent": "#2563EB",
-            "--portal-success": "#059669",
-            "--portal-warning": "#D97706",
-            "--portal-danger": "#DC2626",
-          } as React.CSSProperties
-        }
-      >
+      <div className="portal-theme flex min-h-screen flex-col">
         <PortalHeader
           title="Submit a Request"
           backLabel="Back to Tickets"
@@ -168,25 +151,7 @@ export default function TicketSubmitPage() {
   }
 
   return (
-    <div
-      className="flex min-h-screen flex-col"
-      style={
-        {
-          "--portal-bg": "#FFFFFF",
-          "--portal-surface": "#F9FAFB",
-          "--portal-surface-elevated": "#FFFFFF",
-          "--portal-border": "#E5E7EB",
-          "--portal-text-primary": "#111827",
-          "--portal-text-secondary": "#6B7280",
-          "--portal-text-muted": "#9CA3AF",
-          "--portal-accent": "#2563EB",
-          "--portal-accent-hover": "#1D4ED8",
-          "--portal-success": "#059669",
-          "--portal-warning": "#D97706",
-          "--portal-danger": "#DC2626",
-        } as React.CSSProperties
-      }
-    >
+    <div className="portal-theme flex min-h-screen flex-col">
       <PortalHeader
         title="Submit a Request"
         backLabel="Back to Tickets"
@@ -215,7 +180,7 @@ export default function TicketSubmitPage() {
                       borderWidth: isCompleted || isCurrent ? 0 : 2,
                       borderStyle: "solid",
                       borderColor: "var(--portal-border)",
-                      color: isCompleted || isCurrent ? "#FFFFFF" : "var(--portal-text-muted)",
+                      color: isCompleted || isCurrent ? "var(--text-on-accent)" : "var(--portal-text-muted)",
                     }}
                   >
                     {isCompleted ? <Check className="h-4 w-4" /> : stepNum}

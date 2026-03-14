@@ -17,9 +17,9 @@ const priorityConfig: Record<BroadcastPriority, { border: string; bg: string; ic
     icon: "var(--accent-blue)",
   },
   urgent: {
-    border: "var(--accent-yellow, #F59E0B)",
-    bg: "color-mix(in srgb, var(--accent-yellow, #F59E0B) 10%, transparent)",
-    icon: "var(--accent-yellow, #F59E0B)",
+    border: "var(--accent-yellow)",
+    bg: "color-mix(in srgb, var(--accent-yellow) 10%, transparent)",
+    icon: "var(--accent-yellow)",
   },
   critical: {
     border: "var(--accent-red)",

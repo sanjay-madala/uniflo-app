@@ -31,10 +31,10 @@ export default function TaskAnalyticsPage() {
     <AnalyticsPageShell title="Task Analytics" breadcrumb="Task Analytics">
       <div className="space-y-6">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <KPICard title="Created" value={totalCreated} unit="tasks" color="#58A6FF" />
-          <KPICard title="Completed" value={totalCompleted} unit="tasks" color="#3FB950" />
-          <KPICard title="Overdue" value={totalOverdue} color="#F85149" />
-          <KPICard title="Velocity" value={velocity} unit="/wk" color="#BC8CFF" isPositive />
+          <KPICard title="Created" value={totalCreated} unit="tasks" color="var(--accent-blue)" />
+          <KPICard title="Completed" value={totalCompleted} unit="tasks" color="var(--accent-green)" />
+          <KPICard title="Overdue" value={totalOverdue} color="var(--accent-red)" />
+          <KPICard title="Velocity" value={velocity} unit="/wk" color="var(--accent-purple)" isPositive />
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">

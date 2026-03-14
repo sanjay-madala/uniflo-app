@@ -19,7 +19,7 @@ export function CSATAlertBanner({
       className="flex items-center gap-3 rounded-lg border-l-4 px-4 py-3"
       style={{
         backgroundColor: "rgba(217,119,6,0.08)",
-        borderLeftColor: "var(--accent-red, #D97706)",
+        borderLeftColor: "var(--accent-yellow)",
         borderTop: "1px solid rgba(217,119,6,0.2)",
         borderRight: "1px solid rgba(217,119,6,0.2)",
         borderBottom: "1px solid rgba(217,119,6,0.2)",
@@ -29,7 +29,7 @@ export function CSATAlertBanner({
     >
       <AlertTriangle
         className="h-5 w-5 shrink-0"
-        style={{ color: "#D97706" }}
+        style={{ color: "var(--accent-yellow)" }}
       />
       <div className="min-w-0 flex-1">
         <p className="text-sm" style={{ color: "var(--text-primary)" }}>

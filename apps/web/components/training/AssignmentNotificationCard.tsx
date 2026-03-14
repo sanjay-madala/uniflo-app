@@ -20,7 +20,7 @@ const typeConfig: Record<
   deadline_reminder: {
     icon: <Clock className="h-4 w-4" />,
     title: "Training deadline approaching",
-    color: "var(--accent-yellow, #EAB308)",
+    color: "var(--accent-yellow)",
   },
   completed: {
     icon: <CheckCircle className="h-4 w-4" />,

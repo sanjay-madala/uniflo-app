@@ -51,7 +51,7 @@ function isOverdue(task: Task): boolean {
 
 const sourceIcons: Record<string, React.ReactNode> = {
   audit: <ClipboardCheck className="h-3.5 w-3.5 text-[var(--accent-blue)]" />,
-  capa: <Shield className="h-3.5 w-3.5 text-[var(--accent-yellow,#EAB308)]" />,
+  capa: <Shield className="h-3.5 w-3.5 text-[var(--accent-yellow)]" />,
   ticket: <Ticket className="h-3.5 w-3.5 text-[var(--accent-purple)]" />,
 };
 
@@ -160,7 +160,7 @@ export default function ProjectScopedTasksClient() {
   );
 
   const percent = project.task_count > 0 ? Math.round((project.completed_task_count / project.task_count) * 100) : 0;
-  const barColor = percent === 100 ? "bg-[var(--accent-green,#3FB950)]" : percent > 0 ? "bg-[var(--accent-blue,#58A6FF)]" : "bg-[var(--text-muted)]";
+  const barColor = percent === 100 ? "bg-[var(--accent-green)]" : percent > 0 ? "bg-[var(--accent-blue)]" : "bg-[var(--text-muted)]";
   const projectStatus = statusConfig[project.status];
   const ownerName = getUserName(project.owner_id);
 
@@ -275,8 +275,8 @@ export default function ProjectScopedTasksClient() {
                   </span>
                 </TableCell>
                 <TableCell>
-                  <span className={overdue ? "text-xs font-medium text-[var(--accent-red,#F85149)]" : "text-xs text-[var(--text-secondary)]"}>
-                    {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red,#F85149)] me-1 animate-pulse" />}
+                  <span className={overdue ? "text-xs font-medium text-[var(--accent-red)]" : "text-xs text-[var(--text-secondary)]"}>
+                    {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red)] me-1 animate-pulse" />}
                     {formatShortDate(task.due_date)}
                   </span>
                 </TableCell>

@@ -21,7 +21,7 @@ export function AuditScoreRing({
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (animatedScore / 100) * circumference;
-  const color = pass ? "#3FB950" : "#F85149";
+  const color = pass ? "var(--accent-green)" : "var(--accent-red)";
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

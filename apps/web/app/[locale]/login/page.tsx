@@ -43,18 +43,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0D1117", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-primary)", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ width: "100%", maxWidth: "400px", padding: "40px" }}>
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px", justifyContent: "center" }}>
-          <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ color: "white", fontSize: "18px", fontWeight: 700 }}>U</span>
           </div>
-          <span style={{ color: "#E6EDF3", fontWeight: 700, fontSize: "24px" }}>Uniflo</span>
+          <span style={{ color: "var(--text-primary)", fontWeight: 700, fontSize: "24px" }}>Uniflo</span>
         </div>
 
-        <h1 style={{ color: "#E6EDF3", fontSize: "20px", fontWeight: 600, textAlign: "center", margin: "0 0 8px 0" }}>Welcome back</h1>
-        <p style={{ color: "#8B949E", fontSize: "13px", textAlign: "center", margin: "0 0 32px 0" }}>Sign in to your account</p>
+        <h1 style={{ color: "var(--text-primary)", fontSize: "20px", fontWeight: 600, textAlign: "center", margin: "0 0 8px 0" }}>Welcome back</h1>
+        <p style={{ color: "var(--text-secondary)", fontSize: "13px", textAlign: "center", margin: "0 0 32px 0" }}>Sign in to your account</p>
 
         {error && (
           <div style={{
@@ -62,7 +62,7 @@ export default function LoginPage() {
             borderRadius: "6px",
             border: "1px solid rgba(248,81,73,0.4)",
             backgroundColor: "rgba(248,81,73,0.1)",
-            color: "#F85149",
+            color: "var(--accent-red)",
             fontSize: "13px",
             marginBottom: "16px",
           }}>
@@ -72,7 +72,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin}>
           <div style={{ marginBottom: "16px" }}>
-            <label style={{ display: "block", color: "#E6EDF3", fontSize: "12px", fontWeight: 500, marginBottom: "6px" }}>Email</label>
+            <label style={{ display: "block", color: "var(--text-primary)", fontSize: "12px", fontWeight: 500, marginBottom: "6px" }}>Email</label>
             <input
               type="email"
               value={email}
@@ -82,20 +82,20 @@ export default function LoginPage() {
                 width: "100%",
                 padding: "10px 12px",
                 borderRadius: "6px",
-                border: `1px solid ${error && !email.trim() ? "#F85149" : "#30363D"}`,
-                backgroundColor: "#0D1117",
-                color: "#E6EDF3",
+                border: `1px solid ${error && !email.trim() ? "var(--accent-red)" : "var(--border-default)"}`,
+                backgroundColor: "var(--bg-primary)",
+                color: "var(--text-primary)",
                 fontSize: "13px",
                 outline: "none",
                 boxSizing: "border-box",
               }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "#58A6FF"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = error && !email.trim() ? "#F85149" : "#30363D"; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "var(--accent-blue)"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = error && !email.trim() ? "var(--accent-red)" : "var(--border-default)"; }}
             />
           </div>
 
           <div style={{ marginBottom: "12px" }}>
-            <label style={{ display: "block", color: "#E6EDF3", fontSize: "12px", fontWeight: 500, marginBottom: "6px" }}>Password</label>
+            <label style={{ display: "block", color: "var(--text-primary)", fontSize: "12px", fontWeight: 500, marginBottom: "6px" }}>Password</label>
             <div style={{ position: "relative" }}>
               <input
                 type={showPw ? "text" : "password"}
@@ -106,20 +106,20 @@ export default function LoginPage() {
                   width: "100%",
                   padding: "10px 40px 10px 12px",
                   borderRadius: "6px",
-                  border: `1px solid ${error && !password.trim() ? "#F85149" : "#30363D"}`,
-                  backgroundColor: "#0D1117",
-                  color: "#E6EDF3",
+                  border: `1px solid ${error && !password.trim() ? "var(--accent-red)" : "var(--border-default)"}`,
+                  backgroundColor: "var(--bg-primary)",
+                  color: "var(--text-primary)",
                   fontSize: "13px",
                   outline: "none",
                   boxSizing: "border-box",
                 }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#58A6FF"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = error && !password.trim() ? "#F85149" : "#30363D"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "var(--accent-blue)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = error && !password.trim() ? "var(--accent-red)" : "var(--border-default)"; }}
               />
               <button
                 type="button"
                 onClick={() => setShowPw(!showPw)}
-                style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#8B949E", display: "flex" }}
+                style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "var(--text-secondary)", display: "flex" }}
               >
                 {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -132,13 +132,13 @@ export default function LoginPage() {
                 type="checkbox"
                 checked={remember}
                 onChange={(e) => setRemember(e.target.checked)}
-                style={{ accentColor: "#58A6FF" }}
+                style={{ accentColor: "var(--accent-blue)" }}
               />
-              <span style={{ color: "#8B949E", fontSize: "12px" }}>Remember me</span>
+              <span style={{ color: "var(--text-secondary)", fontSize: "12px" }}>Remember me</span>
             </label>
             <a
               href={`/${locale}/login/forgot-password/`}
-              style={{ color: "#58A6FF", fontSize: "12px", textDecoration: "none" }}
+              style={{ color: "var(--accent-blue)", fontSize: "12px", textDecoration: "none" }}
             >
               Forgot password?
             </a>
@@ -151,7 +151,7 @@ export default function LoginPage() {
               padding: "10px",
               borderRadius: "6px",
               border: "none",
-              backgroundColor: "#58A6FF",
+              backgroundColor: "var(--accent-blue)",
               color: "white",
               fontSize: "14px",
               fontWeight: 600,
@@ -167,9 +167,9 @@ export default function LoginPage() {
 
         {/* SSO Divider */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "24px 0" }}>
-          <div style={{ flex: 1, height: "1px", backgroundColor: "#30363D" }} />
-          <span style={{ color: "#484F58", fontSize: "12px" }}>or continue with</span>
-          <div style={{ flex: 1, height: "1px", backgroundColor: "#30363D" }} />
+          <div style={{ flex: 1, height: "1px", backgroundColor: "var(--border-default)" }} />
+          <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>or continue with</span>
+          <div style={{ flex: 1, height: "1px", backgroundColor: "var(--border-default)" }} />
         </div>
 
         {/* SSO Buttons */}
@@ -185,15 +185,15 @@ export default function LoginPage() {
               gap: "8px",
               padding: "10px",
               borderRadius: "6px",
-              border: "1px solid #30363D",
+              border: "1px solid var(--border-default)",
               backgroundColor: "transparent",
-              color: "#E6EDF3",
+              color: "var(--text-primary)",
               fontSize: "13px",
               fontWeight: 500,
               cursor: "pointer",
               transition: "background-color 0.15s ease",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#161B22"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--bg-secondary)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -215,15 +215,15 @@ export default function LoginPage() {
               gap: "8px",
               padding: "10px",
               borderRadius: "6px",
-              border: "1px solid #30363D",
+              border: "1px solid var(--border-default)",
               backgroundColor: "transparent",
-              color: "#E6EDF3",
+              color: "var(--text-primary)",
               fontSize: "13px",
               fontWeight: 500,
               cursor: "pointer",
               transition: "background-color 0.15s ease",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#161B22"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--bg-secondary)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
           >
             <svg width="16" height="16" viewBox="0 0 23 23" fill="none">

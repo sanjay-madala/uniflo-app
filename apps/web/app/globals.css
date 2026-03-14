@@ -5,18 +5,25 @@
   --bg-primary: #0D1117;
   --bg-secondary: #161B22;
   --bg-tertiary: #1C2128;
+  --bg-elevated: #1a1a1a;
   --accent-blue: #58A6FF;
   --accent-green: #3FB950;
   --accent-red: #F85149;
   --accent-yellow: #D29922;
+  --accent-purple: #BC8CFF;
+  --accent-pink: #EC4899;
+  --accent-orange: #F97316;
   --text-primary: #E6EDF3;
   --text-secondary: #8B949E;
   --text-muted: #484F58;
+  --text-on-accent: #FFFFFF;
   --border-default: #30363D;
   --border-muted: #21262D;
   --border-strong: #6E7681;
   --background: #0D1117;
   --foreground: #E6EDF3;
+  --certificate-gold: #D4A948;
+  --certificate-gold-light: #F0D68A;
 }
 
 /* Light mode */
@@ -24,9 +31,11 @@ html:not(.dark) body {
   --bg-primary: #F8F9FA;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #F3F4F6;
+  --bg-elevated: #FFFFFF;
   --text-primary: #111827;
   --text-secondary: #374151;
   --text-muted: #9CA3AF;
+  --text-on-accent: #FFFFFF;
   --border-default: #E5E7EB;
   --border-muted: #F3F4F6;
   --border-strong: #D1D5DB;
@@ -34,8 +43,13 @@ html:not(.dark) body {
   --accent-green: #16A34A;
   --accent-red: #DC2626;
   --accent-yellow: #D97706;
+  --accent-purple: #8B5CF6;
+  --accent-pink: #EC4899;
+  --accent-orange: #EA580C;
   --background: #F8F9FA;
   --foreground: #111827;
+  --certificate-gold: #D4A948;
+  --certificate-gold-light: #F0D68A;
 }
 
 /* Portal Theme (customer-facing pages) */

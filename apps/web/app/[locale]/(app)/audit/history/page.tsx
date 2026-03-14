@@ -193,10 +193,10 @@ export default function AuditHistoryPage() {
         <AuditTrendChart data={trendData} height={280} />
         <div className="mt-2 flex items-center gap-4 text-xs text-[var(--text-muted)]">
           <span className="flex items-center gap-1">
-            <div className="h-0.5 w-4 bg-[#58A6FF]" /> Average Score
+            <div className="h-0.5 w-4 bg-[var(--accent-blue)]" /> Average Score
           </span>
           <span className="flex items-center gap-1">
-            <div className="h-0.5 w-4 border-t border-dashed border-[var(--accent-yellow, #D29922)]" /> Pass Threshold (85%)
+            <div className="h-0.5 w-4 border-t border-dashed border-[var(--accent-yellow)]" /> Pass Threshold (85%)
           </span>
         </div>
       </Card>

@@ -143,17 +143,17 @@ export default function SLABreachAlertsPage() {
         <KPICard
           title="Breached"
           value={breachedCount}
-          color="#F85149"
+          color="var(--accent-red)"
         />
         <KPICard
           title="At Risk"
           value={atRiskCount}
-          color="#D29922"
+          color="var(--accent-yellow)"
         />
         <KPICard
           title="Escalated"
           value={escalatedCount}
-          color="#BC8CFF"
+          color="var(--accent-purple)"
         />
       </div>
 
@@ -222,11 +222,11 @@ export default function SLABreachAlertsPage() {
                   <div
                     className="mb-3 rounded-md p-3"
                     style={{
-                      backgroundColor: "color-mix(in srgb, var(--accent-yellow, #EAB308) 8%, transparent)",
-                      borderInlineStart: "4px solid var(--accent-yellow, #EAB308)",
+                      backgroundColor: "color-mix(in srgb, var(--accent-yellow) 8%, transparent)",
+                      borderInlineStart: "4px solid var(--accent-yellow)",
                     }}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--accent-yellow, #EAB308)" }}>
+                    <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--accent-yellow)" }}>
                       At Risk ({atRiskItems.length})
                     </p>
                     <p className="text-xs text-[var(--text-secondary)]">

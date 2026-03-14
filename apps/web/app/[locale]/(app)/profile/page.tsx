@@ -27,7 +27,7 @@ export default function ProfilePage() {
   const roleBadgeColor: Record<Role, string> = {
     Admin: "var(--accent-blue)",
     Manager: "var(--accent-green)",
-    Operator: "#D29922",
+    Operator: "var(--accent-yellow)",
     Viewer: "var(--text-muted)",
   };
 

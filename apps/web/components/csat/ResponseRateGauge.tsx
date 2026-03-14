@@ -18,10 +18,10 @@ export function ResponseRateGauge({
 
   const color =
     rate >= 70
-      ? "var(--accent-green, #059669)"
+      ? "var(--accent-green)"
       : rate >= 50
-        ? "var(--accent-blue, #2563EB)"
-        : "var(--accent-red, #DC2626)";
+        ? "var(--accent-blue)"
+        : "var(--accent-red)";
 
   return (
     <div className="relative inline-flex items-center justify-center">
@@ -31,7 +31,7 @@ export function ResponseRateGauge({
           cy={center}
           r={radius}
           fill="none"
-          stroke="var(--border-default, #374151)"
+          stroke="var(--border-default)"
           strokeWidth={strokeWidth}
         />
         <circle

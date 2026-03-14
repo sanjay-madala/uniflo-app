@@ -21,7 +21,7 @@ export function GoalKPIRow({ kpis, onFilterClick }: GoalKPIRowProps) {
           value={kpis.active_goals}
           trend={kpis.avg_progress}
           trendLabel="avg progress"
-          color="#58A6FF"
+          color="var(--accent-blue)"
         />
       </button>
       <button
@@ -32,7 +32,7 @@ export function GoalKPIRow({ kpis, onFilterClick }: GoalKPIRowProps) {
         <KPICard
           title="On Track"
           value={`${kpis.on_track_pct}%`}
-          color="#3FB950"
+          color="var(--accent-green)"
         />
       </button>
       <button
@@ -43,7 +43,7 @@ export function GoalKPIRow({ kpis, onFilterClick }: GoalKPIRowProps) {
         <KPICard
           title="Achieved"
           value={kpis.achieved_goals}
-          color="#58A6FF"
+          color="var(--accent-blue)"
         />
       </button>
       <button
@@ -54,7 +54,7 @@ export function GoalKPIRow({ kpis, onFilterClick }: GoalKPIRowProps) {
         <KPICard
           title="At Risk / Behind"
           value={`${kpis.at_risk_count} / ${kpis.behind_count}`}
-          color="#F85149"
+          color="var(--accent-red)"
         />
       </button>
     </div>

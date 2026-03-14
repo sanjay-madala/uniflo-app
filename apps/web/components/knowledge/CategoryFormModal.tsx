@@ -10,8 +10,8 @@ const ICON_OPTIONS = [
 ];
 
 const COLOR_SWATCHES = [
-  "#3FB950", "#58A6FF", "#D2A8FF", "#FFA657",
-  "#F778BA", "#79C0FF", "#7EE787", "#56D364",
+  "var(--accent-green)", "var(--accent-blue)", "var(--accent-purple)", "var(--accent-yellow)",
+  "var(--accent-pink)", "var(--accent-blue)", "var(--accent-green)", "var(--accent-green)",
 ];
 
 interface CategoryFormModalProps {
@@ -26,7 +26,7 @@ export function CategoryFormModal({ open, onOpenChange, category, categories, on
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [icon, setIcon] = useState("BookOpen");
-  const [color, setColor] = useState("#58A6FF");
+  const [color, setColor] = useState("var(--accent-blue)");
   const [parentId, setParentId] = useState<string>("none");
   const [sortOrder, setSortOrder] = useState("1");
 
@@ -42,7 +42,7 @@ export function CategoryFormModal({ open, onOpenChange, category, categories, on
       setName("");
       setDescription("");
       setIcon("BookOpen");
-      setColor("#58A6FF");
+      setColor("var(--accent-blue)");
       setParentId("none");
       setSortOrder(String(categories.length + 1));
     }

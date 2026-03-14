@@ -15,14 +15,14 @@ const entryConfig: Record<
   PortalTimelineEntryType,
   { icon: React.ElementType; color: string; bg: string }
 > = {
-  submitted: { icon: Send, color: "#2563EB", bg: "rgba(37,99,235,0.1)" },
-  status_change: { icon: ArrowRight, color: "#D97706", bg: "rgba(217,119,6,0.1)" },
-  agent_reply: { icon: MessageSquare, color: "#059669", bg: "rgba(5,150,105,0.1)" },
-  customer_reply: { icon: MessageSquare, color: "#2563EB", bg: "rgba(37,99,235,0.1)" },
-  attachment_added: { icon: Paperclip, color: "#6B7280", bg: "rgba(107,114,128,0.1)" },
-  resolved: { icon: CheckCircle2, color: "#059669", bg: "rgba(5,150,105,0.1)" },
-  reopened: { icon: RotateCcw, color: "#D97706", bg: "rgba(217,119,6,0.1)" },
-  closed: { icon: XCircle, color: "#6B7280", bg: "rgba(107,114,128,0.1)" },
+  submitted: { icon: Send, color: "var(--portal-accent)", bg: "color-mix(in srgb, var(--portal-accent) 10%, transparent)" },
+  status_change: { icon: ArrowRight, color: "var(--portal-warning)", bg: "color-mix(in srgb, var(--portal-warning) 10%, transparent)" },
+  agent_reply: { icon: MessageSquare, color: "var(--portal-success)", bg: "color-mix(in srgb, var(--portal-success) 10%, transparent)" },
+  customer_reply: { icon: MessageSquare, color: "var(--portal-accent)", bg: "color-mix(in srgb, var(--portal-accent) 10%, transparent)" },
+  attachment_added: { icon: Paperclip, color: "var(--portal-text-muted)", bg: "color-mix(in srgb, var(--portal-text-muted) 10%, transparent)" },
+  resolved: { icon: CheckCircle2, color: "var(--portal-success)", bg: "color-mix(in srgb, var(--portal-success) 10%, transparent)" },
+  reopened: { icon: RotateCcw, color: "var(--portal-warning)", bg: "color-mix(in srgb, var(--portal-warning) 10%, transparent)" },
+  closed: { icon: XCircle, color: "var(--portal-text-muted)", bg: "color-mix(in srgb, var(--portal-text-muted) 10%, transparent)" },
 };
 
 function formatTimestamp(dateStr: string): string {

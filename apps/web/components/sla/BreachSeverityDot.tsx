@@ -8,8 +8,8 @@ interface BreachSeverityDotProps {
 
 const dotColors: Record<SLABreachStatus, string> = {
   breached: "var(--accent-red)",
-  at_risk: "var(--accent-yellow, #EAB308)",
-  escalated: "var(--accent-purple, #BC8CFF)",
+  at_risk: "var(--accent-yellow)",
+  escalated: "var(--accent-purple)",
   resolved: "var(--accent-green)",
 };
 

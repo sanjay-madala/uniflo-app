@@ -178,10 +178,10 @@ export default function AuditResultsClient() {
 
       {/* KPI Strip */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <KPICard title="Passed" value={passedItems} unit="items" color="#3FB950" />
-        <KPICard title="Failed" value={failedItems} unit="items" color="#F85149" />
+        <KPICard title="Passed" value={passedItems} unit="items" color="var(--accent-green)" />
+        <KPICard title="Failed" value={failedItems} unit="items" color="var(--accent-red)" />
         <KPICard title="N/A" value={naItems} unit="items" />
-        <KPICard title="Actions" value={actionsCreated} unit="created" color="#58A6FF" />
+        <KPICard title="Actions" value={actionsCreated} unit="created" color="var(--accent-blue)" />
       </div>
 
       {/* Section Breakdown Bars */}
@@ -196,7 +196,7 @@ export default function AuditResultsClient() {
                 section.score >= 80
                   ? "var(--accent-green)"
                   : section.score >= 60
-                  ? "var(--accent-yellow, #EAB308)"
+                  ? "var(--accent-yellow)"
                   : "var(--accent-red)";
 
               return (

@@ -16,10 +16,10 @@ export default function CAPAAnalyticsPage() {
     <AnalyticsPageShell title="CAPA Analytics" breadcrumb="CAPA Analytics">
       <div className="space-y-6">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <KPICard title="Open" value={latest.total_open} unit="CAPAs" color="#D29922" />
-          <KPICard title="Closed" value={totalClosed} unit="total" color="#3FB950" />
-          <KPICard title="Avg Closure" value={avgClosure} unit="days" color="#58A6FF" />
-          <KPICard title="Overdue" value={latest.overdue_count} color="#F85149" />
+          <KPICard title="Open" value={latest.total_open} unit="CAPAs" color="var(--accent-yellow)" />
+          <KPICard title="Closed" value={totalClosed} unit="total" color="var(--accent-green)" />
+          <KPICard title="Avg Closure" value={avgClosure} unit="days" color="var(--accent-blue)" />
+          <KPICard title="Overdue" value={latest.overdue_count} color="var(--accent-red)" />
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -41,7 +41,7 @@ export default function CAPAAnalyticsPage() {
                 title="Recurrence Rate"
                 value={latest.recurrence_rate}
                 unit="%"
-                color="#F85149"
+                color="var(--accent-red)"
                 isPositive={false}
                 trend={-2}
                 trendLabel="vs last period"
@@ -50,7 +50,7 @@ export default function CAPAAnalyticsPage() {
                 title="Effectiveness Rate"
                 value={latest.effectiveness_rate}
                 unit="%"
-                color="#3FB950"
+                color="var(--accent-green)"
                 isPositive
                 trend={3}
                 trendLabel="vs last period"

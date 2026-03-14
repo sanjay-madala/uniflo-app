@@ -51,7 +51,7 @@ export default function CategoriesPage() {
         slug: (data.name ?? "new-category").toLowerCase().replace(/\s+/g, "-"),
         description: data.description ?? "",
         icon: data.icon ?? "BookOpen",
-        color: data.color ?? "#58A6FF",
+        color: data.color ?? "var(--accent-blue)",
         article_count: 0,
         parent_id: data.parent_id ?? null,
         sort_order: data.sort_order ?? categories.length + 1,

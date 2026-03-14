@@ -6,10 +6,10 @@ import { Card, CardHeader, CardTitle, CardContent, Button } from "@uniflo/ui";
 import { ClipboardCheck, Tag, ShieldAlert, CheckCircle2 } from "lucide-react";
 
 const ACTIONS = [
-  { label: "Start Audit", icon: ClipboardCheck, href: "/audit", color: "#3FB950" },
-  { label: "Create Ticket", icon: Tag, href: "/tickets", color: "#58A6FF" },
-  { label: "View CAPAs", icon: ShieldAlert, href: "/capa", color: "#D29922" },
-  { label: "Open Tasks", icon: CheckCircle2, href: "/tasks", color: "#BC8CFF" },
+  { label: "Start Audit", icon: ClipboardCheck, href: "/audit", color: "var(--accent-green)" },
+  { label: "Create Ticket", icon: Tag, href: "/tickets", color: "var(--accent-blue)" },
+  { label: "View CAPAs", icon: ShieldAlert, href: "/capa", color: "var(--accent-yellow)" },
+  { label: "Open Tasks", icon: CheckCircle2, href: "/tasks", color: "var(--accent-purple)" },
 ];
 
 export function DashboardQuickActions() {

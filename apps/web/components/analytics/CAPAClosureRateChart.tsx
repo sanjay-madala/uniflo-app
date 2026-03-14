@@ -34,10 +34,10 @@ export function CAPAClosureRateChart({ data }: CAPAClosureRateChartProps) {
   }));
 
   const tooltipStyle = {
-    backgroundColor: "#1a1a1a",
-    border: "1px solid #333333",
+    backgroundColor: "var(--bg-elevated)",
+    border: "1px solid var(--border-default)",
     borderRadius: "0.5rem",
-    color: "#ffffff",
+    color: "var(--text-primary)",
   };
 
   return (
@@ -52,13 +52,13 @@ export function CAPAClosureRateChart({ data }: CAPAClosureRateChartProps) {
         <div role="img" aria-label="Line chart showing CAPA opened versus closed per month">
           <ResponsiveContainer width="100%" height={260}>
             <RechartsLineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#333333" />
-              <XAxis dataKey="name" stroke="#888888" />
-              <YAxis stroke="#888888" />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+              <XAxis dataKey="name" stroke="var(--text-muted)" />
+              <YAxis stroke="var(--text-muted)" />
               <Tooltip contentStyle={tooltipStyle} />
               <Legend />
-              <Line type="monotone" dataKey="opened" stroke="#F85149" strokeWidth={2} dot={{ fill: "#F85149" }} name="Opened" />
-              <Line type="monotone" dataKey="closed" stroke="#3FB950" strokeWidth={2} dot={{ fill: "#3FB950" }} name="Closed" />
+              <Line type="monotone" dataKey="opened" stroke="var(--accent-red)" strokeWidth={2} dot={{ fill: "var(--accent-red)" }} name="Opened" />
+              <Line type="monotone" dataKey="closed" stroke="var(--accent-green)" strokeWidth={2} dot={{ fill: "var(--accent-green)" }} name="Closed" />
             </RechartsLineChart>
           </ResponsiveContainer>
         </div>

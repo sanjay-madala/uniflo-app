@@ -5,11 +5,11 @@ import type { CSATDistribution } from "@uniflo/mock-data";
 type StarKey = "star_1" | "star_2" | "star_3" | "star_4" | "star_5";
 
 const segmentConfig: { key: StarKey; label: string; color: string; starNum: number }[] = [
-  { key: "star_5", label: "5 stars", color: "#059669", starNum: 5 },
-  { key: "star_4", label: "4 stars", color: "#34D399", starNum: 4 },
-  { key: "star_3", label: "3 stars", color: "#FBBF24", starNum: 3 },
-  { key: "star_2", label: "2 stars", color: "#F97316", starNum: 2 },
-  { key: "star_1", label: "1 star", color: "#DC2626", starNum: 1 },
+  { key: "star_5", label: "5 stars", color: "var(--accent-green)", starNum: 5 },
+  { key: "star_4", label: "4 stars", color: "var(--accent-green)", starNum: 4 },
+  { key: "star_3", label: "3 stars", color: "var(--accent-yellow)", starNum: 3 },
+  { key: "star_2", label: "2 stars", color: "var(--accent-orange)", starNum: 2 },
+  { key: "star_1", label: "1 star", color: "var(--accent-red)", starNum: 1 },
 ];
 
 interface CSATDistributionBarProps {

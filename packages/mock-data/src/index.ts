@@ -20,6 +20,8 @@ import {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  kbAnalytics,
+  kbSearchGaps,
 } from './knowledge';
 import {
   dashboardKPIs,
@@ -95,6 +97,8 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  kbAnalytics,
+  kbSearchGaps,
   // Analytics / Dashboard
   dashboardKPIs,
   trendData,

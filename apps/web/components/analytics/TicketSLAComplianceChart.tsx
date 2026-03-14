@@ -33,7 +33,7 @@ export function TicketSLAComplianceChart({ data }: TicketSLAComplianceChartProps
       </CardHeader>
       <CardContent>
         <div role="img" aria-label="Bar chart showing SLA met versus breached tickets per month">
-          <BarChart data={chartData} dataKey="sla_met" color="#3FB950" height={260} showLegend={false} />
+          <BarChart data={chartData} dataKey="sla_met" color="var(--accent-green)" height={260} showLegend={false} />
         </div>
       </CardContent>
     </Card>

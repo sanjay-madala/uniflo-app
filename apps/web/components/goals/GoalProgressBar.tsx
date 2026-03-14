@@ -4,7 +4,7 @@ import type { GoalHealthStatus } from "@uniflo/mock-data";
 
 const healthColors: Record<GoalHealthStatus, string> = {
   on_track: "var(--accent-green)",
-  at_risk: "#EAB308",
+  at_risk: "var(--accent-yellow)",
   behind: "var(--accent-red)",
   achieved: "var(--accent-blue)",
 };

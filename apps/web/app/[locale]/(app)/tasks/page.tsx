@@ -51,7 +51,7 @@ function isOverdue(task: Task): boolean {
 
 const sourceIcons: Record<string, React.ReactNode> = {
   audit: <ClipboardCheck className="h-3.5 w-3.5 text-[var(--accent-blue)]" />,
-  capa: <Shield className="h-3.5 w-3.5 text-[var(--accent-yellow,#EAB308)]" />,
+  capa: <Shield className="h-3.5 w-3.5 text-[var(--accent-yellow)]" />,
   ticket: <Ticket className="h-3.5 w-3.5 text-[var(--accent-purple)]" />,
 };
 
@@ -266,8 +266,8 @@ export default function TasksPage() {
                   </span>
                 </TableCell>
                 <TableCell>
-                  <span className={overdue ? "text-xs font-medium text-[var(--accent-red,#F85149)]" : "text-xs text-[var(--text-secondary)]"}>
-                    {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red,#F85149)] me-1 animate-pulse" />}
+                  <span className={overdue ? "text-xs font-medium text-[var(--accent-red)]" : "text-xs text-[var(--text-secondary)]"}>
+                    {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red)] me-1 animate-pulse" />}
                     {formatShortDate(task.due_date)}
                   </span>
                 </TableCell>
@@ -276,7 +276,7 @@ export default function TasksPage() {
                     <div className="relative group">
                       {sourceIcons[task.source] ?? null}
                       <div className="pointer-events-none absolute bottom-full start-1/2 -translate-x-1/2 mb-1.5 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                        <div className="rounded-md bg-[var(--bg-elevated,#21262D)] px-2 py-1 text-xs text-[var(--text-primary)] shadow-lg whitespace-nowrap">
+                        <div className="rounded-md bg-[var(--bg-elevated)] px-2 py-1 text-xs text-[var(--text-primary)] shadow-lg whitespace-nowrap">
                           {sourceLabels[task.source]}
                         </div>
                       </div>

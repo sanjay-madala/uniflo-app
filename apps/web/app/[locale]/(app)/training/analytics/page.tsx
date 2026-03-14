@@ -140,7 +140,7 @@ export default function TrainingAnalyticsPage() {
 
   function getCompletionColor(rate: number): string {
     if (rate >= 80) return "var(--accent-green)";
-    if (rate >= 60) return "var(--accent-yellow, #EAB308)";
+    if (rate >= 60) return "var(--accent-yellow)";
     return "var(--accent-red)";
   }
 
@@ -236,9 +236,9 @@ export default function TrainingAnalyticsPage() {
                 }}
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Line type="monotone" dataKey="Downtown" stroke="#3B82F6" strokeWidth={2} dot={{ r: 4 }} />
-              <Line type="monotone" dataKey="Airport" stroke="#F59E0B" strokeWidth={2} dot={{ r: 4 }} />
-              <Line type="monotone" dataKey="Resort" stroke="#10B981" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="Downtown" stroke="var(--accent-blue)" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="Airport" stroke="var(--accent-yellow)" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="Resort" stroke="var(--accent-green)" strokeWidth={2} dot={{ r: 4 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

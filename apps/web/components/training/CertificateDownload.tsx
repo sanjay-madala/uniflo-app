@@ -13,7 +13,7 @@ export function CertificateDownload({ certificate }: CertificateDownloadProps) {
       className="max-w-[600px] mx-auto rounded-sm overflow-hidden"
       style={{
         border: "2px solid",
-        borderImage: "linear-gradient(135deg, #D4A948, #F0D68A) 1",
+        borderImage: "linear-gradient(135deg, var(--certificate-gold), var(--certificate-gold-light)) 1",
         boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
       }}
     >
@@ -34,7 +34,7 @@ export function CertificateDownload({ certificate }: CertificateDownloadProps) {
         {/* Decorative rule */}
         <div className="flex items-center gap-2 w-48 mb-6">
           <div className="flex-1 h-px" style={{ backgroundColor: "var(--border-default)" }} />
-          <div className="w-2 h-2 rotate-45" style={{ backgroundColor: "#D4A948" }} />
+          <div className="w-2 h-2 rotate-45" style={{ backgroundColor: "var(--certificate-gold)" }} />
           <div className="flex-1 h-px" style={{ backgroundColor: "var(--border-default)" }} />
         </div>
 

@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#0D1117",
+        backgroundColor: "var(--bg-primary)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
               width: "48px",
               height: "48px",
               borderRadius: "10px",
-              background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)",
+              background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
@@ -50,10 +50,10 @@ export default function ForgotPasswordPage() {
           >
             <span style={{ color: "white", fontSize: "20px", fontWeight: 700 }}>U</span>
           </div>
-          <h1 style={{ color: "#E6EDF3", fontSize: "24px", fontWeight: 700, margin: "0 0 4px 0" }}>
+          <h1 style={{ color: "var(--text-primary)", fontSize: "24px", fontWeight: 700, margin: "0 0 4px 0" }}>
             Reset Password
           </h1>
-          <p style={{ color: "#8B949E", fontSize: "14px", margin: 0 }}>
+          <p style={{ color: "var(--text-secondary)", fontSize: "14px", margin: 0 }}>
             {submitted ? "We sent you a reset link" : "Enter your email to receive a reset link"}
           </p>
         </div>
@@ -71,11 +71,11 @@ export default function ForgotPasswordPage() {
             }}
           >
             <div style={{ fontSize: "32px", marginBottom: "12px" }}>&#9993;</div>
-            <p style={{ color: "#E6EDF3", fontSize: "15px", fontWeight: 500, margin: "0 0 8px 0" }}>
+            <p style={{ color: "var(--text-primary)", fontSize: "15px", fontWeight: 500, margin: "0 0 8px 0" }}>
               Check your email
             </p>
-            <p style={{ color: "#8B949E", fontSize: "13px", margin: 0 }}>
-              We&apos;ve sent a password reset link to <strong style={{ color: "#E6EDF3" }}>{email}</strong>.
+            <p style={{ color: "var(--text-secondary)", fontSize: "13px", margin: 0 }}>
+              We&apos;ve sent a password reset link to <strong style={{ color: "var(--text-primary)" }}>{email}</strong>.
               Please check your inbox and follow the instructions.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function ForgotPasswordPage() {
             <div style={{ marginBottom: "20px" }}>
               <label
                 htmlFor="email"
-                style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "#E6EDF3", marginBottom: "6px" }}
+                style={{ display: "block", fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", marginBottom: "6px" }}
               >
                 Email
               </label>
@@ -100,18 +100,18 @@ export default function ForgotPasswordPage() {
                   height: "40px",
                   padding: "0 12px",
                   borderRadius: "6px",
-                  border: `1px solid ${error ? "#F85149" : "#30363D"}`,
-                  backgroundColor: "#0D1117",
-                  color: "#E6EDF3",
+                  border: `1px solid ${error ? "var(--accent-red)" : "var(--border-default)"}`,
+                  backgroundColor: "var(--bg-primary)",
+                  color: "var(--text-primary)",
                   fontSize: "14px",
                   outline: "none",
                   boxSizing: "border-box",
                 }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = error ? "#F85149" : "#58A6FF"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = error ? "#F85149" : "#30363D"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = error ? "var(--accent-red)" : "var(--accent-blue)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = error ? "var(--accent-red)" : "var(--border-default)"; }}
               />
               {error && (
-                <p style={{ color: "#F85149", fontSize: "12px", margin: "4px 0 0 0" }}>{error}</p>
+                <p style={{ color: "var(--accent-red)", fontSize: "12px", margin: "4px 0 0 0" }}>{error}</p>
               )}
             </div>
 
@@ -122,7 +122,7 @@ export default function ForgotPasswordPage() {
                 height: "40px",
                 borderRadius: "6px",
                 border: "none",
-                backgroundColor: "#58A6FF",
+                backgroundColor: "var(--accent-blue)",
                 color: "white",
                 fontSize: "14px",
                 fontWeight: 600,
@@ -141,7 +141,7 @@ export default function ForgotPasswordPage() {
         <div style={{ textAlign: "center", marginTop: "24px" }}>
           <Link
             href={`/${locale}/login/`}
-            style={{ fontSize: "13px", color: "#58A6FF", textDecoration: "none" }}
+            style={{ fontSize: "13px", color: "var(--accent-blue)", textDecoration: "none" }}
           >
             &larr; Back to sign in
           </Link>

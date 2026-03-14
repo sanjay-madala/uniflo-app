@@ -346,12 +346,12 @@ export default function MyTrainingPage() {
 
 function getCatColor(category: string): string {
   const colors: Record<string, string> = {
-    safety: "#EF4444",
-    operations: "#3B82F6",
-    compliance: "#8B5CF6",
-    customer_service: "#EC4899",
-    onboarding: "#10B981",
-    leadership: "#F59E0B",
+    safety: "var(--accent-red)",
+    operations: "var(--accent-blue)",
+    compliance: "var(--accent-purple)",
+    customer_service: "var(--accent-pink)",
+    onboarding: "var(--accent-green)",
+    leadership: "var(--accent-yellow)",
   };
-  return colors[category] ?? "#6B7280";
+  return colors[category] ?? "var(--text-muted)";
 }

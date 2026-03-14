@@ -17,16 +17,16 @@ const modules = [
 ];
 
 const phaseColors: Record<string, string> = {
-  DEMO: "#58A6FF",
-  MVP: "#3FB950",
-  ALPHA: "#D29922",
-  BETA: "#8B949E",
+  DEMO: "var(--accent-blue)",
+  MVP: "var(--accent-green)",
+  ALPHA: "var(--accent-yellow)",
+  BETA: "var(--text-secondary)",
 };
 
 const statusColors: Record<string, string> = {
-  active: "#3FB950",
-  upcoming: "#58A6FF",
-  planned: "#8B949E",
+  active: "var(--accent-green)",
+  upcoming: "var(--accent-blue)",
+  planned: "var(--text-secondary)",
 };
 
 export default function HomePage() {
@@ -51,7 +51,7 @@ export default function HomePage() {
             { label: "Total Modules", value: "15", color: "var(--accent-blue)" },
             { label: "In DEMO Phase", value: "6", color: "var(--accent-green)" },
             { label: "In MVP Phase", value: "5", color: "var(--accent-green)" },
-            { label: "Planned Alpha", value: "4", color: "#D29922" },
+            { label: "Planned Alpha", value: "4", color: "var(--accent-yellow)" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -91,8 +91,8 @@ export default function HomePage() {
                   <div style={{ color: "var(--text-primary)", fontSize: "13px", fontWeight: 500 }}>{mod.label}</div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
-                  <span style={{ fontSize: "10px", padding: "1px 6px", borderRadius: "2px", fontWeight: 600, color: phaseColors[mod.phase] || "#8B949E", border: `1px solid ${phaseColors[mod.phase] || "#8B949E"}30`, backgroundColor: `${phaseColors[mod.phase] || "#8B949E"}10` }}>{mod.phase}</span>
-                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: statusColors[mod.status] || "#8B949E" }} />
+                  <span style={{ fontSize: "10px", padding: "1px 6px", borderRadius: "2px", fontWeight: 600, color: phaseColors[mod.phase] || "var(--text-secondary)", border: `1px solid ${phaseColors[mod.phase] || "var(--text-secondary)"}30`, backgroundColor: `${phaseColors[mod.phase] || "var(--text-secondary)"}10` }}>{mod.phase}</span>
+                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: statusColors[mod.status] || "var(--text-secondary)" }} />
                 </div>
               </div>
             ))}

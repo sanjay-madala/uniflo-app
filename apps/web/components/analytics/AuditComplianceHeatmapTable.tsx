@@ -23,10 +23,10 @@ interface AuditComplianceHeatmapTableProps {
   months?: string[];
 }
 
-function getScorePillClass(score: number): string {
-  if (score >= 90) return "bg-green-900/30 text-green-400 border border-green-800";
-  if (score >= 75) return "bg-amber-900/30 text-amber-400 border border-amber-800";
-  return "bg-red-900/30 text-red-400 border border-red-800";
+function getScorePillStyle(score: number): { backgroundColor: string; color: string; border: string } {
+  if (score >= 90) return { backgroundColor: "color-mix(in srgb, var(--accent-green) 15%, transparent)", color: "var(--accent-green)", border: "1px solid color-mix(in srgb, var(--accent-green) 30%, transparent)" };
+  if (score >= 75) return { backgroundColor: "color-mix(in srgb, var(--accent-yellow) 15%, transparent)", color: "var(--accent-yellow)", border: "1px solid color-mix(in srgb, var(--accent-yellow) 30%, transparent)" };
+  return { backgroundColor: "color-mix(in srgb, var(--accent-red) 15%, transparent)", color: "var(--accent-red)", border: "1px solid color-mix(in srgb, var(--accent-red) 30%, transparent)" };
 }
 
 export function AuditComplianceHeatmapTable({
@@ -65,7 +65,8 @@ export function AuditComplianceHeatmapTable({
                     return (
                       <TableCell key={m} className="text-center">
                         <span
-                          className={`inline-flex items-center justify-center w-10 h-6 rounded text-xs font-medium ${getScorePillClass(score)}`}
+                          className="inline-flex items-center justify-center w-10 h-6 rounded text-xs font-medium"
+                          style={getScorePillStyle(score)}
                           title={`${row.location} -- ${m}: ${score}%`}
                         >
                           {score}

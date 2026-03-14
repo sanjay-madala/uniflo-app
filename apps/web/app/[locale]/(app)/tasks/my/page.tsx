@@ -232,10 +232,10 @@ export default function MyTasksPage() {
                           <TaskStatusChip status={task.status} />
                           <span className={`text-xs ${
                             overdue
-                              ? "font-medium text-[var(--accent-red,#F85149)]"
+                              ? "font-medium text-[var(--accent-red)]"
                               : "text-[var(--text-muted)]"
                           }`}>
-                            {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red,#F85149)] me-1 animate-pulse" />}
+                            {overdue && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-red)] me-1 animate-pulse" />}
                             {formatShortDate(task.due_date)}
                           </span>
                         </div>

@@ -9,7 +9,7 @@ interface CompletionRateBarProps {
 function getBarColor(rate: number): string {
   if (rate >= 90) return "var(--accent-green)";
   if (rate >= 70) return "var(--accent-blue)";
-  if (rate >= 50) return "var(--accent-yellow, #EAB308)";
+  if (rate >= 50) return "var(--accent-yellow)";
   return "var(--accent-red)";
 }
 

@@ -9,11 +9,11 @@ interface DashboardModuleBreakdownProps {
 
 export function DashboardModuleBreakdown({ summary }: DashboardModuleBreakdownProps) {
   const data = [
-    { name: "Open Tickets", value: summary.tickets.open, color: "#58A6FF" },
-    { name: "Audits Completed", value: summary.audits.completed_this_period, color: "#3FB950" },
-    { name: "CAPAs Open", value: summary.capa.open, color: "#D29922" },
-    { name: "Tasks Open", value: summary.tasks.open, color: "#BC8CFF" },
-    { name: "SLA Breaches", value: summary.sla.breaches_this_period, color: "#F85149" },
+    { name: "Open Tickets", value: summary.tickets.open, color: "var(--accent-blue)" },
+    { name: "Audits Completed", value: summary.audits.completed_this_period, color: "var(--accent-green)" },
+    { name: "CAPAs Open", value: summary.capa.open, color: "var(--accent-yellow)" },
+    { name: "Tasks Open", value: summary.tasks.open, color: "var(--accent-purple)" },
+    { name: "SLA Breaches", value: summary.sla.breaches_this_period, color: "var(--accent-red)" },
   ];
 
   const total = data.reduce((s, d) => s + d.value, 0);

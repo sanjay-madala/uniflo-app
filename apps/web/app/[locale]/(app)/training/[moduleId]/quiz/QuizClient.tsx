@@ -219,7 +219,7 @@ export default function QuizClient() {
                     {answered ? (
                       <CheckCircle className="h-4 w-4 text-[var(--accent-green)]" />
                     ) : (
-                      <AlertTriangle className="h-4 w-4" style={{ color: "var(--accent-yellow, #EAB308)" }} />
+                      <AlertTriangle className="h-4 w-4" style={{ color: "var(--accent-yellow)" }} />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -247,7 +247,7 @@ export default function QuizClient() {
           <div className="mt-4 text-sm text-[var(--text-secondary)]">
             Answered: {answeredCount}/{questions.length}
             {answeredCount < questions.length && (
-              <span className="ml-2" style={{ color: "var(--accent-yellow, #EAB308)" }}>
+              <span className="ml-2" style={{ color: "var(--accent-yellow)" }}>
                 Unanswered: {questions.length - answeredCount}
               </span>
             )}

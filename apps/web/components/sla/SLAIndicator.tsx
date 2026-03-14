@@ -8,7 +8,7 @@ interface SLAIndicatorProps {
 
 const statusColors: Record<string, string> = {
   on_track: "var(--accent-green)",
-  at_risk: "var(--accent-yellow, #EAB308)",
+  at_risk: "var(--accent-yellow)",
   breached: "var(--accent-red)",
   paused: "var(--text-muted)",
   met: "var(--accent-green)",

@@ -18,10 +18,10 @@ export function SubtaskProgressBar({ subtasks, size = "sm", showPercent = false 
   const barHeight = size === "sm" ? "h-1.5" : "h-2";
   const barColor =
     percent === 100
-      ? "bg-[var(--accent-green,#3FB950)]"
+      ? "bg-[var(--accent-green)]"
       : percent > 0
-        ? "bg-[var(--accent-blue,#58A6FF)]"
-        : "bg-[var(--text-muted,#484F58)]";
+        ? "bg-[var(--accent-blue)]"
+        : "bg-[var(--text-muted)]";
 
   return (
     <div className="flex items-center gap-2">

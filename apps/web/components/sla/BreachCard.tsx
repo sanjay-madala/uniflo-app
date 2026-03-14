@@ -26,8 +26,8 @@ const statusLabels: Record<string, string> = {
 
 const borderColors: Record<string, string> = {
   breached: "var(--accent-red)",
-  at_risk: "var(--accent-yellow, #EAB308)",
-  escalated: "var(--accent-purple, #BC8CFF)",
+  at_risk: "var(--accent-yellow)",
+  escalated: "var(--accent-purple)",
   resolved: "var(--accent-green)",
 };
 
@@ -91,7 +91,7 @@ export function BreachCard({
                 breach.item_priority === "critical"
                   ? "var(--accent-red)"
                   : breach.item_priority === "high"
-                    ? "var(--accent-yellow, #EAB308)"
+                    ? "var(--accent-yellow)"
                     : "var(--bg-tertiary)",
               color:
                 breach.item_priority === "critical" || breach.item_priority === "high"

@@ -24,7 +24,7 @@ export function TaskOverdueChart({ data }: TaskOverdueChartProps) {
       </CardHeader>
       <CardContent>
         <div role="img" aria-label="Bar chart showing overdue versus on-time tasks per week">
-          <BarChart data={chartData} dataKey="on_time" color="#3FB950" height={260} showLegend={false} />
+          <BarChart data={chartData} dataKey="on_time" color="var(--accent-green)" height={260} showLegend={false} />
         </div>
       </CardContent>
     </Card>

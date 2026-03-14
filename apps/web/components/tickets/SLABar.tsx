@@ -24,7 +24,7 @@ export function SLABar({
 }: SLABarProps) {
   const { locale } = useParams<{ locale: string }>();
   const percent = compliancePercent ?? (totalTickets > 0 ? ((totalTickets - breachedCount) / totalTickets) * 100 : 100);
-  const barColor = percent > 90 ? "var(--accent-green)" : percent >= 70 ? "var(--accent-yellow, #EAB308)" : "var(--accent-red)";
+  const barColor = percent > 90 ? "var(--accent-green)" : percent >= 70 ? "var(--accent-yellow)" : "var(--accent-red)";
 
   return (
     <div className="flex items-center gap-4 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3">

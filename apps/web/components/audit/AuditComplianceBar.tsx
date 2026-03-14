@@ -7,7 +7,7 @@ interface AuditComplianceBarProps {
 }
 
 export function AuditComplianceBar({ avgScore, totalAudits, failedCount }: AuditComplianceBarProps) {
-  const barColor = avgScore > 90 ? "var(--accent-green)" : avgScore >= 70 ? "var(--accent-yellow, #EAB308)" : "var(--accent-red)";
+  const barColor = avgScore > 90 ? "var(--accent-green)" : avgScore >= 70 ? "var(--accent-yellow)" : "var(--accent-red)";
 
   return (
     <div className="flex items-center gap-4 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3">

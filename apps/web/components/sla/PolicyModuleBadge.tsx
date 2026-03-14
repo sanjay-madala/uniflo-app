@@ -5,8 +5,8 @@ import type { SLAModule } from "@uniflo/mock-data";
 
 const moduleConfig: Record<SLAModule, { label: string; color: string; Icon: typeof Ticket }> = {
   tickets: { label: "Tickets", color: "var(--accent-blue)", Icon: Ticket },
-  audits: { label: "Audits", color: "var(--accent-purple, #BC8CFF)", Icon: ClipboardCheck },
-  capa: { label: "CAPA", color: "var(--accent-yellow, #EAB308)", Icon: AlertTriangle },
+  audits: { label: "Audits", color: "var(--accent-purple)", Icon: ClipboardCheck },
+  capa: { label: "CAPA", color: "var(--accent-yellow)", Icon: AlertTriangle },
 };
 
 interface PolicyModuleBadgeProps {

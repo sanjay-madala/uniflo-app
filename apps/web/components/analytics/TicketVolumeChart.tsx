@@ -33,7 +33,7 @@ export function TicketVolumeChart({ data }: TicketVolumeChartProps) {
       </CardHeader>
       <CardContent>
         <div role="img" aria-label="Bar chart showing ticket volume by month for the last 6 months">
-          <BarChart data={chartData} dataKey="created" color="#58A6FF" height={260} showLegend={false} />
+          <BarChart data={chartData} dataKey="created" color="var(--accent-blue)" height={260} showLegend={false} />
         </div>
       </CardContent>
     </Card>

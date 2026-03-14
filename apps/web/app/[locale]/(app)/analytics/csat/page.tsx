@@ -27,17 +27,17 @@ import { CSATAlertBanner } from "@/components/csat/CSATAlertBanner";
 import { LowScoreTable } from "@/components/csat/LowScoreTable";
 
 const categoryColorMap: Record<number, string> = {
-  5: "var(--accent-green, #059669)",
-  4: "var(--accent-green, #34D399)",
-  3: "#FBBF24",
-  2: "#F97316",
-  1: "var(--accent-red, #DC2626)",
+  5: "var(--accent-green)",
+  4: "var(--accent-green)",
+  3: "var(--accent-yellow)",
+  2: "var(--accent-orange)",
+  1: "var(--accent-red)",
 };
 
 function getScoreColor(score: number): string {
-  if (score >= 4.0) return "var(--accent-green, #059669)";
-  if (score >= 3.0) return "#FBBF24";
-  return "var(--accent-red, #DC2626)";
+  if (score >= 4.0) return "var(--accent-green)";
+  if (score >= 3.0) return "var(--accent-yellow)";
+  return "var(--accent-red)";
 }
 
 export default function CSATDashboardPage() {

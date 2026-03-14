@@ -18,7 +18,7 @@ interface ComplianceBreakdownTableProps {
 
 function complianceColor(pct: number): string {
   if (pct > 90) return "var(--accent-green)";
-  if (pct >= 70) return "var(--accent-yellow, #EAB308)";
+  if (pct >= 70) return "var(--accent-yellow)";
   return "var(--accent-red)";
 }
 
@@ -78,7 +78,7 @@ export function ComplianceBreakdownTable({
           dataKey="compliance"
           xAxisKey="name"
           height={200}
-          color="#58A6FF"
+          color="var(--accent-blue)"
           showLegend={false}
           showGrid
           showTooltip

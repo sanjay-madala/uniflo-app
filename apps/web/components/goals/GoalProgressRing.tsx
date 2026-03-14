@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import type { GoalHealthStatus } from "@uniflo/mock-data";
 
 const healthColors: Record<GoalHealthStatus, string> = {
-  on_track: "#3FB950",
-  at_risk: "#EAB308",
-  behind: "#F85149",
-  achieved: "#58A6FF",
+  on_track: "var(--accent-green)",
+  at_risk: "var(--accent-yellow)",
+  behind: "var(--accent-red)",
+  achieved: "var(--accent-blue)",
 };
 
 interface GoalProgressRingProps {

@@ -7,11 +7,11 @@ interface TaskProgressSummaryProps {
 }
 
 const statusColors: Record<string, string> = {
-  todo: "bg-[var(--text-muted,#484F58)]",
-  in_progress: "bg-[var(--accent-blue,#58A6FF)]",
+  todo: "bg-[var(--text-muted)]",
+  in_progress: "bg-[var(--accent-blue)]",
   in_review: "bg-purple-500",
-  done: "bg-[var(--accent-green,#3FB950)]",
-  cancelled: "bg-[var(--accent-red,#F85149)]",
+  done: "bg-[var(--accent-green)]",
+  cancelled: "bg-[var(--accent-red)]",
 };
 
 const statusLabels: Record<string, string> = {

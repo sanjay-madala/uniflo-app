@@ -123,7 +123,7 @@ export function BuilderWidgetConfigPanel({
         <div>
           <label className="text-xs font-medium text-[var(--text-secondary)] mb-1 block">Color</label>
           <div className="flex gap-2">
-            {["#58A6FF", "#3FB950", "#F85149", "#D29922", "#BC8CFF", "#388BFD"].map((color) => (
+            {["var(--accent-blue)", "var(--accent-green)", "var(--accent-red)", "var(--accent-yellow)", "var(--accent-purple)", "var(--accent-blue)"].map((color) => (
               <button
                 key={color}
                 onClick={() => onUpdate({ chart_config: { ...widget.chart_config, data_key: widget.chart_config?.data_key ?? "value", color } })}

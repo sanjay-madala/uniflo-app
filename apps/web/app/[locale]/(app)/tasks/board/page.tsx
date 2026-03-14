@@ -13,9 +13,9 @@ const NOW = new Date("2026-03-14T12:00:00Z");
 
 const statusColumns: Array<{ id: TaskStatus; title: string; color: string }> = [
   { id: "todo", title: "To Do", color: "var(--text-muted)" },
-  { id: "in_progress", title: "In Progress", color: "var(--accent-blue,#58A6FF)" },
+  { id: "in_progress", title: "In Progress", color: "var(--accent-blue)" },
   { id: "in_review", title: "In Review", color: "var(--accent-purple)" },
-  { id: "done", title: "Done", color: "var(--accent-green,#3FB950)" },
+  { id: "done", title: "Done", color: "var(--accent-green)" },
 ];
 
 const priorityLabels: Record<string, string> = {

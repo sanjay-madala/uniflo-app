@@ -49,7 +49,7 @@ interface RuleCardProps {
 
 export function RuleCard({ rule, locale, onToggle }: RuleCardProps) {
   return (
-    <div className="group rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4 hover:border-[#3D444D] hover:shadow-md transition-all">
+    <div className="group rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4 hover:border-[var(--border-strong)] hover:shadow-md transition-all">
       <div className="flex items-start gap-4">
         {/* Toggle */}
         <div className="pt-0.5" onClick={e => e.stopPropagation()}>

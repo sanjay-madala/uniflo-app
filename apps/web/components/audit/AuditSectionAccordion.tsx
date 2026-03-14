@@ -40,7 +40,7 @@ export function AuditSectionAccordion({
   onToggleItem,
 }: AuditSectionAccordionProps) {
   const hasFailed = section.failed_items > 0;
-  const scoreColor = section.score >= 80 ? "var(--accent-green)" : section.score >= 60 ? "var(--accent-yellow, #EAB308)" : "var(--accent-red)";
+  const scoreColor = section.score >= 80 ? "var(--accent-green)" : section.score >= 60 ? "var(--accent-yellow)" : "var(--accent-red)";
 
   return (
     <div

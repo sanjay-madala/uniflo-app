@@ -15,7 +15,7 @@ const statusConfig: Record<SLAPolicyStatus, { label: string; bg: string; text: s
   },
   draft: {
     label: "Draft",
-    bg: "var(--accent-yellow, #EAB308)",
+    bg: "var(--accent-yellow)",
     text: "#000",
   },
 };

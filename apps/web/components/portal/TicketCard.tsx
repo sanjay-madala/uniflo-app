@@ -11,9 +11,9 @@ const statusConfig: Record<PortalTicketStatus, { label: string; color: string; b
 };
 
 const priorityConfig: Record<string, { label: string; color: string; bg: string }> = {
-  high: { label: "High", color: "#DC2626", bg: "rgba(220,38,38,0.1)" },
-  medium: { label: "Medium", color: "#D97706", bg: "rgba(217,119,6,0.1)" },
-  low: { label: "Low", color: "#059669", bg: "rgba(5,150,105,0.1)" },
+  high: { label: "High", color: "var(--portal-danger)", bg: "color-mix(in srgb, var(--portal-danger) 10%, transparent)" },
+  medium: { label: "Medium", color: "var(--portal-warning)", bg: "color-mix(in srgb, var(--portal-warning) 10%, transparent)" },
+  low: { label: "Low", color: "var(--portal-success)", bg: "color-mix(in srgb, var(--portal-success) 10%, transparent)" },
 };
 
 function formatRelativeTime(dateStr: string): string {

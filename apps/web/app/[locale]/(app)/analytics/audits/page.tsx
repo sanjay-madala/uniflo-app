@@ -17,10 +17,10 @@ export default function AuditAnalyticsPage() {
   const overviewContent = (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <KPICard title="Completed" value={totalCompleted} unit="audits" color="#3FB950" />
-        <KPICard title="Avg Score" value={avgScore} unit="%" color="#58A6FF" isPositive />
-        <KPICard title="Pass Rate" value={avgPassRate} unit="%" color="#388BFD" isPositive />
-        <KPICard title="Findings" value={totalFindings} color="#F85149" />
+        <KPICard title="Completed" value={totalCompleted} unit="audits" color="var(--accent-green)" />
+        <KPICard title="Avg Score" value={avgScore} unit="%" color="var(--accent-blue)" isPositive />
+        <KPICard title="Pass Rate" value={avgPassRate} unit="%" color="var(--accent-blue)" isPositive />
+        <KPICard title="Findings" value={totalFindings} color="var(--accent-red)" />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -62,9 +62,9 @@ export default function AuditAnalyticsPage() {
           label: "Findings",
           content: (
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-              <KPICard title="Total Findings" value={totalFindings} color="#F85149" />
-              <KPICard title="Auto Tickets" value={latest.auto_tickets_created} color="#58A6FF" />
-              <KPICard title="Auto CAPAs" value={latest.auto_capas_created} color="#D29922" />
+              <KPICard title="Total Findings" value={totalFindings} color="var(--accent-red)" />
+              <KPICard title="Auto Tickets" value={latest.auto_tickets_created} color="var(--accent-blue)" />
+              <KPICard title="Auto CAPAs" value={latest.auto_capas_created} color="var(--accent-yellow)" />
             </div>
           ),
         },

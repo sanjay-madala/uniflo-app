@@ -31,13 +31,13 @@ const MODULE_ICONS: Record<string, React.ElementType> = {
 };
 
 const MODULE_COLORS: Record<string, string> = {
-  tickets: "#58A6FF",
-  audits: "#3FB950",
-  capa: "#D29922",
-  tasks: "#BC8CFF",
-  sla: "#F85149",
-  sops: "#388BFD",
-  automation: "#8B949E",
+  tickets: "var(--accent-blue)",
+  audits: "var(--accent-green)",
+  capa: "var(--accent-yellow)",
+  tasks: "var(--accent-purple)",
+  sla: "var(--accent-red)",
+  sops: "var(--accent-blue)",
+  automation: "var(--text-muted)",
 };
 
 const SEVERITY_VARIANT: Record<string, "blue" | "warning" | "destructive"> = {
@@ -118,7 +118,7 @@ export function DashboardActivityFeed({ events, maxVisible = 10 }: DashboardActi
           <ul role="feed" className="space-y-1">
             {filteredEvents.map((event) => {
               const ModuleIcon = MODULE_ICONS[event.module] ?? Tag;
-              const moduleColor = MODULE_COLORS[event.module] ?? "#8B949E";
+              const moduleColor = MODULE_COLORS[event.module] ?? "var(--text-muted)";
               return (
                 <li
                   key={event.id}

@@ -52,10 +52,10 @@ export function ComplianceKPICards({
         trendLabel="vs prior period"
         color={
           compliancePercent > 90
-            ? "#3FB950"
+            ? "var(--accent-green)"
             : compliancePercent >= 70
-              ? "#D29922"
-              : "#F85149"
+              ? "var(--accent-yellow)"
+              : "var(--accent-red)"
         }
         isPositive={true}
       />
@@ -64,7 +64,7 @@ export function ComplianceKPICards({
         value={totalItems}
         trend={itemsTrend}
         trendLabel="vs prior period"
-        color="#58A6FF"
+        color="var(--accent-blue)"
         isPositive={true}
       />
       <KPICard
@@ -72,7 +72,7 @@ export function ComplianceKPICards({
         value={breachCount}
         trend={breachTrend}
         trendLabel="vs prior period"
-        color="#F85149"
+        color="var(--accent-red)"
         isPositive={false}
       />
       <KPICard
@@ -80,7 +80,7 @@ export function ComplianceKPICards({
         value={formatDuration(avgResolutionMinutes)}
         trend={resTrend}
         trendLabel="vs prior period"
-        color="#58A6FF"
+        color="var(--accent-blue)"
         isPositive={false}
       />
     </div>

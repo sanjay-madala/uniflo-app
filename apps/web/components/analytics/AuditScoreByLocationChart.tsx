@@ -23,7 +23,7 @@ export function AuditScoreByLocationChart({ data }: AuditScoreByLocationChartPro
       </CardHeader>
       <CardContent>
         <div role="img" aria-label="Bar chart showing average audit scores by location">
-          <BarChart data={chartData} dataKey="avg_score" color="#3FB950" height={260} showLegend={false} />
+          <BarChart data={chartData} dataKey="avg_score" color="var(--accent-green)" height={260} showLegend={false} />
         </div>
       </CardContent>
     </Card>

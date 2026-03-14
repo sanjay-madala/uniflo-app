@@ -35,7 +35,7 @@ export function PolicyStatsBar({
       <KPICard
         title="Compliance"
         value={`${compliancePercent.toFixed(1)}%`}
-        color={compliancePercent > 90 ? "var(--accent-green)" : compliancePercent >= 70 ? "var(--accent-yellow, #EAB308)" : "var(--accent-red)"}
+        color={compliancePercent > 90 ? "var(--accent-green)" : compliancePercent >= 70 ? "var(--accent-yellow)" : "var(--accent-red)"}
       />
     </div>
   );

@@ -20,7 +20,7 @@ export function ReadReceiptProgressBar({
   const segments = [
     { count: acknowledged, label: "Acknowledged", color: "var(--accent-green)" },
     { count: read, label: "Read", color: "var(--accent-blue)" },
-    { count: delivered, label: "Delivered", color: "var(--accent-yellow, #F59E0B)" },
+    { count: delivered, label: "Delivered", color: "var(--accent-yellow)" },
     { count: unread, label: "Unread", color: "var(--text-muted)" },
   ].filter((s) => s.count > 0);
 

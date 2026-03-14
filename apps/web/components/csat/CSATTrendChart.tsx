@@ -94,9 +94,9 @@ export function CSATTrendChart({
           <Line
             type="monotone"
             dataKey="score"
-            stroke="#58A6FF"
+            stroke="var(--accent-blue)"
             strokeWidth={2}
-            dot={{ fill: "#58A6FF", r: 4 }}
+            dot={{ fill: "var(--accent-blue)", r: 4 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>

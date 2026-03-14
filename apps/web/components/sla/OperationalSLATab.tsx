@@ -54,17 +54,17 @@ export function OperationalSLATab({
         <KPICard
           title={`Active ${module === "audits" ? "Audit" : "CAPA"} SLA Items`}
           value={totalItems}
-          color="#58A6FF"
+          color="var(--accent-blue)"
         />
         <KPICard
           title={module === "audits" ? "Completion Rate" : "Resolution Rate"}
           value={`${completionRate.toFixed(1)}%`}
-          color={completionRate > 90 ? "#3FB950" : completionRate >= 70 ? "#D29922" : "#F85149"}
+          color={completionRate > 90 ? "var(--accent-green)" : completionRate >= 70 ? "var(--accent-yellow)" : "var(--accent-red)"}
         />
         <KPICard
           title={`Overdue ${module === "audits" ? "Audits" : "CAPAs"}`}
           value={overdueCount}
-          color={overdueCount > 0 ? "#F85149" : "#3FB950"}
+          color={overdueCount > 0 ? "var(--accent-red)" : "var(--accent-green)"}
         />
       </div>
 
@@ -109,7 +109,7 @@ export function OperationalSLATab({
                       <div>
                         <Badge
                           className="text-xs"
-                          style={{ backgroundColor: "var(--accent-red)", color: "#fff" }}
+                          style={{ backgroundColor: "var(--accent-red)", color: "var(--text-on-accent)" }}
                         >
                           OVERDUE
                         </Badge>

@@ -30,12 +30,12 @@ export function PolicyCard({ policy, onToggle, onClick }: PolicyCardProps) {
     policy.compliance_percent_30d > 90
       ? "var(--accent-green)"
       : policy.compliance_percent_30d >= 70
-        ? "var(--accent-yellow, #EAB308)"
+        ? "var(--accent-yellow)"
         : "var(--accent-red)";
 
   return (
     <div
-      className="group cursor-pointer rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4 transition-all hover:border-[#3D444D] hover:shadow-md"
+      className="group cursor-pointer rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4 transition-all hover:border-[var(--border-strong)] hover:shadow-md"
       onClick={() => onClick(policy.id)}
       role="button"
       tabIndex={0}

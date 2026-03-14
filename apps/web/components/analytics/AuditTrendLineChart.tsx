@@ -36,10 +36,10 @@ export function AuditTrendLineChart({ data, passThreshold = 80 }: AuditTrendLine
   }));
 
   const tooltipStyle = {
-    backgroundColor: "#1a1a1a",
-    border: "1px solid #333333",
+    backgroundColor: "var(--bg-elevated)",
+    border: "1px solid var(--border-default)",
     borderRadius: "0.5rem",
-    color: "#ffffff",
+    color: "var(--text-primary)",
   };
 
   return (
@@ -54,31 +54,31 @@ export function AuditTrendLineChart({ data, passThreshold = 80 }: AuditTrendLine
         <div role="img" aria-label="Line chart showing audit score trend over 6 months with pass threshold at 80%">
           <ResponsiveContainer width="100%" height={260}>
             <RechartsLineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#333333" />
-              <XAxis dataKey="name" stroke="#888888" />
-              <YAxis stroke="#888888" domain={[0, 100]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+              <XAxis dataKey="name" stroke="var(--text-muted)" />
+              <YAxis stroke="var(--text-muted)" domain={[0, 100]} />
               <Tooltip contentStyle={tooltipStyle} />
               <Legend />
               <ReferenceLine
                 y={passThreshold}
-                stroke="#D29922"
+                stroke="var(--accent-yellow)"
                 strokeDasharray="5 5"
-                label={{ value: "Pass threshold", position: "right", fill: "#D29922", fontSize: 11 }}
+                label={{ value: "Pass threshold", position: "right", fill: "var(--accent-yellow)", fontSize: 11 }}
               />
               <Line
                 type="monotone"
                 dataKey="avg_score"
-                stroke="#3FB950"
+                stroke="var(--accent-green)"
                 strokeWidth={2}
-                dot={{ fill: "#3FB950" }}
+                dot={{ fill: "var(--accent-green)" }}
                 name="Avg Score"
               />
               <Line
                 type="monotone"
                 dataKey="pass_rate"
-                stroke="#58A6FF"
+                stroke="var(--accent-blue)"
                 strokeWidth={2}
-                dot={{ fill: "#58A6FF" }}
+                dot={{ fill: "var(--accent-blue)" }}
                 name="Pass Rate"
               />
             </RechartsLineChart>

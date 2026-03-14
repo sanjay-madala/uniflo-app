@@ -54,7 +54,7 @@ export function StatusTracker({ status, dates = {} }: StatusTrackerProps) {
                     borderWidth: isCompleted || isCurrent ? 0 : 2,
                     borderStyle: "solid",
                     borderColor: "var(--portal-border)",
-                    color: isCompleted || isCurrent ? "#FFFFFF" : "var(--portal-text-muted)",
+                    color: isCompleted || isCurrent ? "var(--text-on-accent)" : "var(--portal-text-muted)",
                     boxShadow: isCurrent ? "0 0 0 4px rgba(37,99,235,0.2)" : "none",
                     animation: isCurrent ? "pulse 2s ease-in-out infinite" : "none",
                   }}

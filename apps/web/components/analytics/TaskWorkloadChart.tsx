@@ -26,10 +26,10 @@ export function TaskWorkloadChart({ data }: TaskWorkloadChartProps) {
   }));
 
   const tooltipStyle = {
-    backgroundColor: "#1a1a1a",
-    border: "1px solid #333333",
+    backgroundColor: "var(--bg-elevated)",
+    border: "1px solid var(--border-default)",
     borderRadius: "0.5rem",
-    color: "#ffffff",
+    color: "var(--text-primary)",
   };
 
   return (
@@ -44,14 +44,14 @@ export function TaskWorkloadChart({ data }: TaskWorkloadChartProps) {
         <div role="img" aria-label="Horizontal bar chart showing task workload per team member">
           <ResponsiveContainer width="100%" height={200}>
             <RechartsBarChart data={chartData} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="#333333" />
-              <XAxis type="number" stroke="#888888" />
-              <YAxis type="category" dataKey="name" stroke="#888888" width={80} tick={{ fontSize: 12 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+              <XAxis type="number" stroke="var(--text-muted)" />
+              <YAxis type="category" dataKey="name" stroke="var(--text-muted)" width={80} tick={{ fontSize: 12 }} />
               <Tooltip contentStyle={tooltipStyle} />
               <Legend />
-              <Bar dataKey="assigned" fill="#58A6FF" name="Assigned" />
-              <Bar dataKey="completed" fill="#3FB950" name="Completed" />
-              <Bar dataKey="overdue" fill="#F85149" name="Overdue" />
+              <Bar dataKey="assigned" fill="var(--accent-blue)" name="Assigned" />
+              <Bar dataKey="completed" fill="var(--accent-green)" name="Completed" />
+              <Bar dataKey="overdue" fill="var(--accent-red)" name="Overdue" />
             </RechartsBarChart>
           </ResponsiveContainer>
         </div>

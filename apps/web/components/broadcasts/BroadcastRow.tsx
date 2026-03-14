@@ -88,7 +88,7 @@ export function BroadcastRow({ broadcast, locale, getUserName }: BroadcastRowPro
                     broadcast.stats.open_rate >= 80
                       ? "var(--accent-green)"
                       : broadcast.stats.open_rate >= 60
-                        ? "var(--accent-yellow, #F59E0B)"
+                        ? "var(--accent-yellow)"
                         : "var(--accent-red)",
                 }}
               />

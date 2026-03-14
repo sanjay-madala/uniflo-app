@@ -72,7 +72,7 @@ export function Sidebar({ locale }: { locale: string }) {
             width: "32px",
             height: "32px",
             borderRadius: "6px",
-            background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)",
+            background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

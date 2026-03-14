@@ -10,7 +10,7 @@ import { List } from "lucide-react";
 
 const statusColumns: { id: TicketStatus; title: string; color: string }[] = [
   { id: "open", title: "Open", color: "var(--accent-blue)" },
-  { id: "in_progress", title: "In Progress", color: "#A855F7" },
+  { id: "in_progress", title: "In Progress", color: "var(--accent-purple)" },
   { id: "resolved", title: "Resolved", color: "var(--accent-green)" },
   { id: "closed", title: "Closed", color: "var(--text-muted)" },
 ];

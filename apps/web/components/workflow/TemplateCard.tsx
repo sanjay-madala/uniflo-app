@@ -38,11 +38,11 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-  compliance: "text-[#3FB950] border-[#3FB950]/30 bg-[#3FB950]/10",
-  operations: "text-[#D29922] border-[#D29922]/30 bg-[#D29922]/10",
-  support: "text-[#58A6FF] border-[#58A6FF]/30 bg-[#58A6FF]/10",
-  safety: "text-[#F85149] border-[#F85149]/30 bg-[#F85149]/10",
-  quality: "text-[#BC8CFF] border-[#BC8CFF]/30 bg-[#BC8CFF]/10",
+  compliance: "text-[var(--accent-green)] border-[var(--accent-green)]/30 bg-[var(--accent-green)]/10",
+  operations: "text-[var(--accent-yellow)] border-[var(--accent-yellow)]/30 bg-[var(--accent-yellow)]/10",
+  support: "text-[var(--accent-blue)] border-[var(--accent-blue)]/30 bg-[var(--accent-blue)]/10",
+  safety: "text-[var(--accent-red)] border-[var(--accent-red)]/30 bg-[var(--accent-red)]/10",
+  quality: "text-[var(--accent-purple)] border-[var(--accent-purple)]/30 bg-[var(--accent-purple)]/10",
   efficiency: "text-[var(--text-secondary)] border-[var(--text-secondary)]/30 bg-[var(--text-secondary)]/10",
 };
 
@@ -56,7 +56,7 @@ export function TemplateCard({ template, onUseTemplate }: TemplateCardProps) {
   const isPopular = template.popularity > 200;
 
   return (
-    <Card className="flex flex-col hover:border-[#3D444D] hover:shadow-md transition-all">
+    <Card className="flex flex-col hover:border-[var(--border-strong)] hover:shadow-md transition-all">
       <CardHeader className="pb-2">
         <div className="flex h-10 w-10 items-center justify-center rounded-md bg-[var(--bg-tertiary)] text-[var(--text-secondary)]">
           <Icon className="h-5 w-5" />
@@ -74,7 +74,7 @@ export function TemplateCard({ template, onUseTemplate }: TemplateCardProps) {
             {categoryLabels[template.category]}
           </Badge>
           {isPopular && (
-            <Badge variant="default" className="text-[#BC8CFF] border-[#BC8CFF]/30 bg-[#BC8CFF]/10">
+            <Badge variant="default" className="text-[var(--accent-purple)] border-[var(--accent-purple)]/30 bg-[var(--accent-purple)]/10">
               Popular
             </Badge>
           )}

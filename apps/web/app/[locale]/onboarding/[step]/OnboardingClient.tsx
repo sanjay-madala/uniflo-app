@@ -277,7 +277,7 @@ export default function OnboardingClient() {
     <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-primary)", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ width: "100%", maxWidth: "520px", padding: "40px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px", justifyContent: "center" }}>
-          <div style={{ width: "32px", height: "32px", borderRadius: "6px", background: "linear-gradient(135deg, #58A6FF 0%, #388BFD 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: "32px", height: "32px", borderRadius: "6px", background: "linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ color: "white", fontSize: "14px", fontWeight: 700 }}>U</span>
           </div>
           <span style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "18px" }}>Uniflo Setup</span>

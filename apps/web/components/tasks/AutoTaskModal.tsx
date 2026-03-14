@@ -253,9 +253,9 @@ export function AutoTaskModal({
 
         {/* Failed item card */}
         {item && (
-          <div className="rounded-md border border-[var(--accent-red,#F85149)]/30 bg-[var(--accent-red,#F85149)]/5 p-3">
+          <div className="rounded-md border border-[var(--accent-red)]/30 bg-[var(--accent-red)]/5 p-3">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4 text-[var(--accent-red,#F85149)]" />
+              <AlertTriangle className="h-4 w-4 text-[var(--accent-red)]" />
               <span className="text-sm font-medium text-[var(--text-primary)]">{item.name}</span>
             </div>
             <p className="text-xs text-[var(--text-secondary)] mt-1">

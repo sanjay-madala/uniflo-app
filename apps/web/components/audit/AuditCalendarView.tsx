@@ -13,10 +13,10 @@ interface AuditCalendarViewProps {
 }
 
 const statusDotColor: Record<string, string> = {
-  completed: "#3FB950",
-  failed: "#F85149",
-  in_progress: "#58A6FF",
-  scheduled: "#6E7681",
+  completed: "var(--accent-green)",
+  failed: "var(--accent-red)",
+  in_progress: "var(--accent-blue)",
+  scheduled: "var(--text-muted)",
 };
 
 function getAuditDate(audit: Audit): Date | null {
@@ -115,7 +115,7 @@ export function AuditCalendarView({
                         <div
                           key={a.id}
                           className="h-2 w-2 rounded-full"
-                          style={{ backgroundColor: statusDotColor[a.status] ?? "#6E7681" }}
+                          style={{ backgroundColor: statusDotColor[a.status] ?? "var(--text-muted)" }}
                           title={a.title}
                         />
                       ))}
@@ -150,7 +150,7 @@ export function AuditCalendarView({
                   >
                     <div
                       className="h-3 w-3 rounded-full shrink-0"
-                      style={{ backgroundColor: statusDotColor[audit.status] ?? "#6E7681" }}
+                      style={{ backgroundColor: statusDotColor[audit.status] ?? "var(--text-muted)" }}
                     />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-[var(--text-primary)] truncate">

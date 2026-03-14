@@ -25,10 +25,10 @@ export function BroadcastKPIBar({ broadcasts }: BroadcastKPIBarProps) {
     avgOpenRate >= 80
       ? "var(--accent-green)"
       : avgOpenRate >= 60
-        ? "var(--accent-yellow, #F59E0B)"
+        ? "var(--accent-yellow)"
         : "var(--accent-red)";
 
-  const pendingAckColor = pendingAck > 0 ? "var(--accent-yellow, #F59E0B)" : "var(--accent-green)";
+  const pendingAckColor = pendingAck > 0 ? "var(--accent-yellow)" : "var(--accent-green)";
 
   const cards = [
     { label: "Total Sent", value: String(totalSent), color: "var(--text-primary)" },

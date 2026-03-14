@@ -37,8 +37,8 @@ export function LowScoreTable({
           <Star
             key={s}
             className="h-3.5 w-3.5"
-            fill={s <= score ? "#FBBF24" : "none"}
-            stroke={s <= score ? "#FBBF24" : "var(--text-muted)"}
+            fill={s <= score ? "var(--accent-yellow)" : "none"}
+            stroke={s <= score ? "var(--accent-yellow)" : "var(--text-muted)"}
             strokeWidth={1.5}
           />
         ))}

@@ -8,7 +8,7 @@ import { TableRow, TableCell } from "@uniflo/ui";
 const statusConfig: Record<string, { label: string; color: string }> = {
   acknowledged: { label: "Acknowledged", color: "var(--accent-green)" },
   read: { label: "Read", color: "var(--accent-blue)" },
-  delivered: { label: "Delivered", color: "var(--accent-yellow, #F59E0B)" },
+  delivered: { label: "Delivered", color: "var(--accent-yellow)" },
   undelivered: { label: "Undelivered", color: "var(--text-muted)" },
 };
 
@@ -25,7 +25,7 @@ export function ReadReceiptRow({ summary, receipts, showAck }: ReadReceiptRowPro
     summary.compliance_pct >= 90
       ? "var(--accent-green)"
       : summary.compliance_pct >= 70
-        ? "var(--accent-yellow, #F59E0B)"
+        ? "var(--accent-yellow)"
         : "var(--accent-red)";
 
   return (

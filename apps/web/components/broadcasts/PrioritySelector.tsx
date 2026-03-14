@@ -4,7 +4,7 @@ import type { BroadcastPriority } from "@uniflo/mock-data";
 
 const priorities: { value: BroadcastPriority; label: string; color: string }[] = [
   { value: "normal", label: "Normal", color: "var(--text-muted)" },
-  { value: "urgent", label: "Urgent", color: "var(--accent-yellow, #F59E0B)" },
+  { value: "urgent", label: "Urgent", color: "var(--accent-yellow)" },
   { value: "critical", label: "Critical", color: "var(--accent-red)" },
 ];
 

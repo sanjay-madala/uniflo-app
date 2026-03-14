@@ -30,10 +30,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const barColor =
     percent === 100
-      ? "bg-[var(--accent-green,#3FB950)]"
+      ? "bg-[var(--accent-green)]"
       : percent > 0
-        ? "bg-[var(--accent-blue,#58A6FF)]"
-        : "bg-[var(--text-muted,#484F58)]";
+        ? "bg-[var(--accent-blue)]"
+        : "bg-[var(--text-muted)]";
 
   const status = statusConfig[project.status];
 
@@ -80,7 +80,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span className="ms-3">Due: {new Date(project.due_date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
           )}
           {project.status === "completed" && (
-            <span className="ms-3 text-[var(--accent-green,#3FB950)]">Completed</span>
+            <span className="ms-3 text-[var(--accent-green)]">Completed</span>
           )}
         </div>
         <Badge variant={status.variant}>{status.label}</Badge>

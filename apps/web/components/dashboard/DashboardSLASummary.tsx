@@ -30,7 +30,7 @@ export function DashboardSLASummary({ summary }: DashboardSLASummaryProps) {
               className="h-full rounded-full transition-all"
               style={{
                 width: `${pct}%`,
-                backgroundColor: pct >= 90 ? "var(--accent-green)" : pct >= 75 ? "#D29922" : "var(--accent-red)",
+                backgroundColor: pct >= 90 ? "var(--accent-green)" : pct >= 75 ? "var(--accent-yellow)" : "var(--accent-red)",
               }}
             />
           </div>

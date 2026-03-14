@@ -166,12 +166,12 @@ export default function TaskDetailClient() {
   const sourceInfo = sourceLabels[task.source];
 
   const dueBarColor = dueInfo.overdue
-    ? "bg-[var(--accent-red,#F85149)]"
+    ? "bg-[var(--accent-red)]"
     : dueInfo.percent > 75
-      ? "bg-[var(--accent-yellow,#EAB308)]"
+      ? "bg-[var(--accent-yellow)]"
       : dueInfo.percent > 50
-        ? "bg-[var(--accent-yellow,#EAB308)]"
-        : "bg-[var(--accent-green,#3FB950)]";
+        ? "bg-[var(--accent-yellow)]"
+        : "bg-[var(--accent-green)]";
 
   const taskSubtasksRef = task.subtasks ?? [];
 
@@ -255,7 +255,7 @@ export default function TaskDetailClient() {
           <div className="rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">Due Date</span>
-              <span className={`text-sm font-medium ${dueInfo.overdue ? "text-[var(--accent-red,#F85149)]" : "text-[var(--text-primary)]"}`}>
+              <span className={`text-sm font-medium ${dueInfo.overdue ? "text-[var(--accent-red)]" : "text-[var(--text-primary)]"}`}>
                 {dueInfo.text}
               </span>
             </div>

@@ -81,8 +81,8 @@ export default function CSATAuditAlertClient() {
           <Star
             key={s}
             className="h-3.5 w-3.5"
-            fill={s <= score ? "#FBBF24" : "none"}
-            stroke={s <= score ? "#FBBF24" : "var(--text-muted)"}
+            fill={s <= score ? "var(--accent-yellow)" : "none"}
+            stroke={s <= score ? "var(--accent-yellow)" : "var(--text-muted)"}
             strokeWidth={1.5}
           />
         ))}
@@ -125,7 +125,7 @@ export default function CSATAuditAlertClient() {
         style={{
           backgroundColor: "var(--bg-secondary)",
           borderColor: "var(--border-default)",
-          borderLeftColor: "#D97706",
+          borderLeftColor: "var(--accent-yellow)",
         }}
       >
         <div className="flex items-start gap-4">
@@ -133,7 +133,7 @@ export default function CSATAuditAlertClient() {
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
             style={{ backgroundColor: "rgba(217,119,6,0.1)" }}
           >
-            <AlertTriangle className="h-6 w-6" style={{ color: "#D97706" }} />
+            <AlertTriangle className="h-6 w-6" style={{ color: "var(--accent-yellow)" }} />
           </div>
           <div className="min-w-0 flex-1">
             <h1
@@ -461,7 +461,7 @@ export default function CSATAuditAlertClient() {
             >
               <FileWarning
                 className="h-5 w-5"
-                style={{ color: "#D97706" }}
+                style={{ color: "var(--accent-yellow)" }}
               />
             </div>
             <div className="min-w-0 flex-1">

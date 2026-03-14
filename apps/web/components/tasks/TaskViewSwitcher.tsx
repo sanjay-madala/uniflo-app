@@ -46,7 +46,7 @@ export function TaskViewSwitcher() {
                 <span className="hidden sm:inline">{view.label}</span>
               </button>
               <div className="pointer-events-none absolute top-full start-1/2 -translate-x-1/2 mt-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                <div className="rounded-md bg-[var(--bg-elevated,#21262D)] px-3 py-1.5 text-xs text-[var(--text-primary)] shadow-lg whitespace-nowrap">
+                <div className="rounded-md bg-[var(--bg-elevated)] px-3 py-1.5 text-xs text-[var(--text-primary)] shadow-lg whitespace-nowrap">
                   Coming in Alpha
                 </div>
               </div>

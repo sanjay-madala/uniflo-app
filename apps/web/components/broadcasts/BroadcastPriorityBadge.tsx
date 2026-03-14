@@ -4,7 +4,7 @@ import type { BroadcastPriority } from "@uniflo/mock-data";
 
 const config: Record<BroadcastPriority, { label: string; bg: string; text: string }> = {
   normal: { label: "Normal", bg: "var(--text-muted)", text: "var(--text-muted)" },
-  urgent: { label: "Urgent", bg: "var(--accent-yellow, #F59E0B)", text: "var(--accent-yellow, #F59E0B)" },
+  urgent: { label: "Urgent", bg: "var(--accent-yellow)", text: "var(--accent-yellow)" },
   critical: { label: "Critical", bg: "var(--accent-red)", text: "var(--accent-red)" },
 };
 

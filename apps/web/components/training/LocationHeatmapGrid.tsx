@@ -9,7 +9,7 @@ interface LocationHeatmapGridProps {
 function getCellColor(rate: number): { bg: string; text: string } {
   if (rate >= 90) return { bg: "rgba(16, 185, 129, 0.15)", text: "var(--accent-green)" };
   if (rate >= 70) return { bg: "rgba(88, 166, 255, 0.15)", text: "var(--accent-blue)" };
-  if (rate >= 50) return { bg: "rgba(234, 179, 8, 0.15)", text: "var(--accent-yellow, #EAB308)" };
+  if (rate >= 50) return { bg: "rgba(234, 179, 8, 0.15)", text: "var(--accent-yellow)" };
   return { bg: "rgba(239, 68, 68, 0.15)", text: "var(--accent-red)" };
 }
 
@@ -103,7 +103,7 @@ export function LocationHeatmapGrid({ stats }: LocationHeatmapGridProps) {
         {[
           { label: "90-100%", color: "rgba(16, 185, 129, 0.15)", text: "var(--accent-green)" },
           { label: "70-89%", color: "rgba(88, 166, 255, 0.15)", text: "var(--accent-blue)" },
-          { label: "50-69%", color: "rgba(234, 179, 8, 0.15)", text: "var(--accent-yellow, #EAB308)" },
+          { label: "50-69%", color: "rgba(234, 179, 8, 0.15)", text: "var(--accent-yellow)" },
           { label: "0-49%", color: "rgba(239, 68, 68, 0.15)", text: "var(--accent-red)" },
         ].map(({ label, color, text }) => (
           <span key={label} className="inline-flex items-center gap-1.5">

@@ -17,7 +17,7 @@ const overallLabels: Record<string, string> = {
 
 const overallColors: Record<string, string> = {
   on_track: "var(--accent-green)",
-  at_risk: "var(--accent-yellow, #EAB308)",
+  at_risk: "var(--accent-yellow)",
   breached: "var(--accent-red)",
   paused: "var(--text-muted)",
   met: "var(--accent-green)",
@@ -58,7 +58,7 @@ export function SLATooltip({ itemStatus }: SLATooltipProps) {
               style={{
                 color:
                   t.status === "at_risk"
-                    ? "var(--accent-yellow, #EAB308)"
+                    ? "var(--accent-yellow)"
                     : "var(--text-secondary)",
               }}
             >

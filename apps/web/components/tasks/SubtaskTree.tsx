@@ -99,7 +99,7 @@ export function SubtaskTree({ subtasks, onToggle, onAdd, onDelete, defaultExpand
                     onClick={() => onToggle(subtask.id)}
                     className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200 ${
                       isDone
-                        ? "border-[var(--accent-green,#3FB950)] bg-[var(--accent-green,#3FB950)]"
+                        ? "border-[var(--accent-green)] bg-[var(--accent-green)]"
                         : "border-[var(--border-default)] hover:border-[var(--accent-blue)]"
                     }`}
                     aria-label={isDone ? `Mark "${subtask.title}" incomplete` : `Mark "${subtask.title}" complete`}
@@ -122,7 +122,7 @@ export function SubtaskTree({ subtasks, onToggle, onAdd, onDelete, defaultExpand
                     </p>
                     <p className={`text-xs mt-0.5 ${
                       isOverdue
-                        ? "text-[var(--accent-red,#F85149)]"
+                        ? "text-[var(--accent-red)]"
                         : "text-[var(--text-muted)]"
                     }`}>
                       {isDone && subtask.completed_at

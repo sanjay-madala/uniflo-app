@@ -23,7 +23,7 @@ export function CAPARecurrenceChart({ data }: CAPARecurrenceChartProps) {
       </CardHeader>
       <CardContent>
         <div role="img" aria-label="Bar chart showing CAPA source breakdown">
-          <BarChart data={chartData} dataKey="count" color="#D29922" height={260} showLegend={false} />
+          <BarChart data={chartData} dataKey="count" color="var(--accent-yellow)" height={260} showLegend={false} />
         </div>
       </CardContent>
     </Card>

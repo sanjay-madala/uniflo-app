@@ -127,7 +127,7 @@ export default function TicketDetailClient() {
     create: <div className="h-6 w-6 rounded-full bg-[var(--accent-blue)]/20 flex items-center justify-center"><Clock className="h-3 w-3 text-[var(--accent-blue)]" /></div>,
     assign: <div className="h-6 w-6 rounded-full bg-[var(--accent-green)]/20 flex items-center justify-center"><UserPlus className="h-3 w-3 text-[var(--accent-green)]" /></div>,
     status: <div className="h-6 w-6 rounded-full bg-purple-500/20 flex items-center justify-center"><Clock className="h-3 w-3 text-purple-400" /></div>,
-    comment: <div className="h-6 w-6 rounded-full bg-[var(--accent-yellow, #EAB308)]/20 flex items-center justify-center"><MessageSquare className="h-3 w-3 text-[var(--accent-yellow, #EAB308)]" /></div>,
+    comment: <div className="h-6 w-6 rounded-full bg-[var(--accent-yellow)]/20 flex items-center justify-center"><MessageSquare className="h-3 w-3 text-[var(--accent-yellow)]" /></div>,
     sla: <div className="h-6 w-6 rounded-full bg-[var(--accent-red)]/20 flex items-center justify-center"><AlertCircle className="h-3 w-3 text-[var(--accent-red)]" /></div>,
     resolved: <div className="h-6 w-6 rounded-full bg-[var(--accent-green)]/20 flex items-center justify-center"><XCircle className="h-3 w-3 text-[var(--accent-green)]" /></div>,
   };

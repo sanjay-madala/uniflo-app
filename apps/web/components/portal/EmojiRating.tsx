@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 const emojis: { emoji: string; label: string; color: string; bg: string }[] = [
-  { emoji: "\uD83D\uDE20", label: "Angry", color: "#DC2626", bg: "rgba(220,38,38,0.1)" },
-  { emoji: "\uD83D\uDE1E", label: "Unhappy", color: "#D97706", bg: "rgba(217,119,6,0.1)" },
-  { emoji: "\uD83D\uDE10", label: "Neutral", color: "#6B7280", bg: "rgba(107,114,128,0.1)" },
-  { emoji: "\uD83D\uDE0A", label: "Happy", color: "#059669", bg: "rgba(5,150,105,0.1)" },
-  { emoji: "\uD83E\uDD29", label: "Delighted", color: "#059669", bg: "rgba(5,150,105,0.15)" },
+  { emoji: "\uD83D\uDE20", label: "Angry", color: "var(--portal-danger, var(--accent-red))", bg: "color-mix(in srgb, var(--portal-danger, var(--accent-red)) 10%, transparent)" },
+  { emoji: "\uD83D\uDE1E", label: "Unhappy", color: "var(--portal-warning, var(--accent-yellow))", bg: "color-mix(in srgb, var(--portal-warning, var(--accent-yellow)) 10%, transparent)" },
+  { emoji: "\uD83D\uDE10", label: "Neutral", color: "var(--portal-text-muted, var(--text-muted))", bg: "color-mix(in srgb, var(--portal-text-muted, var(--text-muted)) 10%, transparent)" },
+  { emoji: "\uD83D\uDE0A", label: "Happy", color: "var(--portal-success, var(--accent-green))", bg: "color-mix(in srgb, var(--portal-success, var(--accent-green)) 10%, transparent)" },
+  { emoji: "\uD83E\uDD29", label: "Delighted", color: "var(--portal-success, var(--accent-green))", bg: "color-mix(in srgb, var(--portal-success, var(--accent-green)) 15%, transparent)" },
 ];
 
 interface EmojiRatingProps {

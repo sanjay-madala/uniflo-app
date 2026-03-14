@@ -11,12 +11,12 @@ import { CompletionRateBar } from "./CompletionRateBar";
 import { LinkedSOPChip } from "./LinkedSOPChip";
 
 const categoryColors: Record<string, string> = {
-  safety: "#EF4444",
-  operations: "#3B82F6",
-  compliance: "#8B5CF6",
-  customer_service: "#EC4899",
-  onboarding: "#10B981",
-  leadership: "#F59E0B",
+  safety: "var(--accent-red)",
+  operations: "var(--accent-blue)",
+  compliance: "var(--accent-purple)",
+  customer_service: "var(--accent-pink)",
+  onboarding: "var(--accent-green)",
+  leadership: "var(--accent-yellow)",
 };
 
 const categoryLabels: Record<string, string> = {
@@ -36,7 +36,7 @@ interface ModuleCardProps {
 
 export function ModuleCard({ module, enrollment, compact = false }: ModuleCardProps) {
   const { locale } = useParams<{ locale: string }>();
-  const catColor = categoryColors[module.category] ?? "#6B7280";
+  const catColor = categoryColors[module.category] ?? "var(--text-muted)";
 
   return (
     <Link href={`/${locale}/training/${module.id}/`}>
