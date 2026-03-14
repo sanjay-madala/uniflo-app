@@ -18,10 +18,21 @@ import {
   kbSuggestedTags,
   kbReadability,
 } from './knowledge';
+import csatData from './csat.json';
 
 const automationRules = automationRulesData.rules;
 const ruleTemplates = automationRulesData.templates;
 const ruleExecutions = automationRulesData.executions;
+
+const portalTickets = csatData.portalTickets;
+const portalTimeline = csatData.portalTimeline;
+const csatSurveys = csatData.csatSurveys;
+const csatDashboardSummary = csatData.csatDashboardSummary;
+const csatTrendData = csatData.csatTrendData;
+const csatDistribution = csatData.csatDistribution;
+const csatCategoryScores = csatData.csatCategoryScores;
+const csatLowScoreEntries = csatData.csatLowScoreEntries;
+const csatAlerts = csatData.csatAlerts;
 
 export {
   users,
@@ -44,6 +55,15 @@ export {
   kbSimilarArticles,
   kbSuggestedTags,
   kbReadability,
+  portalTickets,
+  portalTimeline,
+  csatSurveys,
+  csatDashboardSummary,
+  csatTrendData,
+  csatDistribution,
+  csatCategoryScores,
+  csatLowScoreEntries,
+  csatAlerts,
 };
 
 export * from './types';

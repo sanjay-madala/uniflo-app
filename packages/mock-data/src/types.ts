@@ -579,3 +579,157 @@ export interface TaskComment {
   created_at: string;
   is_system?: boolean;
 }
+
+// ─── Portal & CSAT Types (EPIC-013) ──────────────────────────────
+
+export type PortalTicketStatus =
+  | "submitted"
+  | "in_progress"
+  | "awaiting_reply"
+  | "resolved"
+  | "closed";
+
+export type PortalTicketCategory =
+  | "fb"
+  | "housekeeping"
+  | "maintenance"
+  | "compliance"
+  | "guest_relations"
+  | "general";
+
+export interface PortalAttachment {
+  id: string;
+  name: string;
+  type: "image" | "pdf" | "document";
+  size: string;
+  url: string;
+  thumbnail_url?: string;
+  uploaded_at: string;
+}
+
+export interface PortalTicket {
+  id: string;
+  title: string;
+  description: string;
+  status: PortalTicketStatus;
+  priority: "low" | "medium" | "high";
+  category: PortalTicketCategory;
+  location_id: string;
+  location_name: string;
+  customer_id: string;
+  customer_name: string;
+  customer_email: string;
+  created_at: string;
+  updated_at: string;
+  resolved_at?: string | null;
+  attachments: PortalAttachment[];
+  csat_score?: number | null;
+  csat_submitted_at?: string | null;
+}
+
+export type PortalTimelineEntryType =
+  | "submitted"
+  | "status_change"
+  | "agent_reply"
+  | "customer_reply"
+  | "attachment_added"
+  | "resolved"
+  | "reopened"
+  | "closed";
+
+export interface PortalTimelineEntry {
+  id: string;
+  ticket_id: string;
+  type: PortalTimelineEntryType;
+  actor: "customer" | "agent" | "system";
+  actor_name: string;
+  content: string;
+  attachments?: PortalAttachment[];
+  created_at: string;
+}
+
+export interface CSATSurvey {
+  id: string;
+  ticket_id: string;
+  token: string;
+  customer_id: string;
+  customer_name: string;
+  customer_email: string;
+  rating_mode: "stars" | "emoji" | "both";
+  score: number | null;
+  comment: string | null;
+  submitted_at: string | null;
+  dismissed: boolean;
+  expires_at: string;
+  created_at: string;
+}
+
+export interface CSATTrendPoint {
+  date: string;
+  avg_score: number;
+  response_count: number;
+  response_rate: number;
+}
+
+export interface CSATDistribution {
+  star_1: number;
+  star_2: number;
+  star_3: number;
+  star_4: number;
+  star_5: number;
+  total: number;
+}
+
+export interface CSATCategoryScore {
+  category: PortalTicketCategory;
+  category_label: string;
+  avg_score: number;
+  response_count: number;
+}
+
+export interface CSATLowScoreEntry {
+  ticket_id: string;
+  ticket_title: string;
+  score: number;
+  customer_name: string;
+  agent_name: string;
+  agent_id: string;
+  category: PortalTicketCategory;
+  category_label: string;
+  location_id: string;
+  location_name: string;
+  resolved_at: string;
+  rated_at: string;
+  comment?: string;
+}
+
+export interface CSATDashboardSummary {
+  avg_score: number;
+  avg_score_previous: number;
+  response_rate: number;
+  response_rate_previous: number;
+  total_responses: number;
+  total_responses_previous: number;
+  low_score_count: number;
+  low_score_count_previous: number;
+  threshold: number;
+}
+
+export type CSATAlertStatus = "active" | "acknowledged" | "resolved";
+
+export interface CSATAlert {
+  id: string;
+  location_id: string;
+  location_name: string;
+  current_avg_score: number;
+  previous_avg_score: number;
+  threshold: number;
+  period: "7d" | "30d" | "90d";
+  triggered_at: string;
+  status: CSATAlertStatus;
+  acknowledged_by?: string | null;
+  acknowledged_at?: string | null;
+  triggered_audit_id?: string | null;
+  triggered_capa_id?: string | null;
+  contributing_ticket_ids: string[];
+}
