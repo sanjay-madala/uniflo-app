@@ -579,3 +579,296 @@ export interface TaskComment {
   created_at: string;
   is_system?: boolean;
 }
+
+// ====================================================================
+// ANALYTICS & REPORTING TYPES (EPIC-008)
+// ====================================================================
+
+// -- Date Range --
+export interface DateRange {
+  start: string;
+  end: string;
+}
+
+export type DateRangePreset =
+  | "today"
+  | "yesterday"
+  | "last_7_days"
+  | "last_30_days"
+  | "last_90_days"
+  | "this_month"
+  | "last_month"
+  | "this_quarter"
+  | "last_quarter"
+  | "custom";
+
+// -- Location Hierarchy for Drill-Down --
+export interface LocationNode {
+  id: string;
+  name: string;
+  type: "org" | "region" | "zone" | "city" | "store";
+  parent_id: string | null;
+  children?: LocationNode[];
+  metrics?: LocationMetrics;
+}
+
+export interface LocationMetrics {
+  compliance_score: number;
+  open_tickets: number;
+  open_capas: number;
+  overdue_tasks: number;
+  audits_this_period: number;
+  avg_resolution_hours: number;
+  sla_compliance_pct: number;
+  csat_score: number | null;
+}
+
+// -- Executive Dashboard KPIs --
+export interface DashboardKPI {
+  id: string;
+  title: string;
+  value: number | string;
+  unit?: string;
+  trend: number;
+  trendLabel: string;
+  isPositive: boolean;
+  sparklineData: Array<{ name: string; value: number }>;
+  color: string;
+  module: "tickets" | "audits" | "capa" | "tasks" | "sla" | "overall";
+  linkTo?: string;
+}
+
+// -- Trend Data Points --
+export interface TrendDataPoint {
+  date: string;
+  compliance: number;
+  csat: number;
+  ticket_volume: number;
+  resolution_hours: number;
+  sla_compliance: number;
+  audit_score: number;
+}
+
+// -- Activity Feed Event --
+export type ActivityEventType =
+  | "ticket_created"
+  | "ticket_resolved"
+  | "ticket_escalated"
+  | "audit_completed"
+  | "audit_failed"
+  | "capa_created"
+  | "capa_closed"
+  | "capa_overdue"
+  | "task_completed"
+  | "task_overdue"
+  | "sla_breach"
+  | "sop_published"
+  | "automation_fired";
+
+export interface ActivityEvent {
+  id: string;
+  type: ActivityEventType;
+  title: string;
+  description?: string;
+  module: "tickets" | "audits" | "capa" | "tasks" | "sla" | "sops" | "automation";
+  actor_id: string;
+  actor_name: string;
+  location_id: string;
+  location_name: string;
+  timestamp: string;
+  severity?: "info" | "warning" | "critical";
+  link_to?: string;
+  source_id?: string;
+}
+
+// -- Ticket Analytics --
+export interface TicketAnalytics {
+  period: string;
+  created: number;
+  resolved: number;
+  escalated: number;
+  avg_resolution_hours: number;
+  avg_first_response_hours: number;
+  sla_met: number;
+  sla_breached: number;
+  by_category: Array<{ category: string; count: number; color: string }>;
+  by_priority: Array<{ priority: string; count: number; color: string }>;
+  by_location: Array<{ location_id: string; location_name: string; count: number }>;
+  csat_avg: number | null;
+  csat_responses: number;
+}
+
+// -- Audit Analytics --
+export interface AuditAnalytics {
+  period: string;
+  audits_completed: number;
+  audits_scheduled: number;
+  avg_score: number;
+  pass_rate: number;
+  by_location: Array<{
+    location_id: string;
+    location_name: string;
+    avg_score: number;
+    audit_count: number;
+    pass_rate: number;
+  }>;
+  by_category: Array<{ category: string; avg_score: number; count: number }>;
+  findings_count: number;
+  auto_tickets_created: number;
+  auto_capas_created: number;
+  score_trend: Array<{ date: string; score: number }>;
+}
+
+// -- CAPA Analytics --
+export interface CAPAAnalytics {
+  period: string;
+  total_open: number;
+  total_closed: number;
+  avg_closure_days: number;
+  overdue_count: number;
+  by_severity: Array<{ severity: string; count: number; color: string }>;
+  by_source: Array<{ source: string; count: number; color: string }>;
+  by_location: Array<{
+    location_id: string;
+    location_name: string;
+    open: number;
+    closed: number;
+    overdue: number;
+  }>;
+  closure_trend: Array<{ date: string; closed: number; opened: number }>;
+  recurrence_rate: number;
+  effectiveness_rate: number;
+}
+
+// -- Task Analytics --
+export interface TaskAnalytics {
+  period: string;
+  total_created: number;
+  total_completed: number;
+  total_overdue: number;
+  avg_completion_days: number;
+  velocity: number;
+  by_assignee: Array<{
+    user_id: string;
+    user_name: string;
+    assigned: number;
+    completed: number;
+    overdue: number;
+  }>;
+  by_source: Array<{ source: string; count: number; color: string }>;
+  by_status: Array<{ status: string; count: number; color: string }>;
+  completion_trend: Array<{ date: string; completed: number; created: number }>;
+  overdue_trend: Array<{ date: string; overdue: number; on_time: number }>;
+}
+
+// -- Custom Report Builder --
+export type WidgetType =
+  | "kpi_card"
+  | "bar_chart"
+  | "line_chart"
+  | "donut_chart"
+  | "table"
+  | "activity_feed"
+  | "heatmap"
+  | "scorecard";
+
+export type WidgetDataSource =
+  | "tickets"
+  | "audits"
+  | "capa"
+  | "tasks"
+  | "sla"
+  | "cross_module";
+
+export interface DashboardWidget {
+  id: string;
+  type: WidgetType;
+  title: string;
+  data_source: WidgetDataSource;
+  metric?: string;
+  chart_config?: {
+    data_key: string;
+    x_axis_key?: string;
+    color?: string;
+    secondary_color?: string;
+    show_legend?: boolean;
+    fill?: boolean;
+  };
+  position: { x: number; y: number };
+  size: { w: number; h: number };
+  filters?: Record<string, string>;
+}
+
+export interface CustomDashboard {
+  id: string;
+  name: string;
+  description?: string;
+  widgets: DashboardWidget[];
+  owner_id: string;
+  shared_with: string[];
+  created_at: string;
+  updated_at: string;
+  is_default: boolean;
+  grid_columns: number;
+}
+
+// -- Export Configuration --
+export type ExportFormat = "pdf" | "csv" | "xlsx";
+
+export interface ExportConfig {
+  id: string;
+  name: string;
+  format: ExportFormat;
+  scope: "current_view" | "custom_range" | "full_report";
+  date_range?: DateRange;
+  location_ids?: string[];
+  modules?: WidgetDataSource[];
+  include_charts: boolean;
+  include_raw_data: boolean;
+  scheduled?: {
+    frequency: "daily" | "weekly" | "monthly";
+    recipients: string[];
+    next_run: string;
+  };
+}
+
+// -- Cross-Module Summary --
+export interface CrossModuleSummary {
+  date_range: DateRange;
+  location_id: string | null;
+  tickets: {
+    open: number;
+    resolved_this_period: number;
+    avg_resolution_hours: number;
+    sla_compliance_pct: number;
+    trend_vs_prior: number;
+  };
+  audits: {
+    completed_this_period: number;
+    avg_score: number;
+    pass_rate: number;
+    findings_count: number;
+    trend_vs_prior: number;
+  };
+  capa: {
+    open: number;
+    overdue: number;
+    closure_rate: number;
+    avg_closure_days: number;
+    trend_vs_prior: number;
+  };
+  tasks: {
+    open: number;
+    overdue: number;
+    completion_rate: number;
+    velocity: number;
+    trend_vs_prior: number;
+  };
+  sla: {
+    overall_compliance_pct: number;
+    breaches_this_period: number;
+    avg_time_to_breach_hours: number;
+    trend_vs_prior: number;
+  };
+  overall_health_score: number;
+}
