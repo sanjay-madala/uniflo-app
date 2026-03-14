@@ -1,0 +1,1004 @@
+{
+  "rules": [
+    {
+      "id": "rule_001",
+      "name": "Audit fail creates CAPA",
+      "description": "When an audit fails, automatically create a CAPA and notify the responsible manager for immediate corrective action.",
+      "status": "active",
+      "trigger": {
+        "event": "audit_failed",
+        "label": "Audit failed",
+        "icon": "ClipboardX",
+        "module": "audits"
+      },
+      "conditions": [
+        {
+          "id": "cond_001",
+          "field": "score",
+          "operator": "less_than",
+          "value": 70
+        }
+      ],
+      "actions": [
+        {
+          "id": "act_001",
+          "type": "create_capa",
+          "label": "Create CAPA",
+          "icon": "AlertTriangle",
+          "config": {
+            "title": "Fix: {{trigger.finding}}",
+            "owner_id": "usr_002",
+            "severity": "high"
+          }
+        },
+        {
+          "id": "act_002",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "email",
+            "recipients": "manager",
+            "message": "Audit failed at {{trigger.location}}. CAPA created automatically."
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-10T14:30:00Z",
+      "last_triggered_at": "2026-03-13T14:15:00Z",
+      "execution_count": 45,
+      "success_count": 43,
+      "failure_count": 2,
+      "template_id": "tmpl_001",
+      "location_scope": []
+    },
+    {
+      "id": "rule_002",
+      "name": "Critical ticket escalation",
+      "description": "Escalate critical tickets to the senior manager within 15 minutes of creation with an immediate notification.",
+      "status": "active",
+      "trigger": {
+        "event": "ticket_created",
+        "label": "Ticket created",
+        "icon": "ClipboardList",
+        "module": "tickets"
+      },
+      "conditions": [
+        {
+          "id": "cond_002",
+          "field": "priority",
+          "operator": "equals",
+          "value": "critical"
+        }
+      ],
+      "actions": [
+        {
+          "id": "act_003",
+          "type": "assign_to",
+          "label": "Assign To",
+          "icon": "UserPlus",
+          "config": {
+            "user_id": "usr_002"
+          }
+        },
+        {
+          "id": "act_004",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "manager",
+            "message": "Critical ticket created: {{trigger.title}} at {{trigger.location}}"
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-02T10:00:00Z",
+      "updated_at": "2026-03-08T11:00:00Z",
+      "last_triggered_at": "2026-03-13T09:30:00Z",
+      "execution_count": 12,
+      "success_count": 12,
+      "failure_count": 0,
+      "template_id": "tmpl_002",
+      "location_scope": []
+    },
+    {
+      "id": "rule_003",
+      "name": "CAPA overdue notification",
+      "description": "Send reminder notifications to the CAPA owner and their manager when a CAPA passes its due date.",
+      "status": "active",
+      "trigger": {
+        "event": "capa_overdue",
+        "label": "CAPA overdue",
+        "icon": "AlertTriangle",
+        "module": "capa"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "act_005",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "manager",
+            "message": "CAPA \"{{trigger.title}}\" is overdue. Please take immediate action."
+          }
+        }
+      ],
+      "created_by": "usr_002",
+      "created_at": "2026-03-03T08:00:00Z",
+      "updated_at": "2026-03-03T08:00:00Z",
+      "last_triggered_at": "2026-03-12T16:00:00Z",
+      "execution_count": 8,
+      "success_count": 8,
+      "failure_count": 0,
+      "template_id": "tmpl_003",
+      "location_scope": []
+    },
+    {
+      "id": "rule_004",
+      "name": "Low audit score triggers re-audit",
+      "description": "When an audit scores below 70%, schedule a follow-up re-audit and create a task for the location manager.",
+      "status": "active",
+      "trigger": {
+        "event": "audit_score_below",
+        "label": "Audit score below threshold",
+        "icon": "ClipboardCheck",
+        "module": "audits"
+      },
+      "conditions": [
+        {
+          "id": "cond_003",
+          "field": "score",
+          "operator": "less_than",
+          "value": 70
+        }
+      ],
+      "actions": [
+        {
+          "id": "act_006",
+          "type": "trigger_audit",
+          "label": "Trigger Audit",
+          "icon": "ClipboardCheck",
+          "config": {
+            "template": "follow_up_audit"
+          }
+        },
+        {
+          "id": "act_007",
+          "type": "create_task",
+          "label": "Create Task",
+          "icon": "CheckSquare",
+          "config": {
+            "title": "Review failed audit findings at {{trigger.location}}",
+            "assignee_id": "usr_002",
+            "priority": "high"
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-03T14:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z",
+      "last_triggered_at": "2026-03-11T10:00:00Z",
+      "execution_count": 6,
+      "success_count": 5,
+      "failure_count": 1,
+      "template_id": "tmpl_004",
+      "location_scope": []
+    },
+    {
+      "id": "rule_005",
+      "name": "SOP publish notification",
+      "description": "Notify all staff at the relevant location when a new SOP is published or updated.",
+      "status": "paused",
+      "trigger": {
+        "event": "sop_published",
+        "label": "SOP published",
+        "icon": "FileText",
+        "module": "sops"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "act_008",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "all_staff",
+            "message": "New SOP published: {{trigger.title}}. Please review and acknowledge."
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-04T11:00:00Z",
+      "updated_at": "2026-03-09T15:00:00Z",
+      "last_triggered_at": "2026-03-09T12:00:00Z",
+      "execution_count": 3,
+      "success_count": 3,
+      "failure_count": 0,
+      "template_id": "tmpl_005",
+      "location_scope": ["loc_001", "loc_002"]
+    },
+    {
+      "id": "rule_006",
+      "name": "SLA breach auto-escalate",
+      "description": "Automatically escalate tickets to senior management and change priority to critical when SLA is breached.",
+      "status": "active",
+      "trigger": {
+        "event": "sla_breach",
+        "label": "SLA breach",
+        "icon": "Clock",
+        "module": "sla"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "act_009",
+          "type": "assign_to",
+          "label": "Assign To",
+          "icon": "UserPlus",
+          "config": {
+            "user_id": "usr_002"
+          }
+        },
+        {
+          "id": "act_010",
+          "type": "update_field",
+          "label": "Update Field",
+          "icon": "Edit",
+          "config": {
+            "field": "priority",
+            "value": "critical"
+          }
+        },
+        {
+          "id": "act_011",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "email",
+            "recipients": "manager",
+            "message": "SLA breached for ticket: {{trigger.title}}. Auto-escalated to critical."
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "last_triggered_at": "2026-03-13T11:45:00Z",
+      "execution_count": 15,
+      "success_count": 14,
+      "failure_count": 1,
+      "template_id": "tmpl_006",
+      "location_scope": []
+    },
+    {
+      "id": "rule_007",
+      "name": "Task overdue reminder",
+      "description": "Send automated reminders when tasks exceed their due date, notifying both the assignee and their manager.",
+      "status": "active",
+      "trigger": {
+        "event": "task_overdue",
+        "label": "Task overdue",
+        "icon": "CheckSquare",
+        "module": "tasks"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "act_012",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "assignee",
+            "message": "Task \"{{trigger.title}}\" is overdue. Please complete it as soon as possible."
+          }
+        },
+        {
+          "id": "act_013",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "email",
+            "recipients": "manager",
+            "message": "Task \"{{trigger.title}}\" assigned to {{trigger.assignee}} is overdue."
+          }
+        }
+      ],
+      "created_by": "usr_002",
+      "created_at": "2026-03-05T14:00:00Z",
+      "updated_at": "2026-03-05T14:00:00Z",
+      "last_triggered_at": "2026-03-13T08:00:00Z",
+      "execution_count": 22,
+      "success_count": 22,
+      "failure_count": 0,
+      "template_id": null,
+      "location_scope": []
+    },
+    {
+      "id": "rule_008",
+      "name": "Audit pass auto-close ticket",
+      "description": "When an audit completes with a passing score and has a linked ticket, automatically close the related ticket.",
+      "status": "draft",
+      "trigger": {
+        "event": "audit_completed",
+        "label": "Audit completed",
+        "icon": "ClipboardCheck",
+        "module": "audits"
+      },
+      "conditions": [
+        {
+          "id": "cond_004",
+          "field": "score",
+          "operator": "greater_than",
+          "value": 80
+        }
+      ],
+      "actions": [
+        {
+          "id": "act_014",
+          "type": "change_status",
+          "label": "Change Status",
+          "icon": "ArrowRightCircle",
+          "config": {
+            "status": "closed"
+          }
+        },
+        {
+          "id": "act_015",
+          "type": "add_tag",
+          "label": "Add Tag",
+          "icon": "Tag",
+          "config": {
+            "tag": "auto-closed-by-audit"
+          }
+        }
+      ],
+      "created_by": "usr_001",
+      "created_at": "2026-03-07T10:00:00Z",
+      "updated_at": "2026-03-07T10:00:00Z",
+      "last_triggered_at": null,
+      "execution_count": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "template_id": null,
+      "location_scope": ["loc_001"]
+    },
+    {
+      "id": "rule_009",
+      "name": "CAPA closed verification",
+      "description": "When a CAPA is closed, schedule a verification audit and notify the quality team to confirm the fix is effective.",
+      "status": "paused",
+      "trigger": {
+        "event": "capa_closed",
+        "label": "CAPA closed",
+        "icon": "AlertTriangle",
+        "module": "capa"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "act_016",
+          "type": "trigger_audit",
+          "label": "Trigger Audit",
+          "icon": "ClipboardCheck",
+          "config": {
+            "template": "verification_audit"
+          }
+        },
+        {
+          "id": "act_017",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "email",
+            "recipients": "manager",
+            "message": "CAPA \"{{trigger.title}}\" has been closed. Verification audit scheduled."
+          }
+        }
+      ],
+      "created_by": "usr_003",
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-10T11:00:00Z",
+      "last_triggered_at": "2026-03-10T11:00:00Z",
+      "execution_count": 4,
+      "success_count": 3,
+      "failure_count": 1,
+      "template_id": null,
+      "location_scope": []
+    },
+    {
+      "id": "rule_010",
+      "name": "Food safety ticket auto-assign",
+      "description": "Automatically assign F&B category tickets to the food safety officer for immediate triage and response.",
+      "status": "active",
+      "trigger": {
+        "event": "ticket_created",
+        "label": "Ticket created",
+        "icon": "ClipboardList",
+        "module": "tickets"
+      },
+      "conditions": [
+        {
+          "id": "cond_005",
+          "field": "category",
+          "operator": "equals",
+          "value": "fb"
+        }
+      ],
+      "actions": [
+        {
+          "id": "act_018",
+          "type": "assign_to",
+          "label": "Assign To",
+          "icon": "UserPlus",
+          "config": {
+            "user_id": "usr_003"
+          }
+        },
+        {
+          "id": "act_019",
+          "type": "add_tag",
+          "label": "Add Tag",
+          "icon": "Tag",
+          "config": {
+            "tag": "food-safety"
+          }
+        }
+      ],
+      "created_by": "usr_002",
+      "created_at": "2026-03-09T13:00:00Z",
+      "updated_at": "2026-03-09T13:00:00Z",
+      "last_triggered_at": "2026-03-13T10:20:00Z",
+      "execution_count": 9,
+      "success_count": 9,
+      "failure_count": 0,
+      "template_id": null,
+      "location_scope": ["loc_001"]
+    }
+  ],
+  "templates": [
+    {
+      "id": "tmpl_001",
+      "name": "Audit Fail -> Create CAPA",
+      "description": "When an audit fails with a score below 70%, automatically create a corrective action plan and notify the responsible manager for immediate follow-up.",
+      "category": "compliance",
+      "trigger": {
+        "event": "audit_failed",
+        "label": "Audit failed",
+        "icon": "ClipboardX",
+        "module": "audits"
+      },
+      "conditions": [
+        {
+          "id": "tmpl_cond_001",
+          "field": "score",
+          "operator": "less_than",
+          "value": 70
+        }
+      ],
+      "actions": [
+        {
+          "id": "tmpl_act_001",
+          "type": "create_capa",
+          "label": "Create CAPA",
+          "icon": "AlertTriangle",
+          "config": {
+            "title": "Fix: {{trigger.finding}}",
+            "owner_id": "usr_002",
+            "severity": "high"
+          }
+        },
+        {
+          "id": "tmpl_act_002",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "email",
+            "recipients": "manager",
+            "message": "Audit failed at {{trigger.location}}. CAPA created automatically."
+          }
+        }
+      ],
+      "popularity": 342,
+      "tags": ["audit", "capa", "compliance", "auto-create"],
+      "icon": "ClipboardX"
+    },
+    {
+      "id": "tmpl_002",
+      "name": "Critical Ticket Escalation",
+      "description": "Escalate critical priority tickets to the senior manager immediately upon creation with both email and in-app notifications.",
+      "category": "support",
+      "trigger": {
+        "event": "ticket_created",
+        "label": "Ticket created",
+        "icon": "ClipboardList",
+        "module": "tickets"
+      },
+      "conditions": [
+        {
+          "id": "tmpl_cond_002",
+          "field": "priority",
+          "operator": "equals",
+          "value": "critical"
+        }
+      ],
+      "actions": [
+        {
+          "id": "tmpl_act_003",
+          "type": "assign_to",
+          "label": "Assign To",
+          "icon": "UserPlus",
+          "config": {
+            "user_id": "usr_002"
+          }
+        },
+        {
+          "id": "tmpl_act_004",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "manager",
+            "message": "Critical ticket created: {{trigger.title}}"
+          }
+        }
+      ],
+      "popularity": 287,
+      "tags": ["tickets", "escalation", "critical", "urgent"],
+      "icon": "AlertCircle"
+    },
+    {
+      "id": "tmpl_003",
+      "name": "CAPA Overdue Reminder",
+      "description": "Notify the CAPA owner and their manager when a corrective action plan passes its due date to ensure timely completion.",
+      "category": "operations",
+      "trigger": {
+        "event": "capa_overdue",
+        "label": "CAPA overdue",
+        "icon": "AlertTriangle",
+        "module": "capa"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "tmpl_act_005",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "manager",
+            "message": "CAPA \"{{trigger.title}}\" is overdue. Please take immediate action."
+          }
+        }
+      ],
+      "popularity": 198,
+      "tags": ["capa", "overdue", "reminder", "notification"],
+      "icon": "Clock"
+    },
+    {
+      "id": "tmpl_004",
+      "name": "Low Score -> Re-Audit",
+      "description": "Schedule a follow-up re-audit and create a review task when any audit scores below 70% to ensure issues are addressed.",
+      "category": "quality",
+      "trigger": {
+        "event": "audit_score_below",
+        "label": "Audit score below threshold",
+        "icon": "ClipboardCheck",
+        "module": "audits"
+      },
+      "conditions": [
+        {
+          "id": "tmpl_cond_003",
+          "field": "score",
+          "operator": "less_than",
+          "value": 70
+        }
+      ],
+      "actions": [
+        {
+          "id": "tmpl_act_006",
+          "type": "trigger_audit",
+          "label": "Trigger Audit",
+          "icon": "ClipboardCheck",
+          "config": {
+            "template": "follow_up_audit"
+          }
+        },
+        {
+          "id": "tmpl_act_007",
+          "type": "create_task",
+          "label": "Create Task",
+          "icon": "CheckSquare",
+          "config": {
+            "title": "Review audit findings at {{trigger.location}}",
+            "assignee_id": "usr_002",
+            "priority": "high"
+          }
+        }
+      ],
+      "popularity": 156,
+      "tags": ["audit", "re-audit", "quality", "follow-up"],
+      "icon": "RefreshCw"
+    },
+    {
+      "id": "tmpl_005",
+      "name": "SOP Publish Notification",
+      "description": "Send an automatic notification to all staff at the relevant location when a new standard operating procedure is published or updated.",
+      "category": "efficiency",
+      "trigger": {
+        "event": "sop_published",
+        "label": "SOP published",
+        "icon": "FileText",
+        "module": "sops"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "tmpl_act_008",
+          "type": "send_notification",
+          "label": "Send Notification",
+          "icon": "Bell",
+          "config": {
+            "channel": "both",
+            "recipients": "all_staff",
+            "message": "New SOP published: {{trigger.title}}. Please review and acknowledge."
+          }
+        }
+      ],
+      "popularity": 124,
+      "tags": ["sop", "notification", "communication"],
+      "icon": "FileText"
+    },
+    {
+      "id": "tmpl_006",
+      "name": "SLA Breach Auto-Escalate",
+      "description": "Automatically assign SLA-breached tickets to senior management and escalate the priority to critical for immediate attention.",
+      "category": "support",
+      "trigger": {
+        "event": "sla_breach",
+        "label": "SLA breach",
+        "icon": "Clock",
+        "module": "sla"
+      },
+      "conditions": [],
+      "actions": [
+        {
+          "id": "tmpl_act_009",
+          "type": "assign_to",
+          "label": "Assign To",
+          "icon": "UserPlus",
+          "config": {
+            "user_id": "usr_002"
+          }
+        },
+        {
+          "id": "tmpl_act_010",
+          "type": "update_field",
+          "label": "Update Field",
+          "icon": "Edit",
+          "config": {
+            "field": "priority",
+            "value": "critical"
+          }
+        }
+      ],
+      "popularity": 211,
+      "tags": ["sla", "escalation", "support", "critical"],
+      "icon": "Siren"
+    }
+  ],
+  "executions": [
+    {
+      "id": "exec_001",
+      "rule_id": "rule_001",
+      "triggered_at": "2026-03-13T14:15:00Z",
+      "trigger_event": "audit_failed",
+      "trigger_source_id": "aud_003",
+      "trigger_source_label": "Equipment Safety Audit - Chicago",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "create_capa", "status": "success", "result_id": "capa_003", "result_label": "POS system backup procedure" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 230
+    },
+    {
+      "id": "exec_002",
+      "rule_id": "rule_001",
+      "triggered_at": "2026-03-12T09:00:00Z",
+      "trigger_event": "audit_failed",
+      "trigger_source_id": "aud_002",
+      "trigger_source_label": "Monthly Compliance Check",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "create_capa", "status": "failed", "error": "Could not assign CAPA -- target user inactive" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "partial",
+      "duration_ms": 45
+    },
+    {
+      "id": "exec_003",
+      "rule_id": "rule_001",
+      "triggered_at": "2026-03-11T16:30:00Z",
+      "trigger_event": "audit_failed",
+      "trigger_source_id": "aud_005",
+      "trigger_source_label": "Kitchen Hygiene Inspection",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "create_capa", "status": "success", "result_id": "capa_005", "result_label": "Kitchen sanitation review" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 190
+    },
+    {
+      "id": "exec_004",
+      "rule_id": "rule_002",
+      "triggered_at": "2026-03-13T09:30:00Z",
+      "trigger_event": "ticket_created",
+      "trigger_source_id": "tkt_011",
+      "trigger_source_label": "Guest elevator stuck - immediate response needed",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 120
+    },
+    {
+      "id": "exec_005",
+      "rule_id": "rule_002",
+      "triggered_at": "2026-03-11T15:00:00Z",
+      "trigger_event": "ticket_created",
+      "trigger_source_id": "tkt_009",
+      "trigger_source_label": "Fire alarm malfunction in lobby",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 98
+    },
+    {
+      "id": "exec_006",
+      "rule_id": "rule_003",
+      "triggered_at": "2026-03-12T16:00:00Z",
+      "trigger_event": "capa_overdue",
+      "trigger_source_id": "capa_001",
+      "trigger_source_label": "Implement new sanitization protocol",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 65
+    },
+    {
+      "id": "exec_007",
+      "rule_id": "rule_003",
+      "triggered_at": "2026-03-10T10:00:00Z",
+      "trigger_event": "capa_overdue",
+      "trigger_source_id": "capa_002",
+      "trigger_source_label": "Update food storage procedures",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 52
+    },
+    {
+      "id": "exec_008",
+      "rule_id": "rule_004",
+      "triggered_at": "2026-03-11T10:00:00Z",
+      "trigger_event": "audit_score_below",
+      "trigger_source_id": "aud_004",
+      "trigger_source_label": "Pool Area Safety Review",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "trigger_audit", "status": "success", "result_id": "aud_010", "result_label": "Follow-up: Pool Area Safety" },
+        { "action_type": "create_task", "status": "success", "result_id": "task_015", "result_label": "Review pool safety findings" }
+      ],
+      "status": "success",
+      "duration_ms": 340
+    },
+    {
+      "id": "exec_009",
+      "rule_id": "rule_004",
+      "triggered_at": "2026-03-09T14:00:00Z",
+      "trigger_event": "audit_score_below",
+      "trigger_source_id": "aud_006",
+      "trigger_source_label": "Lobby Cleanliness Check",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "trigger_audit", "status": "failed", "error": "Audit template not found" },
+        { "action_type": "create_task", "status": "success", "result_id": "task_016", "result_label": "Review lobby cleanliness findings" }
+      ],
+      "status": "partial",
+      "duration_ms": 180
+    },
+    {
+      "id": "exec_010",
+      "rule_id": "rule_006",
+      "triggered_at": "2026-03-13T11:45:00Z",
+      "trigger_event": "sla_breach",
+      "trigger_source_id": "tkt_003",
+      "trigger_source_label": "Room service delay - VIP guest",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "update_field", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 150
+    },
+    {
+      "id": "exec_011",
+      "rule_id": "rule_006",
+      "triggered_at": "2026-03-12T08:30:00Z",
+      "trigger_event": "sla_breach",
+      "trigger_source_id": "tkt_007",
+      "trigger_source_label": "Broken AC unit in conference room",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "update_field", "status": "success" },
+        { "action_type": "send_notification", "status": "failed", "error": "Email delivery failed - SMTP timeout" }
+      ],
+      "status": "partial",
+      "duration_ms": 5200
+    },
+    {
+      "id": "exec_012",
+      "rule_id": "rule_007",
+      "triggered_at": "2026-03-13T08:00:00Z",
+      "trigger_event": "task_overdue",
+      "trigger_source_id": "task_005",
+      "trigger_source_label": "Update emergency exit signage",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "send_notification", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 88
+    },
+    {
+      "id": "exec_013",
+      "rule_id": "rule_007",
+      "triggered_at": "2026-03-12T08:00:00Z",
+      "trigger_event": "task_overdue",
+      "trigger_source_id": "task_003",
+      "trigger_source_label": "Replace fire extinguishers - 3rd floor",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "send_notification", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 92
+    },
+    {
+      "id": "exec_014",
+      "rule_id": "rule_010",
+      "triggered_at": "2026-03-13T10:20:00Z",
+      "trigger_event": "ticket_created",
+      "trigger_source_id": "tkt_012",
+      "trigger_source_label": "Food temperature violation in buffet",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "add_tag", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 75
+    },
+    {
+      "id": "exec_015",
+      "rule_id": "rule_010",
+      "triggered_at": "2026-03-12T14:00:00Z",
+      "trigger_event": "ticket_created",
+      "trigger_source_id": "tkt_010",
+      "trigger_source_label": "Cross-contamination risk in prep area",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "add_tag", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 68
+    },
+    {
+      "id": "exec_016",
+      "rule_id": "rule_009",
+      "triggered_at": "2026-03-10T11:00:00Z",
+      "trigger_event": "capa_closed",
+      "trigger_source_id": "capa_004",
+      "trigger_source_label": "Improve guest check-in workflow",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "trigger_audit", "status": "success", "result_id": "aud_011", "result_label": "Verification: Guest check-in workflow" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 280
+    },
+    {
+      "id": "exec_017",
+      "rule_id": "rule_009",
+      "triggered_at": "2026-03-08T09:00:00Z",
+      "trigger_event": "capa_closed",
+      "trigger_source_id": "capa_003",
+      "trigger_source_label": "POS system backup procedure",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "trigger_audit", "status": "failed", "error": "Verification audit template not configured" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "partial",
+      "duration_ms": 150
+    },
+    {
+      "id": "exec_018",
+      "rule_id": "rule_005",
+      "triggered_at": "2026-03-09T12:00:00Z",
+      "trigger_event": "sop_published",
+      "trigger_source_id": "sop_002",
+      "trigger_source_label": "Guest Room Cleaning Protocol v2.1",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 110
+    },
+    {
+      "id": "exec_019",
+      "rule_id": "rule_001",
+      "triggered_at": "2026-03-08T11:00:00Z",
+      "trigger_event": "audit_failed",
+      "trigger_source_id": "aud_001",
+      "trigger_source_label": "Fire Safety Compliance Audit",
+      "conditions_met": false,
+      "actions_executed": [],
+      "status": "skipped",
+      "duration_ms": 12
+    },
+    {
+      "id": "exec_020",
+      "rule_id": "rule_006",
+      "triggered_at": "2026-03-07T16:00:00Z",
+      "trigger_event": "sla_breach",
+      "trigger_source_id": "tkt_005",
+      "trigger_source_label": "Plumbing leak in suite 401",
+      "conditions_met": true,
+      "actions_executed": [
+        { "action_type": "assign_to", "status": "success" },
+        { "action_type": "update_field", "status": "success" },
+        { "action_type": "send_notification", "status": "success" }
+      ],
+      "status": "success",
+      "duration_ms": 135
+    }
+  ]
+}

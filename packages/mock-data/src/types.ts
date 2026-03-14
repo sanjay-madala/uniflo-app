@@ -321,3 +321,137 @@ export interface ProposedCapa {
   linked_sop_id?: string;
   source_section: string;
 }
+
+export type TriggerEvent =
+  | "ticket_created"
+  | "ticket_updated"
+  | "ticket_closed"
+  | "audit_completed"
+  | "audit_failed"
+  | "audit_score_below"
+  | "capa_created"
+  | "capa_overdue"
+  | "capa_closed"
+  | "task_overdue"
+  | "task_completed"
+  | "sop_published"
+  | "sla_breach";
+
+export interface RuleTrigger {
+  event: TriggerEvent;
+  label: string;
+  icon: string;
+  module: "tickets" | "audits" | "capa" | "tasks" | "sops" | "sla";
+}
+
+// --- Condition ---
+
+export type ConditionField =
+  | "score"
+  | "priority"
+  | "status"
+  | "category"
+  | "location"
+  | "assignee"
+  | "severity"
+  | "due_date_days"
+  | "tags_include";
+
+export type ConditionOperator =
+  | "equals"
+  | "not_equals"
+  | "greater_than"
+  | "less_than"
+  | "contains"
+  | "is_empty"
+  | "is_not_empty";
+
+export interface RuleCondition {
+  id: string;
+  field: ConditionField;
+  operator: ConditionOperator;
+  value: string | number | string[];
+  logic?: "AND" | "OR";
+}
+
+// --- Action ---
+
+export type ActionType =
+  | "create_ticket"
+  | "create_capa"
+  | "create_task"
+  | "update_field"
+  | "assign_to"
+  | "send_notification"
+  | "change_status"
+  | "add_tag"
+  | "trigger_audit";
+
+export interface RuleAction {
+  id: string;
+  type: ActionType;
+  label: string;
+  icon: string;
+  config: Record<string, string | number | boolean>;
+}
+
+// --- Execution Log ---
+
+export type ExecutionStatus = "success" | "partial" | "failed" | "skipped";
+
+export interface RuleExecution {
+  id: string;
+  rule_id: string;
+  triggered_at: string;
+  trigger_event: TriggerEvent;
+  trigger_source_id: string;
+  trigger_source_label: string;
+  conditions_met: boolean;
+  actions_executed: Array<{
+    action_type: ActionType;
+    status: ExecutionStatus;
+    result_id?: string;
+    result_label?: string;
+    error?: string;
+  }>;
+  status: ExecutionStatus;
+  duration_ms: number;
+}
+
+// --- Rule ---
+
+export type RuleStatus = "active" | "paused" | "draft" | "error";
+
+export interface AutomationRule {
+  id: string;
+  name: string;
+  description: string;
+  status: RuleStatus;
+  trigger: RuleTrigger;
+  conditions: RuleCondition[];
+  actions: RuleAction[];
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  last_triggered_at: string | null;
+  execution_count: number;
+  success_count: number;
+  failure_count: number;
+  template_id: string | null;
+  location_scope: string[];
+}
+
+// --- Template ---
+
+export interface RuleTemplate {
+  id: string;
+  name: string;
+  description: string;
+  category: "compliance" | "operations" | "support" | "safety" | "quality" | "efficiency";
+  trigger: RuleTrigger;
+  conditions: RuleCondition[];
+  actions: RuleAction[];
+  popularity: number;
+  tags: string[];
+  icon: string;
+}
