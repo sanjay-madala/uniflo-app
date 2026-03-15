@@ -21,7 +21,7 @@ const PORT = parseInt(process.env.PORT || '4000', 10);
 const HOST = process.env.HOST || '0.0.0.0';
 const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
-async function buildServer() {
+export async function buildServer() {
   const app = Fastify({
     logger: {
       level: process.env.LOG_LEVEL || 'info',
