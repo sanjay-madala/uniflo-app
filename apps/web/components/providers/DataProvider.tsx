@@ -4,7 +4,7 @@ import { ApiClientProvider } from "@uniflo/api-client";
 import { auth } from "@/lib/firebase";
 
 const API_MODE = process.env.NEXT_PUBLIC_API_MODE || "mock";
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
   if (API_MODE === "mock") {
