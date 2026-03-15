@@ -19,7 +19,7 @@ export function useSOPsData(): UseSOPsDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useSops();
     return {
-      data: (result.data as SOP[]) ?? [],
+      data: ((result.data as any)?.data ?? []) as SOP[],
       users: mockUsers as User[],
       isLoading: result.isLoading,
       error: result.error,
@@ -48,7 +48,7 @@ export function useSOPData(id: string): UseSOPDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useSop(id);
     return {
-      data: result.data as SOP | undefined,
+      data: ((result.data as any)?.data ?? undefined) as SOP | undefined,
       users: mockUsers as User[],
       isLoading: result.isLoading,
       error: result.error,

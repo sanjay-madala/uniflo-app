@@ -19,7 +19,7 @@ export function useTicketsData(): UseTicketsDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useTickets();
     return {
-      data: (result.data as Ticket[]) ?? [],
+      data: ((result.data as any)?.data ?? []) as Ticket[],
       users: mockUsers as User[], // users come from org context in API mode; fallback to mock for now
       isLoading: result.isLoading,
       error: result.error,
@@ -48,7 +48,7 @@ export function useTicketData(id: string): UseTicketDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useTicket(id);
     return {
-      data: result.data as Ticket | undefined,
+      data: ((result.data as any)?.data ?? undefined) as Ticket | undefined,
       users: mockUsers as User[],
       isLoading: result.isLoading,
       error: result.error,

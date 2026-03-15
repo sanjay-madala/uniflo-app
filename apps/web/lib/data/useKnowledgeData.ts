@@ -30,7 +30,7 @@ export function useKBArticlesData(_params?: Record<string, unknown>): UseKBArtic
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useArticles();
     return {
-      articles: (result.data as unknown as KBArticle[]) ?? [],
+      articles: ((result.data as any)?.data ?? []) as KBArticle[],
       categories: mockCategories,
       collections: mockCollections,
       users: mockUsers,
@@ -67,7 +67,7 @@ export function useKBArticleData(id: string): UseKBArticleDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useArticle(id);
     return {
-      article: result.data as KBArticle | undefined,
+      article: ((result.data as any)?.data ?? undefined) as KBArticle | undefined,
       articles: mockArticles as KBArticle[],
       categories: mockCategories,
       users: mockUsers,

@@ -26,7 +26,7 @@ export function useOrgContext(): UseOrgContextResult {
     const { useOrganization } = require("@uniflo/api-client") as typeof import("@uniflo/api-client");
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useOrganization();
-    const orgData = result.data as Record<string, string> | undefined;
+    const orgData = ((result.data as any)?.data ?? undefined) as Record<string, string> | undefined;
     return {
       org: {
         name: orgData?.name ?? "Loading...",

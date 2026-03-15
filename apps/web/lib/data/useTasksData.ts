@@ -27,9 +27,9 @@ export function useTasksData(): UseTasksDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const projectsResult = useProjects();
     return {
-      data: (tasksResult.data as Task[]) ?? [],
+      data: ((tasksResult.data as any)?.data ?? []) as Task[],
       users: mockUsers as User[],
-      projects: (projectsResult.data as Project[]) ?? [],
+      projects: ((projectsResult.data as any)?.data ?? []) as Project[],
       isLoading: tasksResult.isLoading || projectsResult.isLoading,
       error: tasksResult.error ?? projectsResult.error,
     };
@@ -62,9 +62,9 @@ export function useTaskData(id: string): UseTaskDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const projectsResult = useProjects();
     return {
-      data: taskResult.data as Task | undefined,
+      data: ((taskResult.data as any)?.data ?? undefined) as Task | undefined,
       users: mockUsers as User[],
-      projects: (projectsResult.data as Project[]) ?? [],
+      projects: ((projectsResult.data as any)?.data ?? []) as Project[],
       comments: (mockComments as TaskComment[]).filter(c => c.task_id === id),
       isLoading: taskResult.isLoading || projectsResult.isLoading,
       error: taskResult.error ?? projectsResult.error,

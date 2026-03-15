@@ -28,8 +28,8 @@ export function useAuditsData(): UseAuditsDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const templatesResult = useAuditTemplates();
     return {
-      data: (auditsResult.data as Audit[]) ?? [],
-      templates: (templatesResult.data as AuditTemplate[]) ?? [],
+      data: ((auditsResult.data as any)?.data ?? []) as Audit[],
+      templates: ((templatesResult.data as any)?.data ?? []) as AuditTemplate[],
       users: mockUsers as User[],
       trendData: mockAuditTrend as AuditTrendPoint[],
       isLoading: auditsResult.isLoading || templatesResult.isLoading,
@@ -65,8 +65,8 @@ export function useAuditData(id: string): UseAuditDataResult {
     const auditResult = useAudit(id);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const templatesResult = useAuditTemplates();
-    const audit = auditResult.data as Audit | undefined;
-    const templates = (templatesResult.data as AuditTemplate[]) ?? [];
+    const audit = ((auditResult.data as any)?.data ?? undefined) as Audit | undefined;
+    const templates = ((templatesResult.data as any)?.data ?? []) as AuditTemplate[];
     return {
       data: audit,
       template: audit ? templates.find(t => t.id === audit.template_id) : undefined,

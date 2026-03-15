@@ -19,7 +19,7 @@ export function useCAPAsData(): UseCAPAsDataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useCapas();
     return {
-      data: (result.data as CAPA[]) ?? [],
+      data: ((result.data as any)?.data ?? []) as CAPA[],
       users: mockUsers as User[],
       isLoading: result.isLoading,
       error: result.error,
@@ -49,7 +49,7 @@ export function useCAPAData(id: string): UseCAPADataResult {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useCapa(id);
     return {
-      data: result.data as CAPA | undefined,
+      data: ((result.data as any)?.data ?? undefined) as CAPA | undefined,
       users: mockUsers as User[],
       sops: mockSops as SOP[],
       isLoading: result.isLoading,
