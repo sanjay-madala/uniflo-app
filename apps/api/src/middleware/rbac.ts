@@ -3,7 +3,7 @@ import { db, schema } from '../lib/db.js';
 import { eq, and } from 'drizzle-orm';
 import '../types.js';
 
-const { rolePermissions, userRoles, roles } = schema;
+const { rolePermissions, userRoles, roles, users } = schema;
 
 /**
  * Returns a Fastify preHandler that checks if the authenticated user's role
@@ -30,9 +30,22 @@ export function requirePermission(
       return;
     }
 
-    // Look up the user's role assignment in the DB
+    // Look up the internal user by Firebase UID
+    const dbUser = await db.query.users.findFirst({
+      where: eq(users.firebaseUid, uid),
+    });
+
+    if (!dbUser) {
+      reply.code(403).send({
+        error: 'Forbidden',
+        message: 'User not found in database',
+      });
+      return;
+    }
+
+    // Look up the user's role assignment using internal user ID
     const userRole = await db.query.userRoles.findFirst({
-      where: eq(userRoles.userId, uid),
+      where: eq(userRoles.userId, dbUser.id),
       with: {
         role: {
           with: {
