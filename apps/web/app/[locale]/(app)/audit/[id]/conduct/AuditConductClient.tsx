@@ -2,11 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import {
-  audits,
-  auditTemplates,
-  users,
-} from "@uniflo/mock-data";
+import { useAuditData } from "@/lib/data/useAuditsData";
 import type {
   Audit,
   AuditTemplate,
@@ -79,10 +75,7 @@ export default function AuditConductClient() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
   const router = useRouter();
 
-  const audit = (audits as Audit[]).find((a) => a.id === id);
-  const template = audit
-    ? (auditTemplates as AuditTemplate[]).find((t) => t.id === audit.template_id)
-    : null;
+  const { data: audit, template, users, isLoading, error } = useAuditData(id);
 
   // Flatten all items from template
   const allItems = useMemo(() => {
@@ -204,6 +197,26 @@ export default function AuditConductClient() {
   function handleAutoTicketSkip() {
     setShowAutoTicketModal(false);
     router.push(`/${locale}/audit/${id}/results/`);
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-40 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load audit: {error.message}</p>
+        </div>
+      </div>
+    );
   }
 
   if (!audit || !template) {

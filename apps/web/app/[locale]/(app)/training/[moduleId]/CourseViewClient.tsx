@@ -3,11 +3,7 @@
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  trainingModules,
-  trainingEnrollments,
-  trainingQuizzes,
-} from "@uniflo/mock-data";
+import { useTrainingModuleData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   TrainingEnrollment,
@@ -56,13 +52,7 @@ const categoryColors: Record<string, string> = {
 export default function CourseViewClient() {
   const { locale, moduleId } = useParams<{ locale: string; moduleId: string }>();
 
-  const module = (trainingModules as TrainingModule[]).find((m) => m.id === moduleId);
-  const enrollment = (trainingEnrollments as TrainingEnrollment[]).find(
-    (e) => e.module_id === moduleId && e.user_id === CURRENT_USER
-  );
-  const quiz = module?.quiz_id
-    ? (trainingQuizzes as Quiz[]).find((q) => q.id === module.quiz_id)
-    : null;
+  const { module, enrollment, quiz } = useTrainingModuleData(moduleId, CURRENT_USER);
 
   const tocItems = useMemo(() => {
     if (!module) return [];

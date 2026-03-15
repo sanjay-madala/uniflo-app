@@ -3,12 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  slaComplianceTrend,
-  slaComplianceReport,
-  slaBreaches as mockBreaches,
-  slaPolicies,
-} from "@uniflo/mock-data";
+import { useSLAComplianceData } from "@/lib/data/useSLAData";
 import type { SLAComplianceTrendPoint, SLABreach, SLAComplianceReport } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -41,15 +36,16 @@ const PER_PAGE = 10;
 
 export default function SLAComplianceReportPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { report: rawReport, trend: rawTrend, breaches: rawBreaches, policies: slaPolicies, isLoading, error } = useSLAComplianceData();
   const [dateRange, setDateRange] = useState<string>("30d");
   const [moduleFilter, setModuleFilter] = useState<string>("all");
   const [policyFilter, setPolicyFilter] = useState<string>("all");
   const [breakdownTab, setBreakdownTab] = useState<string>("priority");
   const [breachPage, setBreachPage] = useState(1);
 
-  const report = slaComplianceReport as unknown as SLAComplianceReport;
-  const trendData = slaComplianceTrend as unknown as SLAComplianceTrendPoint[];
-  const breaches = mockBreaches as unknown as SLABreach[];
+  const report = rawReport as unknown as SLAComplianceReport;
+  const trendData = rawTrend as unknown as SLAComplianceTrendPoint[];
+  const breaches = rawBreaches as unknown as SLABreach[];
 
   // Filter trend data by module
   const filteredTrend = useMemo(() => {
@@ -87,6 +83,30 @@ export default function SLAComplianceReportPage() {
         return { data: report.by_priority, label: "Priority" };
     }
   }, [report, breakdownTab]);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-20 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+        <div className="h-80 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load compliance report: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   function getItemRoute(module: string, itemId: string): string {
     switch (module) {

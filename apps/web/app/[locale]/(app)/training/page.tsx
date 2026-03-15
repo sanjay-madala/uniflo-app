@@ -2,10 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
-import {
-  trainingModules,
-  trainingEnrollments,
-} from "@uniflo/mock-data";
+import { useTrainingModulesData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   TrainingEnrollment,
@@ -60,8 +57,7 @@ export default function TrainingLibraryPage() {
   const [sortKey, setSortKey] = useState<SortKey>("title");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
 
-  const modules = trainingModules as TrainingModule[];
-  const enrollments = trainingEnrollments as TrainingEnrollment[];
+  const { data: modules, enrollments } = useTrainingModulesData();
 
   // KPI calculations
   const publishedCount = modules.filter((m) => m.status === "published").length;

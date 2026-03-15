@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { PageHeader, Button } from "@uniflo/ui";
 import { Plus } from "lucide-react";
-import { exportConfigs } from "@uniflo/mock-data";
+import { useReportsData } from "@/lib/data/useAnalyticsData";
 import { ReportCard } from "@/components/analytics/ReportCard";
 import { ExportModal } from "@/components/analytics/ExportModal";
 
 export default function ReportsPage() {
+  const { exportConfigs } = useReportsData();
   const [isExportOpen, setIsExportOpen] = useState(false);
 
   return (

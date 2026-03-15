@@ -2,13 +2,14 @@
 
 import { KPICard, DonutChart } from "@uniflo/ui";
 import { Card, CardHeader, CardTitle, CardContent } from "@uniflo/ui";
-import { taskAnalytics } from "@uniflo/mock-data";
+import { useTaskAnalyticsData } from "@/lib/data/useAnalyticsData";
 import { AnalyticsPageShell } from "@/components/analytics/AnalyticsPageShell";
 import { TaskVelocityChart } from "@/components/analytics/TaskVelocityChart";
 import { TaskOverdueChart } from "@/components/analytics/TaskOverdueChart";
 import { TaskWorkloadChart } from "@/components/analytics/TaskWorkloadChart";
 
 export default function TaskAnalyticsPage() {
+  const { data: taskAnalytics } = useTaskAnalyticsData();
   const latest = taskAnalytics[taskAnalytics.length - 1];
   const totalCreated = taskAnalytics.reduce((s, d) => s + d.total_created, 0);
   const totalCompleted = taskAnalytics.reduce((s, d) => s + d.total_completed, 0);

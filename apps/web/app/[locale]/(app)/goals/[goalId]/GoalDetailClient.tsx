@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { goals as allGoals, users } from "@uniflo/mock-data";
+import { useGoalData } from "@/lib/data/useGoalsData";
 import type { Goal, KeyResult, KRProgressEntry } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -44,15 +44,9 @@ function timeAgo(dateStr: string): string {
   return "Just now";
 }
 
-function getUserName(userId: string): string {
-  const u = users.find((u) => u.id === userId);
-  return u?.name ?? userId;
-}
-
 export default function GoalDetailClient() {
   const { locale, goalId } = useParams<{ locale: string; goalId: string }>();
-
-  const goal = (allGoals as Goal[]).find((g) => g.id === goalId);
+  const { goal, users, isLoading, error } = useGoalData(goalId);
 
   const [activeTab, setActiveTab] = useState<string>("key-results");
   const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);

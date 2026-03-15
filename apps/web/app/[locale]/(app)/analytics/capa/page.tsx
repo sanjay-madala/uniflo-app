@@ -1,13 +1,14 @@
 "use client";
 
 import { KPICard } from "@uniflo/ui";
-import { capaAnalytics } from "@uniflo/mock-data";
+import { useCAPAAnalyticsData } from "@/lib/data/useAnalyticsData";
 import { AnalyticsPageShell } from "@/components/analytics/AnalyticsPageShell";
 import { CAPAClosureRateChart } from "@/components/analytics/CAPAClosureRateChart";
 import { CAPASeverityBreakdown } from "@/components/analytics/CAPASeverityBreakdown";
 import { CAPARecurrenceChart } from "@/components/analytics/CAPARecurrenceChart";
 
 export default function CAPAAnalyticsPage() {
+  const { data: capaAnalytics } = useCAPAAnalyticsData();
   const latest = capaAnalytics[capaAnalytics.length - 1];
   const totalClosed = capaAnalytics.reduce((s, d) => s + d.total_closed, 0);
   const avgClosure = Math.round(capaAnalytics.reduce((s, d) => s + d.avg_closure_days, 0) / capaAnalytics.length);

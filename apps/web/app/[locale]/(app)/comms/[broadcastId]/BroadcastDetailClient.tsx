@@ -3,12 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  broadcasts,
-  users,
-  readReceipts as allReadReceipts,
-  locationReceiptSummaries as allLocationSummaries,
-} from "@uniflo/mock-data";
+import { useBroadcastData } from "@/lib/data/useBroadcastsData";
 import type {
   Broadcast,
   ReadReceipt,
@@ -43,16 +38,21 @@ type SortDir = "asc" | "desc";
 
 const PER_PAGE = 10;
 
-function getUserName(id: string): string {
-  const u = users.find((u) => u.id === id);
-  return u?.name ?? id;
-}
-
 export default function BroadcastDetailClient() {
   const params = useParams<{ locale: string; broadcastId: string }>();
   const { locale, broadcastId } = params;
 
-  const broadcast = (broadcasts as Broadcast[]).find((b) => b.id === broadcastId);
+  const {
+    broadcast,
+    readReceipts: allReadReceipts,
+    locationSummaries: allLocationSummaries,
+    users,
+  } = useBroadcastData(broadcastId);
+
+  function getUserName(id: string): string {
+    const u = users.find((u) => u.id === id);
+    return u?.name ?? id;
+  }
 
   const [search, setSearch] = useState("");
   const [regionFilter, setRegionFilter] = useState<string>("all");
@@ -62,11 +62,9 @@ export default function BroadcastDetailClient() {
   const [page, setPage] = useState(1);
 
   // Get receipts for this broadcast
-  const receipts = (allReadReceipts as ReadReceipt[]).filter(
-    (r) => r.broadcast_id === broadcastId
-  );
+  const receipts = allReadReceipts;
 
-  const locationSummaries = allLocationSummaries as LocationReceiptSummary[];
+  const locationSummaries = allLocationSummaries;
 
   // Group receipts by location
   const receiptsByLocation = useMemo(() => {

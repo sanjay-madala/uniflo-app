@@ -3,9 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  kbArticles, kbCategories, users,
-} from "@uniflo/mock-data";
+import { useKBArticleData } from "@/lib/data/useKnowledgeData";
 import type { KBArticle } from "@uniflo/mock-data";
 import {
   PageHeader, BreadcrumbBar, Button, Badge, Avatar, AvatarFallback,
@@ -28,18 +26,17 @@ function formatDate(dateStr: string): string {
 
 export default function ArticleReadClient() {
   const { locale, articleId } = useParams<{ locale: string; articleId: string }>();
+  const { article, articles, categories: kbCategories, users, isLoading, error } = useKBArticleData(articleId);
   const [activeHeadingId, setActiveHeadingId] = useState<string>("");
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
 
-  const articles = kbArticles as KBArticle[];
-  const article = articles.find(a => a.id === articleId);
   const category = article ? kbCategories.find(c => c.id === article.category_id) : undefined;
   const author = article ? users.find(u => u.id === article.author_id) : undefined;
 
   // Related articles: same category, different article
   const relatedArticles = article
-    ? articles
+    ? (articles as KBArticle[])
         .filter(a => a.category_id === article.category_id && a.id !== article.id && a.status === "published")
         .slice(0, 3)
         .map(a => ({ id: a.id, title: a.title }))
@@ -64,6 +61,30 @@ export default function ArticleReadClient() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-96 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-3 mt-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-4 rounded bg-[var(--bg-tertiary)] animate-pulse" style={{ width: `${80 - i * 5}%` }} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load article: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!article) {
     return (

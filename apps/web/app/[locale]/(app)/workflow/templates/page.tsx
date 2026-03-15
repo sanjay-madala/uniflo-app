@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ruleTemplates as mockTemplates } from "@uniflo/mock-data";
+import { useRuleTemplatesData } from "@/lib/data/useWorkflowData";
 import type { RuleTemplate } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -23,6 +23,7 @@ import { TemplatePreviewDrawer } from "@/components/workflow/TemplatePreviewDraw
 export default function TemplateGalleryPage() {
   const { locale } = useParams<{ locale: string }>();
   const router = useRouter();
+  const { templates: mockTemplates, isLoading, error } = useRuleTemplatesData();
   const templates = mockTemplates as RuleTemplate[];
 
   const [search, setSearch] = useState("");
@@ -55,6 +56,29 @@ export default function TemplateGalleryPage() {
     // Navigate to the builder with template data (in production would pass via query params or state)
     setPreviewTemplate(null);
     router.push(`/${locale}/workflow/new/`);
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-40 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load templates: {error.message}</p>
+        </div>
+      </div>
+    );
   }
 
   return (

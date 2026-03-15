@@ -33,3 +33,32 @@ export function useSOPsData(): UseSOPsDataResult {
     error: null,
   };
 }
+
+interface UseSOPDataResult {
+  data: SOP | undefined;
+  users: User[];
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export function useSOPData(id: string): UseSOPDataResult {
+  if (API_MODE === "api") {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { useSop } = require("@uniflo/api-client") as typeof import("@uniflo/api-client");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const result = useSop(id);
+    return {
+      data: result.data as SOP | undefined,
+      users: mockUsers as User[],
+      isLoading: result.isLoading,
+      error: result.error,
+    };
+  }
+
+  return {
+    data: (mockSops as SOP[]).find(s => s.id === id),
+    users: mockUsers as User[],
+    isLoading: false,
+    error: null,
+  };
+}

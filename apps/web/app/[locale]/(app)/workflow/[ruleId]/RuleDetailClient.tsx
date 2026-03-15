@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { automationRules as mockRules, ruleExecutions as mockExecutions } from "@uniflo/mock-data";
+import { useAutomationRuleData, useRuleExecutionsData } from "@/lib/data/useWorkflowData";
 import type { AutomationRule, RuleExecution } from "@uniflo/mock-data";
 import { PageHeader, Button, Switch } from "@uniflo/ui";
 import { Edit, ArrowLeft } from "lucide-react";
@@ -64,16 +64,36 @@ function timeAgo(dateStr: string | null): string {
 
 export default function RuleDetailClient() {
   const { locale, ruleId } = useParams<{ locale: string; ruleId: string }>();
-  const allRules = mockRules as AutomationRule[];
-  const allExecutions = mockExecutions as RuleExecution[];
+  const { rule: foundRule, isLoading, error } = useAutomationRuleData(ruleId);
+  const { executions } = useRuleExecutionsData();
+  const allExecutions = executions as RuleExecution[];
 
-  const foundRule = allRules.find(r => r.id === ruleId);
   const [rule, setRule] = useState<AutomationRule | null>(foundRule ?? null);
 
   const ruleExecutions = useMemo(
     () => allExecutions.filter(e => e.rule_id === ruleId),
     [allExecutions, ruleId],
   );
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-96 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-48 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load rule: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!rule) {
     return (

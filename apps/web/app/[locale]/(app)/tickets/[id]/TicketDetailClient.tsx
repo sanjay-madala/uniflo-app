@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tickets as allTickets, users, audits, capas } from "@uniflo/mock-data";
+import { useTicketData } from "@/lib/data/useTicketsData";
 import type { Ticket, User } from "@uniflo/mock-data";
 import { Badge, Button, Avatar, AvatarFallback, Drawer, EmptyState } from "@uniflo/ui";
 import { PriorityBadge } from "@/components/tickets/PriorityBadge";
@@ -28,9 +28,9 @@ const categoryLabels: Record<string, string> = {
   guest_relations: "Guest Relations",
 };
 
-function getUser(id: string | null): User | undefined {
+function getUser(id: string | null, usersList: User[]): User | undefined {
   if (!id) return undefined;
-  return users.find(u => u.id === id);
+  return usersList.find(u => u.id === id);
 }
 
 function getInitials(name: string): string {
@@ -56,10 +56,10 @@ function formatSLADetail(ticket: Ticket): { text: string; breached: boolean } {
   return { text: `${hours}h ${mins}m remaining`, breached: false };
 }
 
-function generateTimeline(ticket: Ticket): Array<{ icon: string; text: string; time: string }> {
+function generateTimeline(ticket: Ticket, usersList: User[]): Array<{ icon: string; text: string; time: string }> {
   const events: Array<{ icon: string; text: string; time: string }> = [];
-  const reporter = getUser(ticket.reporter_id ?? null);
-  const assignee = getUser(ticket.assignee_id);
+  const reporter = getUser(ticket.reporter_id ?? null, usersList);
+  const assignee = getUser(ticket.assignee_id, usersList);
   const created = new Date(ticket.created_at);
 
   events.push({ icon: "create", text: `Ticket created by ${reporter?.name ?? "System"}`, time: ticket.created_at });
@@ -76,7 +76,7 @@ function generateTimeline(ticket: Ticket): Array<{ icon: string; text: string; t
 
   if ((ticket.comments_count ?? 0) > 0) {
     const t = new Date(created.getTime() + 4 * 3600000);
-    const commenter = getUser(ticket.assignee_id) ?? getUser(ticket.reporter_id ?? null);
+    const commenter = getUser(ticket.assignee_id, usersList) ?? getUser(ticket.reporter_id ?? null, usersList);
     events.push({ icon: "comment", text: `Comment added by ${commenter?.name ?? "Team member"}`, time: t.toISOString() });
   }
 
@@ -102,8 +102,32 @@ export default function TicketDetailClient() {
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [commentText, setCommentText] = useState("");
 
-  const tickets = allTickets as Ticket[];
-  const ticket = tickets.find(t => t.id === id);
+  const { data: ticket, users, isLoading, error } = useTicketData(id);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-full rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load ticket: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!ticket) {
     return (
@@ -118,10 +142,10 @@ export default function TicketDetailClient() {
     );
   }
 
-  const assignee = getUser(ticket.assignee_id);
-  const reporter = getUser(ticket.reporter_id ?? null);
+  const assignee = getUser(ticket.assignee_id, users);
+  const reporter = getUser(ticket.reporter_id ?? null, users);
   const sla = formatSLADetail(ticket);
-  const timeline = generateTimeline(ticket);
+  const timeline = generateTimeline(ticket, users);
 
   const timelineIcons: Record<string, React.ReactNode> = {
     create: <div className="h-6 w-6 rounded-full bg-[var(--accent-blue)]/20 flex items-center justify-center"><Clock className="h-3 w-3 text-[var(--accent-blue)]" /></div>,
@@ -238,7 +262,7 @@ export default function TicketDetailClient() {
             </h2>
             <div className="space-y-3">
               {mockComments.map(c => {
-                const author = getUser(c.author_id);
+                const author = getUser(c.author_id, users);
                 return (
                   <div key={c.id} className="rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -338,7 +362,7 @@ export default function TicketDetailClient() {
                 <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)] mb-1">Watchers</p>
                 <div className="flex -space-x-1">
                   {ticket.watchers.map(wId => {
-                    const w = getUser(wId);
+                    const w = getUser(wId, users);
                     return w ? (
                       <Avatar key={wId} className="h-6 w-6 border-2 border-[var(--bg-secondary)]">
                         <AvatarFallback className="text-[10px]">{getInitials(w.name)}</AvatarFallback>

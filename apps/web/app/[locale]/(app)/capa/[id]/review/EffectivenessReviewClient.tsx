@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { capas as allCapas, users } from "@uniflo/mock-data";
+import { useCAPAData } from "@/lib/data/useCAPAsData";
 import type { CAPA } from "@uniflo/mock-data";
 import { PageHeader, Button } from "@uniflo/ui";
 import { ArrowLeft, ChevronRight, CheckCircle, XCircle, Clock } from "lucide-react";
@@ -13,7 +13,28 @@ import { EffectivenessForm } from "@/components/capa/EffectivenessForm";
 export default function EffectivenessReviewClient() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
 
-  const capa = useMemo(() => (allCapas as CAPA[]).find(c => c.id === id), [id]);
+  const { data: capa, users, isLoading, error } = useCAPAData(id);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-16 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+        <div className="h-48 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load CAPA: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!capa) {
     return (

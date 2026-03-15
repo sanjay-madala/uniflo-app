@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
-import { automationRules as mockRules } from "@uniflo/mock-data";
+import { useAutomationRuleData } from "@/lib/data/useWorkflowData";
 import type { AutomationRule } from "@uniflo/mock-data";
 import { RuleBuilderCanvas } from "@/components/workflow/RuleBuilder/RuleBuilderCanvas";
 import type { RuleBuilderState } from "@/components/workflow/RuleBuilder/RuleBuilderCanvas";
@@ -12,8 +12,26 @@ import { ArrowLeft } from "lucide-react";
 export default function EditRuleClient() {
   const { locale, ruleId } = useParams<{ locale: string; ruleId: string }>();
   const router = useRouter();
+  const { rule: existingRule, isLoading, error } = useAutomationRuleData(ruleId);
 
-  const existingRule = (mockRules as AutomationRule[]).find(r => r.id === ruleId);
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-64 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load rule: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!existingRule) {
     return (

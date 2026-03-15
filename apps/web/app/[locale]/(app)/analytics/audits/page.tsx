@@ -1,13 +1,14 @@
 "use client";
 
 import { KPICard } from "@uniflo/ui";
-import { auditAnalytics, auditHeatmapData } from "@uniflo/mock-data";
+import { useAuditAnalyticsData } from "@/lib/data/useAnalyticsData";
 import { AnalyticsPageShell } from "@/components/analytics/AnalyticsPageShell";
 import { AuditTrendLineChart } from "@/components/analytics/AuditTrendLineChart";
 import { AuditScoreByLocationChart } from "@/components/analytics/AuditScoreByLocationChart";
 import { AuditComplianceHeatmapTable } from "@/components/analytics/AuditComplianceHeatmapTable";
 
 export default function AuditAnalyticsPage() {
+  const { data: auditAnalytics, heatmapData: auditHeatmapData } = useAuditAnalyticsData();
   const latest = auditAnalytics[auditAnalytics.length - 1];
   const totalCompleted = auditAnalytics.reduce((s, d) => s + d.audits_completed, 0);
   const avgScore = Math.round(auditAnalytics.reduce((s, d) => s + d.avg_score, 0) / auditAnalytics.length);

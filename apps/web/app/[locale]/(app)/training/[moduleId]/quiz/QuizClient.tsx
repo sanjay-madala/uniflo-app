@@ -3,10 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  trainingModules,
-  trainingQuizzes,
-} from "@uniflo/mock-data";
+import { useTrainingModuleData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   Quiz,
@@ -23,10 +20,7 @@ const CURRENT_USER = "user_001";
 export default function QuizClient() {
   const { locale, moduleId } = useParams<{ locale: string; moduleId: string }>();
 
-  const module = (trainingModules as TrainingModule[]).find((m) => m.id === moduleId);
-  const quiz = module?.quiz_id
-    ? (trainingQuizzes as Quiz[]).find((q) => q.id === module.quiz_id)
-    : null;
+  const { module, quiz } = useTrainingModuleData(moduleId, CURRENT_USER);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});

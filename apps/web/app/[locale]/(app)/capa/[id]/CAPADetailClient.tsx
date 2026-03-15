@@ -3,8 +3,8 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { capas as allCapas, users, sops } from "@uniflo/mock-data";
-import type { CAPA, CAPAStatus, CAPAAction as CAPAActionType } from "@uniflo/mock-data";
+import { useCAPAData } from "@/lib/data/useCAPAsData";
+import type { CAPA, CAPAStatus, CAPAAction as CAPAActionType, User } from "@uniflo/mock-data";
 import {
   Button,
   Badge,
@@ -47,19 +47,47 @@ function getInitials(name: string): string {
   return name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
 }
 
-function getUserName(id: string): string {
-  const u = users.find(u => u.id === id);
-  return u?.name ?? "";
-}
-
 export function CAPADetailClient() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
 
-  const capa = useMemo(() => (allCapas as CAPA[]).find(c => c.id === id), [id]);
+  const { data: capa, users, sops, isLoading, error } = useCAPAData(id);
+
+  function getUserName(userId: string): string {
+    const u = users.find(u => u.id === userId);
+    return u?.name ?? "";
+  }
 
   const [capaStatus, setCAPAStatus] = useState<CAPAStatus>(capa?.status ?? "open");
   const [confirmAdvance, setConfirmAdvance] = useState(false);
   const [animating, setAnimating] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-16 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+        <div className="flex gap-6 mt-4">
+          <div className="flex-1 space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="h-16 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+            ))}
+          </div>
+          <div className="w-72 h-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load CAPA: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!capa) {
     return (
@@ -183,7 +211,7 @@ export function CAPADetailClient() {
               <div className="space-y-3">
                 {capa.actions && capa.actions.length > 0 ? (
                   capa.actions.map(action => (
-                    <ActionCard key={action.id} action={action} />
+                    <ActionCard key={action.id} action={action} usersList={users} />
                   ))
                 ) : (
                   <p className="text-sm text-[var(--text-muted)]">No actions defined yet.</p>
@@ -307,9 +335,9 @@ function MetadataField({ label, children }: { label: string; children: React.Rea
   );
 }
 
-function ActionCard({ action }: { action: CAPAActionType }) {
+function ActionCard({ action, usersList }: { action: CAPAActionType; usersList: User[] }) {
   const isCompleted = action.status === "completed";
-  const assigneeName = getUserName(action.assignee_id ?? "");
+  const assigneeName = usersList.find(u => u.id === (action.assignee_id ?? ""))?.name ?? "";
 
   return (
     <div className={`rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] p-3 ${isCompleted ? "opacity-75" : ""}`}>

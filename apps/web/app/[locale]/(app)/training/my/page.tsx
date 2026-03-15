@@ -3,12 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  trainingModules,
-  trainingEnrollments,
-  trainingCertificates,
-  trainingNotifications,
-} from "@uniflo/mock-data";
+import { useTrainingEnrollmentsData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   TrainingEnrollment,
@@ -56,10 +51,12 @@ export default function MyTrainingPage() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [dismissedBanner, setDismissedBanner] = useState(false);
 
-  const modules = trainingModules as TrainingModule[];
-  const allEnrollments = trainingEnrollments as TrainingEnrollment[];
-  const certificates = trainingCertificates as TrainingCertificate[];
-  const notifications = trainingNotifications as TrainingNotification[];
+  const {
+    data: allEnrollments,
+    modules,
+    certificates,
+    notifications,
+  } = useTrainingEnrollmentsData();
 
   const enrollments = allEnrollments.filter((e) => e.user_id === CURRENT_USER);
   const userCertificates = certificates.filter((c) => c.user_id === CURRENT_USER);

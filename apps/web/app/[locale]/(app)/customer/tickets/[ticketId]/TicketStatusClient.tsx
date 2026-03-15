@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Paperclip, Send, Loader2, Star } from "lucide-react";
-import { portalTickets, portalTimeline } from "@uniflo/mock-data";
+import { usePortalTicketsData } from "@/lib/data/useCSATData";
 import type {
   PortalTicket,
   PortalTimelineEntry,
@@ -48,17 +48,19 @@ export default function TicketStatusClient() {
   const [csatSubmitted, setCsatSubmitted] = useState(false);
   const [csatDismissed, setCsatDismissed] = useState(false);
 
+  const { data: portalTickets, timeline: portalTimeline } = usePortalTicketsData();
+
   const ticket = useMemo(
-    () => (portalTickets as PortalTicket[]).find((t) => t.id === ticketId) ?? null,
-    [ticketId]
+    () => portalTickets.find((t) => t.id === ticketId) ?? null,
+    [ticketId, portalTickets]
   );
 
   const timeline = useMemo(
     () =>
-      (portalTimeline as PortalTimelineEntry[]).filter(
+      portalTimeline.filter(
         (e) => e.ticket_id === ticketId
       ),
-    [ticketId]
+    [ticketId, portalTimeline]
   );
 
   if (!ticket) {

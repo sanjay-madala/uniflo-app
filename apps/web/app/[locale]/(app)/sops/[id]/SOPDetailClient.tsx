@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { sops as allSops, users } from "@uniflo/mock-data";
+import { useSOPData } from "@/lib/data/useSOPsData";
 import type { SOP } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -37,11 +37,6 @@ const roleLabels: Record<string, string> = {
   auditor: "Auditor",
 };
 
-function getUserName(id: string): string {
-  const u = users.find(u => u.id === id);
-  return u?.name ?? id;
-}
-
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", {
     month: "short",
@@ -57,7 +52,12 @@ export default function SOPDetailClient() {
   const [acknowledgeDialogOpen, setAcknowledgeDialogOpen] = useState(false);
   const [highlightedStepId, setHighlightedStepId] = useState<string | null>(null);
 
-  const sop = useMemo(() => (allSops as SOP[]).find(s => s.id === id), [id]);
+  const { data: sop, users, isLoading, error } = useSOPData(id);
+
+  function getUserName(userId: string): string {
+    const u = users.find(u => u.id === userId);
+    return u?.name ?? userId;
+  }
 
   const ackStats = useMemo(() => {
     if (!sop) return { total: 0, acknowledged: 0, percentage: 0 };
@@ -75,6 +75,31 @@ export default function SOPDetailClient() {
       setTimeout(() => setHighlightedStepId(null), 2000);
     }
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-96 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="h-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load SOP: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!sop) {
     return (

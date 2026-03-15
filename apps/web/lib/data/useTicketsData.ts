@@ -33,3 +33,32 @@ export function useTicketsData(): UseTicketsDataResult {
     error: null,
   };
 }
+
+interface UseTicketDataResult {
+  data: Ticket | undefined;
+  users: User[];
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export function useTicketData(id: string): UseTicketDataResult {
+  if (API_MODE === "api") {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { useTicket } = require("@uniflo/api-client") as typeof import("@uniflo/api-client");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const result = useTicket(id);
+    return {
+      data: result.data as Ticket | undefined,
+      users: mockUsers as User[],
+      isLoading: result.isLoading,
+      error: result.error,
+    };
+  }
+
+  return {
+    data: (mockTickets as Ticket[]).find(t => t.id === id),
+    users: mockUsers as User[],
+    isLoading: false,
+    error: null,
+  };
+}

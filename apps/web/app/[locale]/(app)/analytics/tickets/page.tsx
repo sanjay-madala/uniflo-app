@@ -1,7 +1,7 @@
 "use client";
 
 import { KPICard } from "@uniflo/ui";
-import { ticketAnalytics } from "@uniflo/mock-data";
+import { useTicketAnalyticsData } from "@/lib/data/useAnalyticsData";
 import { AnalyticsPageShell } from "@/components/analytics/AnalyticsPageShell";
 import { TicketVolumeChart } from "@/components/analytics/TicketVolumeChart";
 import { TicketCategoryBreakdown } from "@/components/analytics/TicketCategoryBreakdown";
@@ -9,6 +9,7 @@ import { TicketResolutionChart } from "@/components/analytics/TicketResolutionCh
 import { TicketSLAComplianceChart } from "@/components/analytics/TicketSLAComplianceChart";
 
 export default function TicketAnalyticsPage() {
+  const { data: ticketAnalytics } = useTicketAnalyticsData();
   const latest = ticketAnalytics[ticketAnalytics.length - 1];
   const totalCreated = ticketAnalytics.reduce((s, d) => s + d.created, 0);
   const totalResolved = ticketAnalytics.reduce((s, d) => s + d.resolved, 0);

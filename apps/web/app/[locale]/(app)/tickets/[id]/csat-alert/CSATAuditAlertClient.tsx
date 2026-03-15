@@ -14,12 +14,8 @@ import {
   Star,
   ExternalLink,
 } from "lucide-react";
-import {
-  csatAlerts,
-  csatLowScoreEntries,
-  csatTrendData,
-  auditTemplates,
-} from "@uniflo/mock-data";
+import { useCSATDashboardData } from "@/lib/data/useCSATData";
+import { auditTemplates } from "@uniflo/mock-data";
 import type {
   CSATAlert,
   CSATLowScoreEntry,
@@ -33,20 +29,22 @@ export default function CSATAuditAlertClient() {
   const { locale } = useParams<{ locale: string }>();
   const router = useRouter();
 
+  const { alerts: csatAlerts, lowScores: csatLowScoreEntries, trend: csatTrendData } = useCSATDashboardData();
+
   const alert = useMemo(
     () =>
-      (csatAlerts as CSATAlert[]).find((a) => a.status === "active") ?? null,
-    []
+      csatAlerts.find((a) => a.status === "active") ?? null,
+    [csatAlerts]
   );
 
   const contributingTickets = useMemo(() => {
     if (!alert) return [];
-    return (csatLowScoreEntries as CSATLowScoreEntry[]).filter((e) =>
+    return csatLowScoreEntries.filter((e) =>
       alert.contributing_ticket_ids.includes(e.ticket_id)
     );
-  }, [alert]);
+  }, [alert, csatLowScoreEntries]);
 
-  const trendData = csatTrendData as CSATTrendPoint[];
+  const trendData = csatTrendData;
   const templates = auditTemplates as AuditTemplate[];
 
   const [selectedTemplate, setSelectedTemplate] = useState<string>(

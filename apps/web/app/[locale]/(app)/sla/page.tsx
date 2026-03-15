@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { slaPolicies as mockPolicies, slaBreaches } from "@uniflo/mock-data";
+import { useSLAPoliciesData, useSLABreachesData } from "@/lib/data/useSLAData";
 import type { SLAPolicy } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -28,6 +28,8 @@ import { PolicyStatsBar } from "@/components/sla/PolicyStatsBar";
 export default function SLAPolicyListPage() {
   const { locale } = useParams<{ locale: string }>();
   const router = useRouter();
+  const { policies: mockPolicies, isLoading, error } = useSLAPoliciesData();
+  const { breaches: slaBreaches } = useSLABreachesData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [moduleTab, setModuleTab] = useState<string>("all");
@@ -95,6 +97,30 @@ export default function SLAPolicyListPage() {
     }
     return result.sort((a, b) => a.priority_order - b.priority_order);
   }, [policies, moduleTab, statusFilter, search]);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-24 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load SLA policies: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4 p-6">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { kbCategories as initialCategories } from "@uniflo/mock-data";
+import { useKBArticlesData } from "@/lib/data/useKnowledgeData";
 import type { KBCategory } from "@uniflo/mock-data";
 import {
   PageHeader, BreadcrumbBar, Button, ConfirmDialog,
@@ -13,6 +13,7 @@ import { CategoryFormModal } from "@/components/knowledge/CategoryFormModal";
 
 export default function CategoriesPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { categories: initialCategories, isLoading, error } = useKBArticlesData();
 
   const [categories, setCategories] = useState<KBCategory[]>([...initialCategories]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,6 +72,29 @@ export default function CategoriesPage() {
   const childCount = deletingCategory
     ? categories.filter(c => c.parent_id === deletingCategory.id).length
     : 0;
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load categories: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   const deleteDescription = deletingCategory
     ? `Delete "${deletingCategory.name}"? ${deletingCategory.article_count} article${deletingCategory.article_count !== 1 ? "s" : ""} will become uncategorized.${childCount > 0 ? ` This category has ${childCount} sub-categor${childCount !== 1 ? "ies" : "y"} that will also be deleted.` : ""}`

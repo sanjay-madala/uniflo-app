@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tasks as allTasks, users, projects, taskComments as allComments } from "@uniflo/mock-data";
+import { useTaskData } from "@/lib/data/useTasksData";
 import type { Task, User, Project, Subtask, TaskComment } from "@uniflo/mock-data";
 import { Badge, Button, Avatar, AvatarFallback, EmptyState } from "@uniflo/ui";
 import { TaskStatusChip } from "@/components/tasks/TaskStatusChip";
@@ -40,14 +40,14 @@ const sourceLabels: Record<string, { label: string; variant: "blue" | "warning" 
   automation: { label: "Automation", variant: "success" },
 };
 
-function getUser(id: string | null | undefined): User | undefined {
+function getUser(id: string | null | undefined, usersList: User[]): User | undefined {
   if (!id) return undefined;
-  return (users as User[]).find(u => u.id === id);
+  return usersList.find(u => u.id === id);
 }
 
-function getProject(projectId: string | null | undefined): Project | undefined {
+function getProject(projectId: string | null | undefined, projectsList: Project[]): Project | undefined {
   if (!projectId) return undefined;
-  return (projects as Project[]).find(p => p.id === projectId);
+  return projectsList.find(p => p.id === projectId);
 }
 
 function getInitials(name: string): string {
@@ -87,10 +87,10 @@ function computeDueInfo(task: Task): { text: string; overdue: boolean; percent: 
   return { text: `${days}d ${hours}h remaining`, overdue: false, percent: pct };
 }
 
-function generateTimeline(task: Task): Array<{ icon: string; text: string; time: string }> {
+function generateTimeline(task: Task, usersList: User[]): Array<{ icon: string; text: string; time: string }> {
   const events: Array<{ icon: string; text: string; time: string }> = [];
-  const reporter = getUser(task.reporter_id);
-  const assignee = getUser(task.assignee_id);
+  const reporter = getUser(task.reporter_id, usersList);
+  const assignee = getUser(task.assignee_id, usersList);
   const created = new Date(task.created_at);
 
   if (task.source === "audit" && task.linked_audit_id) {
@@ -140,8 +140,35 @@ export default function TaskDetailClient() {
   const [commentText, setCommentText] = useState("");
   const [subtaskState, setSubtaskState] = useState<Subtask[] | null>(null);
 
-  const tasks = allTasks as Task[];
-  const task = tasks.find(t => t.id === id);
+  const { data: task, users, projects, comments, isLoading, error } = useTaskData(id);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-full rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="flex gap-6 mt-4">
+          <div className="flex-1 space-y-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="h-16 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+            ))}
+          </div>
+          <div className="w-72 h-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load task: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!task) {
     return (
@@ -157,12 +184,11 @@ export default function TaskDetailClient() {
   }
 
   const subtasks = subtaskState ?? task.subtasks ?? [];
-  const assignee = getUser(task.assignee_id);
-  const reporter = getUser(task.reporter_id);
-  const project = getProject(task.project_id);
+  const assignee = getUser(task.assignee_id, users);
+  const reporter = getUser(task.reporter_id, users);
+  const project = getProject(task.project_id, projects);
   const dueInfo = computeDueInfo(task);
-  const timeline = generateTimeline(task);
-  const comments = (allComments as TaskComment[]).filter(c => c.task_id === task.id);
+  const timeline = generateTimeline(task, users);
   const sourceInfo = sourceLabels[task.source];
 
   const dueBarColor = dueInfo.overdue
@@ -332,7 +358,7 @@ export default function TaskDetailClient() {
             </h2>
             <div className="space-y-3">
               {comments.map(c => {
-                const author = getUser(c.author_id);
+                const author = getUser(c.author_id, users);
                 return (
                   <div
                     key={c.id}
@@ -464,7 +490,7 @@ export default function TaskDetailClient() {
                 <p className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)] mb-1">Watchers</p>
                 <div className="flex -space-x-1">
                   {task.watchers.map(wId => {
-                    const w = getUser(wId);
+                    const w = getUser(wId, users);
                     return w ? (
                       <Avatar key={wId} className="h-6 w-6 border-2 border-[var(--bg-secondary)]">
                         <AvatarFallback className="text-[10px]">{getInitials(w.name)}</AvatarFallback>

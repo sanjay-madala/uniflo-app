@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { sops as allSops } from "@uniflo/mock-data";
+import { useSOPData } from "@/lib/data/useSOPsData";
 import type { SOP, SOPStep, SOPCategory } from "@uniflo/mock-data";
 import {
   BreadcrumbBar,
@@ -38,7 +38,7 @@ const roleLabels: Record<string, string> = {
 export default function SOPBuilderEditClient() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
 
-  const sop = useMemo(() => (allSops as SOP[]).find(s => s.id === id), [id]);
+  const { data: sop, isLoading, error } = useSOPData(id);
 
   const [title, setTitle] = useState(sop?.title ?? "");
   const [description, setDescription] = useState(sop?.description.replace(/<[^>]*>/g, "") ?? "");
@@ -121,6 +121,35 @@ export default function SOPBuilderEditClient() {
     if (diffMins < 1) return "just now";
     if (diffMins === 1) return "1m ago";
     return `${diffMins}m ago`;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="flex gap-6 mt-4">
+          <div className="flex-1 space-y-4">
+            <div className="h-10 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+            <div className="h-24 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+            <div className="h-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          </div>
+          <div className="w-80 space-y-4">
+            <div className="h-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+            <div className="h-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load SOP: {error.message}</p>
+        </div>
+      </div>
+    );
   }
 
   if (!sop) {

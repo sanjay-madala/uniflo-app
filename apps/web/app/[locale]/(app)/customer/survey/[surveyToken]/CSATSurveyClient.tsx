@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Check, Loader2 } from "lucide-react";
-import { csatSurveys, portalTickets } from "@uniflo/mock-data";
+import { usePortalTicketsData } from "@/lib/data/useCSATData";
 import type { CSATSurvey, PortalTicket } from "@uniflo/mock-data";
 import { PortalHeader } from "@/components/portal/PortalHeader";
 import { PortalFooter } from "@/components/portal/PortalFooter";
@@ -18,20 +18,22 @@ export default function CSATSurveyClient() {
     surveyToken: string;
   }>();
 
+  const { data: portalTickets, surveys: csatSurveys } = usePortalTicketsData();
+
   const survey = useMemo(
     () =>
-      (csatSurveys as CSATSurvey[]).find((s) => s.token === surveyToken) ?? null,
-    [surveyToken]
+      csatSurveys.find((s) => s.token === surveyToken) ?? null,
+    [surveyToken, csatSurveys]
   );
 
   const ticket = useMemo(
     () =>
       survey
-        ? (portalTickets as PortalTicket[]).find(
+        ? portalTickets.find(
             (t) => t.id === survey.ticket_id
           ) ?? null
         : null,
-    [survey]
+    [survey, portalTickets]
   );
 
   const [starRating, setStarRating] = useState<number | null>(null);

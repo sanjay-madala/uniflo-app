@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { broadcasts as allBroadcasts, users } from "@uniflo/mock-data";
+import { useBroadcastsData } from "@/lib/data/useBroadcastsData";
 import type { Broadcast, BroadcastStatus, BroadcastPriority } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -31,13 +31,9 @@ type SortDir = "asc" | "desc";
 const priorityOrder: Record<string, number> = { critical: 0, urgent: 1, normal: 2 };
 const statusOrder: Record<string, number> = { failed: 0, draft: 1, scheduled: 2, sent: 3 };
 
-function getUserName(id: string): string {
-  const u = users.find((u) => u.id === id);
-  return u?.name ?? id;
-}
-
 export default function BroadcastsPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: broadcasts, users } = useBroadcastsData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
@@ -46,7 +42,10 @@ export default function BroadcastsPage() {
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(1);
 
-  const broadcasts = allBroadcasts as Broadcast[];
+  function getUserName(id: string): string {
+    const u = users.find((u) => u.id === id);
+    return u?.name ?? id;
+  }
 
   // Mock: broadcasts requiring acknowledgment for current user
   const pendingAckBroadcasts = useMemo(() => {

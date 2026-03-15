@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { audits as allAudits } from "@uniflo/mock-data";
+import { useAuditsData } from "@/lib/data/useAuditsData";
 import type { Audit } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -16,7 +16,32 @@ import { AuditCalendarView } from "@/components/audit/AuditCalendarView";
 
 export default function AuditCalendarPage() {
   const { locale } = useParams<{ locale: string }>();
-  const audits = allAudits as Audit[];
+  const { data: auditsData, isLoading, error } = useAuditsData();
+  const audits = auditsData as Audit[];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-4 gap-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-20 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+        <div className="h-64 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load audits: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   const [calendarMonth, setCalendarMonth] = useState(new Date(2026, 2));
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);

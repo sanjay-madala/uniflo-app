@@ -3,9 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import {
-  kbArticles, kbCategories, kbCollections, users,
-} from "@uniflo/mock-data";
+import { useKBArticlesData } from "@/lib/data/useKnowledgeData";
 import type { KBArticle } from "@uniflo/mock-data";
 import {
   PageHeader, SearchBar, Button, Pagination, Badge, EmptyState,
@@ -23,25 +21,24 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, "");
 }
 
-function getUserById(id: string) {
-  return users.find(u => u.id === id);
-}
-
-function getCategoryById(id: string) {
-  return kbCategories.find(c => c.id === id);
-}
-
 export default function KnowledgeBasePage() {
   const { locale } = useParams<{ locale: string }>();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category");
+  const { articles, categories: kbCategories, collections: kbCollections, users, isLoading, error } = useKBArticlesData();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory);
   const [page, setPage] = useState(1);
 
-  const articles = kbArticles as KBArticle[];
+  function getUserById(id: string) {
+    return users.find(u => u.id === id);
+  }
+
+  function getCategoryById(id: string) {
+    return kbCategories.find(c => c.id === id);
+  }
 
   // Top-level categories only for grid display
   const topCategories = kbCategories.filter(c => !c.parent_id);
@@ -107,6 +104,30 @@ export default function KnowledgeBasePage() {
 
   const isSearching = searchQuery.length >= 2;
   const selectedCategoryObj = selectedCategory ? getCategoryById(selectedCategory) : undefined;
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load knowledge base: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4 p-6">

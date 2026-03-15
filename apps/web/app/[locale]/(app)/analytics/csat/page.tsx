@@ -3,14 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { FileDown, Star, BarChart3 } from "lucide-react";
-import {
-  csatDashboardSummary,
-  csatTrendData,
-  csatDistribution,
-  csatCategoryScores,
-  csatLowScoreEntries,
-  csatAlerts,
-} from "@uniflo/mock-data";
+import { useCSATDashboardData } from "@/lib/data/useCSATData";
 import type {
   CSATDashboardSummary,
   CSATTrendPoint,
@@ -49,12 +42,14 @@ export default function CSATDashboardPage() {
   const [starFilter, setStarFilter] = useState<number | null>(null);
   const [alertDismissed, setAlertDismissed] = useState(false);
 
-  const summary = csatDashboardSummary as CSATDashboardSummary;
-  const trend = csatTrendData as CSATTrendPoint[];
-  const distribution = csatDistribution as CSATDistribution;
-  const categoryScores = csatCategoryScores as CSATCategoryScore[];
-  const lowScores = csatLowScoreEntries as CSATLowScoreEntry[];
-  const alerts = csatAlerts as CSATAlert[];
+  const {
+    summary,
+    trend,
+    distribution,
+    categoryScores,
+    lowScores,
+    alerts,
+  } = useCSATDashboardData();
 
   const activeAlert = useMemo(
     () => alerts.find((a) => a.status === "active") ?? null,

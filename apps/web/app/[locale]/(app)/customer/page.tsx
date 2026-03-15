@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Plus, Search, Inbox } from "lucide-react";
-import { portalTickets } from "@uniflo/mock-data";
+import { usePortalTicketsData } from "@/lib/data/useCSATData";
 import type { PortalTicket, PortalTicketStatus } from "@uniflo/mock-data";
 import { PortalHeader } from "@/components/portal/PortalHeader";
 import { PortalFooter } from "@/components/portal/PortalFooter";
@@ -23,7 +23,7 @@ export default function CustomerPortalPage() {
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [page, setPage] = useState(1);
 
-  const tickets = portalTickets as PortalTicket[];
+  const { data: tickets } = usePortalTicketsData();
 
   const summaryCounters = useMemo(() => {
     const open = tickets.filter(

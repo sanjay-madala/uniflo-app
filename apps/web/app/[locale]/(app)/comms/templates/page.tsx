@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { broadcastTemplates } from "@uniflo/mock-data";
+import { useBroadcastTemplatesData } from "@/lib/data/useBroadcastsData";
 import type { BroadcastTemplate, TemplateCategory } from "@uniflo/mock-data";
 import { PageHeader, Button, Input } from "@uniflo/ui";
 import { Plus } from "lucide-react";
@@ -39,7 +39,7 @@ export default function TemplateLibraryPage() {
   const [previewTemplate, setPreviewTemplate] = useState<BroadcastTemplate | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
 
-  const templates = broadcastTemplates as BroadcastTemplate[];
+  const { data: templates } = useBroadcastTemplatesData();
 
   const filtered = useMemo(() => {
     let result = [...templates];

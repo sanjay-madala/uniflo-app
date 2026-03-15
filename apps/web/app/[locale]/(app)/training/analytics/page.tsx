@@ -1,13 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import {
-  trainingModules,
-  trainingEnrollments,
-  trainingCertificates,
-  trainingLocationStats,
-  trainingCompletionTrend,
-} from "@uniflo/mock-data";
+import { useTrainingAnalyticsData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   TrainingEnrollment,
@@ -51,11 +45,13 @@ export default function TrainingAnalyticsPage() {
   const [sortKey, setSortKey] = useState<SortKey>("completionRate");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
-  const modules = trainingModules as TrainingModule[];
-  const enrollments = trainingEnrollments as TrainingEnrollment[];
-  const locationStats = trainingLocationStats as LocationTrainingStats[];
-  const certificates = trainingCertificates;
-  const trendData = trainingCompletionTrend;
+  const {
+    modules,
+    enrollments,
+    locationStats,
+    certificates,
+    completionTrend: trendData,
+  } = useTrainingAnalyticsData();
 
   // KPI calculations
   const totalEnrolled = enrollments.length;

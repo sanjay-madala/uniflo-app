@@ -3,11 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  trainingModules,
-  trainingCertificates,
-  trainingEnrollments,
-} from "@uniflo/mock-data";
+import { useTrainingModuleData, useTrainingCertificatesData } from "@/lib/data/useTrainingData";
 import type {
   TrainingModule,
   TrainingCertificate,
@@ -29,27 +25,25 @@ export default function CertificateClient() {
     return () => clearTimeout(timer);
   }, []);
 
-  const module = (trainingModules as TrainingModule[]).find((m) => m.id === moduleId);
-  const enrollment = (trainingEnrollments as TrainingEnrollment[]).find(
-    (e) => e.module_id === moduleId && e.user_id === CURRENT_USER
-  );
+  const { module, enrollment } = useTrainingModuleData(moduleId, CURRENT_USER);
+  const { data: allCertificates, modules: allModules, enrollments: allEnrollments } = useTrainingCertificatesData();
+
   const certificate = enrollment?.certificate_id
-    ? (trainingCertificates as TrainingCertificate[]).find((c) => c.id === enrollment.certificate_id)
+    ? allCertificates.find((c) => c.id === enrollment.certificate_id) ?? null
     : null;
 
   // Related modules (same category, exclude this one and completed ones)
   const completedModuleIds = useMemo(() => {
-    const enrollments = trainingEnrollments as TrainingEnrollment[];
     return new Set(
-      enrollments
+      allEnrollments
         .filter((e) => e.user_id === CURRENT_USER && e.status === "completed")
         .map((e) => e.module_id)
     );
-  }, []);
+  }, [allEnrollments]);
 
   const relatedModules = useMemo(() => {
     if (!module) return [];
-    return (trainingModules as TrainingModule[])
+    return allModules
       .filter(
         (m) =>
           m.id !== module.id &&
@@ -59,7 +53,7 @@ export default function CertificateClient() {
             m.assigned_role_ids.some((r) => module.assigned_role_ids.includes(r)))
       )
       .slice(0, 3);
-  }, [module, completedModuleIds]);
+  }, [module, completedModuleIds, allModules]);
 
   if (!module) {
     return (

@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { audits, auditTemplates, users } from "@uniflo/mock-data";
+import { useAuditData } from "@/lib/data/useAuditsData";
 import type { Audit, AuditTemplate, AuditSeverity } from "@uniflo/mock-data";
 import {
   BreadcrumbBar,
@@ -20,11 +20,6 @@ const locationLabels: Record<string, string> = {
   loc_002: "Airport Hotel",
   loc_003: "Resort",
 };
-
-function getUserName(id: string): string {
-  const u = users.find((u) => u.id === id);
-  return u?.name ?? "Unknown";
-}
 
 const severityLabel: Record<AuditSeverity, string> = {
   critical: "Critical",
@@ -51,10 +46,36 @@ export default function AuditResultsClient() {
   const { locale, id } = useParams<{ locale: string; id: string }>();
   const [expandedFindings, setExpandedFindings] = useState<Set<string>>(new Set());
 
-  const audit = (audits as Audit[]).find((a) => a.id === id);
-  const template = audit
-    ? (auditTemplates as AuditTemplate[]).find((t) => t.id === audit.template_id)
-    : null;
+  const { data: audit, template, users, isLoading, error } = useAuditData(id);
+
+  function getUserName(userId: string): string {
+    const u = users.find((u) => u.id === userId);
+    return u?.name ?? "Unknown";
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-40 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+        <div className="grid grid-cols-4 gap-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-20 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load audit results: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!audit || audit.score === null) {
     return (

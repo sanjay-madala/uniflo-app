@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
-import { kbCategories } from "@uniflo/mock-data";
+import { useKBArticlesData } from "@/lib/data/useKnowledgeData";
 import type { KBVisibility } from "@uniflo/mock-data";
 import {
   PageHeader, BreadcrumbBar, Button, Input, Badge, RichTextEditor,
@@ -20,6 +20,7 @@ export default function NewArticlePage() {
   const { locale } = useParams<{ locale: string }>();
   const searchParams = useSearchParams();
   const prefillTitle = searchParams.get("title") ?? "";
+  const { categories: kbCategories } = useKBArticlesData();
 
   const [title, setTitle] = useState(prefillTitle);
   const [excerpt, setExcerpt] = useState("");

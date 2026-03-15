@@ -3,8 +3,9 @@
 import { useState, useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { users, audits, tickets } from "@uniflo/mock-data";
-import type { CAPASeverity, CAPASource, RootCauseMethod, Audit, Ticket } from "@uniflo/mock-data";
+import { useTicketsData } from "@/lib/data/useTicketsData";
+import { useAuditsData } from "@/lib/data/useAuditsData";
+import type { CAPASeverity, CAPASource, RootCauseMethod, Audit, Ticket, User } from "@uniflo/mock-data";
 import {
   PageHeader,
   Button,
@@ -28,6 +29,12 @@ const locationLabels: Record<string, string> = {
 export default function CreateCAPAPage() {
   const { locale } = useParams<{ locale: string }>();
   const searchParams = useSearchParams();
+  const { data: audits, users: auditUsers, isLoading: auditsLoading, error: auditsError } = useAuditsData();
+  const { data: tickets, users: ticketUsers, isLoading: ticketsLoading, error: ticketsError } = useTicketsData();
+
+  const users = auditUsers;
+  const isLoading = auditsLoading || ticketsLoading;
+  const loadError = auditsError ?? ticketsError;
 
   const sourceParam = searchParams.get("source") as CAPASource | null;
   const sourceIdParam = searchParams.get("sourceId");
@@ -71,7 +78,7 @@ export default function CreateCAPAPage() {
     }
 
     return null;
-  }, [sourceParam, sourceIdParam]);
+  }, [sourceParam, sourceIdParam, audits, tickets]);
 
   const [title, setTitle] = useState(prePopData?.title ?? "");
   const [description, setDescription] = useState("");
@@ -120,6 +127,30 @@ export default function CreateCAPAPage() {
     { key: "environment", label: "Environment" },
     { key: "measurement", label: "Measurement" },
   ];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="mx-auto w-full max-w-[720px] space-y-4 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-24 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load data: {loadError.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6 p-6">

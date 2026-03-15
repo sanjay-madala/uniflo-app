@@ -3,10 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  kbArticles, kbCategories,
-} from "@uniflo/mock-data";
-import type { KBArticle, KBVisibility } from "@uniflo/mock-data";
+import { useKBArticleData } from "@/lib/data/useKnowledgeData";
+import type { KBVisibility } from "@uniflo/mock-data";
 import {
   PageHeader, BreadcrumbBar, Button, Input, Badge, RichTextEditor,
   Select, SelectTrigger, SelectContent, SelectItem, SelectValue,
@@ -21,9 +19,7 @@ import { KBAICopilotPanel } from "@/components/knowledge/KBAICopilotPanel";
 
 export default function ArticleEditClient() {
   const { locale, articleId } = useParams<{ locale: string; articleId: string }>();
-
-  const articles = kbArticles as KBArticle[];
-  const article = articles.find(a => a.id === articleId);
+  const { article, categories: kbCategories, isLoading, error } = useKBArticleData(articleId);
 
   const [title, setTitle] = useState(article?.title ?? "");
   const [excerpt, setExcerpt] = useState(article?.excerpt ?? "");
@@ -98,6 +94,25 @@ export default function ArticleEditClient() {
     const diffSec = Math.floor((Date.now() - lastSavedAt.getTime()) / 1000);
     if (diffSec < 5) return "Draft saved just now";
     return `Draft saved ${diffSec}s ago`;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-64 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load article: {error.message}</p>
+        </div>
+      </div>
+    );
   }
 
   if (!article) {
