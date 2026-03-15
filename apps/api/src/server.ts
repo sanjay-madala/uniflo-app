@@ -3,6 +3,10 @@ import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import { authMiddleware } from './middleware/auth.js';
 import { ticketRoutes } from './routes/tickets.js';
+import { auditRoutes } from './routes/audits.js';
+import { sopRoutes } from './routes/sops.js';
+import { capaRoutes } from './routes/capa.js';
+import { taskRoutes } from './routes/tasks.js';
 import './types.js';
 
 const PORT = parseInt(process.env.PORT || '4000', 10);
@@ -62,6 +66,10 @@ async function buildServer() {
   // ─── Routes ─────────────────────────────────────────────────────────────────
 
   await app.register(ticketRoutes);
+  await app.register(auditRoutes);
+  await app.register(sopRoutes);
+  await app.register(capaRoutes);
+  await app.register(taskRoutes);
 
   return app;
 }
