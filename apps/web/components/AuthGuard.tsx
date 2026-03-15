@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { auth, onAuthStateChanged } from "@/lib/firebase";
+
+const API_MODE = process.env.NEXT_PUBLIC_API_MODE || "mock";
 
 export function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -10,12 +13,27 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const auth = typeof window !== "undefined" ? localStorage.getItem("uniflo-auth") : null;
-    if (!auth) {
-      router.replace(`/${locale}/login/`);
-    } else {
-      setChecked(true);
+    if (API_MODE === "mock") {
+      // Mock mode: check localStorage flag
+      const mockAuth = typeof window !== "undefined" ? localStorage.getItem("uniflo-auth") : null;
+      if (!mockAuth) {
+        router.replace(`/${locale}/login/`);
+      } else {
+        setChecked(true);
+      }
+      return;
     }
+
+    // API mode: listen to Firebase Auth state
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        router.replace(`/${locale}/login/`);
+      } else {
+        setChecked(true);
+      }
+    });
+
+    return () => unsubscribe();
   }, [locale, router]);
 
   if (!checked) {

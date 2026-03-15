@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { auth, signInWithEmailAndPassword } from "@/lib/firebase";
+
+const API_MODE = process.env.NEXT_PUBLIC_API_MODE || "mock";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,8 +16,9 @@ export default function LoginPage() {
   const [showPw, setShowPw] = useState(false);
   const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
       setError("Please enter both email and password");
@@ -25,21 +29,46 @@ export default function LoginPage() {
       return;
     }
     setError("");
-    if (typeof window !== "undefined") {
-      localStorage.setItem("uniflo-auth", "true");
-      localStorage.setItem("uniflo-user-email", email.trim());
-      localStorage.setItem("uniflo-role", "admin");
+    setLoading(true);
+
+    if (API_MODE === "mock") {
+      // Mock mode: just set localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("uniflo-auth", "true");
+        localStorage.setItem("uniflo-user-email", email.trim());
+        localStorage.setItem("uniflo-role", "admin");
+      }
+      router.push(`/${locale}/dashboard/`);
+      return;
     }
-    router.push(`/${locale}/dashboard/`);
+
+    // API mode: real Firebase Auth
+    try {
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      router.push(`/${locale}/dashboard/`);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Login failed";
+      if (message.includes("user-not-found") || message.includes("wrong-password") || message.includes("invalid-credential")) {
+        setError("Invalid email or password");
+      } else if (message.includes("too-many-requests")) {
+        setError("Too many attempts. Please try again later.");
+      } else {
+        setError(message);
+      }
+      setLoading(false);
+    }
   };
 
   const handleSSO = (_provider: string) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("uniflo-auth", "true");
-      localStorage.setItem("uniflo-user-email", "demo@uniflo.io");
-      localStorage.setItem("uniflo-role", "admin");
+    if (API_MODE === "mock") {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("uniflo-auth", "true");
+        localStorage.setItem("uniflo-user-email", "demo@uniflo.io");
+        localStorage.setItem("uniflo-role", "admin");
+      }
+      router.push(`/${locale}/dashboard/`);
     }
-    router.push(`/${locale}/dashboard/`);
+    // TODO: Firebase Google/Microsoft SSO in API mode
   };
 
   return (

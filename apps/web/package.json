@@ -19,6 +19,7 @@
     "@uniflo/i18n": "workspace:*",
     "@uniflo/mock-data": "workspace:*",
     "@uniflo/ui": "workspace:*",
+    "firebase": "^12.10.0",
     "lucide-react": "^0.460.0",
     "next": "15.1.7",
     "next-intl": "^3.26.0",
