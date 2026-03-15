@@ -48,10 +48,39 @@ export default function GoalDetailClient() {
   const { locale, goalId } = useParams<{ locale: string; goalId: string }>();
   const { goal, users, isLoading, error } = useGoalData(goalId);
 
+  function getUserName(userId: string): string {
+    const u = users.find((u) => u.id === userId);
+    return u?.name ?? userId;
+  }
+
   const [activeTab, setActiveTab] = useState<string>("key-results");
   const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
   const [selectedKR, setSelectedKR] = useState<KeyResult | null>(null);
   const [isEvidenceOpen, setIsEvidenceOpen] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-40 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+        <div className="space-y-3 mt-4">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="h-24 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load goal: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!goal) {
     return (

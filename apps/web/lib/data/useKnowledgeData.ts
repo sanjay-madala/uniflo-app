@@ -30,7 +30,7 @@ export function useKBArticlesData(_params?: Record<string, unknown>): UseKBArtic
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useArticles();
     return {
-      articles: (result.data as KBArticle[]) ?? [],
+      articles: (result.data as unknown as KBArticle[]) ?? [],
       categories: mockCategories,
       collections: mockCollections,
       users: mockUsers,

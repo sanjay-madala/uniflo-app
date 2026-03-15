@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useAuditsData } from "@/lib/data/useAuditsData";
-import { auditTrend } from "@uniflo/mock-data";
 import type { Audit, AuditTemplate, AuditTrendPoint } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -47,7 +46,7 @@ function getAuditDate(audit: Audit): string {
 
 export default function AuditHistoryPage() {
   const { locale } = useParams<{ locale: string }>();
-  const { data: allAudits, templates: templatesData, users, isLoading, error } = useAuditsData();
+  const { data: allAudits, templates: templatesData, users, trendData: auditTrendData, isLoading, error } = useAuditsData();
   const [search, setSearch] = useState("");
   const [locationFilter, setLocationFilter] = useState("all");
   const [templateFilter, setTemplateFilter] = useState("all");
@@ -94,7 +93,7 @@ export default function AuditHistoryPage() {
     (a) => a.status === "completed" || a.status === "failed"
   );
   const templates = templatesData as AuditTemplate[];
-  const trendData = auditTrend as AuditTrendPoint[];
+  const trendData = auditTrendData as AuditTrendPoint[];
 
   // KPI computations
   const kpis = useMemo(() => {

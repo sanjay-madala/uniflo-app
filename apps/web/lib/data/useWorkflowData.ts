@@ -71,7 +71,7 @@ interface UseRuleTemplatesDataResult {
 
 export function useRuleTemplatesData(): UseRuleTemplatesDataResult {
   return {
-    templates: mockTemplates as RuleTemplate[],
+    templates: mockTemplates as unknown as RuleTemplate[],
     isLoading: false,
     error: null,
   };

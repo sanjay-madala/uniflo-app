@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tasks as allTasks, users, projects } from "@uniflo/mock-data";
+import { useTasksData } from "@/lib/data/useTasksData";
 import type { Task, TaskStatus, User, Project } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -36,9 +36,9 @@ const priorityOrder: Record<string, number> = { critical: 0, high: 1, medium: 2,
 type SortKey = "title" | "priority" | "status" | "assignee" | "due_date";
 type SortDir = "asc" | "desc";
 
-function getUserName(id: string | null): string {
+function getUserNameFromList(id: string | null, usersList: User[]): string {
   if (!id) return "";
-  return (users as User[]).find(u => u.id === id)?.name ?? "";
+  return usersList.find(u => u.id === id)?.name ?? "";
 }
 
 function formatShortDate(dateStr: string): string {
@@ -65,8 +65,34 @@ const statusConfig: Record<Project["status"], { label: string; variant: "blue" |
 export default function ProjectScopedTasksClient() {
   const { locale, projectId } = useParams<{ locale: string; projectId: string }>();
 
+  const { data: allTasks, users, projects, isLoading, error } = useTasksData();
+
   const project = (projects as Project[]).find(p => p.id === projectId);
   const tasks = (allTasks as Task[]).filter(t => t.project_id === projectId);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-4 w-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-24 rounded bg-[var(--bg-tertiary)] animate-pulse mt-4" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load project tasks: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -124,7 +150,7 @@ export default function ProjectScopedTasksClient() {
         case "title": cmp = a.title.localeCompare(b.title); break;
         case "priority": cmp = (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9); break;
         case "status": cmp = a.status.localeCompare(b.status); break;
-        case "assignee": cmp = getUserName(a.assignee_id).localeCompare(getUserName(b.assignee_id)); break;
+        case "assignee": cmp = getUserNameFromList(a.assignee_id, users).localeCompare(getUserNameFromList(b.assignee_id, users)); break;
         case "due_date": cmp = new Date(a.due_date).getTime() - new Date(b.due_date).getTime(); break;
       }
       return sortDir === "asc" ? cmp : -cmp;
@@ -162,7 +188,7 @@ export default function ProjectScopedTasksClient() {
   const percent = project.task_count > 0 ? Math.round((project.completed_task_count / project.task_count) * 100) : 0;
   const barColor = percent === 100 ? "bg-[var(--accent-green)]" : percent > 0 ? "bg-[var(--accent-blue)]" : "bg-[var(--text-muted)]";
   const projectStatus = statusConfig[project.status];
-  const ownerName = getUserName(project.owner_id);
+  const ownerName = getUserNameFromList(project.owner_id, users);
 
   return (
     <div className="flex flex-col gap-4 p-6">
@@ -271,7 +297,7 @@ export default function ProjectScopedTasksClient() {
                 <TableCell><TaskStatusChip status={task.status} /></TableCell>
                 <TableCell>
                   <span className={task.assignee_id ? "text-sm" : "text-sm text-[var(--text-muted)]"}>
-                    {getUserName(task.assignee_id) || "Unassigned"}
+                    {getUserNameFromList(task.assignee_id, users) || "Unassigned"}
                   </span>
                 </TableCell>
                 <TableCell>

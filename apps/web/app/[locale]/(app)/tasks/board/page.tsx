@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
-import { tasks as allTasks, users, projects } from "@uniflo/mock-data";
+import { useTasksData } from "@/lib/data/useTasksData";
 import type { Task, TaskStatus, User, Project, Subtask } from "@uniflo/mock-data";
 import { KanbanBoard, type KanbanColumn, Button, PageHeader, Input, Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@uniflo/ui";
 import { Plus } from "lucide-react";
@@ -25,14 +25,14 @@ const priorityLabels: Record<string, string> = {
   low: "Low",
 };
 
-function getUserName(id: string | null): string {
+function getUserName(id: string | null, usersList: User[]): string {
   if (!id) return "Unassigned";
-  return (users as User[]).find(u => u.id === id)?.name ?? "Unknown";
+  return usersList.find(u => u.id === id)?.name ?? "Unknown";
 }
 
-function getProjectInfo(projectId: string | null | undefined): { name: string; color: string } | null {
+function getProjectInfo(projectId: string | null | undefined, projectsList: Project[]): { name: string; color: string } | null {
   if (!projectId) return null;
-  const p = (projects as Project[]).find(pr => pr.id === projectId);
+  const p = projectsList.find(pr => pr.id === projectId);
   return p ? { name: p.name, color: p.color } : null;
 }
 
@@ -53,7 +53,31 @@ function formatDueDate(dateStr: string, status: TaskStatus): string {
 
 export default function TaskBoardPage() {
   const { locale } = useParams<{ locale: string }>();
-  const tasks = allTasks as Task[];
+  const { data: tasksData, users, projects, isLoading, error } = useTasksData();
+  const tasks = tasksData as Task[];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-4 gap-4 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load tasks: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   const [taskStatuses, setTaskStatuses] = useState<Record<string, TaskStatus>>(() => {
     const map: Record<string, TaskStatus> = {};
@@ -98,11 +122,11 @@ export default function TaskBoardPage() {
       cards: filteredTasks
         .filter(t => taskStatuses[t.id] === col.id)
         .map(t => {
-          const proj = getProjectInfo(t.project_id);
+          const proj = getProjectInfo(t.project_id, projects);
           const subtaskInfo = formatSubtaskProgress(t.subtasks);
           const dueInfo = formatDueDate(t.due_date, taskStatuses[t.id] as TaskStatus);
           const descParts = [
-            `${priorityLabels[t.priority] ?? t.priority} · ${getUserName(t.assignee_id)}`,
+            `${priorityLabels[t.priority] ?? t.priority} · ${getUserName(t.assignee_id, users)}`,
             dueInfo ? `Due: ${dueInfo}` : "",
             subtaskInfo,
           ].filter(Boolean);
@@ -115,7 +139,7 @@ export default function TaskBoardPage() {
               priorityLabels[t.priority] ?? t.priority,
               proj ? proj.name : undefined,
             ].filter((l): l is string => Boolean(l)),
-            assignee: getUserName(t.assignee_id),
+            assignee: getUserName(t.assignee_id, users),
           };
         }),
     }));
@@ -130,8 +154,8 @@ export default function TaskBoardPage() {
     setCreateOpen(true);
   }
 
-  const allProjects = projects as Project[];
-  const allUsers = users as User[];
+  const allProjects = projects;
+  const allUsers = users;
 
   return (
     <div className="flex flex-col gap-4 p-6">

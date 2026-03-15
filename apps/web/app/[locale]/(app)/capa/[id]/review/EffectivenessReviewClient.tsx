@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useCAPAData } from "@/lib/data/useCAPAsData";

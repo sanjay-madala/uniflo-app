@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tasks as allTasks, users, projects } from "@uniflo/mock-data";
+import { useTasksData } from "@/lib/data/useTasksData";
 import type { Task, User, Project } from "@uniflo/mock-data";
 import { PageHeader, Button, Input, Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@uniflo/ui";
 import { Plus, ChevronDown, ChevronRight } from "lucide-react";
@@ -16,14 +16,14 @@ import { CreateTaskModal } from "@/components/tasks/CreateTaskModal";
 const NOW = new Date("2026-03-14T12:00:00Z");
 const CURRENT_USER_ID = "usr_002"; // Simulated logged-in user (Marcus Johnson - manager)
 
-function getUserName(id: string | null): string {
+function getUserName(id: string | null, usersList: User[]): string {
   if (!id) return "";
-  return (users as User[]).find(u => u.id === id)?.name ?? "";
+  return usersList.find(u => u.id === id)?.name ?? "";
 }
 
-function getProject(projectId: string | null | undefined): Project | null {
+function getProjectByList(projectId: string | null | undefined, projectsList: Project[]): Project | null {
   if (!projectId) return null;
-  return (projects as Project[]).find(p => p.id === projectId) ?? null;
+  return projectsList.find(p => p.id === projectId) ?? null;
 }
 
 function isOverdue(task: Task): boolean {
@@ -43,6 +43,7 @@ interface TaskGroup {
 
 export default function MyTasksPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: tasksData, users, projects, isLoading, error } = useTasksData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
@@ -50,7 +51,35 @@ export default function MyTasksPage() {
   const [createOpen, setCreateOpen] = useState(false);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
 
-  const tasks = allTasks as Task[];
+  const tasks = tasksData as Task[];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-4 gap-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-20 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load tasks: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   // Get only current user's tasks
   const myTasks = useMemo(() => {
@@ -89,7 +118,7 @@ export default function MyTasksPage() {
     for (const task of filtered) {
       const key = task.project_id ?? "__none__";
       if (!projectMap.has(key)) {
-        const proj = getProject(task.project_id);
+        const proj = getProjectByList(task.project_id, projects);
         projectMap.set(key, {
           projectId: task.project_id ?? null,
           projectName: proj?.name ?? "No Project",

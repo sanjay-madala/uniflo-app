@@ -3,11 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import {
-  goals as allGoals,
-  teamGoalSummaries,
-  users,
-} from "@uniflo/mock-data";
+import { useTeamGoalsData } from "@/lib/data/useGoalsData";
 import type { Goal, GoalTimeframe, TeamGoalSummary } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -36,6 +32,7 @@ import { GoalOwnerAvatar } from "@/components/goals/GoalOwnerAvatar";
 
 export default function TeamGoalsClient() {
   const { locale } = useParams<{ locale: string }>();
+  const { goals: allGoals, teamSummaries: teamGoalSummaries, isLoading, error } = useTeamGoalsData();
 
   const [search, setSearch] = useState("");
   const [levelFilter, setLevelFilter] = useState<string>("all");
@@ -45,6 +42,30 @@ export default function TeamGoalsClient() {
   const [collapsedTeams, setCollapsedTeams] = useState<Set<string>>(new Set());
 
   const goals = allGoals as Goal[];
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-32 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load team goals: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   // Organization-level goals
   const orgGoals = useMemo(() => {

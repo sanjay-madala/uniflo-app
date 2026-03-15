@@ -14,6 +14,7 @@ interface UseAuditsDataResult {
   data: Audit[];
   templates: AuditTemplate[];
   users: User[];
+  trendData: AuditTrendPoint[];
   isLoading: boolean;
   error: Error | null;
 }
@@ -30,6 +31,7 @@ export function useAuditsData(): UseAuditsDataResult {
       data: (auditsResult.data as Audit[]) ?? [],
       templates: (templatesResult.data as AuditTemplate[]) ?? [],
       users: mockUsers as User[],
+      trendData: mockAuditTrend as AuditTrendPoint[],
       isLoading: auditsResult.isLoading || templatesResult.isLoading,
       error: auditsResult.error ?? templatesResult.error,
     };
@@ -39,6 +41,7 @@ export function useAuditsData(): UseAuditsDataResult {
     data: mockAudits as Audit[],
     templates: mockTemplates as AuditTemplate[],
     users: mockUsers as User[],
+    trendData: mockAuditTrend as AuditTrendPoint[],
     isLoading: false,
     error: null,
   };
