@@ -1,5 +1,6 @@
 import { AppShell } from "@/components/layout/AppShell";
 import { AuthGuard } from "@/components/AuthGuard";
+import { DataProvider } from "@/components/providers/DataProvider";
 
 export default async function AppLayout({
   children,
@@ -11,7 +12,9 @@ export default async function AppLayout({
   const { locale } = await params;
   return (
     <AuthGuard>
-      <AppShell locale={locale}>{children}</AppShell>
+      <DataProvider>
+        <AppShell locale={locale}>{children}</AppShell>
+      </DataProvider>
     </AuthGuard>
   );
 }

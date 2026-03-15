@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tickets as allTickets, users } from "@uniflo/mock-data";
-import type { Ticket, TicketStatus, TicketPriority } from "@uniflo/mock-data";
+import { useTicketsData } from "@/lib/data/useTicketsData";
+import type { Ticket } from "@uniflo/mock-data";
 import {
   PageHeader,
   Table,
@@ -24,7 +24,7 @@ import {
   Checkbox,
   Badge,
 } from "@uniflo/ui";
-import { Plus, LayoutGrid, List, ArrowUpDown } from "lucide-react";
+import { Plus, LayoutGrid, ArrowUpDown } from "lucide-react";
 import { PriorityBadge } from "@/components/tickets/PriorityBadge";
 import { StatusChip } from "@/components/tickets/StatusChip";
 import { SLABar } from "@/components/tickets/SLABar";
@@ -53,14 +53,8 @@ type SortDir = "asc" | "desc";
 
 const priorityOrder: Record<string, number> = { critical: 0, high: 1, medium: 2, low: 3 };
 
-function getUserName(id: string | null): string {
-  if (!id) return "";
-  const u = users.find(u => u.id === id);
-  return u?.name ?? "";
-}
-
 function formatSLA(ticket: Ticket): { text: string; breached: boolean } {
-  if (!ticket.sla_breach_at) return { text: "—", breached: false };
+  if (!ticket.sla_breach_at) return { text: "\u2014", breached: false };
   const breach = new Date(ticket.sla_breach_at);
   const diffMs = breach.getTime() - NOW.getTime();
   if (diffMs < 0) {
@@ -76,6 +70,7 @@ function formatSLA(ticket: Ticket): { text: string; breached: boolean } {
 
 export default function TicketsPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: allTickets, users, isLoading, error } = useTicketsData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
@@ -88,6 +83,12 @@ export default function TicketsPage() {
   const [createOpen, setCreateOpen] = useState(false);
 
   const tickets = allTickets as Ticket[];
+
+  const getUserName = useCallback((id: string | null): string => {
+    if (!id) return "";
+    const u = users.find(u => u.id === id);
+    return u?.name ?? "";
+  }, [users]);
 
   const breachedCount = useMemo(
     () => tickets.filter(t => t.sla_breach_at && new Date(t.sla_breach_at) < NOW && t.status !== "closed" && t.status !== "resolved").length,
@@ -137,10 +138,36 @@ export default function TicketsPage() {
     });
 
     return result;
-  }, [tickets, search, statusFilter, priorityFilter, assigneeFilter, dateFilter, sortKey, sortDir]);
+  }, [tickets, search, statusFilter, priorityFilter, assigneeFilter, dateFilter, sortKey, sortDir, getUserName]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const pageData = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  // --- Loading state ---
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // --- Error state ---
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load tickets: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {

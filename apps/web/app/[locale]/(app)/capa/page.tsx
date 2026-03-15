@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { capas as allCapas, users } from "@uniflo/mock-data";
-import type { CAPA, CAPAStatus, CAPASeverity, CAPASource } from "@uniflo/mock-data";
+import { useCAPAsData } from "@/lib/data/useCAPAsData";
+import type { CAPA } from "@uniflo/mock-data";
 import {
   PageHeader,
   Table,
@@ -46,17 +46,13 @@ type SortDir = "asc" | "desc";
 const severityOrder: Record<string, number> = { critical: 0, high: 1, medium: 2, low: 3 };
 const statusOrder: Record<string, number> = { open: 0, in_progress: 1, verified: 2, closed: 3 };
 
-function getUserName(id: string): string {
-  const u = users.find(u => u.id === id);
-  return u?.name ?? "";
-}
-
 function isOverdue(capa: CAPA): boolean {
   return new Date(capa.due_date) < NOW && capa.status !== "closed";
 }
 
 export default function CAPAListPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: allCapas, users, isLoading, error } = useCAPAsData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [severityFilter, setSeverityFilter] = useState<string>("all");
@@ -69,6 +65,11 @@ export default function CAPAListPage() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const capas = allCapas as CAPA[];
+
+  const getUserName = useCallback((id: string): string => {
+    const u = users.find(u => u.id === id);
+    return u?.name ?? "";
+  }, [users]);
 
   const kpiData = useMemo(() => {
     const total = capas.length;
@@ -123,6 +124,32 @@ export default function CAPAListPage() {
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const pageData = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  // --- Loading state ---
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // --- Error state ---
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load CAPAs: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {

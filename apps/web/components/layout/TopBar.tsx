@@ -4,12 +4,14 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Search, Bell, ChevronRight, ChevronDown, User, Settings, LogOut, Shield } from "lucide-react";
 import { useAuth } from "../../lib/auth";
+import { useOrgContext } from "../../lib/data/useOrgContext";
 import { ThemeToggle } from "./ThemeToggle";
 
 const roles = ["Admin", "Manager", "Field Staff"];
 
 export function TopBar({ locale }: { locale: string }) {
   const { user, role, setRole, logout } = useAuth();
+  const { org } = useOrgContext();
   const router = useRouter();
   const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -89,7 +91,7 @@ export function TopBar({ locale }: { locale: string }) {
         <div style={{ flex: 1 }} />
 
         {/* Org name */}
-        <span style={{ fontSize: "13px", color: "var(--text-secondary)", fontWeight: 500 }}>{user.org}</span>
+        <span style={{ fontSize: "13px", color: "var(--text-secondary)", fontWeight: 500 }}>{org.name}</span>
 
         {/* Role switcher */}
         <div ref={roleRef} style={{ position: "relative" }}>

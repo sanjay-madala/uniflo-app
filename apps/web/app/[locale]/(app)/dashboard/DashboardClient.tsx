@@ -3,14 +3,7 @@
 import { useState, useMemo } from "react";
 import { PageHeader, Button } from "@uniflo/ui";
 import { Download } from "lucide-react";
-import {
-  dashboardKPIs,
-  trendData,
-  activityEvents,
-  locationTree,
-  crossModuleSummary,
-  auditHeatmapData,
-} from "@uniflo/mock-data";
+import { useDashboardData } from "@/lib/data/useDashboardData";
 import type { DateRange, DateRangePreset } from "@uniflo/mock-data";
 import { DashboardKPIRow } from "@/components/dashboard/DashboardKPIRow";
 import { DashboardTrendChart } from "@/components/dashboard/DashboardTrendChart";
@@ -24,6 +17,17 @@ import { DashboardDateRangePicker } from "@/components/dashboard/DashboardDateRa
 import { ExportModal } from "@/components/analytics/ExportModal";
 
 export default function DashboardClient() {
+  const {
+    kpis: dashboardKPIs,
+    trendData,
+    activityEvents,
+    locationTree,
+    crossModuleSummary,
+    auditHeatmapData,
+    isLoading,
+    error,
+  } = useDashboardData();
+
   const [dateRange, setDateRange] = useState<DateRange>({
     start: "2026-02-13",
     end: "2026-03-14",
@@ -50,7 +54,33 @@ export default function DashboardClient() {
     if (datePreset === "last_7_days") return trendData.slice(-7);
     if (datePreset === "last_30_days") return trendData.slice(-30);
     return trendData;
-  }, [datePreset]);
+  }, [datePreset, trendData]);
+
+  // --- Loading state ---
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-6 p-6">
+        <div className="h-8 w-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-28 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+        <div className="h-64 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+      </div>
+    );
+  }
+
+  // --- Error state ---
+  if (error) {
+    return (
+      <div className="flex flex-col gap-6 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load dashboard: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6 p-6">

@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  transpilePackages: ["@uniflo/ui"],
+  transpilePackages: ["@uniflo/ui", "@uniflo/api-client"],
   typescript: {
     ignoreBuildErrors: true,
   },

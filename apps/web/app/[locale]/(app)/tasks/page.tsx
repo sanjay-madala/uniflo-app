@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { tasks as allTasks, users, projects } from "@uniflo/mock-data";
-import type { Task, TaskStatus, TaskPriority, User, Project } from "@uniflo/mock-data";
+import { useTasksData } from "@/lib/data/useTasksData";
+import type { Task, User } from "@uniflo/mock-data";
 import {
   PageHeader,
   Table,
@@ -35,12 +35,6 @@ const priorityOrder: Record<string, number> = { critical: 0, high: 1, medium: 2,
 type SortKey = "title" | "priority" | "status" | "assignee" | "due_date";
 type SortDir = "asc" | "desc";
 
-function getUserName(id: string | null): string {
-  if (!id) return "";
-  const u = (users as User[]).find(u => u.id === id);
-  return u?.name ?? "";
-}
-
 function formatShortDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
@@ -65,6 +59,7 @@ const sourceLabels: Record<string, string> = {
 
 export default function TasksPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: allTasks, users, isLoading, error } = useTasksData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
@@ -79,6 +74,12 @@ export default function TasksPage() {
   const [createOpen, setCreateOpen] = useState(false);
 
   const tasks = allTasks as Task[];
+
+  const getUserName = useCallback((id: string | null): string => {
+    if (!id) return "";
+    const u = (users as User[]).find(u => u.id === id);
+    return u?.name ?? "";
+  }, [users]);
 
   const filtered = useMemo(() => {
     let result = [...tasks];
@@ -133,10 +134,36 @@ export default function TasksPage() {
     });
 
     return result;
-  }, [tasks, search, statusFilter, priorityFilter, assigneeFilter, projectFilter, sourceFilter, dateFilter, sortKey, sortDir]);
+  }, [tasks, search, statusFilter, priorityFilter, assigneeFilter, projectFilter, sourceFilter, dateFilter, sortKey, sortDir, getUserName]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const pageData = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  // --- Loading state ---
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // --- Error state ---
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load tasks: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {

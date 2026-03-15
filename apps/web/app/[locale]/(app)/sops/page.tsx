@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { sops as allSops, users } from "@uniflo/mock-data";
+import { useSOPsData } from "@/lib/data/useSOPsData";
 import type { SOP } from "@uniflo/mock-data";
 import {
   PageHeader,
@@ -33,6 +33,7 @@ type SortDir = "asc" | "desc";
 
 export default function SOPsPage() {
   const { locale } = useParams<{ locale: string }>();
+  const { data: allSops, isLoading, error } = useSOPsData();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
@@ -101,6 +102,37 @@ export default function SOPsPage() {
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const pageData = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  // --- Loading state ---
+  if (isLoading) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="h-8 w-48 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="h-4 w-72 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+        <div className="grid grid-cols-4 gap-3 mt-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-20 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+        <div className="space-y-2 mt-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-12 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // --- Error state ---
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 p-6">
+        <div className="rounded-lg border border-[var(--accent-red)] bg-[var(--bg-secondary)] p-4">
+          <p className="text-sm text-[var(--accent-red)]">Failed to load SOPs: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {
